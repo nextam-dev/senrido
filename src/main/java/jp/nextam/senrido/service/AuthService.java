@@ -35,7 +35,7 @@ public class AuthService {
 				return null;
 			}
 
-			MEmployeeExt emp = null;
+			MEmployeeExt emp = mEmployeeDao.selectByIdExt(employeeCode);
 			if (emp == null) {
 				// 例外はSpringSecurityにあったものを適当に使用
 				return null;

@@ -1,8 +1,5 @@
 package jp.nextam.senrido.dao;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 import org.seasar.doma.Dao;
 import org.seasar.doma.Delete;
 import org.seasar.doma.Insert;
@@ -18,6 +15,15 @@ import jp.nextam.senrido.entity.MEmployeeExt;
 @Dao
 @ConfigAutowireable
 public interface MEmployeeDao {
+	
+	/**
+	 * 主キー検索（部門名付)
+	 *
+	 * @param employeeCode
+	 * @return
+	 */
+	@Select
+	MEmployeeExt selectByIdExt(String employeeCode);
 
 	/**
 	 * @param entity
