@@ -26,55 +26,55 @@ public class MCodeMasterService {
 	@Autowired
 	private MCodeDao mCodeDao;
 
-//	/**
-//	 * コードマスタ取得
-//	 *
-//	 * @param divCode
-//	 * @return
-//	 */
-//	public List<MCode> getMCode(String divCode) {
-//		return mCodeDao.selectByDivCode(divCode);
-//	}
-//
-//	/**
-//	 * コードマスタ取得
-//	 *
-//	 * @param divCode
-//	 * @return
-//	 */
-//	public List<MCode> getMCodeDesc(String divCode) {
-//		return mCodeDao.selectByDivCodeDesc(divCode);
-//	}
-//
-//	/**
-//	 * コードマスタ引当
-//	 *
-//	 * @param divCode
-//	 * @return
-//	 */
-//	public MCode getMCodeAllocation(String divCode, String code) {
-//		return mCodeDao.selectByDivCodeAllocation(divCode, code);
-//	}
-//
-//	/**
-//	 * コードマスタ取得
-//	 *
-//	 * @param divCode
-//	 * @return
-//	 */
-//	public List<MCode> getMCodeDivName(String divCode, String divName) {
-//		return mCodeDao.selectByDivCodeAndDivName(divCode, divName);
-//	}
-//
-//	/**
-//	 * コードマスタから指定コード、名称で曖昧検索
-//	 *
-//	 * @param devSubInroduce
-//	 * @param code
-//	 * @param name
-//	 * @return
-//	 */
-//	public List<MCode> getMCodeSearchSubInroduce(String divCode, String code, String name) {
-//		return mCodeDao.selectByDivCodeName(divCode, code, name);
-//	}
+	/**
+	 * コードマスタ取得
+	 *
+	 * @param divCode
+	 * @return
+	 */
+	public List<MCode> getMCode(String divCode) {
+		return mCodeDao.selectByDivCode(divCode);
+	}
+
+	/**
+	 * コードマスタ取得
+	 *
+	 * @param divCode
+	 * @return
+	 */
+	public List<MCode> getMCodeDesc(String divCode) {
+		return mCodeDao.selectByDivCodeDesc(divCode);
+	}
+
+	/**
+	 * コードマスタ引当
+	 *
+	 * @param divCode
+	 * @return
+	 */
+	public MCode getMCodeAllocation(String divCode, String code) {
+		return mCodeDao.selectByDivCodeAllocation(divCode, code);
+	}
+
+	/**
+	 * コードマスタ取得
+	 *
+	 * @param divCode
+	 * @return
+	 */
+	public List<MCode> getMCodeDivName(String divCode, String divName) {
+		return mCodeDao.selectByDivCodeAndDivName(divCode, divName);
+	}
+
+	/**
+	 * コードマスタから指定コード、名称で曖昧検索
+	 *
+	 * @param devSubInroduce
+	 * @param code
+	 * @param name
+	 * @return
+	 */
+	public List<MCode> getMCodeSearchSubInroduce(String divCode, String code, String name) {
+		return mCodeDao.selectByDivCodeName(divCode, code, name);
+	}
 }

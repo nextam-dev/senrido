@@ -48,9 +48,9 @@ $(function() {
         });
     });
 
-//    // パスワード発行ボタンクリック
-//    $('#changePasswordBT').click(function() {
-//        // s002changePassword.html に遷移
-//        window.location.href = "s003changeReissue.html";
-//    });
+    // パスワード発行ボタンクリック
+    $('#changePasswordBT').click(function() {
+        // s002changePassword.html に遷移
+        window.location.href = "s003changeReissue";
+    });
 });

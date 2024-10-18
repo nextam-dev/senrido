@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jp.nextam.senrido.common.GoitaiConstant;
 import jp.nextam.senrido.dto.UserDto;
 import jp.nextam.senrido.form.S003changeReissueForm;
 
@@ -30,7 +31,7 @@ public class S003changeReissueController {
 		// 認証した情報を取得する
 		UserDto userDto = (UserDto) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		model.addAttribute("userDto",userDto);
-		//model.addAttribute("path", eivironment.getProperty(MitsumoriConstant.Application.CONTEXT_PATH));
+		model.addAttribute("path", eivironment.getProperty(GoitaiConstant.Application.CONTEXT_PATH));
 
         return "s003changeReissue";
     }
