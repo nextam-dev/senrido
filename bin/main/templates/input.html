@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<div th:replace="base_header"></div>
+		<title>ご遺体管理</title>
+		<!--css-->
+		<link rel="stylesheet" href="/css/g003.css" th:href="@{{id}/css/g003.css(id=${path})}" >
+
+		<script src="/js/page/g003.js" th:src="@{{id}/js/page/g003.js(id=${path})}"></script>
+		<script src="/js/component/rollCallRecordModal.js" th:src="@{{id}/js/component/rollCallRecordModal.js(id=${path})}"></script>
+		<script src="/js/component/yenPart.js" th:src="@{{id}/js/component/yenPart.js(id=${path})}"></script>
+	</head>
+	<body>
+		<div id="content">
+			<!--　ヘッダー　 -->
+			<div class="menuHedder row">
+				<div class="col-1">
+					<button class="hedderBackButton" @click="back">
+						<span>
+							<i class="fas">&#xf00d;</i>
+						</span>
+						<br>終了
+					</button>
+				</div>
+				<div class="col-8" style="display: flex;">
+					<label class="hedderLabel-position">入力画面</label>
+				</div>
+				<div class="col-3">
+					<label class="loginLabel">ログインユーザー：<label th:text="*{userDto.employeeName}"></label></label>
+				</div>
+			</div>
+			
+			<div class="contents mt-5">
+				<!-- 入力項目 -->
+				<div class="row form-group">
+					<div class="col-3">
+						<label class="heading" for="ps-cp">タイトル</label>
+					</div>
+					<div class="col-9">
+						<input type="text">
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

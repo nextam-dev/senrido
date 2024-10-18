@@ -17,7 +17,7 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'war'
 war {
 		enabled = true
-		archiveName 'haichi.war'
+		archiveName 'senrido.war'
 }
 
 group = 'jp.nextam'
@@ -78,9 +78,9 @@ dependencies {
 task gen << {
     ant.taskdef(resource: 'domagentask.properties',
         classpath: configurations.domaGenRuntime.asPath)
-    ant.gen(url: 'jdbc:mysql://localhost:3306/haichi', user: 'haichi', password: 'makinosaiten') {
-        entityConfig(packageName: 'jp.nextam.demo.entity')
-        daoConfig(packageName: 'jp.nextam.demo.dao')
+    ant.gen(url: 'jdbc:mysql://192.168.1.41:3306/hanako', user: 'hanako', password: 'makinosaiten') {
+        entityConfig(packageName: 'jp.nextam.senridou.entity')
+        daoConfig(packageName: 'jp.nextam.senridou.dao')
         sqlConfig()
     }
 }
@@ -88,7 +88,7 @@ task gen << {
 task genTestCases << {
     ant.taskdef(resource: 'domagentask.properties',
         classpath: configurations.domaGenRuntime.asPath)
-    ant.gen(url: 'jdbc:mysql://localhost:3306/haichi', user: 'haichi', password: 'makinosaiten') {
+    ant.gen(url: 'jdbc:mysql://192.168.1.41:3306/hanako', user: 'hanako', password: 'makinosaiten') {
         sqlTestCaseConfig {
             fileset(dir: 'src/main/resources') {
                 include(name: 'META-INF/**/*.sql')

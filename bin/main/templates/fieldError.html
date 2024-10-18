@@ -1,0 +1,8 @@
+		<ul th:if="${#fields.hasErrors('*')}">
+			<li th:each="err : ${#fields.errors('*')}" th:text="${err}" class="fieldError"></li>
+		</ul>
+		<th:block th:if="${!#strings.isEmpty(errmsg)}">
+			<ul>
+				<li th:text="${errmsg}" class="fieldError"></li>
+			</ul>
+		</th:block>
