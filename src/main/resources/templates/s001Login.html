@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>ログイン</title>
+		<link rel="stylesheet" href="/src/main/resources/static/css/bootstrap.min.css" th:href="@{/src/main/resources/static/css/bootstrap.min.css}"/>
+		<link rel="stylesheet" href="/src/main/resources/static/css/common.css"  th:href="@{/src/main/resources/static/css/common.css}"/>
+		<link rel="stylesheet" href="/src/main/resources/static/css/s001Login.css"  th:href="@{/src/main/resources/static/css/s001Login.css}"/>
+		<script src="/src/main/resources/static/js/jquery-3.3.1.min.js" th:src="@{/src/main/resources/static/js/jquery-3.3.1.min.js}"></script>
+		<script src="/src/main/resources/static/js/bootstrap.min.js" th:src="@{/src/main/resources/static/js/bootstrap.min.js}"></script>
+		<script src="/src/main/resources/static/js/jquery.cookie.js" th:src="@{/src/main/resources/static/js/jquery.cookie.js}"></script>
+		<script src="/src/main/resources/static/js/common.js" th:src="@{/src/main/resources/static/js/common.js}"></script>
+		<script src="/src/main/resources/static/js/page/s001Login.js" th:src="@{/src/main/resources/static/js/page/s001Login.js}"></script>
+	</head>
+	<body style="width:100%">
+		<th:block th:if="@{/} == '/senridou/' or @{/} == '/'">
+		<form id="mainForm" th:action="@{/login}" th:object="${form}" method="post">
+			<input type="hidden" id="baseUrl" th:value="@{/}"/>
+			<div class="floatLeftAll">
+				<div class="title">
+					<h2>ログイン</h2>
+				</div>
+				<div class="titleRight">
+					<label class="titleLabel"></label>
+					<label class="titleLabel"></label>
+				</div>
+			</div>
+			<div class="clearBoth position">
+				<div style="width:100%;min-width:600px;">
+					<label class="koumoku1">ログインID:</label>
+					<input type="text" th:field="*{idTX}" class="box" th:errorclass="fieldError" />
+				</div>
+				<div style="width:100%;min-width:600px;">
+					<label class="koumoku2">パスワード:</label>
+					<input type="password" th:field="*{PasswordTX}" class="box" th:errorclass="fieldError" />
+				</div>
+				<div class="fieldError" th:insert="fieldError.html"></div>
+				<div style="clear:both;margin-left:65px;">
+					<input type="button" value="ログイン" id="LoginBT"class="login">
+				</div>
+				<div>
+					<input type="button" value="パスワード発行" id="changePasswordBT">
+				</div>
+			</div>
+			<div th:insert="footer.html"></div>
+		<!--tab部-->
+		</form>
+		</th:block>
+		<th:block th:unless="@{/} == '/senridou/' or @{/} == '/'">
+		<div class="floatLeftAll">
+			<div class="title">
+				<h2>システムエラーです</h2>
+			</div>
+			<div class="titleRight">
+				<!-- 空 -->
+			</div>
+		</div>
+		<div class="clearBoth floatLeftAll" style="margin-left:50px">
+			<p>リクエストされたページがありません</p>
+		</div>
+		<div class="clearBoth floatLeftAll" style="margin-left:50px">
+		</div>
+		<div class="clearBoth floatLeftAll" style="margin-left:50px">
+			<p>頻発する場合には、管理者まで連絡をお願いします。</p>
+		</div>
+		</th:block>
+	</body>
+</html>
