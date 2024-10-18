@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+	<div th:replace="base_header"></div>
+	<title>一覧</title>
+	<!--css-->
+	<link rel="stylesheet" href="/css/g002GoitaiList.css" th:href="@{{id}/css/g002GoitaiList.css(id=${path})}" >
+	<!--<link rel="stylesheet" href="/css/j004RollCallRecord.css" th:href="@{{id}/css/j004RollCallRecord.css(id=${path})}" >-->
+	<link rel="stylesheet" href="/css/j004RollCallRecord2.css" th:href="@{{id}/css/j004RollCallRecord2.css(id=${path})}" >
+	<!--vue.js-->
+	<script src="/js/component/searchRecordModal.js" th:src="@{{id}/js/component/searchRecordModal.js(id=${path})}"></script>
+	<script src="/js/page/g002GoitaiList.js" th:src="@{{id}/js/page/g002GoitaiList.js(id=${path})}"></script>
+	<script src="/js/component/yenPart.js" th:src="@{{id}/js/component/yenPart.js(id=${path})}"></script>
+</head>
+<body>
+	<!-- <div id="content"> -->
+	<div id="app">
+		<!-- ヘッダー部分 -->
+		<div class="form-inline hedder row">
+			<div class="col-2">
+				<label class="hedderLabel-position">一覧</label>
+			</div>
+			<div class="col-9">
+				<button class="hedderSearchButton" @click="moveRollCallRecord">新規登録</button>
+				<button class="hedderSearchButton" @click="searchRecord">検索</button>
+				<button class="hedderSearchButton" @click="moveRequestList">移動申請一覧</button>
+			</div>
+			<div class="col-1">
+				<button class="backButton backButtonTablet" @click="back">
+					<span class="icon">
+						<span class="material-icons backIcon">reply</span>
+					</span>
+				</button>
+			</div>
+		</div>
+		<!-- テーブル -->
+		<div>
+			
+		</div>
+		<!-- モーダル -->
+		<search-record-modal ref=searchRecordModal></search-record-modal>
+		<processing v-if="processingFlg"></processing>
+	</div>
+</body>
+</html>
+

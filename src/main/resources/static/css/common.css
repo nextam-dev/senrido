@@ -1,0 +1,328 @@
+body{
+	background-color: #ffffff;
+	margin: auto;
+	/* width: 1280px; */
+}
+@media (max-width: 1280px) {
+  body{
+	/* width: 1024px; */
+	}
+}
+.fieldError {
+	background-color: #fff0f0;
+	overflow-y: auto;
+	overflow-x: hidden;
+	float:left;
+	height:60px;
+	width:800px;
+	margin:0px 10px 0px 10px;
+}
+.fieldError p{
+	margin:0px 0px 0px 0px;
+}
+li.fieldError {
+	background-color: #ff8080;
+	height:29px;
+	margin:0px;
+}
+
+/*見出し*/
+.title {
+	background-color:green;
+	width:65%;
+}
+
+.title h2 {
+	background-color:green;
+	height:40px;
+	width:100%;
+}
+.titleRight {
+	background-color:green;
+	height:40px;
+	width: 35%;
+}
+.titleLabel {
+	background-color:green;
+	color:white;
+	height:30px;
+	width: 60px;
+	margin:5px;
+	text-align: center;
+}
+.titleValue {
+	background-color:white;
+	color:green;
+	height:30px;
+	width: 140px;
+	margin:5px;
+	text-align: left;
+}
+.logoutButton {
+	height:30px;
+	width:100px;
+	margin:5px;
+}
+
+h2{
+	color:white;
+	margin:0px;
+}
+
+.footer {
+	width:1280px;
+	float:left;
+}
+@media (max-width: 1280px) {
+  .footer {
+	width:1024px;
+	float:left;
+	}
+}
+/*段組*/
+.floatRight{
+	float:right;
+}
+
+.floatLeft{
+	float:Left;
+}
+
+.clearBoth{
+	clear:both;
+}
+
+.floatRightAll *{
+	float:right;
+}
+
+.floatLeftAll *{
+	float:left;
+}
+
+/*共通背景色*/
+/* .label label,
+thead th{
+	background: #afeeee;
+} */
+
+
+/*検索項目*/
+.searchEntry{
+	margin:0px 0px 0px 30px;
+	padding:10px 0px 0px 0px;
+}
+
+.searchEntry input[type="text"],.searchEntry select{
+	height:30px;
+	width:110px;
+	margin:0px;
+	vertical-align:middle;
+	border:thin solid;
+}
+
+.searchEntry label{
+	height:30px;
+	width:100px;
+	margin:0px -5px 0px 20px;
+	padding:0px 0px 0px 5px;
+	border:thin solid;
+	background-color:lightgreen;
+	vertical-align:middle;
+}
+
+.searchEntry .tilde{
+	width:50px;
+	border:none;
+	background-color: transparent;
+}
+
+.entryButton {
+	height:50px;
+	width:100px;
+	margin:0px 0px 0px 15px
+}
+
+/*検索結果*/
+.table{
+	margin:0px;
+}
+
+.resultTable{
+	padding:10px 0px 0px 50px;
+}
+
+thead.scrollHead,tbody.scrollBody{
+	display:block;
+}
+
+tbody.scrollBody{
+	overflow-y:scroll;
+	height:500px;
+	width:1218px;
+}
+
+tbody.wsScrollBody{
+	overflow-y:scroll;
+	height:205px;
+	width:1218px;
+}
+
+td,th{
+	height:20px;
+	padding:0px;
+}
+
+.table td,.table thead th{
+	vertical-align:middle;
+	padding:0px 12px;
+	text-align: center;
+}
+
+.halfHeight{
+	height:10px;
+	padding:6px;
+}
+
+#loading .loadingMsg {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 140px;
+  background: url("/loading.html") center center no-repeat;
+}
+
+/*ヘッダ共通*/
+.headerContent{
+	width:100%;
+	display:flex;
+	justify-content: space-between;
+	background-color:green;
+
+}
+.hedder{
+	background-color: #000000;
+	color: #fff;
+	/* width: 1280px; */
+}
+@media (max-width: 1280px) {
+  .hedder{
+	/* width: 1024px; */
+	}
+}
+.backButton{
+	width: 80px;
+	height: 50px;
+	border-radius: 0.3rem;
+	background:#eeeeee;
+}
+.hedder .backIcon{
+	margin-top: 5%;
+    font-size: 40px;
+}
+.yen {
+	text-align: right;
+	margin-right: 5px;
+}
+
+.itemnameTop
+{
+    min-height:40px;
+/*     display: flex; */
+    align-items: center;
+    background-color:#5e5e5e;
+	/*padding:10px 0px 10px 5px;*/
+	border:1px solid #dfdfdf;
+    color: #fff;
+}
+.itemname
+{
+    min-height:40px;
+    display: flex;
+    align-items: center;
+	background-color:#5e5e5e;
+	/*padding:10px 0px 10px 5px;*/
+	border-bottom:1px solid #dfdfdf;
+    border-left:1px solid #dfdfdf;
+    border-right:1px solid #dfdfdf;
+    color: #fff;
+    position:relative;
+}
+.labelButtonBlueS
+{
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	height: 30px;
+	margin: 5px auto;
+    padding: 5px;
+	border: 1px solid #0000ff;
+	border-radius: 3px;
+	color: #ffffff;
+	background-color: #0000ff;
+	cursor: pointer;
+}
+.labelError
+{
+	display: inline-flex;
+/*	justify-content: center; */
+	align-items: center;
+	width: 100%;
+	height: 50px;
+	margin: 0 auto;
+	padding-left: 10px;
+	border: 1px solid #FF0000;
+	border-radius: 3px;
+	color: #FF0000;
+	background-color: #FBEFEF;
+	font-weight: bold;
+}
+.labelConfilm
+{
+	align-items: center;
+	width: 100%;
+	height: 50px;
+	margin: 0 auto;
+	padding-left: 10px;
+	color: #FF0000;
+	font-weight: bold;
+}
+.contentsLine
+{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.seminarTitle {
+		margin-left: 110px;
+	}
+.contensMargin
+{
+	margin-top: 20px;
+}
+.contensMarginShort
+{
+	margin-top: 10px;
+}
+.eventTableRowRuledLineLB
+{
+	border-left: 1px solid #dfdfdf;
+	border-bottom: 1px solid #dfdfdf;
+}
+.eventTableWait
+{
+	width: 140px;
+}
+.borderBold {
+    border: solid 3px #000000;
+}
+.border {
+    border: solid 2px #000000;
+}
+.preWrap {
+	white-space: pre-wrap;
+}
+.container
+{
+	padding-right: 0px;
+	padding-left: 0px;
+}

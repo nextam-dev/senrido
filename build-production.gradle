@@ -1,0 +1,92 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.0.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
+war {
+		enabled = true
+		archiveName 'haichi.war'
+}
+
+group = 'jp.nextam'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+// JavaクラスとSQLファイルの出力先ディレクトリを同じにする
+processResources.destinationDir = compileJava.destinationDir
+// コンパイルより前にSQLファイルを出力先ディレクトリにコピーするために依存関係を逆転する
+compileJava.dependsOn processResources
+
+repositories {
+	mavenCentral()
+	// 追記
+	maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+	maven { url 'https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports'}
+	maven { url 'https://mvnrepository.com/artifact/org.springframework/spring-context-support'}
+    maven { url 'https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports'}
+    maven { url 'http://jasperreports.sourceforge.net/maven2/' }
+    maven { url 'http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/'}
+}
+
+configurations {
+	//providedRuntime
+	domaGenRuntime
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-security')
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-mail')
+	compile('org.springframework.retry:spring-retry')
+	compile('org.seasar.doma.boot:doma-spring-boot-starter:1.1.0')
+	compile('org.apache.velocity:velocity-engine-core:2.0')
+	compile('mysql:mysql-connector-java')
+	compileOnly('org.projectlombok:lombok')
+	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	def domaGenVersion = "2.19.2"
+	domaGenRuntime("org.seasar.doma:doma-gen:${domaGenVersion}")
+    domaGenRuntime('mysql:mysql-connector-java')
+	compile group: 'org.apache.poi', name : 'poi', version: '3.17'
+	compile(group: 'org.apache.poi', name : 'poi-ooxml', version: '3.17') {
+		exclude group: 'stax', module: 'stax-api'
+	}
+	compile group: 'org.springframework', name: 'spring-context-support', version: '5.0.6.RELEASE'
+	compile group: 'net.sf.jasperreports', name: 'jasperreports', version: '6.5.1'
+	compile group: 'com.lowagie', name: 'itext', version: '2.1.7.js6-SNAPSHOT'
+}
+
+task gen << {
+    ant.taskdef(resource: 'domagentask.properties',
+        classpath: configurations.domaGenRuntime.asPath)
+    ant.gen(url: 'jdbc:mysql://localhost:3306/haichi', user: 'haichi', password: 'makinosaiten') {
+        entityConfig(packageName: 'jp.nextam.demo.entity')
+        daoConfig(packageName: 'jp.nextam.demo.dao')
+        sqlConfig()
+    }
+}
+
+task genTestCases << {
+    ant.taskdef(resource: 'domagentask.properties',
+        classpath: configurations.domaGenRuntime.asPath)
+    ant.gen(url: 'jdbc:mysql://localhost:3306/haichi', user: 'haichi', password: 'makinosaiten') {
+        sqlTestCaseConfig {
+            fileset(dir: 'src/main/resources') {
+                include(name: 'META-INF/**/*.sql')
+            }
+        }
+    }
+}

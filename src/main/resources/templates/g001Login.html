@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>ログイン</title>
+		<link rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+		<link rel="stylesheet" href="/css/common.css"  th:href="@{/css/common.css}"/>
+		<link rel="stylesheet" href="/css/g001Login.css"  th:href="@{/css/g001Login.css}"/>
+		<script src="/js/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+		<script src="/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+		<script src="/js/jquery.cookie.js" th:src="@{/js/jquery.cookie.js}"></script>
+		<script src="/js/common.js" th:src="@{/js/common.js}"></script>
+		<script src="/js/page/g001Login.js" th:src="@{/js/page/g001Login.js}"></script>
+	</head>
+	<body style="width:100%">
+		<th:block th:if="@{/} == '/goitai/' or @{/} == '/'">
+		<form id="mainForm" th:action="@{/login}" th:object="${form}" method="post">
+			<input type="hidden" id="baseUrl" th:value="@{/}"/>
+			<div class="floatLeftAll">
+				<div class="title">
+					<h2>〇〇システム-ログイン</h2>
+				</div>
+				<div class="titleRight">
+					<label class="titleLabel"></label>
+					<label class="titleLabel"></label>
+				</div>
+			</div>
+			<div class="clearBoth position">
+				<div style="width:100%;min-width:600px;">
+					<label class="koumoku1">ID:</label>
+					<input type="text" th:field="*{idTX}" class="box" th:errorclass="fieldError" />
+				</div>
+				<div style="width:100%;min-width:600px;">
+					<label class="koumoku2">パスワード:</label>
+					<input type="password" th:field="*{PasswordTX}" class="box" th:errorclass="fieldError" />
+				</div>
+				<div class="fieldError" th:insert="fieldError.html"></div>
+				<div style="clear:both;margin-left:65px;">
+					<input type="button" value="ログイン" id="LoginBT"class="login">
+				</div>
+
+			</div>
+			<div th:insert="footer.html"></div>
+		<!--tab部-->
+		</form>
+		</th:block>
+		<th:block th:unless="@{/} == '/goitai/' or @{/} == '/'">
+		<div class="floatLeftAll">
+			<div class="title">
+				<h2>システムエラーです</h2>
+			</div>
+			<div class="titleRight">
+				<!-- 空 -->
+			</div>
+		</div>
+		<div class="clearBoth floatLeftAll" style="margin-left:50px">
+			<p>リクエストされたページがありません</p>
+		</div>
+		<div class="clearBoth floatLeftAll" style="margin-left:50px">
+		</div>
+		<div class="clearBoth floatLeftAll" style="margin-left:50px">
+			<p>頻発する場合には、「株式会社まきの」まで連絡をお願いします。</p>
+		</div>
+		</th:block>
+	</body>
+</html>

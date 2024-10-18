@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+	<div th:replace="base_header"></div>
+	<title>移動申請一覧</title>
+	<!--css-->
+	<link rel="stylesheet" href="/css/g002GoitaiList.css" th:href="@{{id}/css/g002GoitaiList.css(id=${path})}" >
+	<!--<link rel="stylesheet" href="/css/j004RollCallRecord.css" th:href="@{{id}/css/j004RollCallRecord.css(id=${path})}" >-->
+	<link rel="stylesheet" href="/css/j004RollCallRecord2.css" th:href="@{{id}/css/j004RollCallRecord2.css(id=${path})}" >
+	<!--vue.js-->
+	<script src="/js/component/searchRecordModal.js" th:src="@{{id}/js/component/searchRecordModal.js(id=${path})}"></script>
+	<script src="/js/page/g002GoitaiList.js" th:src="@{{id}/js/page/g002GoitaiList.js(id=${path})}"></script>
+	<script src="/js/component/yenPart.js" th:src="@{{id}/js/component/yenPart.js(id=${path})}"></script>
+</head>
+<body>
+	<!-- <div id="content"> -->
+	<div id="app">
+		<!-- ヘッダー部分 -->
+		<div class="form-inline hedder row">
+			<div class="col-2">
+				<label class="hedderLabel-position">移動申請一覧</label>
+			</div>
+			<div class="col-9">
+			</div>
+			<div class="col-1">
+				<button class="backButton backButtonTablet" @click="back">
+					<span class="icon">
+						<span class="material-icons backIcon">reply</span>
+					</span>
+				</button>
+			</div>
+		</div>
+
+		<div class="tableScroll">
+			<!--テーブル部分-->
+			<table class="table-basic">
+				<!-- テーブルタイトル部分 -->
+				<thead class="tittleLabel" style="border: none;">
+					<tr>
+						<th style="width: 7%;"><label>BP</label></th>
+						<th style="width: 9%;"><label>足バンド①</label></th>
+						<th style="width: 6%;"><label>足バンド②</label></th>
+						<th style="width: 8%;"><label>移動先</label></th>
+						<th style="width: 11%;"><label>搬送者</label></th>
+						<th style="width: 11%;"><label>立ち合い</label></th>
+						<th style="width: 6%;"><label>面会</label></th>
+						<th style="width: 13%;"><label>送信者</label></th>
+					</tr>
+				</thead>
+				<!--ご遺体情報一覧-->
+				<tbody>
+					<template v-for="(item, index) in standardInfoList">
+						<tr @click="selectRow" style="cursor: pointer;">
+							<td class="table-basic-td" style="width: 7%;">{{ item.orderDateStr }}</td>
+							<td class="table-basic-td" style="width: 9%;">{{ item.orderDivName }}</td>
+							<td class="table-basic-td-bold" style="width: 6%;">{{ item.undertakerNo }}</td>
+							<td class="table-basic-td-bold" style="width: 8%;">{{ item.undertakerName }}</td>
+							<td class="table-basic-td-bold" style="width: 11%;">{{ item.decedentName }}</td>
+							<td class="table-basic-td-bold" style="width: 11%;">{{ item.mournerName }}</td>
+							<td class="table-basic-td-bold" style="width: 6%;">{{ item.contractorName }}</td>
+							<td class="table-basic-td-bold" style="width: 12%;">{{ item.operationStaffName }}</td>
+						</tr>
+					</template>
+				</tbody>
+			</table>
+			<!--<infinite-loading ref="infiniteLoading" @infinite="getDataScroll" :distance="100" v-show="isPageLoad">
+				<span slot="no-more">これ以上検索結果がありません。 </span>
+				<span slot="no-results"> これ以上検索結果がありません。 </span>
+			</infinite-loading>-->
+		</div>
+		<!-- モーダル -->
+		<!-- <search-record-modal ref=searchRecordModal @move-main="moveMain"></search-record-modal> -->
+		<processing v-if="processingFlg"></processing>
+	</div>
+</body>
+</html>
+

@@ -1,0 +1,40 @@
+.position div{
+	margin: 40px auto;
+}
+
+.koumoku1{
+	margin: 20px 75px 0px 90px;
+}
+.koumoku2{
+	margin: 0px 50px 20px 50px;
+}
+@media (max-width: 1280px) {
+  .koumoku1{
+	margin: 20px 75px 0px 85px;
+	}
+}
+
+.box{
+	margin: 0px;
+	width: 350px;
+	height: 40px;
+	vertical-align: middle;
+}
+
+.position{
+	//margin: 300px 600px;
+	margin: 300px 300px;
+	padding-top: 150px;
+}
+@media (max-width: 1280px) {
+  .position{
+	margin: 300px 150px;
+	padding-top: 150px;
+	}
+}
+
+.login{
+	margin: 20px 335px 100px 190px;
+	width: 180px;
+	height: 40px;
+}

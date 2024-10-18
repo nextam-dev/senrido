@@ -1,0 +1,291 @@
+/*見出し*/
+.title h1{
+	background-color:blue;
+	height:60px;
+}
+
+h1{
+	color:white;
+	margin:0px;
+
+}
+
+/*段組*/
+.floatRight{
+	float:right;
+}
+
+.floatLeft{
+	float:Left;
+}
+
+.clearBoth{
+	clear:both;
+}
+
+.floatRightAll *{
+	float:right;
+}
+
+.floatLeftAll *{
+	float:left;
+}
+
+/*共通背景色*/
+.label label{
+	background: #afeeee;
+}
+
+
+/*検索項目*/
+.searchEntry{
+	margin:0px 0px 0px 20px;
+	padding:10px 0px 0px 0px;
+}
+
+.searchEntry input[type="text"],.searchEntry select{
+	height:30px;
+	width:110px;
+	margin:0px;
+	vertical-align:middle;
+	border:thin solid;
+}
+
+.searchEntry label{
+	height:30px;
+	width:100px;
+	margin:0px -5px 0px 20px;
+	padding:0px 0px 0px 5px;
+	border:thin solid;
+	background-color:lightblue;
+	vertical-align:middle;
+}
+
+.searchEntry .tilde{
+	width:50px;
+	border:none;
+	background-color: transparent;
+}
+
+.entryButton {
+	height:50px;
+	width:100px;
+	margin:0px 0px 0px 15px
+}
+
+.searchEntry .horizontalWide{
+	width:110px;
+}
+
+.searchEntry .cdLB{
+	margin:0px -5px 0px 0px; 
+	width:40px;
+	background-color:white;
+}
+
+.searchEntry .status{
+	padding:0px 30px 0px 0px;
+	float:right;
+}
+
+.searchEntry input[type="checkbox"]{
+	height:15px;
+	width:15px;
+	margin:0px 10px;
+	vertical-align:middle;
+	border:thin solid;
+}
+
+/*検索結果*/
+.table{
+	margin:0px;
+	padding:0px;
+}
+
+.resultTable{
+	padding:10px 0px 0px 50px;
+}
+
+.table thead.scrollHead,
+.table tbody.scrollBody{
+	display:block;
+}
+
+.table tbody.scrollBody{
+	overflow-y:scroll;
+	height:205px;
+	width:1268px;
+}
+
+.table td,
+.table th{
+	height:20px;
+	padding:0px;
+}
+
+.table td,
+.table thead th{
+	vertical-align:middle;
+	padding:0px 12px;
+	text-align: center;
+}
+
+thead th{
+	background: #afeeee;
+}
+
+
+.halfHeight{
+	height:10px;
+	padding:6px;
+}
+/*(データ部の偶数行の背景色を変更)*/
+.table tr:nth-child(4n+3),
+.table tr:nth-child(4n+3) input,
+.table tr:nth-child(4n+3) select,
+.table tr:nth-child(4n+4),
+.table tr:nth-child(4n+4) input,
+.table tr:nth-child(4n+4) select {
+	background: #afeeee;
+}
+
+
+.resultTable{
+	padding:10px 0px 0px 20px;
+}
+
+.delete,
+.expression{
+	width:50px;
+}
+
+.profitRate,
+.profitAmount{
+	width:80px;
+}
+
+.unit,
+.volume,
+.taxExempt,
+.productCode,
+.ceremonialCostRegistration{
+	width:80px;
+}
+
+.taxExempt,
+.orderAmount,
+.purchasePrice,
+.consumptiontax,
+.orderUnitPrice,
+.purchaseAmount,
+.purchaseConsumption{
+	width:90px;
+}
+
+.remarks,
+.itemName,
+.suppliers{
+	width:100px;
+}
+
+.table td{
+	padding:0px;
+}
+
+.unitPD,
+.volumePD,
+.productCodePD{
+	padding:0px;
+	border:0px;
+	width:79px;
+}
+
+.salesStatus,
+.purchasePriceTX,
+.orderUnitPriceTX{
+	padding:0px;
+	border:0px;
+	width:90px;
+}
+
+.remarksTX,
+.itemNameTX,
+.suppliersPD{
+	padding:0px;
+	border:0px;
+	width:99px;
+}
+
+.suppliersDateTX{
+	padding:0px;
+	border:0px;
+	width:160px;
+}
+
+/*下部テキスト*/
+.total .horizontalWide{
+	width:260px;
+}
+
+.total .verticalWide{
+	height:110px;
+}
+
+.total .totalRemarksLB{
+	text-align:center;
+	width:50px;
+	padding:40px 0px;
+}
+
+.total input,
+.total select,
+.requestedAmount input,
+.requestedAmount select{
+	height:30px;
+	width:140px;
+	margin:0px;
+	vertical-align:middle;
+	border:thin solid;
+}
+
+.total label{
+	height:30px;
+	width:120px;
+	margin:0px -5px 0px 20px;
+	padding:0px 0px 0px 5px;
+	border:thin solid;
+	background-color:lightblue;
+	vertical-align:middle;
+}
+
+.salesTrderTotal div label,
+.profitCalculation div label,
+.totalPurchaseVoucher div label{
+	background-color:white;
+}
+
+
+#TotalRemarksTX {
+	height:110px;
+	width:200px;
+}
+
+.addcolBT,
+.removecolBT{
+	width:150px;
+}
+
+.addcolBT{
+	margin:0px 0px 0px 30px;
+}
+
+.bottomBT{
+	margin:0px 0px 0px 430px;
+	clear:both;
+}
+
+.bottomBT button{
+	margin:10px 0px 10px 20px;
+	height:40px;
+	width:160px;
+}

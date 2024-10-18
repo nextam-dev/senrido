@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>403エラーページ</title>
+		<link rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+		<link rel="stylesheet" href="/css/common.css"  th:href="@{/css/common.css}"/>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.19.1/URI.min.js"></script>
+		<script src="/js/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+		<script src="/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+		<script src="/js/jquery.cookie.js" th:src="@{/js/jquery.cookie.js}"></script>
+		<script src="/js/common.js" th:src="@{/js/common.js}"></script>
+		<script src="/js/timeout.js" th:src="@{/js/timeout.js}"></script>
+	</head>
+	<body>
+		<div class="floatLeftAll">
+			<div class="title">
+				<h2>見積システムエラー</h2>
+			</div>
+			<div class="titleRight">
+				<!-- 空 -->
+			</div>
+		</div>
+		<div class="clearBoth floatLeftAll" style="margin-left:50px">
+			<h3>403 Not Found</h3>
+		</div>
+		<div class="clearBoth floatLeftAll" style="margin-left:50px">
+			<p>アクセスが拒否されました。</p>
+		</div>
+		<div class="clearBoth floatLeftAll" style="margin-left:50px">
+			<p>・操作せずに時間が経過しログアウトしました。</p>
+		</div>
+		<div class="clearBoth floatLeftAll" style="margin-left:50px">
+			<p>・ページがありません。</p>
+		</div>
+		<div class="clearBoth floatLeftAll" style="margin-left:50px">
+			<p>・その他</p>
+		</div>
+		<div class="clearBoth floatLeftAll" style="margin-left:100px">
+			<p><a id="backToLoginLink" href='/'>Back to login</a></p>
+		</div>
+	</body>
+</html>
