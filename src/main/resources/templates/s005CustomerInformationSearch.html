@@ -9,7 +9,7 @@
     <!-- CSSファイル -->
     <link rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
 	<link rel="stylesheet" href="/css/common.css"  th:href="@{/css/common.css}"/>
-	<link rel="stylesheet" href="/css/s001Login.css"  th:href="@{/css/s001Login.css}"/>
+	<link rel="stylesheet" href="/css/s005CustomerInformationSearch.css"  th:href="@{/css/s005CustomerInformationSearch.css}"/>
     
     <!-- jQueryライブラリ -->
     <script src="/js/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1.min.js}"></script>
@@ -21,24 +21,16 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> <!-- Vue.jsのCDNから読み込み -->
 
     <!-- ページ固有のJSファイル -->
-    <script src="/js/page/s001Login.js" th:src="@{/js/page/s001Login.js}"></script>
+    <script src="/js/page/s005CustomerInformationSearch.js" th:src="@{/js/page/s005CustomerInformationSearch.js}"></script>
 </head>
 
 <body>
 	<div id="content">
-		<div>
-		    <label class="koumoku1">ログインID:</label>
-		    <input type="text" class="box"/>
+	<div>
+		    <button v-on:click="back">戻る</button>
 		</div>
 		<div>
-		    <label class="koumoku1">パスワード:</label>
-		    <input type="text" class="box"/>
-		</div>
-		<div>
-		    <button v-on:click="login" class="login">ログイン</button>
-		</div>
-		<div>
-		    <button v-on:click="movePasswordReissue" class="login">パスワード発行</button>
+		    <button v-on:click="moveMedicalRecord">新規登録</button>
 		</div>
 		<!-- モーダル -->
 		<processing v-if="processingFlg"></processing>

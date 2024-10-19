@@ -1,56 +1,43 @@
-$(function() {
-    // ボタンクリック
-    $('#LoginBT').click(function(e) {
-        errorClear();
-        var formData = $('#mainForm').serializeArray();
-        var data = {};
-
-        $.each(formData, function(bean) {
-            data[this.name] = this.value;
-        });
-
-        console.log(data);
-
-        $.ajax({
-            type: "POST",
-            url: "login",
-            data: data,
-            dataType: "html",
-            async: false,
-            success: function(data, status, xhr) {
-                var baseUrl = $('#baseUrl').val();
-                if (data == "AUTH_NG") {
-                    console.log(data);
-                    errorDisp("ログインに失敗しました。入力に誤りがあります。");
-                    return;
-                }
-                if (data == "AUTH_OK") {
-                    location.href = baseUrl + "list";
-                    return;
-                }
-                if (data == "LOCK") {
-                    errorDisp("アカウントがロック中です。社員マスタからロックを解除してください。");
-                    return;
-                }
-
-                errorDisp("パスワードに誤りがあります。現在ログイン失敗回数" + data + "回。");
-                errorDisp("4回失敗するとアカウントがロックされます。");
-                return;
+window.addEventListener('DOMContentLoaded', function () {
+    new Vue({
+        el: '#content',
+        data: function () {
+            return {
+                // 進捗フラグ
+                processingFlg: false,
+                // メッセージ
+                message: [],
+                // ローカルストレージ保管鍵
+                localStrageKey: 'standardListConditionKey',
+                // 処理中モーダル表示/非表示
+                processingFlg: false,
+                // 検索条件初期化フラグ
+                initSearchFlg: false,
+            }
+        },
+        created() {
+            // 何もしない
+        },
+        mounted: function () {
+            // 何もしない
+        },
+        computed: {},
+        methods: {
+        	// ログイン処理
+        	login:function(){
+        		// メニュー画面へ遷移
+        		location.href = editUrl('/s004Menu');
+        	},
+        	// 発行画面へ遷移
+        	movePasswordReissue: function() {
+                location.href = editUrl('/s003PasswordReissue');
             },
-            error: function(xhr, status, error) {
-                if (status == 403) {
-                    alert("不正なアクセスです");
-                    return;
-                }
-                $('#error').show();
+            showModalProcessing: function () {
+                this.processingFlg = true;
             },
-            complete: function() {}
-        });
-    });
-
-    // パスワード発行ボタンクリック
-    $('#changePasswordBT').click(function() {
-        // s002changePassword.html に遷移
-        window.location.href = "s003changeReissue";
+            closeModalProcessing: function () {
+                this.processingFlg = false;
+            },
+        },
     });
 });

@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', function () {
+﻿window.addEventListener('DOMContentLoaded', function () {
     new Vue({
         el: '#content',
         data: function () {
@@ -23,14 +23,17 @@ window.addEventListener('DOMContentLoaded', function () {
         },
         computed: {},
         methods: {
-        	// ログイン処理
-        	login:function(){
-        		// メニュー画面へ遷移
-        		location.href = editUrl('/s004Menu');
-        	},
-        	// 発行画面へ遷移
-        	movePasswordReissue: function() {
-                location.href = editUrl('/s003PasswordReissue');
+        	// 検索画面へ遷移
+        	moveCustomerInformationSearch: function() {
+                location.href = editUrl('/s005CustomerInformationSearch');
+            },
+            // 予約画面へ遷移
+            moveReservation: function() {
+                location.href = editUrl('/s006Reservation');
+            },
+            // ログイン画面へ遷移
+            logout: function() {
+                location.href = editUrl('/');
             },
             showModalProcessing: function () {
                 this.processingFlg = true;

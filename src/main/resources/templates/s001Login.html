@@ -1,70 +1,47 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="jp">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ログイン</title>
+    
+    <!-- CSSファイル -->
     <link rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
 	<link rel="stylesheet" href="/css/common.css"  th:href="@{/css/common.css}"/>
 	<link rel="stylesheet" href="/css/s001Login.css"  th:href="@{/css/s001Login.css}"/>
+    
+    <!-- jQueryライブラリ -->
     <script src="/js/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1.min.js}"></script>
 	<script src="/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 	<script src="/js/jquery.cookie.js" th:src="@{/js/jquery.cookie.js}"></script>
 	<script src="/js/common.js" th:src="@{/js/common.js}"></script>
-	<script src="/js/page/s001Login.js" th:src="@{/js/page/s001Login.js}"></script>
+
+    <!-- Vue.js ライブラリ -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> <!-- Vue.jsのCDNから読み込み -->
+
+    <!-- ページ固有のJSファイル -->
+    <script src="/js/page/s001Login.js" th:src="@{/js/page/s001Login.js}"></script>
 </head>
-<body style="width:100%" class="test">
-    <th:block th:if="@{/} == '/senridou/' or @{/} == '/'">
-        <form id="mainForm" th:action="@{/login}" th:object="${form}" method="post">
-            <input type="hidden" id="baseUrl" th:value="@{/}"/>
-            <div class="floatLeftAll">
-                <div class="title">
-                    <h2>ログイン</h2>
-                </div>
-                <div class="titleRight">
-                    <label class="titleLabel"></label>
-                    <label class="titleLabel"></label>
-                </div>
-            </div>
-            <div class="clearBoth position">
-                <div style="width:100%;min-width:600px;">
-                    <label class="koumoku1">ログインID:</label>
-                    <input type="text" class="box"/>
-                </div>
-                <div style="width:100%;min-width:600px;">
-                    <label class="koumoku2">パスワード:</label>
-                    <input type="password" class="box"/>
-                </div>
-                <div class="fieldError"></div>
-                <div style="clear:both;margin-left:65px;">
-                    <input type="button" value="ログイン" id="LoginBT" class="login">
-                </div>
-                <div>
-                    <input type="button" value="パスワード発行" id="changePasswordBT">
-                </div>
-            </div>
-            <div th:insert="footer.html"></div>
-        <!--tab部-->
-        </form>
-    </th:block>
-    <th:block th:unless="@{/} == '/senridou/' or @{/} == '/'">
-        <div class="floatLeftAll">
-            <div class="title">
-                <h2>システムエラーです</h2>
-            </div>
-            <div class="titleRight">
-                <!-- 空 -->
-            </div>
-        </div>
-        <div class="clearBoth floatLeftAll" style="margin-left:50px">
-            <p>リクエストされたページがありません</p>
-        </div>
-        <div class="clearBoth floatLeftAll" style="margin-left:50px">
-        </div>
-        <div class="clearBoth floatLeftAll" style="margin-left:50px">
-            <p>頻発する場合には、管理者まで連絡をお願いします。</p>
-        </div>
-    </th:block>
+
+<body>
+	<div id="content">
+		<div>
+		    <label class="koumoku1">ログインID:</label>
+		    <input type="text" class="box"/>
+		</div>
+		<div>
+		    <label class="koumoku1">パスワード:</label>
+		    <input type="text" class="box"/>
+		</div>
+		<div>
+		    <button v-on:click="login" class="login">ログイン</button>
+		</div>
+		<div>
+		    <button v-on:click="movePasswordReissue" class="login">パスワード発行</button>
+		</div>
+		<!-- モーダル -->
+		<processing v-if="processingFlg"></processing>
+	</div>
 </body>
 </html>
