@@ -2,5 +2,103 @@
 {
 	margin: auto;
 	margin-top: 30px;
+	margin-bottom: 80px;
 	width: 100%;
+}
+
+.item-title
+{
+    min-height:40px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    text-align: left;
+}
+
+.item-subtitle {
+	min-height:20px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    text-align: left;
+}
+
+.item-value
+{
+	margin-top: 15px;
+    min-height:40px;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    text-align: left;
+}
+
+.item-value input[type='text'] {
+    font: 15px/1.6 sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.3em;
+    color: #aaaaaa;
+    border: 1px solid #1b2538;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.ef {
+  width: 100%;
+}
+
+.ef input[type='text']:focus {
+  border: 1px solid #da3c41;
+  box-shadow: 0 0 5px 1px rgba(218,60,65, .5);
+  outline: none;
+}
+
+input[type='radio'] {
+	width: 20px;
+    height: 20px;
+}
+
+input[type='checkbox'] {
+	width: 20px;
+    height: 20px;
+}
+
+.card {
+	margin: 10px;
+    padding: 10px;
+}
+
+.spaceLeft {
+	margin-left: 20px;	
+	min-height:20px;
+    align-items: center;
+}
+
+.page-title {
+	font-size: 32px;
+	font-weight: bold;
+}
+
+.page-header {
+	margin: 10px;
+    padding: 10px;
+}
+
+.item-margin {
+	margin-top: 10px;
+}
+
+.input-label {
+	display:block;
+    position:relative;
+    padding-left:1em;
+}
+
+.input-label input{
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  margin:auto;
 }

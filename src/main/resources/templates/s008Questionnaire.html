@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="jp">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ログイン</title>
@@ -15,119 +15,956 @@
 </head>
 
 <body>
-	<div id="content">
-		<div th:replace="header"></div>
-		<main>
-		    <div class="row mainTable contensMargin">
-		        <!-- コンテンツ -->
-		        <div class="col-12">
-		            <div class="row">
-		                <div class="col-12 item-title">お名前</div>
-		                <div class="col-12 item-value"><input type="text" placeholder="フルネームをご記入ください。" /></div>
-		            </div>
-		        </div>
-		        <div class="col-12">
-		            <div class="row">
-		                <div class="col-12 item-title">お名前（カタカナ）</div>
-		                <div class="col-12 item-value"><input type="text" placeholder="カタカナでご記入ください。" /></div>
-		            </div>
-		        </div>
-		        <div class="col-12">
-		            <div class="row">
-		                <div class="col-12 item-title">性別</div>
-		                <div class="col-12 item-value">
-			                <label class="spaceLeft">
-		                        <input type="radio" name="sex" value="0"><span class="spaceLeft">男性</span>
-		                    </label>
-		                    <label class="spaceLeft">
-		                        <input type="radio" name="sex" value="1"><span class="spaceLeft">女性</span>
-		                    </label>
-		                    <label class="spaceLeft">
-		                        <input type="radio" name="sex" value="2"><span class="spaceLeft">回答しない</span>
-		                    </label>
-		                    <label class="spaceLeft">
-		                        <input type="radio" name="sex" value="9"><span class="spaceLeft">その他</span>
-		                        <input type="text" />
-		                    </label>
-		                </div>
-		            </div>
-		        </div>
-		        <div class="col-12">
-		            <div class="row">
-		                <div class="col-12 item-title">生年月日</div>
-		                <div class="col-12 item-value"><input type="date" /></div>
-		            </div>
-		        </div>
-		        <div class="col-12">
-		            <!-- 生年月日から自動計算するか -->
-		            <div class="row">
-		                <div class="col-12 item-title">年齢</div>
-		                <div class="col-12 item-value"><input type="text" /></div>
-		            </div>
-		        </div>
-		        <div class="col-12">
-		            <div class="row">
-		                <div class="col-12 item-title">メールアドレス</div>
-		                <div class="col-12 item-value"><input type="mail" /></div>
-		            </div>
-		        </div>
-		        <div class="col-12">
-		            <div class="row">
-		                <div class="col-12 item-title">郵便番号</div>
-		                <div class="col-12 item-value">
-		                    <input type="text" />
-		                    <button value="郵便番号検索" >郵便番号検索</button>
-		                </div>
-		            </div>
-		        </div>
-		        <div class="col-12">
-		            <div class="row">
-		                <div class="col-12 item-title">ご住所</div>
-		                <div class="col-12 item-value"><input type="text" /></div>
-		            </div>
-		        </div>
-		        <div class="col-12">
-		            <div class="row">
-		                <div class="col-12 item-title">電話番号</div>
-		                <div class="col-12 item-value"><input type="tel" /></div>
-		            </div>
-		        </div>
-		        <div class="col-12">
-		            <div class="row">
-		                <div class="col-12 item-title">ご紹介者</div>
-		                <div class="col-12 item-value"><input type="text" placeholder="どなたからのご紹介で千里堂を知りましたか？" /></div>
-		            </div>
-		        </div>
-		        <div class="col-12">
-		            <div class="row">
-		                <div class="col-12 item-title">職業</div>
-		                <div class="col-12 item-value">
-		                    <select>
-		                        <option value="0"></option>
-		                        <option value="1">〇〇〇</option>
-		                    </select>
-		                </div>
-		            </div>
-		        </div>
-		    </div>
-	        <div class="col-12">
-	            <div class="row">
-	                <div class="col-12 item-title">お仕事の内容</div>
-	                <div class="col-12 item-value">
-		                <label class="spaceLeft">
-	                        <input type="checkbox"><span class="spaceLeft">裸眼で生活している</span>
-	                    </label></br>
-		                <label class="spaceLeft">
-	                        <input type="checkbox"><span class="spaceLeft">メガネを掛けている</span>
-	                    </label></br>
-	                </div>
-	            </div>
-	        </div>ｃ
+    <div id="content">
+        <div th:replace="header"></div>
+        <main>
+            <div class="row mainTable contensMargin">
+                <div class="col-12 page-title">
+                    <label>２０２４年７月測定会　事前アンケート</label>
+                </div>
+                <div class="page-header" style="text-align: left;">
+                    <div class="col-12">
+                        <label>記載していただいた個人情報は、ご本人の同意がなければ第三者に個人情報を提供することはございません。取得した個人情報は、紛失や漏洩などが発生しないよう積極的な安全対策を実施いたします。</label>
+                    </div>
+                    <div class="col-12">
+                        <label>個人情報の取扱いに関するお問い合わせついては下記窓口までご連絡ください。</label>
+                    </div>
+                    <div class="col-12" style="margin-top: 10px;">
+                        <label>TEL: 0152-44-2233</label>
+                        <br>
+                        <a href="#">hk@senrido.co.jp</a>
+                    </div>
+                    <div class="col-12" style="margin-top: 10px;">
+                        <div class="row">
+                            <div class="col-12 item-title">【お知らせ】</div>
+                            <div class="col-12 item-subitle">
+                                                                  測定会当日は現在使用中のメガネ・コンタクトレンズを<br>(度数が判るものであれば可)<br>ご持参頂きますよう、お願い致します。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- コンテンツ -->
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">お名前</div>
+                        <div class="col-12 item-value">
+                            <label class="ef">
+                                <input type="text" placeholder="フルネームをご記入ください。" />
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">お名前（カタカナ）</div>
+                        <div class="col-12 item-value"><input type="text" placeholder="カタカナでご記入ください。" /></div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">性別</div>
+                        <div class="col-12 item-value">
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="sex" value="0"><span class="spaceLeft">男性</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="sex" value="1"><span class="spaceLeft">女性</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="sex" value="2"><span class="spaceLeft">回答しない</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-2">
+                                    <label class="input-label"><input type="radio" name="sex" value="9"><span class="spaceLeft">その他</span></label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">生年月日</div>
+                        <div class="col-12 item-value"><input type="date" placeholder="回答を入力" /></div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <!-- 生年月日から自動計算するか -->
+                    <div class="row card">
+                        <div class="col-12 item-title">年齢</div>
+                        <div class="col-12 item-value"><input type="text" placeholder="回答を入力" /></div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">メールアドレス</div>
+                        <div class="col-12 item-value"><input type="mail" placeholder="回答を入力" /></div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">郵便番号11</div>
+                        <div class="col-12 item-value">
+                            <div class="row">
+                                <div class="col-2">
+                                    <input type="text" placeholder="回答を入力" />
+                                </div>
+                                <div class="col-10">
+                                    <button value="郵便番号検索" >郵便番号検索</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">ご住所</div>
+                        <div class="col-12 item-value"><input type="text" placeholder="回答を入力" /></div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">電話番号</div>
+                        <div class="col-12 item-value"><input type="tel" placeholder="回答を入力" /></div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">ご紹介者</div>
+                        <div class="col-12 item-value"><input type="text" placeholder="どなたからのご紹介で千里堂を知りましたか？" /></div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">職業</div>
+                        <div class="col-12 item-value">
+                            <select>
+                                <option value="0"></option>
+                                <option value="1">〇〇〇</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">お仕事の内容</div>
+                        <div class="col-12 item-value">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">裸眼で生活している</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">メガネを掛けている</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">コンタクトを使用している</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">メガネとコンタクトを併用 メガネメイン</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">メガネとコンタクトを併用 コンタクトメイン</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">普段は裸眼で生活、運転時等特定の状況のみメガネやコンタクトを使用している</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-2">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">その他:</span></label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" style="widht: 100%;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">はじめてメガネまたはコンタクトを使用したのは何歳ですか？</div>
+                        <div class="col-12 item-value"><input type="text" placeholder="回答を入力" /></div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">パソコンは何を使用していますか？</div>
+                        <div class="col-12 item-subtitle">あてはまるものすべてにチェックを入れてください。</div>
+                        <div class="col-12 item-value">
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">ノートパソコン</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">デスクトップ</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">タブレット</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">外付けモニター増設等、複数のモニターを使用</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-2">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">その他:</span></label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" style="widht: 100%;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">パソコンは１日に何時間使用しますか？</div>
+                        <div class="col-12 item-value">
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="usePc" value="0"><span class="spaceLeft">1時間以内</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="usePc" value="1"><span class="spaceLeft">1～2時間</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="usePc" value="2"><span class="spaceLeft">3～5時間</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="usePc" value="3"><span class="spaceLeft">6～8時間</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="usePc" value="4"><span class="spaceLeft">8時間以上</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="usePc" value="5"><span class="spaceLeft">使用しない</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-2">
+                                    <label class="input-label"><input type="radio" name="usePc" value="9"><span class="spaceLeft">その他:</span></label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" style="widht: 100%;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">パソコン画面と眼の距離は何ｃｍ離れていますか？<br>複数ある場合はそれぞれ記入をお願い致します。</div>
+                        <div class="col-12 item-subtitle">記入例：ノートパソコンと外付けモニターを使用し、ノートパソコンは約40cm、外付けモニターは約70cm離れている。</div>
+                        <div class="col-12 item-value"><input type="text" placeholder="回答を入力" /></div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">スマートフォンまたは携帯電話は１日に何時間使用しますか？</div>
+                        <div class="col-12 item-value">
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="useSp" value="0"><span class="spaceLeft">1時間以内</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="useSp" value="1"><span class="spaceLeft">1～2時間</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="useSp" value="2"><span class="spaceLeft">3～5時間</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="useSp" value="3"><span class="spaceLeft">6～8時間</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="useSp" value="4"><span class="spaceLeft">8時間以上</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="useSp" value="5"><span class="spaceLeft">使用しない</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-2">
+                                    <label class="input-label"><input type="radio" name="useSp" value="9"><span class="spaceLeft">その他:</span></label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" style="widht: 100%;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">スマートフォンでは何をよく見ますか？</div>
+                        <div class="col-12 item-subtitle">あてはまるものすべてにチェックを入れてください。</div>
+                        <div class="col-12 item-value">
+                             <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">動画</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">写真</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">SNS</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">ゲーム</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">電子書籍</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">ニュース・天気予報</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">ネットショップ</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">スケジュール管理</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-2">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">その他:</span></label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" style="widht: 100%;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">読書はしますか？</div>
+                        <div class="col-12 item-value">
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="readBook" value="0"><span class="spaceLeft">毎日読む</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="readBook" value="1"><span class="spaceLeft">ときどき読む  (週に数時間程度)</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="readBook" value="2"><span class="spaceLeft">たまに読む（月に数時間程度）</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="readBook" value="3"><span class="spaceLeft">稀に読む  (年に数時間程度)</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="readBook" value="4"><span class="spaceLeft">読まない</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="readBook" value="5"><span class="spaceLeft">読みたいが疲れるのでガマン</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-2">
+                                    <label class="input-label"><input type="radio" name="readBook" value="9"><span class="spaceLeft">その他:</span></label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" style="widht: 100%;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">ゲームはしますか？</div>
+                        <div class="col-12 item-subtitle">使用している機器にチェックを入れてください</div>
+                        <div class="col-12 item-value">
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">SWITCH テレビにつないでプレイ</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">SWITCH 手元でプレイ</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">パソコン</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">プレイステーション・Xbox等 テレビゲーム</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">VR</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">スマホ</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">タブレット</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">ゲームはしない</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-2">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">その他:</span></label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" style="widht: 100%;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">ゲームは１日に何時間使用しますか？</div>
+                        <div class="col-12 item-value">
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="useSp" value="0"><span class="spaceLeft">1時間以内</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="useSp" value="1"><span class="spaceLeft">1～2時間</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="useSp" value="2"><span class="spaceLeft">3～5時間</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="useSp" value="3"><span class="spaceLeft">6～8時間</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="useSp" value="4"><span class="spaceLeft">8時間以上</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="useSp" value="5"><span class="spaceLeft">ゲームはしない</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-2">
+                                    <label class="input-label"><input type="radio" name="useSp" value="9"><span class="spaceLeft">その他:</span></label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" style="widht: 100%;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">自動車の運転はしますか？</div>
+                        <div class="col-12 item-value">
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="useDrive" value="0"><span class="spaceLeft">毎日運転する</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="useDrive" value="1"><span class="spaceLeft">ときどき運転する  (週に１～３回程度)</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="useDrive" value="2"><span class="spaceLeft">たまに運転する（月に１～３程度）</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="useDrive" value="3"><span class="spaceLeft">稀に運転する  (年に数回程度)</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="useDrive" value="4"><span class="spaceLeft">主に通勤のみ運転する</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="useDrive" value="5"><span class="spaceLeft">週末のみ運転する</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="useDrive" value="6"><span class="spaceLeft">免許は持っているが運転はしない</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="useDrive" value="7"><span class="spaceLeft">免許を持っていない</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-2">
+                                    <label class="input-label"><input type="radio" name="useDrive" value="9"><span class="spaceLeft">その他:</span></label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" style="widht: 100%;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">運転免許の種類を教えてください。</div>
+                        <div class="col-12 item-subtitle">当てはまるもの全てにチェックを入れてください。</div>
+                        <div class="col-12 item-value">
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">普通免許</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">準中型・中型免許</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">大型免許</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">大型特殊免許</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">普通または大型の第二種</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">牽引免許</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">普通二輪免許</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">大型二輪免許</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">原付免許</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">持っていない</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">これから取得を予定している</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-2">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">その他:</span></label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" style="widht: 100%;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">眼科さんへ受診はしていますか？</div>
+                        <div class="col-12 item-subtitle">当てはまるもの全てにチェックを入れてください。</div>
+                        <div class="col-12 item-value">
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">定期的に通院している</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">定期的に通院し目薬等を使用</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">白内障または緑内障と診断されている</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">眼の手術を控えている</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">１年以内に眼の手術をした</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">年に一度は診てもらっている</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">メガネ・コンタクトの度数を合わせる時だけ</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">１年以内に診てもらったことがある</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">最後に行ったのは１年以上前</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">行ったことがない</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">これから取得を予定している</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-2">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">その他:</span></label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" style="widht: 100%;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">目の疲れは感じていますか？</div>
+                        <div class="col-12 item-value">
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="fatigueEye" value="0"><span class="spaceLeft">はい</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="fatigueEye" value="1"><span class="spaceLeft">たまに感じる</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="fatigueEye" value="2"><span class="spaceLeft">いいえ</span></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">どのような時に疲れを感じますか？</div>
+                        <div class="col-12 item-subtitle">上記の質問で「はい」「たまに感じる」とお答えいただいた方のみ、ご記入ください。</div>
+                        <div class="col-12 item-value"><input type="text" placeholder="回答を入力" /></div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">現在、目に下記のような症状はありますか？</div>
+                        <div class="col-12 item-subtitle">当てはまるもの全てにチェックを入れてください。</div>
+                        <div class="col-12 item-value">
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">痛み</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">充血</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">ドライアイ</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">白内障</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">緑内障</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">黄斑変性症</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">飛蚊症</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">特になし</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-2">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">その他:</span></label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" style="widht: 100%;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">身体に下記のような症状・疾患はありますか？</div>
+                        <div class="col-12 item-subtitle">当てはまるもの全てにチェックを入れてください。</div>
+                        <div class="col-12 item-value">
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">頭痛</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">肩こり</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">耳鳴り</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">めまい</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">糖尿病</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">甲状腺疾患</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">特になし</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-2">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">その他:</span></label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" style="widht: 100%;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">眼の手術は受けたことありますか？</div>
+                        <div class="col-12 item-subtitle">当てはまるもの全てにチェックを入れてください。</div>
+                        <div class="col-12 item-value">
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">レーシック</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">眼内コンタクトレンズ (ICLまたはIOL）</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">白内障</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">緑内障</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">斜視</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">網膜剥離</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">手術はしていない</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-2">
+                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">その他:</span></label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" style="widht: 100%;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">趣味はなんですか？</div>
+                        <div class="col-12 item-subtitle">特にない場合は「なし」とご記入ください。</div>
+                        <div class="col-12 item-value"><input type="text" placeholder="回答を入力" /></div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">必ずご確認ください。</div>
+                        <div class="col-12 item-title">測定会参加者にコロナ陽性者が発生した場合、保健所の指示により、氏名連絡先等の提供を求められたときには、速やかに開示致します。</div>
+                        <div class="col-12 item-subtitle">ご了承が得られない場合、測定会への参加をお断りする場合がございます。<br>予めご了承ください。</div>
+                        <div class="col-12 item-value">
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="checkCorona" value="0"><span class="spaceLeft">確認しました</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-2">
+                                    <label class="input-label"><input type="radio" name="checkCorona" value="9"><span class="spaceLeft">その他:</span></label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" style="widht: 100%;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">気になることや確認したいこと、補足等、ありましたらこちらにご記入ください。</div>
+                        <div class="col-12 item-value"><textarea placeholder="回答を入力" rows="3" cols="100"></textarea></div>
+                    </div>
+                </div>
+                
+            </div>
 
-			<!-- モーダル -->
-			<processing v-if="processingFlg"></processing>
-		</main>
-	</div>
-	<div th:replace="footer"></div>
+            <!-- モーダル -->
+            <processing v-if="processingFlg"></processing>
+        </main>
+    </div>
+    <div th:replace="footer"></div>
 </body>
 </html>
