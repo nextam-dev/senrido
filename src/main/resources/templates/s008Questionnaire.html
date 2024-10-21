@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ログイン</title>
+    
+    <!-- CSSファイル -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" href="/css/common.css"  th:href="@{/css/common.css}"/>
+	<link rel="stylesheet" href="/css/s007MedicalRecord.css"  th:href="@{/css/s007MedicalRecord.css}"/>
+    
+    <!-- jQueryライブラリ -->
+    <script src="/js/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+	<script src="/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+	<script src="/js/jquery.cookie.js" th:src="@{/js/jquery.cookie.js}"></script>
+	<script src="/js/common.js" th:src="@{/js/common.js}"></script>
+
+    <!-- Vue.js ライブラリ -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> <!-- Vue.jsのCDNから読み込み -->
+
+    <!-- ページ固有のJSファイル -->
+    <script src="/js/page/s008Questionnaire.js" th:src="@{/js/page/s008Questionnaire.js}"></script>
+</head>
+
+<body>
+	<div id="content">
+		<div>
+		    <button v-on:click="back">戻る</button>
+		</div>
+		<!-- モーダル -->
+		<processing v-if="processingFlg"></processing>
+	</div>
+</body>
+</html>
