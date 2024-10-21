@@ -274,7 +274,7 @@ public class HttpRequestHelper<DTO> {
 		log.info(this.jsonPostData);
 
 		// body設定
-		request.setEntity(new StringEntity(this.jsonPostData, UTF8_CHARSET));
+		request.setEntity(new StringEntity(this.jsonPostData, StandardCharsets.UTF_8));
 
 		this.responseData = execute(request);
 

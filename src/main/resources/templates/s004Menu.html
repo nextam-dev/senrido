@@ -1,31 +1,21 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html xmlns:th="http://www.thymeleaf.org" lang="jp">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>メニュー</title>
-    
-    <!-- CSSファイル -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
-	<link rel="stylesheet" href="/css/common.css"  th:href="@{/css/common.css}"/>
-	<link rel="stylesheet" href="/css/s004Menu.css"  th:href="@{/css/s004Menu.css}"/>
-    
-    <!-- jQueryライブラリ -->
-    <script src="/js/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1.min.js}"></script>
-	<script src="/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
-	<script src="/js/jquery.cookie.js" th:src="@{/js/jquery.cookie.js}"></script>
-	<script src="/js/common.js" th:src="@{/js/common.js}"></script>
+    <div th:replace="base_header"></div>
 
-    <!-- Vue.js ライブラリ -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> <!-- Vue.jsのCDNから読み込み -->
+   <!-- ページ固有のCSSファイル -->
+    <link rel="stylesheet" href="/css/s004Menu.css" th:href="@{/css/s004Menu.css}"/>
 
     <!-- ページ固有のJSファイル -->
     <script src="/js/page/s004Menu.js" th:src="@{/js/page/s004Menu.js}"></script>
 </head>
 <body>
 	<div id="content">
-		<header></header>
+		<div th:replace="header"></div>
 		<main>
 			<div>
 			    <button v-on:click="moveCustomerInformationSearch" class="menuBt">検索</button>
@@ -38,7 +28,7 @@
 			</div>
 			<processing v-if="processingFlg"></processing>
 		</main>
-		<footer></footer>
 	</div>
+	<div th:replace="footer"></div>
 </body>
 </html>

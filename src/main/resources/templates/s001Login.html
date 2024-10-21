@@ -1,54 +1,43 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html xmlns:th="http://www.thymeleaf.org" lang="jp">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ログイン</title>
+    <div th:replace="base_header"></div>
     
-    <!-- CSSファイル -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
-	<link rel="stylesheet" href="/css/common.css"  th:href="@{/css/common.css}"/>
-	<link rel="stylesheet" href="/css/s001Login.css"  th:href="@{/css/s001Login.css}"/>
+    <!-- ページ固有のCSSファイル -->
+    <link rel="stylesheet" href="/css/s001Login.css" th:href="@{/css/s001Login.css}"/>
     
-    <!-- jQueryライブラリ -->
-    <script src="/js/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1.min.js}"></script>
-	<script src="/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
-	<script src="/js/jquery.cookie.js" th:src="@{/js/jquery.cookie.js}"></script>
-	<script src="/js/common.js" th:src="@{/js/common.js}"></script>
-
-    <!-- Vue.js ライブラリ -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> <!-- Vue.jsのCDNから読み込み -->
-
     <!-- ページ固有のJSファイル -->
     <script src="/js/page/s001Login.js" th:src="@{/js/page/s001Login.js}"></script>
 </head>
-
 <body>
-	<div id="content">
-		<header></header>
-		<main>
-			<div>
-				<label class="screenTitle">ログイン</label>
-			</div>
-			<div style="vertical-align: middle;">
-			    <label class="koumoku">ログインID:</label>
-			    <input type="text" class="box"/>
-			</div>
-			<div style="vertical-align: middle;">
-			    <label class="koumoku">パスワード:</label>
-			    <input type="text" class="box"/>
-			</div>
-			<div>
-			    <button v-on:click="login" class="login">ログイン</button>
-			</div>
-			<div>
-			    <button v-on:click="movePasswordReissue" class="PasswordReissueBt">パスワード発行</button>
-			</div>
-			<!-- モーダル -->
-			<processing v-if="processingFlg"></processing>
-		</main>
-		<footer></footer>
-	</div>
+    <div id="content">
+    	<div th:replace="header"></div>
+        <main>
+            <div>
+                <label class="screenTitle">ログイン</label>
+            </div>
+            <div style="vertical-align: middle;">
+                <label class="koumoku">ログインID:</label>
+                <input type="text" class="box"/>
+            </div>
+            <div style="vertical-align: middle;">
+                <label class="koumoku">パスワード:</label>
+                <input type="text" class="box"/>
+            </div>
+            <div>
+                <button v-on:click="login" class="login">ログイン</button>
+            </div>
+            <div>
+                <button v-on:click="movePasswordReissue" class="PasswordReissueBt">パスワード発行</button>
+            </div>
+            <!-- モーダル -->
+            <processing v-if="processingFlg"></processing>
+        </main>
+    </div>
+    <div th:replace="footer"></div>
 </body>
 </html>
