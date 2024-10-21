@@ -9,21 +9,29 @@
                 message: [],
                 // ローカルストレージ保管鍵
                 localStrageKey: 'standardListConditionKey',
-                // 処理中モーダル表示/非表示
-                processingFlg: false,
                 // 検索条件初期化フラグ
                 initSearchFlg: false,
                 // ログインフラグ
-                loginFig:true,
-            }
+                loginFig: true,
+                // アコーディオンのデータ
+                accordionItems: [
+                    { title: '眼科への通院', open: false, inputValue: '' },
+                    { title: '眼の手術', open: false, inputValue: '' },
+                    { title: '視力の低下を感じたのは', open: false, inputValue: '' },
+                    { title: 'メガネ・CLの装用状況', open: false, inputValue: '' },
+                    { title: 'メガネのトラブル', open: false, inputValue: '' },
+                    { title: '眼・身体の症状', open: false, inputValue: '' },
+                    { title: '眩しさを感じる物事', open: false, inputValue: '' },
+                    { title: '見えないと困るもの', open: false, inputValue: '' },
+                    { title: 'メガネの装用', open: false, inputValue: '' },
+                    { title: '過去の病歴', open: false, inputValue: '' },
+                    { title: '治療中の疫病（服用薬）', open: false, inputValue: '' },
+                    { title: 'ご職業', open: false, inputValue: '' },
+                    { title: '趣味・部活', open: false, inputValue: '' },
+                    { title: '眼の使用状況', open: false, inputValue: '' },
+                ],
+            };
         },
-        created() {
-            // 何もしない
-        },
-        mounted: function () {
-            // 何もしない
-        },
-        computed: {},
         methods: {
         	// 検索画面へ遷移
         	back: function() {
@@ -38,6 +46,16 @@
             },
             closeModalProcessing: function () {
                 this.processingFlg = false;
+            },
+            toggleAccordion: function(index) {
+                // アコーディオンの開閉
+                this.accordionItems[index].open = !this.accordionItems[index].open;
+                // 他のアコーディオン項目を閉じる
+                this.accordionItems.forEach((item, i) => {
+                    if (i !== index) {
+                        item.open = false;
+                    }
+                });
             },
         },
     });

@@ -18,6 +18,306 @@
 	<div id="content">
 		<div th:replace="header"></div>
 		<main>
+			<!-- 個人情報 -->
+			<div>
+				<div>
+					<label>ヤマダタロウ</label>
+				</div>
+				<div>
+					<label>黒川駿斗</label>様
+				</div>
+				<div>
+					<label>平成11年04月18日</label><label>生25歳</label>
+				</div>
+			</div>
+			
+			<!-- アコーディオン形式 -->
+			<div v-for="(item, index) in accordionItems" :key="index" class="accordion-item">
+				<div class="accordion-header" @click="toggleAccordion(index)">
+					<label>{{ item.title }}</label>
+				</div>
+				<div v-if="item.open" class="accordion-content">
+					<input type="text" v-model="item.inputValue" placeholder="データを入力してください">
+					<br><input type="text" v-model="item.inputValue" placeholder="データを入力してください">
+					<br><input type="text" v-model="item.inputValue" placeholder="データを入力してください">
+					<br><input type="text" v-model="item.inputValue" placeholder="データを入力してください">
+					<br><input type="text" v-model="item.inputValue" placeholder="データを入力してください">
+					<br><input type="text" v-model="item.inputValue" placeholder="データを入力してください">
+					<br><input type="text" v-model="item.inputValue" placeholder="データを入力してください">
+				</div>
+			</div>
+			<!-- 眼位 -->
+			<div>
+				<div><label>眼位</label></div>			
+				<div class="row">
+					<div class="col-4">
+						<div class="row">
+							<div class="col-2">
+								<button>遠</button>
+							</div>
+							<div class="col-2">
+								<button>遠</button>
+							</div>
+						</div>
+					</div>
+					<div class="col-8"></div>
+				</div>
+				<!-- 今回・前回&前々回 -->
+				<div>
+					<div class="row">
+						<div class="col-6">
+							<div>
+								<label>今回</label>
+								<img th:src="@{/img/eye-image1.png}">
+							</div>
+							<div>
+								<label>◆水平斜位量◆</label>
+								<label>in=exo　out=eso<br>exo=マイナス表記</label>
+								<label>期待値:1exo±1</label>
+								<select>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+								</select>
+							</div>
+							<div class="row">
+								<div class="col-3">
+									<label>開散力(IN)<br><span>両眼合計値で記録</span></label>
+								</div>
+								<div class="col-3">
+									<label>ボヤケ</label>
+									<br><label>-</label>
+								</div>
+								<div class="col-3">
+									<label>分離:7±2</label>
+									<br>
+									<select>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+									</select>
+								</div>
+								<div class="col-3">
+									<label>回復:4±1</label>
+									<br>
+									<select>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+									<div class="col-12">
+										<div>
+											<label>◆上下寄せ◆</label>
+										</div>
+										<div class="row">
+											<div class="col-4"></div>
+											<div class="col-4">
+												<label>分離</label>
+											</div>
+											<div class="col-4">
+												<label>回復</label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-4">
+												<label>UP</label>
+											</div>
+											<div class="col-4">
+												<select>
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+												</select>
+											</div>
+											<div class="col-4">
+												<label>/</label>
+												<select>
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+												</select>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-4">
+												<label>DOWN</label>
+											</div>
+											<div class="col-4">
+												<select>
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+												</select>
+											</div>
+											<div class="col-4">
+												<label>/</label>
+												<select>
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<div>
+											<label>◆上下斜位量◆</label>
+										</div>
+										<div>
+											<select>
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+											</select>
+											<label>△</label>
+										</div>
+										<div>
+											<label>R: UP ・ DOWN</label>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<div>
+											<label>◆利目◆</label>
+										</div>
+										<div class="row">
+											<div class="col-4">
+												<label>遠</label>
+											</div>
+											<div class="col-4">
+												<input type="radio"> R
+											</div>
+											<div class="col-4">
+												<input type="radio"> L
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-4">
+												<label>近</label>
+											</div>
+											<div class="col-4">
+												<input type="radio"> R
+											</div>
+											<div class="col-4">
+												<input type="radio"> L
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<div>
+											<label>◆NPC◆</label>
+										</div>
+										<div class="row">
+											<div class="col-4">
+												<label>ボヤケ</label>
+											</div>
+											<div class="col-4">
+												<label>分離2~8</label>
+											</div>
+											<div class="col-4">
+												<label>回復</label>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-4">
+												<select>
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+												</select>
+											</div>
+											<div class="col-4">
+												<label>分離2~8</label>
+												<select>
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+												</select>
+											</div>
+											<div class="col-4">
+												<label>回復</label>
+													<select>
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+												</select>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-2">
+												<label>ボヤケ</label>
+												<label>分離</label>
+												<label>回復</label>
+											</div>
+											<div class="col-10">
+												<img th:src="@{/img/eye-image2.png}">
+											</div>
+										</div>
+										<div>
+											<label>メモ</label>
+											<textarea></textarea>
+										</div>
+									</div>
+								</div>
+						</div>
+						<div class="col-6">
+							<div class="scrollable-section">
+							<!-- ★★★ -->
+				                <div>
+				                    <div>
+										<label>前回</label>
+										<img th:src="@{/img/eye-image1.png}">
+									</div>
+									<div>
+										<label>◆水平斜位量◆</label>
+										<label>in=exo　out=eso<br>exo=マイナス表記</label>
+										<label>期待値:1exo±1</label>
+										<select>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+										</select>
+									</div>
+				                </div>
+				            <!-- ★★★ -->
+				            <!-- 〇〇〇 -->
+				                <div>
+				                    <div>
+										<label>前々回</label>
+										<img th:src="@{/img/eye-image1.png}">
+									</div>
+									<div>
+										<label>◆水平斜位量◆</label>
+										<label>in=exo　out=eso<br>exo=マイナス表記</label>
+										<label>期待値:1exo±1</label>
+										<select>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+										</select>
+									</div>
+				                </div>
+				              <!-- 〇〇〇 -->
+			           		 </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--  -->
+			<!--  -->
+			<!--  -->
+			<!--  -->
+			<!--  -->
+			<!--  -->
+			<!--  -->
 			<!-- モーダル -->
 			<processing v-if="processingFlg"></processing>
 		</main>
