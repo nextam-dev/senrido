@@ -18,8 +18,59 @@
 	<div id="content">
 		<div th:replace="header"></div>
 		<main>
-			<div>
-			    <button v-on:click="back">戻る</button>
+			<!-- 検索部分 -->
+			<div class="searchBox">
+				<div class="row">
+					<div class="col-2">
+						<label>開催日</label>
+					</div>
+					<div class="col-4">
+						<input type="date">
+						<label>～</label>
+					</div>
+					<div class="col-2">
+						<input type="date">
+					</div>
+					<div class="col-2"></div>
+				</div>
+				<div class="row" style="margin-top: 15px;">
+					<div class="col-8"></div>
+					<div class="col-2">
+						<button class="searchBt">検索</button>
+					</div>
+					<div class="col-2">
+						<button class="searchBt">条件クリア</button>
+					</div>
+				</div>
+			</div>
+			<!-- 一覧部分 -->
+			<div class="listBox">
+				<div class="row head">
+					<div class="col-1"></div>
+					<div class="col-3">
+						<label>名前</label>
+					</div>
+					<div class="col-3">
+						<label>カナ</label>
+					</div>
+					<div class="col-3">
+						<label>日付</label>
+					</div>
+					<div class="col-1"></div>
+				</div>
+				<div class="row list">
+					<div class="col-1"></div>
+					<div class="col-3">
+						<label>山田太郎</label>
+					</div>
+					<div class="col-3">
+						<label>ヤマダタロウ</label>
+					</div>
+					<div class="col-3">
+						<label>2024/10/24</label>
+					</div>
+					<div class="col-1"></div>
+				</div>
 			</div>
 			<!-- モーダル -->
 			<processing v-if="processingFlg"></processing>

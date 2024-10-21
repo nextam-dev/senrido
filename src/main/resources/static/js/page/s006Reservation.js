@@ -13,6 +13,8 @@
                 processingFlg: false,
                 // 検索条件初期化フラグ
                 initSearchFlg: false,
+                // ログインフラグ
+                loginFig:true,
             }
         },
         created() {
@@ -26,6 +28,10 @@
         	// メニュー画面へ遷移
         	back: function() {
                 location.href = editUrl('/s004Menu');
+            },
+            // ログイン画面へ遷移
+            logout: function() {
+                location.href = editUrl('/');
             },
             showModalProcessing: function () {
                 this.processingFlg = true;

@@ -35,12 +35,23 @@ header{
 	width: 1024px;
 	height: 50px;
 	background: gray;
+	padding-top: 5px;
 }
 .backButton{
-	width: 80px;
-	height: 50px;
-	border-radius: 0.3rem;
-	background:#eeeeee;
+	width: 140px;
+    height: 40px;
+    font-size: 20px;
+}
+.loginLabel{
+	height: 40px;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: none;
+}
+.logout{
+    width: 140px;
+    height: 40px;
+    font-size: 20px;
 }
 
 /* メイン */
@@ -60,7 +71,7 @@ footer {
 /* ログイン関連タイトル部分 */
 .screenTitle{
 	font-size:80px;
-	margin-top: 50px;
+	margin-top: 150px;
 	font-weight:bold;
 	margin-bottom:100px;
 }

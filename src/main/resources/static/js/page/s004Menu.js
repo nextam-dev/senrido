@@ -13,6 +13,10 @@
                 processingFlg: false,
                 // 検索条件初期化フラグ
                 initSearchFlg: false,
+                // ログインフラグ
+                loginFig:true,
+                // メニューフラグ
+                menuFig:true,
             }
         },
         created() {
@@ -23,6 +27,8 @@
         },
         computed: {},
         methods: {
+        	// 検索画面へ遷移
+        	back: function() {},
         	// 検索画面へ遷移
         	moveCustomerInformationSearch: function() {
                 location.href = editUrl('/s005CustomerInformationSearch');

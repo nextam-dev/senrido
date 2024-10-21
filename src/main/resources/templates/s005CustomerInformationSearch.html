@@ -18,11 +18,115 @@
 	<div id="content">
 		<div th:replace="header"></div>
 		<main>
-			<div>
-			    <button v-on:click="back">戻る</button>
+		<!-- 検索部分 -->
+		<div class="searchBox">
+			<div class="row">
+				<div class="col-2">
+					<label>店舗</label>
+				</div>
+				<div class="col-4">
+					<select>
+						<option></option>
+						<option>網走店</option>
+					</select>
+				</div>
+				<div class="col-6"></div>
 			</div>
-			<div>
-			    <button v-on:click="moveMedicalRecord">新規登録</button>
+			<div class="row">
+				<div class="col-2">
+					<label>名前</label>
+				</div>
+				<div class="col-4">
+					<input type="text">
+					<label>カナ</label>
+				</div>
+				<div class="col-3">
+					<input type="text">
+				</div>
+				<div class="col-1"></div>
+			</div>
+			<div class="row">
+				<div class="col-2">
+					<label>期間</label>
+				</div>
+				<div class="col-4">
+					<input type="date">
+					<label>～</label>
+				</div>
+				<div class="col-2">
+					<input type="date">
+				</div>
+				<div class="col-2"></div>
+			</div>
+			<div class="row">
+				<div class="col-2">
+					<label>担当</label>
+				</div>
+				<div class="col-4">
+					<select>
+						<option></option>
+						<option>黒川</option>
+					</select>
+				</div>
+				<div class="col-6"></div>
+			</div>
+			<div class="row">
+				<div class="col-6"></div>
+				<div class="col-2">
+					<button class="searchBt">検索</button>
+				</div>
+				<div class="col-2">
+					<button class="searchBt">条件クリア</button>
+				</div>
+				<div class="col-2">
+					<button class="searchBt">CSV出力</button>
+				</div>
+			</div>
+		</div>
+		<!-- 一覧部分 -->
+		<div class="listBox">
+			<div class="row head">
+				<div class="col-2">
+					<label>店舗</label>
+				</div>
+				<div class="col-2">
+					<label>名前</label>
+				</div>
+				<div class="col-2">
+					<label>カナ</label>
+				</div>
+				<div class="col-2">
+					<label>登録日</label>
+				</div>
+				<div class="col-2">
+					<label>担当</label>
+				</div>
+				<div class="col-2"></div>
+			</div>
+			<div class="row list">
+				<div class="col-2">
+					<label>網走店</label>
+				</div>
+				<div class="col-2">
+					<label>山田太郎</label>
+				</div>
+				<div class="col-2">
+					<label>ヤマダタロウ</label>
+				</div>
+				<div class="col-2">
+					<label>2024/10/24</label>
+				</div>
+				<div class="col-2">
+					<label>黒川</label>
+				</div>
+				<div class="col-2">
+					<button v-on:click="moveMedicalRecord">詳細</button>
+				</div>
+			</div>
+		</div>
+		<!-- 新規登録 -->
+			<div style="float: right; width: 280px;">
+			    <button v-on:click="moveMedicalRecord" class="newRegist">新規登録</button>
 			</div>
 			<!-- モーダル -->
 			<processing v-if="processingFlg"></processing>

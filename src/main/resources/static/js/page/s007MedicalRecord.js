@@ -13,6 +13,8 @@
                 processingFlg: false,
                 // 検索条件初期化フラグ
                 initSearchFlg: false,
+                // ログインフラグ
+                loginFig:true,
             }
         },
         created() {
@@ -26,6 +28,10 @@
         	// 検索画面へ遷移
         	back: function() {
                 location.href = editUrl('/s005CustomerInformationSearch');
+            },
+            // ログイン画面へ遷移
+            logout: function() {
+                location.href = editUrl('/');
             },
             showModalProcessing: function () {
                 this.processingFlg = true;

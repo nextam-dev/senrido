@@ -20,13 +20,13 @@
             <div>
                 <label class="screenTitle">ログイン</label>
             </div>
-            <div style="vertical-align: middle;">
-                <label class="koumoku">ログインID:</label>
-                <input type="text" class="box"/>
+            <div class="row">
+                <label class="koumoku col-5">ログインID:</label>
+                <input type="text" class="box col-7"/>
             </div>
-            <div style="vertical-align: middle;">
-                <label class="koumoku">パスワード:</label>
-                <input type="text" class="box"/>
+            <div class="row">
+                <label class="koumoku col-5">パスワード</label>
+                <input type="text" class="box col-7"/>
             </div>
             <div>
                 <button v-on:click="login" class="login">ログイン</button>

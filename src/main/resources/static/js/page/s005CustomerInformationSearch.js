@@ -13,6 +13,8 @@
                 processingFlg: false,
                 // 検索条件初期化フラグ
                 initSearchFlg: false,
+                // ログインフラグ
+                loginFig:true,
             }
         },
         created() {
@@ -30,6 +32,10 @@
         	// 詳細画面へ遷移
         	moveMedicalRecord: function() {
                 location.href = editUrl('/s007MedicalRecord');
+            },
+            // ログイン画面へ遷移
+            logout: function() {
+                location.href = editUrl('/');
             },
             showModalProcessing: function () {
                 this.processingFlg = true;

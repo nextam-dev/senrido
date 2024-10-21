@@ -13,6 +13,8 @@
                 processingFlg: false,
                 // 検索条件初期化フラグ
                 initSearchFlg: false,
+                // ログインフラグ
+                loginFig:false,
             }
         },
         created() {

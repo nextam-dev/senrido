@@ -1,1 +1,20 @@
-	<header></header>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<header>
+		<div class="row" v-if="loginFig">
+			<div class="col-3" v-if="!menuFig">
+				<button v-on:click="back" class="backButton">戻る</button>
+			</div>
+			<div class="col-3" v-if="menuFig"></div>
+			<div class="col-2"></div>
+			<div class="col-4">
+				<label class="loginLabel">ログイン：<label>黒川駿斗</label>
+			</div>
+			<div class="col-3">
+				<button v-on:click="logout" class="logout">ログアウト</button>
+			</div>
+		</div>
+	</header>
