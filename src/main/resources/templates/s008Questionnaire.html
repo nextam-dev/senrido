@@ -18,9 +18,112 @@
 	<div id="content">
 		<div th:replace="header"></div>
 		<main>
-			<div>
-			    <button v-on:click="back">戻る</button>
-			</div>
+		    <div class="row mainTable contensMargin">
+		        <!-- コンテンツ -->
+		        <div class="col-12">
+		            <div class="row">
+		                <div class="col-12 item-title">お名前</div>
+		                <div class="col-12 item-value"><input type="text" placeholder="フルネームをご記入ください。" /></div>
+		            </div>
+		        </div>
+		        <div class="col-12">
+		            <div class="row">
+		                <div class="col-12 item-title">お名前（カタカナ）</div>
+		                <div class="col-12 item-value"><input type="text" placeholder="カタカナでご記入ください。" /></div>
+		            </div>
+		        </div>
+		        <div class="col-12">
+		            <div class="row">
+		                <div class="col-12 item-title">性別</div>
+		                <div class="col-12 item-value">
+			                <label class="spaceLeft">
+		                        <input type="radio" name="sex" value="0"><span class="spaceLeft">男性</span>
+		                    </label>
+		                    <label class="spaceLeft">
+		                        <input type="radio" name="sex" value="1"><span class="spaceLeft">女性</span>
+		                    </label>
+		                    <label class="spaceLeft">
+		                        <input type="radio" name="sex" value="2"><span class="spaceLeft">回答しない</span>
+		                    </label>
+		                    <label class="spaceLeft">
+		                        <input type="radio" name="sex" value="9"><span class="spaceLeft">その他</span>
+		                        <input type="text" />
+		                    </label>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="col-12">
+		            <div class="row">
+		                <div class="col-12 item-title">生年月日</div>
+		                <div class="col-12 item-value"><input type="date" /></div>
+		            </div>
+		        </div>
+		        <div class="col-12">
+		            <!-- 生年月日から自動計算するか -->
+		            <div class="row">
+		                <div class="col-12 item-title">年齢</div>
+		                <div class="col-12 item-value"><input type="text" /></div>
+		            </div>
+		        </div>
+		        <div class="col-12">
+		            <div class="row">
+		                <div class="col-12 item-title">メールアドレス</div>
+		                <div class="col-12 item-value"><input type="mail" /></div>
+		            </div>
+		        </div>
+		        <div class="col-12">
+		            <div class="row">
+		                <div class="col-12 item-title">郵便番号</div>
+		                <div class="col-12 item-value">
+		                    <input type="text" />
+		                    <button value="郵便番号検索" >郵便番号検索</button>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="col-12">
+		            <div class="row">
+		                <div class="col-12 item-title">ご住所</div>
+		                <div class="col-12 item-value"><input type="text" /></div>
+		            </div>
+		        </div>
+		        <div class="col-12">
+		            <div class="row">
+		                <div class="col-12 item-title">電話番号</div>
+		                <div class="col-12 item-value"><input type="tel" /></div>
+		            </div>
+		        </div>
+		        <div class="col-12">
+		            <div class="row">
+		                <div class="col-12 item-title">ご紹介者</div>
+		                <div class="col-12 item-value"><input type="text" placeholder="どなたからのご紹介で千里堂を知りましたか？" /></div>
+		            </div>
+		        </div>
+		        <div class="col-12">
+		            <div class="row">
+		                <div class="col-12 item-title">職業</div>
+		                <div class="col-12 item-value">
+		                    <select>
+		                        <option value="0"></option>
+		                        <option value="1">〇〇〇</option>
+		                    </select>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+	        <div class="col-12">
+	            <div class="row">
+	                <div class="col-12 item-title">お仕事の内容</div>
+	                <div class="col-12 item-value">
+		                <label class="spaceLeft">
+	                        <input type="checkbox"><span class="spaceLeft">裸眼で生活している</span>
+	                    </label></br>
+		                <label class="spaceLeft">
+	                        <input type="checkbox"><span class="spaceLeft">メガネを掛けている</span>
+	                    </label></br>
+	                </div>
+	            </div>
+	        </div>ｃ
+
 			<!-- モーダル -->
 			<processing v-if="processingFlg"></processing>
 		</main>
