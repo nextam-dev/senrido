@@ -75,7 +75,7 @@ function loadClear(){
 //コンテキストパスを指定
 function editUrl(val) {
 	//var contextpath = '/trial';
-	var contextpath = '/senridou';
+	var contextpath = '/senrido';
 	return contextpath + val;
 	}
 //---------------------------
