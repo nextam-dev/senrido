@@ -1,11 +1,13 @@
-body{
-	text-align:center;
-	margin: 10% auto;
-}
-
 .menuBt{
 	margin:30px 0px;
 	font-size:50px;
 	height:100px;
 	width: 500px;
+}
+
+.logout{
+	margin: 200px 0px 100px 0px;
+    width: 350px;
+    height: 80px;
+    font-size:40px;
 }

@@ -26,25 +26,29 @@
 
 <body>
 	<div id="content">
-		<div>
-			<label class="screenTitle">ログイン</label>
-		</div>
-		<div style="vertical-align: middle;">
-		    <label class="koumoku">ログインID:</label>
-		    <input type="text" class="box"/>
-		</div>
-		<div style="vertical-align: middle;">
-		    <label class="koumoku">パスワード:</label>
-		    <input type="text" class="box"/>
-		</div>
-		<div>
-		    <button v-on:click="login" class="login">ログイン</button>
-		</div>
-		<div>
-		    <button v-on:click="movePasswordReissue" class="PasswordReissueBt">パスワード発行</button>
-		</div>
-		<!-- モーダル -->
-		<processing v-if="processingFlg"></processing>
+		<header></header>
+		<main>
+			<div>
+				<label class="screenTitle">ログイン</label>
+			</div>
+			<div style="vertical-align: middle;">
+			    <label class="koumoku">ログインID:</label>
+			    <input type="text" class="box"/>
+			</div>
+			<div style="vertical-align: middle;">
+			    <label class="koumoku">パスワード:</label>
+			    <input type="text" class="box"/>
+			</div>
+			<div>
+			    <button v-on:click="login" class="login">ログイン</button>
+			</div>
+			<div>
+			    <button v-on:click="movePasswordReissue" class="PasswordReissueBt">パスワード発行</button>
+			</div>
+			<!-- モーダル -->
+			<processing v-if="processingFlg"></processing>
+		</main>
+		<footer></footer>
 	</div>
 </body>
 </html>

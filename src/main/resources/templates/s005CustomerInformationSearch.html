@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ログイン</title>
+    <title>顧客情報検索</title>
     
     <!-- CSSファイル -->
     <link rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
@@ -26,14 +26,18 @@
 
 <body>
 	<div id="content">
-	<div>
-		    <button v-on:click="back">戻る</button>
-		</div>
-		<div>
-		    <button v-on:click="moveMedicalRecord">新規登録</button>
-		</div>
-		<!-- モーダル -->
-		<processing v-if="processingFlg"></processing>
+		<header></header>
+		<main>
+			<div>
+			    <button v-on:click="back">戻る</button>
+			</div>
+			<div>
+			    <button v-on:click="moveMedicalRecord">新規登録</button>
+			</div>
+			<!-- モーダル -->
+			<processing v-if="processingFlg"></processing>
+		</main>
+		<footer></footer>
 	</div>
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ログイン</title>
+    <title>メニュー</title>
     
     <!-- CSSファイル -->
     <link rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
@@ -25,16 +25,20 @@
 </head>
 <body>
 	<div id="content">
-		<div>
-		    <button v-on:click="moveCustomerInformationSearch" class="menuBt">検索</button>
-		</div>
-		<div>
-		    <button v-on:click="moveReservation" class="menuBt">予約</button>
-		</div>
-		<div>
-		    <button v-on:click="logout">ログアウト</button>
-		</div>
-		<processing v-if="processingFlg"></processing>
+		<header></header>
+		<main>
+			<div>
+			    <button v-on:click="moveCustomerInformationSearch" class="menuBt">検索</button>
+			</div>
+			<div>
+			    <button v-on:click="moveReservation" class="menuBt">予約</button>
+			</div>
+			<div>
+			    <button v-on:click="logout" class="logout">ログアウト</button>
+			</div>
+			<processing v-if="processingFlg"></processing>
+		</main>
+		<footer></footer>
 	</div>
 </body>
 </html>
