@@ -1,24 +1,16 @@
-.position div{
-	margin: 40px auto;
+body{
+	text-align:center;
+	margin: 10% auto;
 }
 
-.koumoku1{
-	margin: 20px 75px 0px 90px;
-}
-.koumoku2{
-	margin: 0px 50px 20px 50px;
-}
-@media (max-width: 1280px) {
-  .koumoku1{
-	margin: 20px 75px 0px 85px;
-	}
+.position div{
+	margin: 40px auto;
 }
 
 .box{
 	margin: 0px;
 	width: 350px;
-	height: 40px;
-	vertical-align: middle;
+	height: 50px;
 }
 
 .position{
@@ -33,8 +25,27 @@
 	}
 }
 
+.koumoku{
+	margin: 0px 50px 50px 0px;
+	font-size:50px;
+}
+@media (max-width: 1280px) {
+  .koumoku{
+	margin: 20px 75px 0px 85px;
+	}
+}
+
 .login{
-	margin: 20px 335px 100px 190px;
-	width: 180px;
-	height: 40px;
+	margin: 20px 0px 100px 0px;
+    width: 350px;
+    height: 80px;
+    font-size:40px;
+}
+
+.PasswordReissueBt{
+	border-top:none;
+	border-left:none;
+	border-right:none;
+	background-color:#fff;
+	font-size:30px;
 }

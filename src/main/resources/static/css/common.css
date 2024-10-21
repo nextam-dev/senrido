@@ -26,7 +26,7 @@ li.fieldError {
 	margin:0px;
 }
 
-/*見出し*/
+/*隕句�ｺ縺�*/
 .title {
 	background-color:green;
 	width:65%;
@@ -79,7 +79,7 @@ h2{
 	float:left;
 	}
 }
-/*段組*/
+/*谿ｵ邨�*/
 .floatRight{
 	float:right;
 }
@@ -100,14 +100,14 @@ h2{
 	float:left;
 }
 
-/*共通背景色*/
+/*蜈ｱ騾夊レ譎ｯ濶ｲ*/
 /* .label label,
 thead th{
 	background: #afeeee;
 } */
 
 
-/*検索項目*/
+/*讀懃ｴ｢鬆�逶ｮ*/
 .searchEntry{
 	margin:0px 0px 0px 30px;
 	padding:10px 0px 0px 0px;
@@ -143,7 +143,7 @@ thead th{
 	margin:0px 0px 0px 15px
 }
 
-/*検索結果*/
+/*讀懃ｴ｢邨先棡*/
 .table{
 	margin:0px;
 }
@@ -192,7 +192,7 @@ td,th{
   background: url("/loading.html") center center no-repeat;
 }
 
-/*ヘッダ共通*/
+/*繝倥ャ繝�蜈ｱ騾�*/
 .headerContent{
 	width:100%;
 	display:flex;
@@ -325,4 +325,15 @@ td,th{
 {
 	padding-right: 0px;
 	padding-left: 0px;
+}
+
+/* 追加分 */
+.screenTitle{
+	font-size:80px;
+	font-weight:bold;
+	margin-bottom:100px;
+}
+.screenSubTitle{
+	font-size:30px;
+	margin-bottom:100px;
 }

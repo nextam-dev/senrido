@@ -1,0 +1,24 @@
+package jp.co.senrido.common;
+
+import java.util.ResourceBundle;
+
+/**
+ *
+ * リソースファイル読み込みクラス.
+ *
+ * @author t_hirose
+ * @version 2018/06/11
+ */
+public class SenridoResources {
+
+	/**
+	 * 指定したキー情報の文字列を取得する処理.
+	 *
+	 * @param filename
+	 * @param key
+	 * @return String
+	 */
+	public static String getString(String filename, String key) {
+		return ResourceBundle.getBundle(filename).getString(key);
+	}
+}
