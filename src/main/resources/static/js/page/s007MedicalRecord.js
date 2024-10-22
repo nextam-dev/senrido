@@ -30,6 +30,8 @@
                     { title: '趣味・部活', open: false, inputValue: '' },
                     { title: '眼の使用状況', open: false, inputValue: '' },
                 ],
+                isFarSelected: true,   // 初期状態で「遠」が選択されている状態
+                isNearSelected: false, // 初期状態で「近」は選択されていない状態
             };
         },
         methods: {
@@ -56,6 +58,14 @@
                         item.open = false;
                     }
                 });
+            },
+            selectFar: function(index) {
+                this.isFarSelected = true;
+                this.isNearSelected = false;
+              },
+            selectNear: function(index) {
+                this.isFarSelected = false;
+                this.isNearSelected = true;
             },
             openModal: function() {
             	this.$refs.visitingHospitalModal.open();

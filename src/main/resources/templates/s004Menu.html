@@ -16,12 +16,26 @@
 <body>
 	<div id="content">
 		<div th:replace="header"></div>
-		<main style="padding-top: 200px;">
-			<div>
-			    <button v-on:click="moveCustomerInformationSearch" class="menuBt">検索</button>
-			</div>
-			<div>
-			    <button v-on:click="moveReservation" class="menuBt">予約</button>
+		<main>
+			<div class="row">
+				<div class="col-2"></div>
+				<div class="col-4">
+				    <button v-on:click="moveCustomerInformationSearch" class="menuBt">
+					    <span class="icon">
+							<i class="fas fa-regular fa-glasses"></i>
+						</span>
+						<br><span style="font-size: 20px;">お客様情報検索</span>
+					</button>
+				</div>
+				<div class="col-4">
+				    <button v-on:click="moveReservation" class="menuBt">
+					    <span class="icon">
+							<i class="fas fa-regular fa-calendar-check"></i>
+						</span>
+						<br><span style="font-size: 20px;">東京測定会予約情報</span>
+				    </button>
+				</div>
+				<div class="col-2"></div>
 			</div>
 			<processing v-if="processingFlg"></processing>
 		</main>

@@ -2,30 +2,70 @@ main{
 	font-size:20px;
 }
 .searchBox{
-	margin-top: 50px;
-	border:1px solid;
-	padding:10px 0px;
+	margin-top: 10px;
+    border: 1px solid;
+    padding: 10px 0px;
 }
 
 .searchBox input[type="date"] {
     width: 200px; 
     float: left; /* 左にフロート */
 }
+
 .searchBt{
 	width:140px;
 	height:50px;
 }
-.listBox{
-	border:1px solid;
-	padding:10px 0px;
-	margin:10px 0px;
-	height:200px;
+.listBox {
+    border: 1px solid;
+    margin: 10px 0px;
+    max-height: 820px; 
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
+
+.listBox::-webkit-scrollbar {
+    display: none; 
+    }
+
+
 .head{
 	border-bottom:1px solid;
 	margin: auto;
+	position: sticky; /* 固定位置を指定 */
+    top: 0; /* 上部に固定 */
+    background-color: #fff; /* 背景色を設定 */
+    z-index: 10; /* 他の要素の上に表示するため */
 }
 .list{
+	font-size:17px;
 	margin: auto;
     margin-top: 10px;
+}
+.newRegist{
+    width:140px;
+	height:50px;
+}
+
+/* お客様情報部分 */
+.infoBox{
+	border: 1px solid;
+    padding: 5px;
+    width: 1000px;
+    margin: auto;
+    margin-top: 10px;
+    flex: 0 0 auto;
+}
+.info{
+	text-align: left;
+}
+
+.date{
+	ackground-color: #fff;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: inline-block;
 }

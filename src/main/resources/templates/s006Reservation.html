@@ -43,33 +43,37 @@
 					</div>
 				</div>
 			</div>
+			<div style="margin-top: 10px; text-align:right;">
+			    <p>表示件数：<span>6</span>件</p>
+			</div>
 			<!-- 一覧部分 -->
 			<div class="listBox">
-				<div class="row head">
-					<div class="col-1"></div>
-					<div class="col-3">
-						<label>名前</label>
+				<div class="infoBox row" v-for="(customer, index) in customers" :key="index">
+			    	<div class="col-7">
+			      		<div class="info" style="font-size: 15px;">
+			        		<label>{{ customer.kana }}</label>
+			      		</div>
+			      		<div class="info" style="font-size: 40px; border-bottom:1px solid">
+			        		<label>{{ customer.name }}</label><span style="margin-left: 100px;">様</span>
+			      		</div>
+			      		<div class="info" style="font-size: 20px;">
+					        <label>ID:{{ customer.id }}
+					        <span style="margin-left: 10px;">{{ customer.dob }}</span>
+					        <span style="margin-left: 10px;">生{{ customer.age }}歳</span>
+					        <span style="margin-left: 10px;">{{ customer.gender }}</span>
+					        </label>
+				      	</div>
+				    </div>
+					<div class="col-5" style="text-align: right;">
+					     <div class="date" style="font-size: 20px;">
+					     	<label>参加回数:</label><label>{{ customer.kaisu }}</label>
+					      </div>
 					</div>
-					<div class="col-3">
-						<label>カナ</label>
-					</div>
-					<div class="col-3">
-						<label>日付</label>
-					</div>
-					<div class="col-1"></div>
 				</div>
 				<div class="row list">
-					<div class="col-1"></div>
-					<div class="col-3">
-						<label>山田太郎</label>
+					<div class="col-12" style="margin-top: 20px;">
+						<label>これ以上検索結果がありません。</label>
 					</div>
-					<div class="col-3">
-						<label>ヤマダタロウ</label>
-					</div>
-					<div class="col-3">
-						<label>2024/10/24</label>
-					</div>
-					<div class="col-1"></div>
 				</div>
 			</div>
 			<!-- モーダル -->

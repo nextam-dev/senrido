@@ -25,9 +25,9 @@
         },
         computed: {},
         methods: {
-        	// 更新画面へ遷移（仮）
-        	move: function() {
-                location.href = editUrl('/s002PasswordChange');
+        	// ログイン画面へ遷移
+        	moveLogin: function() {
+                location.href = editUrl('/');
             },
             showModalProcessing: function () {
                 this.processingFlg = true;

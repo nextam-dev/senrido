@@ -21,18 +21,25 @@
                 <label class="screenTitle">ログイン</label>
             </div>
             <div class="row">
-                <label class="koumoku col-5">ログインID:</label>
-                <input type="text" class="box col-7"/>
+            	<div class="box col-2"></div>
+                <label class="koumoku col-3">ログインID:</label>
+                <input type="text" class="box col-4"/>
+                <div class="box col-2"></div>
             </div>
             <div class="row">
-                <label class="koumoku col-5">パスワード</label>
-                <input type="text" class="box col-7"/>
+            	<div class="box col-2"></div>
+                <label class="koumoku col-3">パスワード:</label>
+                <input type="password" class="box col-4"/>
+                <div class="box col-2"></div>
             </div>
             <div>
                 <button v-on:click="login" class="login">ログイン</button>
             </div>
-            <div>
-                <button v-on:click="movePasswordReissue" class="PasswordReissueBt">パスワード発行</button>
+            <div style="margin-bottom: 45px;">
+                <button v-on:click="movePasswordReissue" class="PasswordBt">パスワード発行</button>
+            </div>
+             <div>
+                <button v-on:click="movePasswordChange" class="PasswordBt">パスワード変更</button>
             </div>
             <!-- モーダル -->
             <processing v-if="processingFlg"></processing>

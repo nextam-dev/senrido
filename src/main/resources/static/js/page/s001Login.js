@@ -34,6 +34,10 @@ window.addEventListener('DOMContentLoaded', function () {
         	movePasswordReissue: function() {
                 location.href = editUrl('/s003PasswordReissue');
             },
+        	// 更新画面へ遷移
+            movePasswordChange: function() {
+                location.href = editUrl('/s002PasswordChange');
+            },
             showModalProcessing: function () {
                 this.processingFlg = true;
             },

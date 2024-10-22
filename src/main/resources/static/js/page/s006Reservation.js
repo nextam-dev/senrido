@@ -15,6 +15,14 @@
                 initSearchFlg: false,
                 // ログインフラグ
                 loginFig:true,
+                customers: [
+                    { kana: 'ヤマダタロウ', name: '山田太郎', id: '0001', birthDate: '平成11年04月18日', age: '25歳', gender: '男性', kaisu: '2' },
+                    { kana: 'スズキイチロウ', name: '鈴木一郎', id: '0002', birthDate: '平成10年12月05日', age: '26歳', gender: '男性', kaisu: '1' },
+                    { kana: 'サトウハナコ', name: '佐藤花子', id: '0003', birthDate: '平成9年06月14日', age: '27歳', gender: '女性', kaisu: '3' },
+                    { kana: '田中タロウ', name: '田中太郎', id: '0004', birthDate: '平成8年09月19日', age: '28歳', gender: '男性', kaisu: '初' },
+                    { kana: 'タカハシミサキ', name: '高橋美咲', id: '0005', birthDate: '平成12年01月01日', age: '24歳', gender: '女性', kaisu: '1' },
+                    { kana: 'イトウシュンペイ', name: '伊藤俊平', id: '0006', birthDate: '平成7年03月03日', age: '29歳', gender: '男性', kaisu: '2' }
+                  ],
             }
         },
         created() {
