@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ログイン</title>
+    <title>事前アンケート</title>
     <div th:replace="base_header"></div>
 
     <!-- ページ固有のCSSファイル -->
@@ -26,15 +26,15 @@
                     <div class="col-12">
                         <label>記載していただいた個人情報は、ご本人の同意がなければ第三者に個人情報を提供することはございません。取得した個人情報は、紛失や漏洩などが発生しないよう積極的な安全対策を実施いたします。</label>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12" style="margin-top: 15px;">
                         <label>個人情報の取扱いに関するお問い合わせついては下記窓口までご連絡ください。</label>
                     </div>
-                    <div class="col-12" style="margin-top: 10px;">
+                    <div class="col-12" style="margin-top: 15px;">
                         <label>TEL: 0152-44-2233</label>
                         <br>
                         <a href="#">hk@senrido.co.jp</a>
                     </div>
-                    <div class="col-12" style="margin-top: 10px;">
+                    <div class="col-12" style="margin-top: 15px;">
                         <div class="row">
                             <div class="col-12 item-title">【お知らせ】</div>
                             <div class="col-12 item-subitle">
@@ -57,7 +57,11 @@
                 <div class="col-12">
                     <div class="row card">
                         <div class="col-12 item-title">お名前（カタカナ）</div>
-                        <div class="col-12 item-value"><input type="text" placeholder="カタカナでご記入ください。" /></div>
+                        <div class="col-12 item-value">
+                            <label class="ef">
+                                <input type="text" placeholder="カタカナでご記入ください。" />
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">
@@ -84,7 +88,7 @@
                                     <label class="input-label"><input type="radio" name="sex" value="9"><span class="spaceLeft">その他</span></label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" />
+                                    <label class="ef"><input type="text" /></label>
                                 </div>
                             </div>
                         </div>
@@ -93,20 +97,26 @@
                 <div class="col-12">
                     <div class="row card">
                         <div class="col-12 item-title">生年月日</div>
-                        <div class="col-12 item-value"><input type="date" placeholder="回答を入力" /></div>
+                        <div class="col-12 item-value">
+                            <label class="ef"><input type="date" placeholder="回答を入力" /></label>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <!-- 生年月日から自動計算するか -->
                     <div class="row card">
                         <div class="col-12 item-title">年齢</div>
-                        <div class="col-12 item-value"><input type="text" placeholder="回答を入力" /></div>
+                        <div class="col-12 item-value">
+                            <label class="ef"><input type="text" placeholder="回答を入力" /></label>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="row card">
                         <div class="col-12 item-title">メールアドレス</div>
-                        <div class="col-12 item-value"><input type="mail" placeholder="回答を入力" /></div>
+                        <div class="col-12 item-value">
+                            <label class="ef"><input type="mail" class="width-full" placeholder="回答を入力" /></label>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">
@@ -115,7 +125,7 @@
                         <div class="col-12 item-value">
                             <div class="row">
                                 <div class="col-2">
-                                    <input type="text" placeholder="回答を入力" />
+                                    <label class="ef"><input type="text" placeholder="回答を入力" /></label>
                                 </div>
                                 <div class="col-10">
                                     <button value="郵便番号検索" >郵便番号検索</button>
@@ -127,35 +137,47 @@
                 <div class="col-12">
                     <div class="row card">
                         <div class="col-12 item-title">ご住所</div>
-                        <div class="col-12 item-value"><input type="text" placeholder="回答を入力" /></div>
+                        <div class="col-12 item-value">
+                            <label class="ef"><input type="text" placeholder="回答を入力" /></label>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="row card">
                         <div class="col-12 item-title">電話番号</div>
-                        <div class="col-12 item-value"><input type="tel" placeholder="回答を入力" /></div>
+                        <div class="col-12 item-value">
+                            <label class="ef"><input type="text" placeholder="回答を入力" /></label>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="row card">
                         <div class="col-12 item-title">ご紹介者</div>
-                        <div class="col-12 item-value"><input type="text" placeholder="どなたからのご紹介で千里堂を知りましたか？" /></div>
+                        <div class="col-12 item-value">
+                            <label class="ef"><input type="text" placeholder="どなたからのご紹介で千里堂を知りましたか？" /></label>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="row card">
-                        <div class="col-12 item-title">職業</div>
+                        <div class="col-12 item-title">職業または職種</div>
                         <div class="col-12 item-value">
-                            <select>
-                                <option value="0"></option>
-                                <option value="1">〇〇〇</option>
-                            </select>
+                            <label class="ef"><input type="text" placeholder="回答を入力" /></label>
                         </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="row card">
                         <div class="col-12 item-title">お仕事の内容</div>
+                        <div class="col-12 item-subtitle">可能な限り詳しくご記入頂けますと、とても助かります。</div>
+                        <div class="col-12 item-value">
+                            <label class="ef"><input type="text" placeholder="回答を入力" /></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">現在、メガネやコンタクトの使用状況をお聞かせください。</div>
                         <div class="col-12 item-value">
                             <div class="row">
                                 <div class="col-12">
@@ -192,7 +214,7 @@
                                     <label class="input-label"><input type="checkbox"><span class="spaceLeft">その他:</span></label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" style="widht: 100%;" />
+                                    <label class="ef"><input type="text" style="widht: 100%;" /></label>
                                 </div>
                             </div>
                         </div>
@@ -201,7 +223,9 @@
                 <div class="col-12">
                     <div class="row card">
                         <div class="col-12 item-title">はじめてメガネまたはコンタクトを使用したのは何歳ですか？</div>
-                        <div class="col-12 item-value"><input type="text" placeholder="回答を入力" /></div>
+                        <div class="col-12 item-value">
+                            <label class="ef"><input type="text" placeholder="回答を入力" /></label>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">
@@ -234,7 +258,7 @@
                                     <label class="input-label"><input type="checkbox"><span class="spaceLeft">その他:</span></label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" style="widht: 100%;" />
+                                    <label class="ef"><input type="text" style="widht: 100%;" /></label>
                                 </div>
                             </div>
                         </div>
@@ -279,7 +303,7 @@
                                     <label class="input-label"><input type="radio" name="usePc" value="9"><span class="spaceLeft">その他:</span></label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" style="widht: 100%;" />
+                                    <label class="ef"><input type="text" style="widht: 100%;" /></label>
                                 </div>
                             </div>
                         </div>
@@ -289,7 +313,9 @@
                     <div class="row card">
                         <div class="col-12 item-title">パソコン画面と眼の距離は何ｃｍ離れていますか？<br>複数ある場合はそれぞれ記入をお願い致します。</div>
                         <div class="col-12 item-subtitle">記入例：ノートパソコンと外付けモニターを使用し、ノートパソコンは約40cm、外付けモニターは約70cm離れている。</div>
-                        <div class="col-12 item-value"><input type="text" placeholder="回答を入力" /></div>
+                        <div class="col-12 item-value">
+                            <label class="ef"><input type="text" placeholder="回答を入力" /></label>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">
@@ -331,7 +357,7 @@
                                     <label class="input-label"><input type="radio" name="useSp" value="9"><span class="spaceLeft">その他:</span></label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" style="widht: 100%;" />
+                                    <label class="ef"><input type="text" style="widht: 100%;" /></label>
                                 </div>
                             </div>
                         </div>
@@ -387,7 +413,7 @@
                                     <label class="input-label"><input type="checkbox"><span class="spaceLeft">その他:</span></label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" style="widht: 100%;" />
+                                    <label class="ef"><input type="text" style="widht: 100%;" /></label>
                                 </div>
                             </div>
                         </div>
@@ -432,7 +458,7 @@
                                     <label class="input-label"><input type="radio" name="readBook" value="9"><span class="spaceLeft">その他:</span></label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" style="widht: 100%;" />
+                                    <label class="ef"><input type="text" style="widht: 100%;" /></label>
                                 </div>
                             </div>
                         </div>
@@ -488,7 +514,7 @@
                                     <label class="input-label"><input type="checkbox"><span class="spaceLeft">その他:</span></label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" style="widht: 100%;" />
+                                    <label class="ef"><input type="text" style="widht: 100%;" /></label>
                                 </div>
                             </div>
                         </div>
@@ -533,7 +559,7 @@
                                     <label class="input-label"><input type="radio" name="useSp" value="9"><span class="spaceLeft">その他:</span></label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" style="widht: 100%;" />
+                                    <label class="ef"><input type="text" style="widht: 100%;" /></label>
                                 </div>
                             </div>
                         </div>
@@ -588,7 +614,7 @@
                                     <label class="input-label"><input type="radio" name="useDrive" value="9"><span class="spaceLeft">その他:</span></label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" style="widht: 100%;" />
+                                    <label class="ef"><input type="text" style="widht: 100%;" /></label>
                                 </div>
                             </div>
                         </div>
@@ -659,7 +685,7 @@
                                     <label class="input-label"><input type="checkbox"><span class="spaceLeft">その他:</span></label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" style="widht: 100%;" />
+                                    <label class="ef"><input type="text" style="widht: 100%;" /></label>
                                 </div>
                             </div>
                         </div>
@@ -730,7 +756,7 @@
                                     <label class="input-label"><input type="checkbox"><span class="spaceLeft">その他:</span></label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" style="widht: 100%;" />
+                                    <label class="ef"><input type="text" style="widht: 100%;" /></label>
                                 </div>
                             </div>
                         </div>
@@ -762,7 +788,9 @@
                     <div class="row card">
                         <div class="col-12 item-title">どのような時に疲れを感じますか？</div>
                         <div class="col-12 item-subtitle">上記の質問で「はい」「たまに感じる」とお答えいただいた方のみ、ご記入ください。</div>
-                        <div class="col-12 item-value"><input type="text" placeholder="回答を入力" /></div>
+                        <div class="col-12 item-value">
+                            <label class="ef"><input type="text" placeholder="回答を入力" /></label>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">
@@ -815,7 +843,7 @@
                                     <label class="input-label"><input type="checkbox"><span class="spaceLeft">その他:</span></label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" style="widht: 100%;" />
+                                    <label class="ef"><input type="text" style="widht: 100%;" /></label>
                                 </div>
                             </div>
                         </div>
@@ -823,7 +851,7 @@
                 </div>
                 <div class="col-12">
                     <div class="row card">
-                        <div class="col-12 item-title">身体に下記のような症状・疾患はありますか？</div>
+                        <div class="col-12 item-title">お身体に下記のような症状・疾患はありますか？</div>
                         <div class="col-12 item-subtitle">当てはまるもの全てにチェックを入れてください。</div>
                         <div class="col-12 item-value">
                             <div class="row item-margin">
@@ -866,7 +894,7 @@
                                     <label class="input-label"><input type="checkbox"><span class="spaceLeft">その他:</span></label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" style="widht: 100%;" />
+                                    <label class="ef"><input type="text" style="widht: 100%;" /></label>
                                 </div>
                             </div>
                         </div>
@@ -917,7 +945,7 @@
                                     <label class="input-label"><input type="checkbox"><span class="spaceLeft">その他:</span></label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" style="widht: 100%;" />
+                                    <label class="ef"><input type="text" style="widht: 100%;" /></label>
                                 </div>
                             </div>
                         </div>
@@ -927,7 +955,9 @@
                     <div class="row card">
                         <div class="col-12 item-title">趣味はなんですか？</div>
                         <div class="col-12 item-subtitle">特にない場合は「なし」とご記入ください。</div>
-                        <div class="col-12 item-value"><input type="text" placeholder="回答を入力" /></div>
+                        <div class="col-12 item-value">
+                            <label class="ef"><input type="text" placeholder="回答を入力" /></label>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">
@@ -946,7 +976,7 @@
                                     <label class="input-label"><input type="radio" name="checkCorona" value="9"><span class="spaceLeft">その他:</span></label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" style="widht: 100%;" />
+                                    <label class="ef"><input type="text" style="widht: 100%;" /></label>
                                 </div>
                             </div>
                         </div>
@@ -955,10 +985,19 @@
                 <div class="col-12">
                     <div class="row card">
                         <div class="col-12 item-title">気になることや確認したいこと、補足等、ありましたらこちらにご記入ください。</div>
-                        <div class="col-12 item-value"><textarea placeholder="回答を入力" rows="3" cols="100"></textarea></div>
+                        <div class="col-12 item-value">
+                            <label class="ef"><textarea placeholder="回答を入力" rows="3" cols="90"></textarea></label>
+                        </div>
                     </div>
                 </div>
-                
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 botton-area">
+                            <button class="newRegist" v-on:click="sendAuestionnaire">送信</button>
+                        </div>
+                    </div>
+                </div>                
+                <!-- ボタン -->
             </div>
 
             <!-- モーダル -->

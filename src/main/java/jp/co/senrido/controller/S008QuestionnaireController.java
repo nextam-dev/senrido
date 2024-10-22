@@ -26,13 +26,33 @@ public class S008QuestionnaireController {
 	private Environment eivironment;
 
 	@RequestMapping(value="/s008Questionnaire", method = RequestMethod.GET)
-    public String getMenu(@ModelAttribute("form") S008QuestionnaireForm form, Model model) {
+    public String getInit(@ModelAttribute("form") S008QuestionnaireForm form, Model model) {
 		// 認証した情報を取得する
 //		UserDto userDto = (UserDto) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //		model.addAttribute("userDto",userDto);
 //		model.addAttribute("path", eivironment.getProperty(GoitaiConstant.Application.CONTEXT_PATH));
 
         return "/s008Questionnaire";
+    }
+	
+	@RequestMapping(value="/s008Questionnaire/continuation", method = RequestMethod.GET)
+    public String getContinuation(@ModelAttribute("form") S008QuestionnaireForm form, Model model) {
+		// 認証した情報を取得する
+//		UserDto userDto = (UserDto) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		model.addAttribute("userDto",userDto);
+//		model.addAttribute("path", eivironment.getProperty(GoitaiConstant.Application.CONTEXT_PATH));
+
+        return "/s008QuestionnaireContinuation";
+    }
+	
+	@RequestMapping(value="/s008Questionnaire/complete", method = RequestMethod.GET)
+    public String getComplete(@ModelAttribute("form") S008QuestionnaireForm form, Model model) {
+		// 認証した情報を取得する
+//		UserDto userDto = (UserDto) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		model.addAttribute("userDto",userDto);
+//		model.addAttribute("path", eivironment.getProperty(GoitaiConstant.Application.CONTEXT_PATH));
+
+        return "/s008QuestionnaireComplete";
     }
 
 }

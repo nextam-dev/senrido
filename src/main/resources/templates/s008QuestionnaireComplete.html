@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="jp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>事前アンケート</title>
+    <div th:replace="base_header"></div>
+
+    <!-- ページ固有のCSSファイル -->
+    <link rel="stylesheet" href="/css/s008Questionnaire.css" th:href="@{/css/s008Questionnaire.css}"/>
+
+    <!-- ページ固有のJSファイル -->
+    <script src="/js/page/s008Questionnaire.js" th:src="@{/js/page/s008Questionnaire.js}"></script>
+</head>
+
+<body>
+    <div id="content">
+        <div th:replace="header"></div>
+        <main>
+            <div class="row mainTable contensMargin">
+                <div class="col-12 page-title">
+                    <label>２０２４年７月測定会　事前アンケート</label>
+                </div>
+                <div class="page-header">
+                    <div class="col-12">
+                        <label>アンケートの送信が完了しました。<br>ご入力ありがとうございます。</label>
+                    </div>
+                </div>
+                <!-- コンテンツ -->
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 botton-area">
+                            <button class="newRegist" v-on:click="close">閉じる</button>
+                        </div>
+                    </div>
+                </div>                
+                <!-- ボタン -->
+            </div>
+
+            <!-- モーダル -->
+            <processing v-if="processingFlg"></processing>
+        </main>
+    </div>
+    <div th:replace="footer"></div>
+</body>
+</html>

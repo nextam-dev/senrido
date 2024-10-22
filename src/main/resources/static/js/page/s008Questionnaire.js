@@ -8,11 +8,13 @@
                 // メッセージ
                 message: [],
                 // ローカルストレージ保管鍵
-                localStrageKey: 'standardListConditionKey',
+                localStrageKey: 's008Questionnaire',
                 // 処理中モーダル表示/非表示
                 processingFlg: false,
                 // 検索条件初期化フラグ
                 initSearchFlg: false,
+                // ログインフラグ
+                loginFig:true,
             }
         },
         created() {
@@ -26,6 +28,14 @@
         	// 検索画面へ遷移
         	back: function() {
                 location.href = editUrl('/s005CustomerInformationSearch');
+            },
+            // 送信処理
+            sendAuestionnaire: function() {
+            	location.href = editUrl('/s008Questionnaire/complete');
+            },
+            // 閉じる
+            close: function() {
+            	window.close();
             },
             showModalProcessing: function () {
                 this.processingFlg = true;
