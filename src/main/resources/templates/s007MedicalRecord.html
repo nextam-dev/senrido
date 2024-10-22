@@ -9,9 +9,11 @@
     
     <!-- ページ固有のCSSファイル -->
     <link rel="stylesheet" href="/css/s007MedicalRecord.css" th:href="@{/css/s007MedicalRecord.css}"/>
+    <link rel="stylesheet" href="/css/s008Questionnaire.css" th:href="@{/css/s008Questionnaire.css}"/>
     
     <!-- ページ固有のJSファイル -->
     <script src="/js/page/s007MedicalRecord.js" th:src="@{/js/page/s007MedicalRecord.js}"></script>
+    <script src="/js/component/visitingHospitalModal.js" th:src="@{/js/component/visitingHospitalModal.js}"></script>
 </head>
 
 <body>
@@ -29,6 +31,7 @@
 				<div>
 					<label>平成11年04月18日</label><label>生25歳</label>
 				</div>
+				<div><button v-on:click="openModal">追加</button></div>
 			</div>
 			
 			<!-- アコーディオン形式 -->
@@ -319,6 +322,7 @@
 			<!--  -->
 			<!--  -->
 			<!-- モーダル -->
+			<visiting-hospital-modal ref=visitingHospitalModal></visiting-hospital-modal>
 			<processing v-if="processingFlg"></processing>
 		</main>
 	</div>

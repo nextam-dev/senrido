@@ -57,6 +57,9 @@
                     }
                 });
             },
+            openModal: function() {
+            	this.$refs.visitingHospitalModal.open();
+            }
         },
     });
 });
