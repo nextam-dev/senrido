@@ -24,18 +24,15 @@ Vue.component('visiting-hospital-modal', {
 	                    </div>
 	                    <div class="col-2"></div>
 	                </div>
-	                <!-- 送信者 -->
                     <div class="row">
-                        <div class="col-2 modal-item-title">受信日</div>
-                        <div class="col-10 item-value">
+                        <div class="col-2 item-title">受信日</div>
+                        <div class="col-3 modal-item-value">
                             <label class="ef">
                                 <input type="date" />
                             </label>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2 modal-item-title">眼科名</div>
-                        <div class="col-10 item-value">
+                        <div class="col-2 item-title">眼科名</div>
+                        <div class="col-5 modal-item-value">
                             <label class="ef">
                                 <input type="text" />
                             </label>
@@ -161,7 +158,29 @@ Vue.component('visiting-hospital-modal', {
 		                    </div>
 		                </div>
 		            </div>
-	            </div>
+                    <div class="row">
+                        <div class="col-12 item-title">眼科医の指示・意見</div>
+                        <div class="col-12 modal-item-value">
+			                <label class="ef"><textarea placeholder="" rows="2" cols="70"></textarea></label>
+                        </div>
+                    </div>
+	            </div><!-- /modal-content -->
+                <div class="row">
+	                <div class="col-6">
+	                    <div class="row">
+	                        <div class="col-12 botton-area" style="min-height:40px;">
+	                            <button class="modal-delete">削除</button>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="col-6">
+	                    <div class="row">
+	                        <div class="col-12 botton-area" style="min-height:40px;">
+	                            <button class="modal-regist">登録</button>
+	                        </div>
+	                    </div>
+	                </div>
+                </div>
             </div>
             <processing v-if="processingFlg"></processing>
         </div>
