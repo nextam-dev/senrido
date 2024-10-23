@@ -24,7 +24,7 @@
 		<main>
 			<!-- 個人情報 -->
 			<div class="infoBox row">
-				<div class="col-7">
+				<div class="col-8">
 					<div class="info" style="font-size: 15px;">
 						<label>ヤマダタロウ</label>
 					</div>
@@ -32,9 +32,15 @@
 						<span style="font-size: 40px; "><label>山田太郎</label><span style="margin-left: 200px;">様</span></span>
 						<button class="telBt">
 							<span class="icon">
-								<i class="fas fa-regular fa-plus"></i>
+								<i class="fas fa-regular fa-phone"></i>
 							</span>
 							<br><span style="font-size: 16px;">連絡先</span>
+						</button>
+						<button class="editBt" v-on:click="openEdit">
+							<span class="icon">
+								<i class="fas fa-regular fa-pen"></i>
+							</span>
+							<br><span style="font-size: 16px;">編集</span>
 						</button>
 					</div>
 					<div class="info" style="font-size: 20px;">
@@ -45,15 +51,13 @@
 						</label>
 					</div>
 				</div>
-				<div class="col-5" style="text-align: right;">
+				<div class="col-4" style="text-align: right;">
 					<div class="date" style="font-size: 20px;">
 						<label>前回来店日:</label><label>2024/10/24</label>
 					</div>
 					<div class="date" style="font-size: 20px;">
 						<label>次回来店日:</label><label>2025/01/24</label>
 					</div>
-					<div><button v-on:click="openEdit">編集</button></div>
-					<div><button v-on:click="openModal">追加</button></div>
 				</div>
 			</div>
 			<div class="scrollable-content">
@@ -83,8 +87,15 @@
 				<!-- 眼位 -->
 				<div class="accordion-item">
 					<div class="accordion-header" @click="toggleAccordionGani">
-						<label>{{ accordionItemGani.title }}</label>
-						<div><button v-on:click="openEyePositionModal">編集</button></div>	
+						<label style="margin-top: 15px;">{{ accordionItemGani.title }}</label>
+						<div style="float: right;">
+							<button v-on:click.stop="openEyePositionModal" class="addBt">
+								<span class="icon">
+									<i class="fas fa-regular fa-plus"></i>
+								</span>
+								<br><span style="font-size: 16px;">追加</span>
+							</button>
+						</div>
 					</div>
 					<div v-if="accordionItemGani.open" class="accordion-content">
 						<div class="row">
@@ -594,8 +605,15 @@
 				<!-- 作成度数 -->
 				<div class="accordion-item">
 					<div class="accordion-header" @click="toggleAccordionDosu">
-						<label>{{ accordionItemDosu.title }}</label>
-						<div><button v-on:click="openEyePositionModal">編集</button></div>	
+						<label style="margin-top: 15px;">{{ accordionItemDosu.title }}</label>
+						<div style="float: right;">
+							<button v-on:click.stop="openEyePositionModal" class="addBt">
+								<span class="icon">
+									<i class="fas fa-regular fa-plus"></i>
+								</span>
+								<br><span style="font-size: 16px;">追加</span>
+							</button>
+						</div>
 					</div>
 					<div v-if="accordionItemDosu.open" class="accordion-content">
 						<div class="row">
@@ -605,8 +623,15 @@
 				<!-- 過去データ -->
 				<div class="accordion-item">
 					<div class="accordion-header" @click="toggleAccordionHistory">
-						<label>{{ accordionItemHistory.title }}</label>
-						<div><button v-on:click="openEyePositionModal">編集</button></div>	
+						<label style="margin-top: 15px;">{{ accordionItemHistory.title }}</label>
+						<div style="float: right;">
+							<button v-on:click.stop="openEyePositionModal" class="addBt">
+								<span class="icon">
+									<i class="fas fa-regular fa-plus"></i>
+								</span>
+								<br><span style="font-size: 16px;">追加</span>
+							</button>
+						</div>
 					</div>
 					<div v-if="accordionItemHistory.open" class="accordion-content">
 						<div class="row">
@@ -616,8 +641,15 @@
 				<!-- 売上データ -->
 				<div class="accordion-item">
 					<div class="accordion-header" @click="toggleAccordionSales">
-						<label>{{ accordionItemSales.title }}</label>
-						<div><button v-on:click="openEyePositionModal">編集</button></div>	
+						<label style="margin-top: 15px;">{{ accordionItemSales.title }}</label>
+						<div style="float: right;">
+							<button v-on:click.stop="openEyePositionModal" class="addBt">
+								<span class="icon">
+									<i class="fas fa-regular fa-plus"></i>
+								</span>
+								<br><span style="font-size: 16px;">追加</span>
+							</button>
+						</div>
 					</div>
 					<div v-if="accordionItemSales.open" class="accordion-content">
 						<div class="row">

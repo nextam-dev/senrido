@@ -23,7 +23,15 @@ main {
 	width: 65px;
     height: 65px;
     background-color: #fff;
-    border: 1px solid orange;
+    border: 2px solid orange;
+}
+
+.editBt{
+	margin-left: 25px;
+	width: 65px;
+    height: 65px;
+    background-color: #fff;
+    border: 2px solid orange;
 }
 
 .date{
@@ -41,7 +49,6 @@ main {
     cursor: pointer;
     padding: 2px;
     border-bottom: 1px solid #ccc;
-    height: 70px;
 }
 .accordion-item:hover {
     background-color: #f0f0f0;
@@ -52,6 +59,7 @@ main {
     font-weight: bold;
     text-align: left;
     margin-left: 20px;
+    height: 70px;
 }
 
 .accordion-content {
@@ -62,7 +70,7 @@ main {
 	width: 65px;
     height: 65px;
     background-color: #fff;
-    border: 1px solid orange;
+    border: 2px solid orange;
 }.input-area {
     position: absolute;
     top: 0;
@@ -91,8 +99,10 @@ main {
 
 .scrollable-content {
     flex: 1 1 auto; 
-    overflow-y: auto;
     margin-top: 20px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 .scrollable-section {
     overflow-x: auto; 
@@ -105,9 +115,6 @@ main {
     height: 100%;
     padding: 10px;
     box-sizing: border-box;
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
 }
 
 .item {
