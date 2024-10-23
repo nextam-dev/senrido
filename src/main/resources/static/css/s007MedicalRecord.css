@@ -6,12 +6,13 @@ main {
 
 /* お客様情報部分*/
 .infoBox{
-	border: 1px solid;
+	border: 3px solid #808080;
     padding: 5px;
     width: 1000px;
     margin: auto;
     margin-top: 10px;
     flex: 0 0 auto;
+    border-radius: 10px;
 }
 .info{
 	text-align: left;
@@ -53,14 +54,16 @@ main {
     margin-left: 20px;
 }
 
+.accordion-content {
+	margin-top: 10px;
+}
+
 .addBt{
 	width: 65px;
     height: 65px;
     background-color: #fff;
     border: 1px solid orange;
-}
-
-.input-area {
+}.input-area {
     position: absolute;
     top: 0;
     right: 0;
@@ -89,6 +92,7 @@ main {
 .scrollable-content {
     flex: 1 1 auto; 
     overflow-y: auto;
+    margin-top: 20px;
 }
 .scrollable-section {
     overflow-x: auto; 
@@ -96,12 +100,14 @@ main {
     display: flex; 
 }
 
-.scrollable-section > div {
+.scrollable-section {
     min-width: 500px; 
     height: 100%;
-    overflow-y: auto; 
     padding: 10px;
     box-sizing: border-box;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .item {

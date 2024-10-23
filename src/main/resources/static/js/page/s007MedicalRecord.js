@@ -30,6 +30,18 @@
                     { title: '趣味・部活', open: false, inputValue: '' },
                     { title: '眼の使用状況', open: false, inputValue: '' },
                 ],
+                accordionItemGani: {
+                	title: '眼位', open: false, inputValue: ''
+                },
+                accordionItemDosu: {
+                	title: '作成度数', open: false, inputValue: ''
+                },
+                accordionItemHistory: {
+                	title: '過去データ', open: false, inputValue: ''
+                },
+                accordionItemSales: {
+                	title: '売上データ', open: false, inputValue: ''
+                },
                 isFarSelected: true,   // 初期状態で「遠」が選択されている状態
                 isNearSelected: false, // 初期状態で「近」は選択されていない状態
             };
@@ -57,6 +69,38 @@
                     if (i !== index) {
                         item.open = false;
                     }
+                });
+            },
+            toggleAccordionGani: function () {
+            	// アコーディオンの開閉
+                this.accordionItemGani.open = !this.accordionItemGani.open;
+                // 他のアコーディオン項目を閉じる
+                this.accordionItems.forEach((item, i) => {
+                    item.open = false;
+                });
+            },
+            toggleAccordionDosu: function () {
+            	// アコーディオンの開閉
+                this.accordionItemDosu.open = !this.accordionItemDosu.open;
+                // 他のアコーディオン項目を閉じる
+                this.accordionItems.forEach((item, i) => {
+                    item.open = false;
+                });
+            },
+            toggleAccordionHistory: function () {
+            	// アコーディオンの開閉
+                this.accordionItemHistory.open = !this.accordionItemHistory.open;
+                // 他のアコーディオン項目を閉じる
+                this.accordionItems.forEach((item, i) => {
+                    item.open = false;
+                });
+            },
+            toggleAccordionSales: function () {
+            	// アコーディオンの開閉
+                this.accordionItemSales.open = !this.accordionItemSales.open;
+                // 他のアコーディオン項目を閉じる
+                this.accordionItems.forEach((item, i) => {
+                    item.open = false;
                 });
             },
             selectFar: function(index) {
