@@ -9,7 +9,7 @@ main{
 
 .searchBox input[type="date"] {
     width: 200px; 
-    float: left; /* ¶‚Éƒtƒ[ƒg */
+    float: left; /* ï¿½ï¿½ï¿½Éƒtï¿½ï¿½ï¿½[ï¿½g */
 }
 
 .searchBt{
@@ -17,7 +17,7 @@ main{
 	height:50px;
 }
 .listBox {
-    border: 1px solid;
+    border: 0px solid;
     margin: 10px 0px;
     max-height: 820px; 
     overflow-y: auto;
@@ -33,10 +33,10 @@ main{
 .head{
 	border-bottom:1px solid;
 	margin: auto;
-	position: sticky; /* ŒÅ’èˆÊ’u‚ğw’è */
-    top: 0; /* ã•”‚ÉŒÅ’è */
-    background-color: #fff; /* ”wŒiF‚ğİ’è */
-    z-index: 10; /* ‘¼‚Ì—v‘f‚Ìã‚É•\¦‚·‚é‚½‚ß */
+	position: sticky; /* ï¿½Å’ï¿½Ê’uï¿½ï¿½ï¿½wï¿½ï¿½ */
+    top: 0; /* ï¿½ã•”ï¿½ÉŒÅ’ï¿½ */
+    background-color: #fff; /* ï¿½wï¿½iï¿½Fï¿½ï¿½İ’ï¿½ */
+    z-index: 10; /* ï¿½ï¿½ï¿½Ì—vï¿½fï¿½Ìï¿½É•\ï¿½ï¿½ï¿½ï¿½ï¿½é‚½ï¿½ï¿½ */
 }
 .list{
 	font-size:17px;
@@ -48,14 +48,15 @@ main{
 	height:50px;
 }
 
-/* ‚¨‹q—lî•ñ•”•ª */
+/* ï¿½ï¿½ï¿½qï¿½lï¿½ï¿½ñ•”•ï¿½ */
 .infoBox{
-	border: 1px solid;
+	border: 3px solid #808080;
     padding: 5px;
     width: 1000px;
     margin: auto;
     margin-top: 10px;
     flex: 0 0 auto;
+    border-radius: 10px;
 }
 .info{
 	text-align: left;
@@ -68,4 +69,6 @@ main{
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }

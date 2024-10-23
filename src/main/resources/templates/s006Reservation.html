@@ -49,7 +49,7 @@
 			<!-- 一覧部分 -->
 			<div class="listBox">
 				<div class="infoBox row" v-for="(customer, index) in customers" :key="index">
-			    	<div class="col-7">
+			    	<div class="col-8">
 			      		<div class="info" style="font-size: 15px;">
 			        		<label>{{ customer.kana }}</label>
 			      		</div>
@@ -64,10 +64,13 @@
 					        </label>
 				      	</div>
 				    </div>
-					<div class="col-5" style="text-align: right;">
-					     <div class="date" style="font-size: 20px;">
-					     	<label>参加回数:</label><label>{{ customer.kaisu }}</label>
-					      </div>
+					<div class="col-4" style="text-align: right;">
+					  	<div class="date" style="font-size: 20px;">
+					    	<label>開催日:</label><label>{{ customer.lastVisit }}</label>
+					  	</div>
+					    <div class="date" style="font-size: 20px;">
+					    	<label>参加回数:</label><label>{{ customer.kaisu }}</label>
+					    </div>
 					</div>
 				</div>
 				<div class="row list">
