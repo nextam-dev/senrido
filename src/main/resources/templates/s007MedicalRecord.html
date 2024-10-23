@@ -28,8 +28,14 @@
 					<div class="info" style="font-size: 15px;">
 						<label>ヤマダタロウ</label>
 					</div>
-					<div class="info" style="font-size: 40px; border-bottom:1px solid">
-						<label>黒川駿斗</label><span style="margin-left: 100px;">様</span>
+					<div class="info" style="border-bottom:1px solid">
+						<span style="font-size: 40px; "><label>山田太郎</label><span style="margin-left: 200px;">様</span></span>
+						<button class="telBt">
+							<span class="icon">
+								<i class="fas fa-regular fa-plus"></i>
+							</span>
+							<br><span style="font-size: 16px;">連絡先</span>
+						</button>
 					</div>
 					<div class="info" style="font-size: 20px;">
 						<label>ID:0001
@@ -44,7 +50,7 @@
 						<label>前回来店日:</label><label>2024/10/24</label>
 					</div>
 					<div class="date" style="font-size: 20px;">
-						<label>次回来店日:</label><label>2024/10/24</label>
+						<label>次回来店日:</label><label>2025/01/24</label>
 					</div>
 					<div><button v-on:click="openEdit">編集</button></div>
 					<div><button v-on:click="openModal">追加</button></div>
@@ -54,7 +60,15 @@
 				<!-- アコーディオン形式 -->
 				<div v-for="(item, index) in accordionItems" :key="index" class="accordion-item">
 					<div class="accordion-header" @click="toggleAccordion(index)">
-						<label>{{ item.title }}</label>
+						<label style="margin-top: 15px;">{{ item.title }}</label>
+						<div style="float: right;">
+							<button v-on:click.stop="openModal" class="addBt">
+								<span class="icon">
+									<i class="fas fa-regular fa-plus"></i>
+								</span>
+								<br><span style="font-size: 16px;">追加</span>
+							</button>
+						</div>
 					</div>
 					<div v-if="item.open" class="accordion-content">
 						<input type="text" v-model="item.inputValue" placeholder="データを入力してください">
