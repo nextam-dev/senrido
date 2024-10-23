@@ -10,16 +10,22 @@
 }
 
 .login{
-	margin: 40px 0px 100px 0px;
+	margin: 40px 0px 70px 0px;
     width: 200px;
     height: 60px;
     font-size:20px;
 }
 
+@media screen and (min-width: 768px) and (max-width: 1366px) {
+    .login {
+        	margin: 40px 0px 100px 0px;
+		    width: 200px;
+		    height: 60px;
+		    font-size:20px;
+    }
+}
+
 .PasswordBt{
-	border-top:none;
-	border-left:none;
-	border-right:none;
 	background-color:#fff;
 	font-size:20px;
 }

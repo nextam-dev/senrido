@@ -33,20 +33,12 @@
 							<option></option>
 							<option>網走店</option>
 						</select>
-					</div>
-					<div class="col-6"></div>
-				</div>
-				<div class="row">
-					<div class="col-2">
 						<label>お客様ID</label>
 					</div>
-					<div class="col-4">
-						<select>
-							<option></option>
-							<option>0001</option>
-						</select>
+					<div class="col-3">
+						<input type="text">
 					</div>
-					<div class="col-6"></div>
+					<div class="col-1"></div>
 				</div>
 				<div class="row">
 					<div class="col-2">
@@ -114,17 +106,20 @@
 			      		</div>
 			      		<div class="info" style="font-size: 20px;">
 					        <label>ID:{{ customer.id }}
-					        <span style="margin-left: 10px;">{{ customer.dob }}</span>
+					        <span style="margin-left: 10px;">{{ customer.birthDate }}</span>
 					        <span style="margin-left: 10px;">生{{ customer.age }}歳</span>
 					        <span style="margin-left: 10px;">{{ customer.gender }}</span>
 					        </label>
 				      	</div>
 				    </div>
-					    <div class="col-5" style="text-align: right;">
-					     	<div class="date" style="font-size: 20px;">
-					        	<label>前回来店日:</label><label>{{ customer.lastVisit }}</label>
-					      	</div>
+					<div class="col-5" style="text-align: right;">
+					 	<div class="date" style="font-size: 20px;">
+					    	<label>前回来店日:</label><label>{{ customer.lastVisit }}</label>
 					  	</div>
+					  	<div class="date" style="font-size: 20px;">
+					    	<label>次回来店日:</label><label>{{ customer.lastVisit }}</label>
+					  	</div>
+					</div>
 				</div>
 				<div class="row list">
 					<div class="col-12" style="margin-top: 20px;">
