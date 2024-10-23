@@ -31,6 +31,9 @@
             },
             // 送信処理
             sendAuestionnaire: function() {
+            	if (!confirm('アンケートを送信します。よろしいですか？')) {
+            		return;
+            	}
             	location.href = editUrl('/s008Questionnaire/complete');
             },
             // 閉じる
