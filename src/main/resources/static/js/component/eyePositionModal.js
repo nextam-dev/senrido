@@ -50,6 +50,10 @@ Vue.component('eye-position-modal', {
 								<select class="horizontalSelect">
 									<option></option>
 									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
 								</select>
 								<label>△</label>
 							</div>
@@ -61,7 +65,15 @@ Vue.component('eye-position-modal', {
 							<div class="row">
 								<div class="col-4">
 									<label>ボヤケ:9±2</label>
-									<br><label>-</label>
+									<br>
+									<select class="totalValueEyesSelect">
+										<option></option>
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+									</select>
 								</div>
 								<div class="col-4">
 									<label>分離:19±4</label>
@@ -69,6 +81,10 @@ Vue.component('eye-position-modal', {
 									<select class="totalValueEyesSelect">
 										<option></option>
 										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
 									</select>
 								</div>
 								<div class="col-4">
@@ -77,6 +93,10 @@ Vue.component('eye-position-modal', {
 									<select class="totalValueEyesSelect">
 										<option></option>
 										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
 									</select>
 								</div>
 							</div>
@@ -92,6 +112,10 @@ Vue.component('eye-position-modal', {
 									<select class="totalValueEyesSelect">
 										<option></option>
 										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
 									</select>
 								</div>
 								<div class="col-4">
@@ -100,6 +124,10 @@ Vue.component('eye-position-modal', {
 									<select class="totalValueEyesSelect">
 										<option></option>
 										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
 									</select>
 								</div>
 								<div class="col-4">
@@ -108,6 +136,10 @@ Vue.component('eye-position-modal', {
 									<select class="totalValueEyesSelect">
 										<option></option>
 										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
 									</select>
 								</div>
 							</div>
@@ -133,12 +165,20 @@ Vue.component('eye-position-modal', {
 											<select class="topBottomSelect">
 												<option></option>
 												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
 											</select>
 										</div>
 										<div class="col-4">
 											<select class="topBottomSelect">
 												<option></option>
 												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
 											</select>
 										</div>
 									</div>
@@ -150,12 +190,20 @@ Vue.component('eye-position-modal', {
 											<select class="topBottomSelect">
 												<option></option>
 												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
 											</select>
 										</div>
 										<div class="col-4">
 											<select class="topBottomSelect">
 												<option></option>
 												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
 											</select>
 										</div>
 									</div>
@@ -172,6 +220,10 @@ Vue.component('eye-position-modal', {
 										<select class="topBottomObliqueSelect">
 												<option></option>
 												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
 											</select>
 										<label>△</label>
 									</div>
@@ -210,7 +262,7 @@ Vue.component('eye-position-modal', {
 											<label class="perspectiveIcon" style="background-color: blue;">近</label>
 										</div>
 										<div class="col-2">
-											label class="input-label"><input type="radio"><span class="spaceLeft">R</span></label>
+											<label class="input-label"><input type="radio"><span class="spaceLeft">R</span></label>
 										</div>
 										<div class="col-2">
 											<label class="input-label"><input type="radio"><span class="spaceLeft">L</span></label>
@@ -231,6 +283,10 @@ Vue.component('eye-position-modal', {
 											<select class="npcSelect">
 												<option></option>
 												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
 											</select>
 										</div>
 										<div class="col-4">
@@ -239,6 +295,10 @@ Vue.component('eye-position-modal', {
 											<select class="npcSelect">
 												<option></option>
 												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
 											</select>
 										</div>
 										<div class="col-4">
@@ -247,6 +307,10 @@ Vue.component('eye-position-modal', {
 											<select class="npcSelect">
 												<option></option>
 												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
 											</select>
 										</div>
 									</div>

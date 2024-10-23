@@ -93,3 +93,13 @@ footer {
 button{
 	border-radius: 10px;
 }
+
+/* プルダウン共通レイアウト */
+select {
+    font: 20px;
+    box-sizing: border-box;
+    padding: 0.3em;
+    border: 1px solid #1b2538;
+    border-radius: 4px;
+    transition: 0.3s;
+}
