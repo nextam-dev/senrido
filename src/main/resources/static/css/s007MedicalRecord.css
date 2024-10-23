@@ -1,4 +1,4 @@
-/* ���q�l��񕔕� */
+/* お客様情報部分*/
 .infoBox{
 	border: 1px solid;
     padding: 5px;
@@ -21,7 +21,7 @@
     width: 225px;
 }
 
-/* �A�R�[�f�B�I�����ڂ̃X�^�C�� */
+/* アコーディオン形式部分 */
 .accordion-item {
     cursor: pointer;
     padding: 5px;
@@ -38,7 +38,6 @@
     margin-left: 20px;
 }
 
-/* �E���̓��̓G���A�̃X�^�C�� */
 .input-area {
     position: absolute;
     top: 0;
@@ -59,7 +58,6 @@
     float: left;
 }
 
-/* �S�̃��C�A�E�g�̃N���A */
 .clearfix::after {
     content: "";
     clear: both;
@@ -67,35 +65,35 @@
 }
 
 main {
-	display: flex; /* �t���b�N�X�{�b�N�X���g�p */
-    flex-direction: column; /* �c�����ɔz�u */
-    max-height: 90vh; /* �ő卂�����r���[�|�[�g��80%�ɐݒ� */
+	display: flex; 
+    flex-direction: column;
+    max-height: 90vh;
 }
 
 .scrollable-content {
-    flex: 1 1 auto; /* �c��̃X�y�[�X���߂� */
-    overflow-y: auto; /* �c�X�N���[����L���ɂ��� */
+    flex: 1 1 auto; 
+    overflow-y: auto;
 }
 .scrollable-section {
-    overflow-x: auto; /* ���X�N���[����L���� */
-    height: 100vh; /* �r���[�|�[�g�̍�����100%�� */
-    display: flex; /* �����тɂ��� */
+    overflow-x: auto; 
+    height: 100vh;
+    display: flex; 
 }
 
 .scrollable-section > div {
-    min-width: 500px; /* �e��ʂ̍ŏ�����ݒ� */
-    height: 100%; /* ������100%�ɐݒ� */
-    overflow-y: auto; /* �c�X�N���[����L���� */
-    padding: 10px; /* �p�f�B���O��ǉ� */
-    box-sizing: border-box; /* �p�f�B���O���܂ތv�Z */
+    min-width: 500px; 
+    height: 100%;
+    overflow-y: auto; 
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .item {
-    min-height: 100px; /* �e�A�C�e���̍ŏ����� */
-    margin-bottom: 20px; /* �A�C�e���Ԃ̏c�X�y�[�X */
-    background-color: #f0f0f0; /* �w�i�F */
-    padding: 10px; /* �p�f�B���O��ǉ� */
-    border: 1px solid #ccc; /* ���E����ǉ� */
+    min-height: 100px; 
+    margin-bottom: 20px;
+    background-color: #f0f0f0; 
+    padding: 10px;
+    border: 1px solid #ccc; 
 }
 
 .itemTitle{
