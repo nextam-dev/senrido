@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="jp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>お客様情報新規登録</title>
+    <div th:replace="base_header"></div>
+
+    <!-- ページ固有のCSSファイル -->
+    <link rel="stylesheet" href="/css/s008Questionnaire.css" th:href="@{/css/s008Questionnaire.css}"/>
+
+    <!-- ページ固有のJSファイル -->
+    <script src="/js/page/s007MedicalNewRecord.js" th:src="@{/js/page/s007MedicalNewRecord.js}"></script>
+</head>
+
+<body>
+    <div id="content">
+        <div th:replace="header"></div>
+        <main>
+            <div class="row mainTable contensMargin">
+                <!-- コンテンツ -->
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">お名前<label class="label-required">必須</label></div>
+                        <div class="col-12 item-value">
+                            <label class="ef">
+                                <input type="text"/>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">お名前（カタカナ）<label class="label-required">必須</label></div>
+                        <div class="col-12 item-value">
+                            <label class="ef">
+                                <input type="text"/>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">性別<label class="label-required">必須</label></div>
+                        <div class="col-12 item-value">
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="sex" value="0"><span class="spaceLeft">男性</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="sex" value="1"><span class="spaceLeft">女性</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-12">
+                                    <label class="input-label"><input type="radio" name="sex" value="2"><span class="spaceLeft">回答しない</span></label>
+                                </div>
+                            </div>
+                            <div class="row item-margin">
+                                <div class="col-2">
+                                    <label class="input-label"><input type="radio" name="sex" value="9"><span class="spaceLeft">その他</span></label>
+                                </div>
+                                <div class="col-10">
+                                    <label class="ef"><input type="text" /></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">生年月日<label class="label-required">必須</label></div>
+                        <div class="col-12 item-value">
+                            <label class="ef"><input type="date"/></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <!-- 生年月日から自動計算するか -->
+                    <div class="row card">
+                        <div class="col-12 item-title">年齢<label class="label-required">必須</label></div>
+                        <div class="col-12 item-value">
+                            <label class="ef"><input type="text"/></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">来店日<label class="label-required">必須</label></div>
+                        <div class="col-12 item-value">
+                            <label class="ef"><input type="date"/></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">郵便番号<label class="label-required">必須</label></div>
+                        <div class="col-12 item-value">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label class="ef"><input type="text"/></label>
+                                </div>
+                                <div class="col-10">
+                                    <button value="郵便番号検索" >郵便番号検索</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">ご住所<label class="label-required">必須</label></div>
+                        <div class="col-12 item-value">
+                            <label class="ef"><input type="text"/></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">電話番号<label class="label-required">必須</label></div>
+                        <div class="col-12 item-value">
+                            <label class="ef"><input type="text" placeholder="ー(ハイフン)を入れてご記入ください。" /></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">携帯電話番号<label class="label-required">必須</label></div>
+                        <div class="col-12 item-value">
+                            <label class="ef"><input type="text" placeholder="ー(ハイフン)を入れてご記入ください。" /></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">勤務先電話番号<label class="label-required">必須</label></div>
+                        <div class="col-12 item-value">
+                            <label class="ef"><input type="text" placeholder="ー(ハイフン)を入れてご記入ください。" /></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">ご紹介者<label class="label-required">必須</label></div>
+                        <div class="col-12 item-value">
+                            <label class="ef"><input type="text"/></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-6 botton-area">
+                            <button class="newRegist" v-on:click="moveMedicalRecord">登録</button>
+                        </div>
+                        <div class="col-6 botton-area">
+                            <button class="newRegist" v-on:click="back">キャンセル</button>
+                        </div>
+                    </div>
+                </div>                
+                <!-- ボタン -->
+            </div>
+
+            <!-- モーダル -->
+            <processing v-if="processingFlg"></processing>
+        </main>
+    </div>
+    <div th:replace="footer"></div>
+</body>
+</html>

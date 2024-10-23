@@ -22,8 +22,8 @@ import jp.co.senrido.service.S003changeReissueService;
  * @author kurokawa
  */
 @RestController
-@RequestMapping(value = "**/s007MedicalNewRecord")
-public class S007MedicalRecordRestController {
+@RequestMapping(value = "**/s007MedicalRecord")
+public class S007MedicalNewRecordRestController {
 
 	@Autowired
 	private MCodeMasterService mCodeMasterService;

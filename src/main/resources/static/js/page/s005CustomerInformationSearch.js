@@ -41,6 +41,10 @@
         	moveMedicalRecord: function() {
                 location.href = editUrl('/s007MedicalRecord');
             },
+            // お客様情報新規登録へ遷移
+        	moveMedicalNewRecord: function() {
+                location.href = editUrl('/s007MedicalNewRecord');
+            },
             // ログイン画面へ遷移
             logout: function() {
                 location.href = editUrl('/');
