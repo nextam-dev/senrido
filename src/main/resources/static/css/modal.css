@@ -31,7 +31,7 @@
 	font-size:15px;
 	height: 680px;
 	border: 0px;
-	overflow: scroll-y;
+	overflow-y: auto;
 }
 .modal-hedder-title {
 	font-weight: bold;
@@ -39,7 +39,6 @@
 	align-items: center;
 	margin-left: 80px;
 	margin-top: 8px;
-	width: 100%;
 }
 .modal-hedder-close-button {
 	margin: 5px 0px 5px 0px;
@@ -58,6 +57,16 @@
     text-align: left;
 }
 
+.modal-item-value input[type='text'] {
+    font: 15px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.3em;
+    border: 1px solid #1b2538;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
 .modal-regist{
 	margin: 5px 0px 0px 0px;
     width:140px;
@@ -72,3 +81,11 @@
 	border-radius: 8px;
 }
 
+select {
+    font: 20px;
+    box-sizing: border-box;
+    padding: 0.3em;
+    border: 1px solid #1b2538;
+    border-radius: 4px;
+    transition: 0.3s;
+}

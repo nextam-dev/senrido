@@ -67,9 +67,15 @@
                 this.isFarSelected = false;
                 this.isNearSelected = true;
             },
+            openEdit: function() {
+            	this.$refs.customerEditModal.open();
+            },
             openModal: function() {
             	this.$refs.visitingHospitalModal.open();
-            }
+            },
+            openEyePositionModal: function() {
+            	this.$refs.eyePositionModal.open();
+            },
         },
     });
 });
