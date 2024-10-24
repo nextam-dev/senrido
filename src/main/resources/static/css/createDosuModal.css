@@ -1,0 +1,156 @@
+/* タイトル部分 */
+.title{
+	border: 1px solid black; 
+	text-align: center;
+	width: 55px;
+}
+
+.redTittle{
+	color: red;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 0.8;
+}
+
+.blueTittle{
+	color: rgb(34, 166, 218);
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 0.8;
+}
+
+.wineRedTittle{
+	color: #b33e5c;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 0.8;
+}
+
+.blackTittle{
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 0.8;
+}
+
+.titlenumber{
+	font-size: 30px;
+}
+
+/* 表全体 */
+.allrow{
+	width: 100%;
+	height: 140px;
+	display: flex;
+}
+
+/* 表内レイアウト */
+.col-border{
+	border: 1px solid black;
+	font-size: 12px;
+}
+
+.leftright{
+	flex: 1;
+	display: flex;
+	align-items: center;
+	width: 12px;
+	justify-content: center;
+}
+
+.lavel-left{
+	padding-left: 5px;
+}
+
+.row-height{
+	height: 100%;
+}
+
+/* 罫線追加 */
+.border-bottom{
+	border-bottom: 1px solid black;
+}
+
+.black-border{
+	border: 1px solid black;
+}
+
+/* 入力部分サイズ */
+.inputsize1{
+	width: 100%;
+	height: 60px;
+	border: 1px solid;
+}
+
+.inputsize2{
+	width: 100%;
+	height: 100%;
+	border: 1px solid;
+}
+
+.inputsize3{
+	width: 50px;
+	height: 100%;
+	border: 1px solid;
+}
+
+.inputsize4{
+	width: 40px;
+	height: 100%;
+	border: 1px solid;
+}
+
+.inputsize5{
+	width: 60px;
+	height: 100%;
+	border: 1px solid;
+}
+
+/* 用途部分 */
+.purposeMain{
+	margin-left: 70px;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.purposeSub{
+	font-size: 12px;
+	font-weight: bold;
+}
+
+/* 下矢印 */	
+.downArrow{
+	font-size: 50px;
+	font-weight: bold;
+}
+
+/* セル二つ分 */
+.double-row {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.textSize{
+	width: 50px;
+}
+
+/* CL度数 */
+.clDosu{
+	font-size: 15px;
+	font-weight: bold;
+	margin-left: 115px;
+	margin-bottom: 40px;
+}
+
+/* レフチェックボックス */
+.relCheckbox{
+	width: 30px;
+	-webkit-transform: scale(1.9);
+	margin-left: 0;
+}
+/* メモ部分 */
+.border{
+	width: 100%;
+	border: none;
+	border-bottom: 2px solid skyblue;
+}
