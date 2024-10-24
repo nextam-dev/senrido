@@ -120,6 +120,9 @@
             openEyePositionModal: function() {
             	this.$refs.eyePositionModal.open();
             },
+            openCreateDosuModal: function() {
+            	this.$refs.createDosuModal.open();
+            },
         },
     });
 });

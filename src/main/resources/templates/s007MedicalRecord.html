@@ -10,12 +10,15 @@
     <!-- ページ固有のCSSファイル -->
     <link rel="stylesheet" href="/css/s007MedicalRecord.css" th:href="@{/css/s007MedicalRecord.css}"/>
     <link rel="stylesheet" href="/css/s008Questionnaire.css" th:href="@{/css/s008Questionnaire.css}"/>
+    <link rel="stylesheet" href="/css/createDosuModal.css" th:href="@{/css/createDosuModal.css}"/>
     
     <!-- ページ固有のJSファイル -->
     <script src="/js/page/s007MedicalRecord.js" th:src="@{/js/page/s007MedicalRecord.js}"></script>
     <script src="/js/component/customerEditModal.js" th:src="@{/js/component/customerEditModal.js}"></script>
     <script src="/js/component/visitingHospitalModal.js" th:src="@{/js/component/visitingHospitalModal.js}"></script>
     <script src="/js/component/eyePositionModal.js" th:src="@{/js/component/eyePositionModal.js}"></script>
+    <script src="/js/component/createDosuModal.js" th:src="@{/js/component/createDosuModal.js}"></script>
+
 </head>
 
 <body>
@@ -607,7 +610,7 @@
 					<div class="accordion-header" @click="toggleAccordionDosu">
 						<label style="margin-top: 15px;">{{ accordionItemDosu.title }}</label>
 						<div style="float: right;">
-							<button v-on:click.stop="openEyePositionModal" class="addBt">
+							<button v-on:click.stop="openCreateDosuModal" class="addBt">
 								<span class="icon">
 									<i class="fas fa-regular fa-plus"></i>
 								</span>
@@ -668,6 +671,7 @@
 			<customer-edit-modal ref=customerEditModal></customer-edit-modal>
 			<visiting-hospital-modal ref=visitingHospitalModal></visiting-hospital-modal>
 			<eye-position-modal ref=eyePositionModal></eye-position-modal>
+			<create-dosu-modal ref=createDosuModal></create-dosu-modal>
 			<processing v-if="processingFlg"></processing>
 		</main>
 	</div>

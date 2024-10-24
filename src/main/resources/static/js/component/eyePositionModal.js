@@ -33,20 +33,57 @@ Vue.component('eye-position-modal', {
 						<div class="col-12">
 							<div class="margin">
 								<div class="row">
-									<div class="col-4" v-if="isFarSelected"><label class="perspectiveIcon" style="background-color: red;">遠</label></div>
-									<div class="col-4"  v-if="!isFarSelected"><label class="perspectiveIcon" style="background-color: blue;">近</label></div>
-									<div class="col-4"><label>他覚：</label></div>
-									<div class="col-4"><label>自覚：</label></div>
+									<div class="col-2" v-if="isFarSelected"><label class="perspectiveIcon" style="background-color: red;">遠</label></div>
+									<div class="col-2" v-if="!isFarSelected"><label class="perspectiveIcon" style="background-color: blue;">近</label></div>
+									<div class="col-3"><label>他覚：</label></div>
+									<div class="col-7"><label>自覚：</label></div>
 								</div>
 								<div><img src="/senrido/img/eye-image1.png"></div>
 							</div>
-							<div style="text-align: left;" class="margin">
+							<div style="text-align: left;" class="margin" v-if="isFarSelected">
 								<label class="diamondTitle" style="font-size: 20px;">◆水平斜位量◆</label>
 								<label class="horizontalSubTitle">in=exo　out=eso<br>exo=マイナス表記</label>
 							</div>
+							<div style="text-align: left;" class="margin" v-if="isNearSelected">
+								<label class="diamondTitle" style="font-size: 20px;">◆水平斜位量（A）◆</label>
+								<label class="horizontalSubTitle">in=exo　out=eso<br>exo=マイナス表記</label>
+							</div>
 							<div>
-								<label>期待値:1exo±1</label>
+								<label>期待値：1exo±1</label>
 								<br>
+								<select class="horizontalSelect">
+									<option></option>
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</select>
+								<label>△</label>
+							</div>
+							<div style="text-align: left;" class="margin" v-if="isNearSelected">
+								<label class="diamondTitle" style="font-size: 20px;">◆1D-水平斜位量（B）◆</label>
+							</div>
+							<div v-if="isNearSelected">
+								<label>期待値：4exo±1</label>
+								<br>
+								<select class="horizontalSelect">
+									<option></option>
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</select>
+								<label>△</label>
+							</div>
+							<div style="text-align: left;" class="margin" v-if="isNearSelected">
+								<label class="diamondTitle" style="font-size: 20px;">AC/A 比</label>
+							</div>
+							<div v-if="isNearSelected">
+								<label>A－B&nbsp;&nbsp;&nbsp;&nbsp;High&nbsp;6～：Normal&nbsp;4～6：Low&nbsp;～4</label>
+								<br>
+								<!-- 自動計算 -->
 								<select class="horizontalSelect">
 									<option></option>
 									<option>1</option>
