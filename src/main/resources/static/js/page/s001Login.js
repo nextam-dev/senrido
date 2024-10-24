@@ -15,6 +15,8 @@ window.addEventListener('DOMContentLoaded', function () {
                 initSearchFlg: false,
                 // ログインフラグ
                 loginFig:false,
+                // ハンバーガーメニュー
+                isMenuOpen: false,
             }
         },
         created() {
@@ -33,10 +35,6 @@ window.addEventListener('DOMContentLoaded', function () {
         	// 発行画面へ遷移
         	movePasswordReissue: function() {
                 location.href = editUrl('/s003PasswordReissue');
-            },
-        	// 更新画面へ遷移
-            movePasswordChange: function() {
-                location.href = editUrl('/s002PasswordChange');
             },
             showModalProcessing: function () {
                 this.processingFlg = true;

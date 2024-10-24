@@ -25,6 +25,9 @@
         },
         computed: {},
         methods: {
+        	back: function () {
+       		 history.back();
+           },
         	// ログイン画面へ遷移
         	moveLogin: function() {
                 location.href = editUrl('/');

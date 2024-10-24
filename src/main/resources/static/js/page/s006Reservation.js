@@ -15,6 +15,8 @@
                 initSearchFlg: false,
                 // ログインフラグ
                 loginFig:true,
+                // ハンバーガーメニュー
+                isMenuOpen: false,
                 customers: [
                     { kana: 'ヤマダタロウ', name: '山田太郎', id: '0001', birthDate: '平成11年04月18日', age: '25歳', gender: '男性', kaisu: '2', lastVisit: '2024/10/24 10:00' },
                     { kana: 'スズキイチロウ', name: '鈴木一郎', id: '0002', birthDate: '平成10年12月05日', age: '26歳', gender: '男性', kaisu: '1', lastVisit: '2024/10/24 11:00' },
@@ -40,6 +42,13 @@
             // ログイン画面へ遷移
             logout: function() {
                 location.href = editUrl('/');
+            },
+            // 更新画面へ遷移
+            movePasswordChange: function() {
+                location.href = editUrl('/s002PasswordChange');
+            },
+            toggleMenu() {
+                this.isMenuOpen = !this.isMenuOpen;
             },
             showModalProcessing: function () {
                 this.processingFlg = true;
