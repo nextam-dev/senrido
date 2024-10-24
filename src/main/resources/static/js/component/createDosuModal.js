@@ -74,7 +74,7 @@ Vue.component('create-dosu-modal', {
 									</div>
 									<div style="display: flex; height: 120px;">
 										<div style="width: 100px;">
-											<input type="text" style="width: 100px; height: 120px; border: 1px solid;">
+											<input type="text" class="inputsize1" style="width: 100px; height: 120px; border: 1px solid;">
 										</div>
 										<div class="double-row" style="width: 100px;">
 											<input type="text" class="inputsize1">
@@ -124,7 +124,7 @@ Vue.component('create-dosu-modal', {
 									<div class="border-bottom" style="height: 27px; width: 60px; border: 1px solid;">
 										<label></label>
 									</div>
-									<div class="leftright border-bottom" style="height: 60px; width: 60px; border: 1px solid;">
+									<div class="leftright border-bottom " style="height: 60px; width: 60px; border: 1px solid;">
 										<label>R</label>
 									</div>
 									<div class="leftright" style="height: 60px; width: 60px; border: 1px solid;">
@@ -170,7 +170,7 @@ Vue.component('create-dosu-modal', {
 										<label class="lavel-left">ADD</label>
 									</div>
 									<div style="height: 120px; width: 100px;">
-										<input type="text" class="textSize" style="width: 100%; border: 1px solid; height: 120px;">
+										<input type="text" class="inputsize1" style="width: 100%; border: 1px solid; height: 120px;">
 									</div>
 								</div>
 								<!-- PD列 -->
@@ -195,14 +195,6 @@ Vue.component('create-dosu-modal', {
                         </div>
                         <div class="col-1" style="display: flex; align-items: center;">CM</div>
                     </div><!-- 作製度数 -->
-                    <div class="row"　style="margin-top: 20px;">
-                        <div class="col-6 botton-area" style="min-height:40px;">
-                            <button class="modal-delete">交換</button>
-                        </div>
-                        <div class="col-6 botton-area" style="min-height:40px;">
-                            <button class="modal-delete">追加</button>
-                        </div>
-                    </div>
 	            </div><!-- /modal-content -->
                 <div class="row" style="margin-top: 10px;">
 	                <div class="col-12">

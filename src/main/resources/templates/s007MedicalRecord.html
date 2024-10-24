@@ -18,6 +18,7 @@
     <script src="/js/component/visitingHospitalModal.js" th:src="@{/js/component/visitingHospitalModal.js}"></script>
     <script src="/js/component/eyePositionModal.js" th:src="@{/js/component/eyePositionModal.js}"></script>
     <script src="/js/component/createDosuModal.js" th:src="@{/js/component/createDosuModal.js}"></script>
+    <script src="/js/component/kanzenKyoseiModal.js" th:src="@{/js/component/kanzenKyoseiModal.js}"></script>
 
 </head>
 
@@ -652,21 +653,570 @@
 					</div>
 					<div v-if="accordionItemDosu.open" class="accordion-content">
 						<div class="row">
+							<div class="col-12"><label class="accordion-label">2024/10/24</label></div>
 						</div>
+	                    <div class="row">
+	                        <div class="col-12 item-title">主な用途：遠用</div>
+	                    </div>
+						<div class="row">
+							<div class="col-11">
+								<div class="allrow">
+									<!-- R・L -->
+									<div class="black-border" style="height: 147px; flex-direction: column;">
+										<div class="border-bottom" style="height: 27px; width: 60px; border: 1px solid;">
+											<label></label>
+										</div>
+										<div class="leftright border-bottom" style="height: 60px; width: 60px; border: 1px solid;">
+											<label>R</label>
+										</div>
+										<div class="leftright" style="height: 60px; width: 60px; border: 1px solid;">
+											<label>L</label>
+										</div>
+									</div>		
+									<!-- CV列 -->
+									<div>
+										<div class="col-border" style="width: 150px; border: 1px solid;">
+											<label class="lavel-left">CV</label>
+										</div>
+										<div style="display: flex; height: 120px;">
+											<div style="width: 75px;">
+												<input type="text" class="inputsize1" style="width: 75px; height: 120px; border: 1px solid;">
+											</div>
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<!-- S列 -->
+									<div>
+										<div class="row-height">
+											<div class="col-border" style="width: 75px; border: 1px solid;">
+												<label class="lavel-left">S</label>
+											</div>
+											<div class="double-row" style="height: 120px; width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<div>
+										<div class="row-height">
+											<div class="col-border" style="width: 75px; border: 1px solid;">
+												<label class="lavel-left">C</label>
+											</div>
+												<div class="double-row" style="height: 120px; width: 75px;">
+													<input type="text" class="inputsize1">
+													<input type="text" class="inputsize1">
+												</div>
+										</div>
+									</div>
+									<!-- AX列 -->
+									<div>
+										<div class="row-height">
+											<div class="col-border" style="width: 75px; border: 1px solid;">
+												<label class="lavel-left">AX</label>
+											</div>
+											<div class="double-row" style="height: 120px; width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<!-- P/BASE 1列-->
+									<div>
+										<div class="col-border" style="width: 150px; border: 1px solid;">
+											<label class="lavel-left">P/BASE 1</label>
+										</div>
+										<div style="display: flex; height: 120px;">
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<!-- P/BASE 2列-->
+									<div>
+										<div class="col-border" style="width: 150px; border: 1px solid;">
+											<label class="lavel-left">P/BASE 2</label>
+										</div>
+										<div style="display: flex; height: 120px;">
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<!-- ADD列 -->
+									<div>
+										<div class="col-border" style="width: 75px; border: 1px solid;">
+											<label class="lavel-left">ADD</label>
+										</div>
+										<div style="height: 120px; width: 75px;">
+											<input type="text" class="inputsize1" style="width: 100%; border: 1px solid; height: 120px;">
+										</div>
+									</div>
+									<!-- PD列 -->
+									<div>
+										<div class="col-border" style="width: 75px; border: 1px solid;">
+											<label class="lavel-left">PD</label>
+										</div>
+										<div class="double-row" style="width: 75px; height: 120px;">
+											<input type="text" class="inputsize1">
+											<input type="text" class="inputsize1">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-1">
+								<div style="float: right;">
+									<button v-on:click.stop="openCreateDosuModal" class="addBt">
+										<span class="icon">
+											<i class="fas fa-regular fa-plus"></i>
+										</span>
+										<br><span style="font-size: 16px;">交換</span>
+									</button>
+								</div>
+							</div>
+						</div>
+	                    <div class="row" style="margin-top: 10px;">
+	                        <div class="col-2 item-title" style="font-weight: narmal;">近用作業距離</div>
+	                        <div class="col-2 item-title" style="font-weight: narmal;">100CM</div>
+	                    </div><!-- 作製度数 -->
+
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-12"><label class="accordion-label">2024/07/24</label></div>
+						</div>
+	                    <div class="row">
+	                        <div class="col-12 item-title">主な用途：遠用</div>
+	                    </div>
+						<div class="row">
+							<div class="col-11">
+								<div class="allrow">
+									<!-- R・L -->
+									<div class="black-border" style="height: 147px; flex-direction: column;">
+										<div class="border-bottom" style="height: 27px; width: 60px; border: 1px solid;">
+											<label></label>
+										</div>
+										<div class="leftright border-bottom" style="height: 60px; width: 60px; border: 1px solid;">
+											<label>R</label>
+										</div>
+										<div class="leftright" style="height: 60px; width: 60px; border: 1px solid;">
+											<label>L</label>
+										</div>
+									</div>		
+									<!-- CV列 -->
+									<div>
+										<div class="col-border" style="width: 150px; border: 1px solid;">
+											<label class="lavel-left">CV</label>
+										</div>
+										<div style="display: flex; height: 120px;">
+											<div style="width: 75px;">
+												<input type="text" class="inputsize1" style="width: 75px; height: 120px; border: 1px solid;">
+											</div>
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<!-- S列 -->
+									<div>
+										<div class="row-height">
+											<div class="col-border" style="width: 75px; border: 1px solid;">
+												<label class="lavel-left">S</label>
+											</div>
+											<div class="double-row" style="height: 120px; width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<div>
+										<div class="row-height">
+											<div class="col-border" style="width: 75px; border: 1px solid;">
+												<label class="lavel-left">C</label>
+											</div>
+												<div class="double-row" style="height: 120px; width: 75px;">
+													<input type="text" class="inputsize1">
+													<input type="text" class="inputsize1">
+												</div>
+										</div>
+									</div>
+									<!-- AX列 -->
+									<div>
+										<div class="row-height">
+											<div class="col-border" style="width: 75px; border: 1px solid;">
+												<label class="lavel-left">AX</label>
+											</div>
+											<div class="double-row" style="height: 120px; width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<!-- P/BASE 1列-->
+									<div>
+										<div class="col-border" style="width: 150px; border: 1px solid;">
+											<label class="lavel-left">P/BASE 1</label>
+										</div>
+										<div style="display: flex; height: 120px;">
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<!-- P/BASE 2列-->
+									<div>
+										<div class="col-border" style="width: 150px; border: 1px solid;">
+											<label class="lavel-left">P/BASE 2</label>
+										</div>
+										<div style="display: flex; height: 120px;">
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<!-- ADD列 -->
+									<div>
+										<div class="col-border" style="width: 75px; border: 1px solid;">
+											<label class="lavel-left">ADD</label>
+										</div>
+										<div style="height: 120px; width: 75px;">
+											<input type="text" class="inputsize1" style="width: 100%; border: 1px solid; height: 120px;">
+										</div>
+									</div>
+									<!-- PD列 -->
+									<div>
+										<div class="col-border" style="width: 75px; border: 1px solid;">
+											<label class="lavel-left">PD</label>
+										</div>
+										<div class="double-row" style="width: 75px; height: 120px;">
+											<input type="text" class="inputsize1">
+											<input type="text" class="inputsize1">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-1">
+								<div style="float: right;">
+									<button v-on:click.stop="openCreateDosuModal" class="addBt">
+										<span class="icon">
+											<i class="fas fa-regular fa-plus"></i>
+										</span>
+										<br><span style="font-size: 16px;">交換</span>
+									</button>
+								</div>
+							</div>
+						</div>
+	                    <div class="row" style="margin-top: 10px;">
+	                        <div class="col-2 item-title" style="font-weight: narmal;">近用作業距離</div>
+	                        <div class="col-2 item-title" style="font-weight: narmal;">100CM</div>
+	                    </div><!-- 作製度数 -->
 					</div>
 				</div>
-				<!-- 過去データ -->
+				<!-- 完全矯正 -->
 				<div class="accordion-item">
-					<div id="accordionKako" class="accordion-header" @click="toggleAccordionHistory">
-						<label style="margin-top: 15px;">{{ accordionItemHistory.title }}</label>
+					<div id="accordionKyosei" class="accordion-header" @click="toggleAccordionKyosei">
+						<label style="margin-top: 15px;">{{ accordionItemKyosei.title }}</label>
 						<div style="float: right;">
-							<button v-on:click.stop="openEyePositionModal" class="addBt">
+							<button v-on:click.stop="openCreateKyoseiModal" class="addBt">
 								<span class="icon">
 									<i class="fas fa-regular fa-plus"></i>
 								</span>
 								<br><span style="font-size: 16px;">追加</span>
 							</button>
 						</div>
+					</div>
+					<div v-if="accordionItemKyosei.open" class="accordion-content">
+						<div class="row">
+							<div class="col-12"><label class="accordion-label">2024/10/24</label></div>
+						</div>
+	                    <div class="row">
+	                        <div class="col-12 item-title">完全矯正</div>
+	                    </div>
+						<div class="row">
+							<div class="col-11">
+								<div class="allrow">
+									<!-- R・L -->
+									<div class="black-border" style="height: 147px; flex-direction: column;">
+										<div class="border-bottom" style="height: 27px; width: 60px; border: 1px solid;">
+											<label></label>
+										</div>
+										<div class="leftright border-bottom" style="height: 60px; width: 60px; border: 1px solid;">
+											<label>R</label>
+										</div>
+										<div class="leftright" style="height: 60px; width: 60px; border: 1px solid;">
+											<label>L</label>
+										</div>
+									</div>		
+									<!-- V列 -->
+									<div>
+										<div class="col-border" style="width: 150px; border: 1px solid;">
+											<label class="lavel-left">V</label>
+										</div>
+										<div style="display: flex; height: 120px;">
+											<div style="width: 75px;">
+												<input type="text" class="inputsize1" style="width: 75px; height: 120px; border: 1px solid;">
+											</div>
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<!-- CV列 -->
+									<div>
+										<div class="col-border" style="width: 150px; border: 1px solid;">
+											<label class="lavel-left">CV</label>
+										</div>
+										<div style="display: flex; height: 120px;">
+											<div style="width: 75px;">
+												<input type="text" class="inputsize1" style="width: 75px; height: 120px; border: 1px solid;">
+											</div>
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<!-- S列 -->
+									<div>
+										<div class="row-height">
+											<div class="col-border" style="width: 75px; border: 1px solid;">
+												<label class="lavel-left">S</label>
+											</div>
+											<div class="double-row" style="height: 120px; width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<!-- C列 -->
+									<div>
+										<div class="row-height">
+											<div class="col-border" style="width: 75px; border: 1px solid;">
+												<label class="lavel-left">C</label>
+											</div>
+												<div class="double-row" style="height: 120px; width: 75px;">
+													<input type="text" class="inputsize1">
+													<input type="text" class="inputsize1">
+												</div>
+										</div>
+									</div>
+									<!-- AX列 -->
+									<div>
+										<div class="row-height">
+											<div class="col-border" style="width: 75px; border: 1px solid;">
+												<label class="lavel-left">AX</label>
+											</div>
+											<div class="double-row" style="height: 120px; width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<!-- P/BASE 1列-->
+									<div>
+										<div class="col-border" style="width: 150px; border: 1px solid;">
+											<label class="lavel-left">P/BASE 1</label>
+										</div>
+										<div style="display: flex; height: 120px;">
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<!-- P/BASE 2列-->
+									<div>
+										<div class="col-border" style="width: 150px; border: 1px solid;">
+											<label class="lavel-left">P/BASE 2</label>
+										</div>
+										<div style="display: flex; height: 120px;">
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<!-- ADD列 -->
+									<div>
+										<div class="col-border" style="width: 75px; border: 1px solid;">
+											<label class="lavel-left">ADD</label>
+										</div>
+										<div style="height: 120px; width: 75px;">
+											<input type="text" class="inputsize1" style="width: 100%; border: 1px solid; height: 120px;">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	                    <div class="row" style="margin-top: 10px;">
+	                        <div class="col-12 item-title">完全矯正（CL装用）</div>
+	                    </div>
+						<div class="row">
+							<div class="col-11">
+								<div class="allrow">
+									<!-- R・L -->
+									<div class="black-border" style="height: 147px; flex-direction: column;">
+										<div class="border-bottom" style="height: 27px; width: 60px; border: 1px solid;">
+											<label></label>
+										</div>
+										<div class="leftright border-bottom" style="height: 60px; width: 60px; border: 1px solid;">
+											<label>R</label>
+										</div>
+										<div class="leftright" style="height: 60px; width: 60px; border: 1px solid;">
+											<label>L</label>
+										</div>
+									</div>		
+									<!-- V列 -->
+									<div>
+										<div class="col-border" style="width: 150px; border: 1px solid;">
+											<label class="lavel-left">V</label>
+										</div>
+										<div style="display: flex; height: 120px;">
+											<div style="width: 75px;">
+												<input type="text" class="inputsize1" style="width: 75px; height: 120px; border: 1px solid;">
+											</div>
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<!-- CV列 -->
+									<div>
+										<div class="col-border" style="width: 150px; border: 1px solid;">
+											<label class="lavel-left">CV</label>
+										</div>
+										<div style="display: flex; height: 120px;">
+											<div style="width: 75px;">
+												<input type="text" class="inputsize1" style="width: 75px; height: 120px; border: 1px solid;">
+											</div>
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<!-- S列 -->
+									<div>
+										<div class="row-height">
+											<div class="col-border" style="width: 75px; border: 1px solid;">
+												<label class="lavel-left">S</label>
+											</div>
+											<div class="double-row" style="height: 120px; width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<!-- C列 -->
+									<div>
+										<div class="row-height">
+											<div class="col-border" style="width: 75px; border: 1px solid;">
+												<label class="lavel-left">C</label>
+											</div>
+												<div class="double-row" style="height: 120px; width: 75px;">
+													<input type="text" class="inputsize1">
+													<input type="text" class="inputsize1">
+												</div>
+										</div>
+									</div>
+									<!-- AX列 -->
+									<div>
+										<div class="row-height">
+											<div class="col-border" style="width: 75px; border: 1px solid;">
+												<label class="lavel-left">AX</label>
+											</div>
+											<div class="double-row" style="height: 120px; width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<!-- P/BASE 1列-->
+									<div>
+										<div class="col-border" style="width: 150px; border: 1px solid;">
+											<label class="lavel-left">P/BASE 1</label>
+										</div>
+										<div style="display: flex; height: 120px;">
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<!-- P/BASE 2列-->
+									<div>
+										<div class="col-border" style="width: 150px; border: 1px solid;">
+											<label class="lavel-left">P/BASE 2</label>
+										</div>
+										<div style="display: flex; height: 120px;">
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+											<div class="double-row" style="width: 75px;">
+												<input type="text" class="inputsize1">
+												<input type="text" class="inputsize1">
+											</div>
+										</div>
+									</div>
+									<!-- ADD列 -->
+									<div>
+										<div class="col-border" style="width: 75px; border: 1px solid;">
+											<label class="lavel-left">ADD</label>
+										</div>
+										<div style="height: 120px; width: 75px;">
+											<input type="text" class="inputsize1" style="width: 100%; border: 1px solid; height: 120px;">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+	                        <div class="col-2 item-title" style="font-weight: narmal;">CL度数</div>
+	                        <div class="col-1 item-title" style="font-weight: narmal;">R:10</div>
+	                        <div class="col-1 item-title" style="font-weight: narmal;">L:12</div>
+	                    </div>
+					</div>
+				</div>
+				<!-- 過去データ -->
+				<div class="accordion-item">
+					<div id="accordionKako" class="accordion-header" @click="toggleAccordionHistory">
+						<label style="margin-top: 15px;">{{ accordionItemHistory.title }}</label>
 					</div>
 					<div v-if="accordionItemHistory.open" class="accordion-content">
 						<div class="row">
@@ -704,6 +1254,7 @@
 			<visiting-hospital-modal ref=visitingHospitalModal></visiting-hospital-modal>
 			<eye-position-modal ref=eyePositionModal></eye-position-modal>
 			<create-dosu-modal ref=createDosuModal></create-dosu-modal>
+			<kanzen-kyosei-modal ref=kanzenKyoseiModal></kanzen-kyosei-modal>
 			<processing v-if="processingFlg"></processing>
 		</main>
 	</div>

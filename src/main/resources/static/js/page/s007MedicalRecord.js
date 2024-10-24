@@ -38,6 +38,9 @@
                 accordionItemDosu: {
                 	title: '作成度数', open: false, inputValue: ''
                 },
+                accordionItemKyosei: {
+                	title: '完全強制', open: false, inputValue: ''
+                },
                 accordionItemHistory: {
                 	title: '過去データ', open: false, inputValue: ''
                 },
@@ -121,6 +124,14 @@
                     item.open = false;
                 });
             },
+            toggleAccordionKyosei: function () {
+            	// アコーディオンの開閉
+                this.accordionItemKyosei.open = !this.accordionItemKyosei.open;
+                // 他のアコーディオン項目を閉じる
+                this.accordionItems.forEach((item, i) => {
+                    item.open = false;
+                });
+            },
             toggleAccordionHistory: function () {
             	// アコーディオンの開閉
                 this.accordionItemHistory.open = !this.accordionItemHistory.open;
@@ -156,6 +167,9 @@
             },
             openCreateDosuModal: function() {
             	this.$refs.createDosuModal.open();
+            },
+            openCreateKyoseiModal: function() {
+            	this.$refs.kanzenKyoseiModal.open();
             },
         },
     });
