@@ -14,7 +14,18 @@
 				<label class="loginLabel">ログイン：<label>黒川駿斗</label>
 			</div>
 			<div class="col-1">
-				<button v-on:click="logout" class="logout">ログアウト</button>
+			    <!-- ハンバーガーアイコン -->
+			    <div class="menu-icon" @click="toggleMenu">
+			        <div class="bar"></div>
+			        <div class="bar"></div>
+			        <div class="bar"></div>
+			    </div>
+			
+			    <!-- メニュー（ハンバーガーメニュー） -->
+			    <div v-if="isMenuOpen" class="menu">
+			        <button class="menu-item" @click="movePasswordChange">パスワード変更</button>
+			        <button class="menu-item" @click="logout">ログアウト</button>
+			    </div>
 			</div>
 		</div>
 	</header>

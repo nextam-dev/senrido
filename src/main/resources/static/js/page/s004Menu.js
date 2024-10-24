@@ -17,6 +17,8 @@
                 loginFig:true,
                 // メニューフラグ
                 menuFig:true,
+                // ハンバーガーメニュー
+                isMenuOpen: false,
             }
         },
         created() {
@@ -40,6 +42,13 @@
             // ログイン画面へ遷移
             logout: function() {
                 location.href = editUrl('/');
+            },
+        	// 更新画面へ遷移
+            movePasswordChange: function() {
+                location.href = editUrl('/s002PasswordChange');
+            },
+            toggleMenu: function(){
+                this.isMenuOpen = !this.isMenuOpen;
             },
             showModalProcessing: function () {
                 this.processingFlg = true;

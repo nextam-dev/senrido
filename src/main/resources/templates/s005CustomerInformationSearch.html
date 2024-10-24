@@ -19,8 +19,13 @@
 		<div th:replace="header"></div>
 		<main>
 			<!-- 新規登録 -->
-			<div style="text-align: right; margin-top: 10px;">
-			    <button v-on:click="moveMedicalNewRecord" class="newRegist">新規登録</button>
+			<div class="row">
+				<div class="col-6" style="text-align: left; margin-top: 10px; font-size:25px;">
+					<label>お客様情報検索画面</label>
+				</div>
+				<div class="col-6" style="text-align: right; margin-top: 10px;">
+				    <button v-on:click="moveMedicalNewRecord" class="newRegist">新規登録</button>
+				</div>
 			</div>
 			<!-- 検索部分 -->
 			<div class="searchBox">

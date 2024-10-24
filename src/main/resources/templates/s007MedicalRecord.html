@@ -22,6 +22,37 @@
 	<div id="content">
 		<div th:replace="header"></div>
 		<main>
+			<div class="row">
+				<div class="col-6" style="text-align: left; margin-top: 20px; font-size:25px;">
+					<label>お客様情報詳細画面</label>
+				</div>
+				<div class="col-6" style="text-align: left; margin-top: 5px;">
+					<button class="editBt"  v-on:click="scrollToAccordionGani">
+						<span class="icon">
+							<i class="fas fa-regular fa-eye"></i>
+						</span>
+						<br><span style="font-size: 16px;">眼位</span>
+					</button>	
+					<button class="editBt"  v-on:click="scrollToAccordionDosu">
+						<span class="icon">
+							<i class="fas fa-solid fa-glasses"></i>
+						</span>
+						<br><span style="font-size: 12px;">作成度数</span>
+					</button>
+					<button class="editBt"  v-on:click="scrollToAccordionKako">
+						<span class="icon">
+							<i class="fas fa-regular fa-table"></i>
+						</span>
+						<br><span style="font-size: 16px;">過去</span>
+					</button>
+					<button class="editBt"  v-on:click="scrollToAccordionUriage">
+						<span class="icon">
+							<i class="fas fa-solid fa-cash-register"></i>
+						</span>
+						<br><span style="font-size: 16px;">売上</span>
+					</button>
+				</div>
+			</div>
 			<!-- 個人情報 -->
 			<div class="infoBox row">
 				<div class="col-8">
@@ -75,18 +106,19 @@
 						</div>
 					</div>
 					<div v-if="item.open" class="accordion-content">
-						<input type="text" v-model="item.inputValue" placeholder="データを入力してください">
-						<br><input type="text" v-model="item.inputValue" placeholder="データを入力してください">
-						<br><input type="text" v-model="item.inputValue" placeholder="データを入力してください">
-						<br><input type="text" v-model="item.inputValue" placeholder="データを入力してください">
-						<br><input type="text" v-model="item.inputValue" placeholder="データを入力してください">
-						<br><input type="text" v-model="item.inputValue" placeholder="データを入力してください">
-						<br><input type="text" v-model="item.inputValue" placeholder="データを入力してください">
+						<label class="accordion-label">2024/10/24</label>
+						<br><input type="text" class="accordion-input" v-model="item.inputValue" placeholder="眼科への通院：有" disabled>
+						<br><input type="text" class="accordion-input" v-model="item.inputValue" placeholder="受信日：2024/10/24" disabled>
+						<br><input type="text" class="accordion-input" v-model="item.inputValue" placeholder="眼科名：黒川眼科" disabled>
+						<br><input type="text" class="accordion-input" v-model="item.inputValue" placeholder="症状：近視、白内障、レーシック" disabled>
+						<br><input type="text" class="accordion-input" v-model="item.inputValue" placeholder="メガネの作成指示：無" disabled>
+						<br><input type="text" class="accordion-input" v-model="item.inputValue" placeholder="処方箋：有" disabled>
+						<br><input type="text" class="accordion-input" v-model="item.inputValue" placeholder="眼科医の指示・意見：経過観察" disabled>
 					</div>
 				</div>
 				<!-- 眼位 -->
 				<div class="accordion-item">
-					<div class="accordion-header" @click="toggleAccordionGani">
+					<div id="accordionGani" class="accordion-header" @click="toggleAccordionGani">
 						<label style="margin-top: 15px;">{{ accordionItemGani.title }}</label>
 						<div style="float: right;">
 							<button v-on:click.stop="openEyePositionModal" class="addBt">
@@ -604,7 +636,7 @@
 				</div>
 				<!-- 作成度数 -->
 				<div class="accordion-item">
-					<div class="accordion-header" @click="toggleAccordionDosu">
+					<div id="accordionDosu" class="accordion-header" @click="toggleAccordionDosu">
 						<label style="margin-top: 15px;">{{ accordionItemDosu.title }}</label>
 						<div style="float: right;">
 							<button v-on:click.stop="openEyePositionModal" class="addBt">
@@ -622,7 +654,7 @@
 				</div>
 				<!-- 過去データ -->
 				<div class="accordion-item">
-					<div class="accordion-header" @click="toggleAccordionHistory">
+					<div id="accordionKako" class="accordion-header" @click="toggleAccordionHistory">
 						<label style="margin-top: 15px;">{{ accordionItemHistory.title }}</label>
 						<div style="float: right;">
 							<button v-on:click.stop="openEyePositionModal" class="addBt">
@@ -640,7 +672,7 @@
 				</div>
 				<!-- 売上データ -->
 				<div class="accordion-item">
-					<div class="accordion-header" @click="toggleAccordionSales">
+					<div id="accordionUriage" class="accordion-header" @click="toggleAccordionSales">
 						<label style="margin-top: 15px;">{{ accordionItemSales.title }}</label>
 						<div style="float: right;">
 							<button v-on:click.stop="openEyePositionModal" class="addBt">

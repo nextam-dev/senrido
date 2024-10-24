@@ -13,6 +13,8 @@
                 initSearchFlg: false,
                 // ログインフラグ
                 loginFig: true,
+                // ハンバーガーメニュー
+                isMenuOpen: false,
                 // アコーディオンのデータ
                 accordionItems: [
                     { title: '眼科への通院', open: false, inputValue: '' },
@@ -55,11 +57,43 @@
             logout: function() {
                 location.href = editUrl('/');
             },
+            // 更新画面へ遷移
+            movePasswordChange: function() {
+                location.href = editUrl('/s002PasswordChange');
+            },
+            toggleMenu() {
+                this.isMenuOpen = !this.isMenuOpen;
+            },
             showModalProcessing: function () {
                 this.processingFlg = true;
             },
             closeModalProcessing: function () {
                 this.processingFlg = false;
+            },
+            scrollToAccordionGani: function() {
+            	this.accordionItemGani.open = true;
+                const target = document.getElementById('accordionGani');
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            },
+            scrollToAccordionDosu: function() {
+                const target = document.getElementById('accordionDosu');
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            },
+            scrollToAccordionKako: function() {
+                const target = document.getElementById('accordionKako');
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            },
+            scrollToAccordionUriage: function() {
+                const target = document.getElementById('accordionUriage');
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
             },
             toggleAccordion: function(index) {
                 // アコーディオンの開閉
