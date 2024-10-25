@@ -41,6 +41,9 @@
                 accordionItemKyosei: {
                 	title: '完全矯正', open: false, inputValue: ''
                 },
+                accordionItemRef: {
+                	title: 'レフ', open: false, inputValue: ''
+                },
                 accordionItemHistory: {
                 	title: '過去データ', open: false, inputValue: ''
                 },
@@ -131,6 +134,14 @@
             toggleAccordionKyosei: function () {
             	// アコーディオンの開閉
                 this.accordionItemKyosei.open = !this.accordionItemKyosei.open;
+                // 他のアコーディオン項目を閉じる
+                this.accordionItems.forEach((item, i) => {
+                    item.open = false;
+                });
+            },
+            toggleAccordionRef: function () {
+            	// アコーディオンの開閉
+                this.accordionItemRef.open = !this.accordionItemRef.open;
                 // 他のアコーディオン項目を閉じる
                 this.accordionItems.forEach((item, i) => {
                     item.open = false;

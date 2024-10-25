@@ -1278,6 +1278,27 @@
 	                    </div>
 					</div>
 				</div>
+				<!-- レフ -->
+				<div class="accordion-item">
+					<div id="accordionKako" class="accordion-header" @click="toggleAccordionRef">
+						<label style="margin-top: 15px;">{{ accordionItemRef.title }}</label>
+						<div style="float: right;">
+							<button v-on:click.stop="openEyePositionModal" class="addBt">
+								<span class="icon">
+									<i class="fas fa-regular fa-plus"></i>
+								</span>
+								<br><span style="font-size: 16px;">追加</span>
+							</button>
+						</div>
+					</div>
+					<div v-if="accordionItemRef.open" class="accordion-content">
+						<div class="row">
+							<div class="col-12">
+								<img src="/senrido/img/ref_img.png" style="width: 100%;" />
+							</div>
+						</div>
+					</div>
+				</div>
 				<!-- 過去データ -->
 				<div class="accordion-item">
 					<div id="accordionKako" class="accordion-header" @click="toggleAccordionHistory">
