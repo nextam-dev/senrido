@@ -61,7 +61,6 @@ header{
 .menu-icon {
     position: fixed;
     top: 12px;
-    right: 700px;
     width: 30px;
     height: 22px;
     cursor: pointer;
@@ -104,6 +103,7 @@ header{
     justify-content: center;
     align-items: center;
     transition: transform 0.3s ease;
+    margin-left: -87px;
 }
 
 /* メニューのボタンスタイル */

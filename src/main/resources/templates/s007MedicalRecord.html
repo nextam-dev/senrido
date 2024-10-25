@@ -19,6 +19,7 @@
     <script src="/js/component/eyePositionModal.js" th:src="@{/js/component/eyePositionModal.js}"></script>
     <script src="/js/component/createDosuModal.js" th:src="@{/js/component/createDosuModal.js}"></script>
     <script src="/js/component/kanzenKyoseiModal.js" th:src="@{/js/component/kanzenKyoseiModal.js}"></script>
+    <script src="/js/component/contactModal.js" th:src="@{/js/component/contactModal.js}"></script>
 
 </head>
 
@@ -71,7 +72,7 @@
 					</div>
 					<div class="info" style="border-bottom:1px solid">
 						<span style="font-size: 40px; "><label>山田太郎</label><span style="margin-left: 200px;">様</span></span>
-						<button class="telBt">
+						<button class="telBt" v-on:click="openContactModal">
 							<span class="icon">
 								<i class="fas fa-regular fa-phone"></i>
 							</span>
@@ -1284,6 +1285,9 @@
 					</div>
 					<div v-if="accordionItemHistory.open" class="accordion-content">
 						<div class="row">
+							<div class="col-12">
+								<img src="/senrido/img/history_img.png" style="width: 100%;" />
+							</div>
 						</div>
 					</div>
 				</div>
@@ -1302,6 +1306,18 @@
 					</div>
 					<div v-if="accordionItemSales.open" class="accordion-content">
 						<div class="row">
+							<div class="col-12"><label class="accordion-label">2024/10/24</label></div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<img src="/senrido/img/sales_1.png" style="width: 100%;" />
+							</div>
+							<div class="col-12">
+								<img src="/senrido/img/sales_2.png" style="width: 100%;" />
+							</div>
+							<div class="col-12">
+								<img src="/senrido/img/sales_3.png" style="width: 100%;" />
+							</div>
 						</div>
 					</div>
 				</div>
@@ -1315,6 +1331,7 @@
 			<!--  -->
 			<!-- モーダル -->
 			<customer-edit-modal ref=customerEditModal></customer-edit-modal>
+			<contact-modal ref=contactModal></contact-modal>
 			<visiting-hospital-modal ref=visitingHospitalModal></visiting-hospital-modal>
 			<eye-position-modal ref=eyePositionModal></eye-position-modal>
 			<create-dosu-modal ref=createDosuModal></create-dosu-modal>

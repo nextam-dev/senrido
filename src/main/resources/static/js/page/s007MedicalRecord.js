@@ -39,7 +39,7 @@
                 	title: '作成度数', open: false, inputValue: ''
                 },
                 accordionItemKyosei: {
-                	title: '完全強制', open: false, inputValue: ''
+                	title: '完全矯正', open: false, inputValue: ''
                 },
                 accordionItemHistory: {
                 	title: '過去データ', open: false, inputValue: ''
@@ -174,6 +174,9 @@
             },
             openCreateKyoseiModal: function() {
             	this.$refs.kanzenKyoseiModal.open();
+            },
+            openContactModal: function() {
+            	this.$refs.contactModal.open();
             },
         },
     });

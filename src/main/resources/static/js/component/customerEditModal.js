@@ -14,7 +14,7 @@ Vue.component('customer-edit-modal', {
 	            <!-- 入力エリア -->
 	            <div class="modal-content">
                     <div class="row">
-                        <div class="col-12 item-title">お客様ID</div>
+                        <div class="col-12 item-title">顧客番号</div>
                         <div class="col-12 modal-item-value">
                             <label class="ef">
                                 <input type="text" placeholder="Zipシステムで採番されたIDを入力してください。"/>
@@ -22,7 +22,7 @@ Vue.component('customer-edit-modal', {
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 item-title">お名前<label class="label-required">必須</label></div>
+                        <div class="col-12 item-title">お名前</div>
                         <div class="col-12 modal-item-value">
                             <label class="ef">
                                 <input type="text"/>
@@ -38,7 +38,13 @@ Vue.component('customer-edit-modal', {
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 item-title">性別<label class="label-required">必須</label></div>
+                        <div class="col-12 item-title">電話番号<label class="label-required">必須</label></div>
+                        <div class="col-12 modal-item-value">
+                            <label class="ef"><input type="text" placeholder="ー(ハイフン)を入れてご記入ください。" /></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 item-title">性別</div>
                         <div class="col-12 modal-item-value">
                             <div class="row item-margin">
                                 <div class="col-12">
@@ -66,7 +72,7 @@ Vue.component('customer-edit-modal', {
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 item-title">生年月日<label class="label-required">必須</label></div>
+                        <div class="col-12 item-title">生年月日</div>
                         <div class="col-12 modal-item-value">
                             <label class="ef"><input type="date"/></label>
                         </div>
@@ -79,13 +85,13 @@ Vue.component('customer-edit-modal', {
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 item-title">来店日<label class="label-required">必須</label></div>
+                        <div class="col-12 item-title">来店日</div>
                         <div class="col-12 modal-item-value">
                             <label class="ef"><input type="date"/></label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 item-title">郵便番号<label class="label-required">必須</label></div>
+                        <div class="col-12 item-title">郵便番号</div>
                         <div class="col-12 modal-item-value">
                             <div class="row">
                                 <div class="col-4">
@@ -98,31 +104,31 @@ Vue.component('customer-edit-modal', {
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 item-title">ご住所<label class="label-required">必須</label></div>
+                        <div class="col-12 item-title">ご住所</div>
                         <div class="col-12 modal-item-value">
                             <label class="ef"><input type="text"/></label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 item-title">電話番号<label class="label-required">必須</label></div>
+                        <div class="col-12 item-title">メールアドレス</div>
+                        <div class="col-12 modal-item-value">
+                            <label class="ef"><input type="text" placeholder="" /></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 item-title">携帯電話番号</div>
                         <div class="col-12 modal-item-value">
                             <label class="ef"><input type="text" placeholder="ー(ハイフン)を入れてご記入ください。" /></label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 item-title">携帯電話番号<label class="label-required">必須</label></div>
+                        <div class="col-12 item-title">勤務先電話番号</div>
                         <div class="col-12 modal-item-value">
                             <label class="ef"><input type="text" placeholder="ー(ハイフン)を入れてご記入ください。" /></label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 item-title">勤務先電話番号<label class="label-required">必須</label></div>
-                        <div class="col-12 modal-item-value">
-                            <label class="ef"><input type="text" placeholder="ー(ハイフン)を入れてご記入ください。" /></label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 item-title">ご紹介者<label class="label-required">必須</label></div>
+                        <div class="col-12 item-title">ご紹介者</div>
                         <div class="col-12 modal-item-value">
                             <label class="ef"><input type="text"/></label>
                         </div>
