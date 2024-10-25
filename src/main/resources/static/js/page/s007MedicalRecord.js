@@ -64,6 +64,10 @@
             movePasswordChange: function() {
                 location.href = editUrl('/s002PasswordChange');
             },
+            // アンケート画面を開く
+            openQuestionnaire: function() {
+            	window.open(editUrl('/s008Questionnaire'), '_blank');
+            },
             toggleMenu() {
                 this.isMenuOpen = !this.isMenuOpen;
             },
