@@ -80,6 +80,12 @@
             closeModalProcessing: function () {
                 this.processingFlg = false;
             },
+            scrollToAccordionHead: function() {
+                const target = document.getElementById('accordionHead');
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            },
             scrollToAccordionGani: function() {
             	this.accordionItemGani.open = true;
                 const target = document.getElementById('accordionGani');

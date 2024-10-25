@@ -38,12 +38,6 @@ Vue.component('customer-edit-modal', {
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 item-title">電話番号<label class="label-required">必須</label></div>
-                        <div class="col-12 modal-item-value">
-                            <label class="ef"><input type="text" placeholder="ー(ハイフン)を入れてご記入ください。" /></label>
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="col-12 item-title">性別</div>
                         <div class="col-12 modal-item-value">
                             <div class="row item-margin">
@@ -116,13 +110,22 @@ Vue.component('customer-edit-modal', {
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 item-title">携帯電話番号</div>
+                        <div class="col-4 item-title">電話番号<label class="label-required">必須</label></div>
+                        <div class="col-4 item-title"><label class="input-label"><input type="radio" name="mainTel" value="0"><span class="spaceLeft">主番号</span></label></div>
                         <div class="col-12 modal-item-value">
                             <label class="ef"><input type="text" placeholder="ー(ハイフン)を入れてご記入ください。" /></label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 item-title">勤務先電話番号</div>
+                        <div class="col-4 item-title">携帯電話番号</div>
+                        <div class="col-4 item-title"><label class="input-label"><input type="radio" name="mainTel" value="0"><span class="spaceLeft">主番号</span></label></div>
+                        <div class="col-12 modal-item-value">
+                            <label class="ef"><input type="text" placeholder="ー(ハイフン)を入れてご記入ください。" /></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 item-title">勤務先電話番号</div>
+                        <div class="col-4 item-title"><label class="input-label"><input type="radio" name="mainTel" value="0"><span class="spaceLeft">主番号</span></label></div>
                         <div class="col-12 modal-item-value">
                             <label class="ef"><input type="text" placeholder="ー(ハイフン)を入れてご記入ください。" /></label>
                         </div>
