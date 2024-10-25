@@ -38,7 +38,7 @@
 							<option></option>
 							<option>網走店</option>
 						</select>
-						<label>お客様ID</label>
+						<label>顧客番号</label>
 					</div>
 					<div class="col-3">
 						<input type="text">
@@ -60,6 +60,23 @@
 				</div>
 				<div class="row">
 					<div class="col-2">
+						<label>電話番号</label>
+					</div>
+					<div class="col-4">
+						<input type="text">
+						<label>性別</label>
+					</div>
+					<div class="col-3">
+						<select>
+							<option></option>
+							<option>男性</option>
+							<option>女性</option>
+						</select>
+					</div>
+					<div class="col-1"></div>
+				</div>
+				<div class="row">
+					<div class="col-2">
 						<label>来店日</label>
 					</div>
 					<div class="col-4">
@@ -73,15 +90,19 @@
 				</div>
 				<div class="row">
 					<div class="col-2">
-						<label>担当</label>
+						<label>摘要</label>
 					</div>
 					<div class="col-4">
+						<input type="text">
+						<label>担当</label>
+					</div>
+					<div class="col-3">
 						<select>
 							<option></option>
 							<option>黒川</option>
 						</select>
 					</div>
-					<div class="col-6"></div>
+					<div class="col-1"></div>
 				</div>
 				<div class="row">
 					<div class="col-6"></div>
@@ -116,6 +137,9 @@
 					        <span style="margin-left: 10px;">{{ customer.gender }}</span>
 					        </label>
 				      	</div>
+				      	<div class="info" style="font-size: 20px;">
+			        		<label>{{ customer.address }}</label></span>
+			      		</div>
 				    </div>
 					<div class="col-5" style="text-align: right;">
 					 	<div class="date" style="font-size: 20px;">

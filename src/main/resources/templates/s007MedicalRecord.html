@@ -110,13 +110,71 @@
 					</div>
 					<div v-if="item.open" class="accordion-content">
 						<label class="accordion-label">2024/10/24</label>
-						<br><input type="text" class="accordion-input" v-model="item.inputValue" placeholder="眼科への通院：有" disabled>
-						<br><input type="text" class="accordion-input" v-model="item.inputValue" placeholder="受信日：2024/10/24" disabled>
-						<br><input type="text" class="accordion-input" v-model="item.inputValue" placeholder="眼科名：黒川眼科" disabled>
-						<br><input type="text" class="accordion-input" v-model="item.inputValue" placeholder="症状：近視、白内障、レーシック" disabled>
-						<br><input type="text" class="accordion-input" v-model="item.inputValue" placeholder="メガネの作成指示：無" disabled>
-						<br><input type="text" class="accordion-input" v-model="item.inputValue" placeholder="処方箋：有" disabled>
-						<br><input type="text" class="accordion-input" v-model="item.inputValue" placeholder="眼科医の指示・意見：経過観察" disabled>
+						<br>
+						<div class="row">
+							<div class="col-3">
+								<label>眼科への通院：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item.inputValue" placeholder="有" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>眼科への通院：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item.inputValue" placeholder="有" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>受信日：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item.inputValue" placeholder="2024/10/24" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>眼科名：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item.inputValue" placeholder="黒川眼科" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>症状：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item.inputValue" placeholder="近視、白内障、レーシック" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>メガネの作成指示：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item.inputValue" placeholder="無" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>処方箋：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item.inputValue" placeholder="有" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>眼科医の指示・意見：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item.inputValue" placeholder="経過観察" disabled>
+							</div>
+						</div>
 					</div>
 				</div>
 				<!-- 眼位 -->
