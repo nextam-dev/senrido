@@ -104,7 +104,7 @@
 					</div>
 					<div class="col-1"></div>
 				</div>
-				<div class="row">
+				<div class="row" style="margin-top: 10px;">
 					<div class="col-6"></div>
 					<div class="col-2">
 						<button class="searchBt">検索</button>
@@ -118,7 +118,11 @@
 				</div>
 			</div>
 			<div style="margin-top: 10px; text-align:right;">
-			    <p>表示件数：<span>6</span>件</p>
+				<select style="float: left;">
+					<option></option>
+					<option>顧客番号</option>
+				</select>
+			    <p style="padding-top: 5px;">表示件数：<span>6</span>件</p>
 			</div>
 			<!-- 一覧部分 -->
 			<div class="listBox">
@@ -128,12 +132,17 @@
 			        		<label>{{ customer.kana }}</label>
 			      		</div>
 			      		<div class="info" style="font-size: 40px; border-bottom:1px solid">
-			        		<label>{{ customer.name }}</label><span style="margin-left: 100px;">様</span>
+			        		<label>{{ customer.name }}</label><span style="margin-left: 100px;">様</span><span style="margin-left: 50px;">
+			        		<label style="margin-left: 45px;font-size: 20px;">
+			        		<span class="icon">
+								<i class="fas fa-solid fa-phone"></i>
+							</span>
+			        		{{ customer.tel }}</label></span>
 			      		</div>
 			      		<div class="info" style="font-size: 20px;">
-					        <label>ID:{{ customer.id }}
-					        <span style="margin-left: 10px;">{{ customer.birthDate }}</span>
-					        <span style="margin-left: 10px;">生{{ customer.age }}歳</span>
+					        <label>顧客番号:{{ customer.id }}
+					        <span style="margin-left: 10px;">{{ customer.birthDate }}生まれ</span>
+					        <span style="margin-left: 10px;">{{ customer.age }}歳</span>
 					        <span style="margin-left: 10px;">{{ customer.gender }}</span>
 					        </label>
 				      	</div>

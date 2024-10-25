@@ -27,6 +27,32 @@
 			<div class="searchBox">
 				<div class="row">
 					<div class="col-2">
+						<label>顧客番号</label>
+					</div>
+					<div class="col-4">
+						<input type="text">
+						<label>電話番号</label>
+					</div>
+					<div class="col-3">
+						<input type="text">
+					</div>
+					<div class="col-1"></div>
+				</div>
+				<div class="row">
+					<div class="col-2">
+						<label>名前</label>
+					</div>
+					<div class="col-4">
+						<input type="text">
+						<label>カナ</label>
+					</div>
+					<div class="col-3">
+						<input type="text">
+					</div>
+					<div class="col-1"></div>
+				</div>
+				<div class="row">
+					<div class="col-2">
 						<label>開催日</label>
 					</div>
 					<div class="col-4">
@@ -49,22 +75,31 @@
 				</div>
 			</div>
 			<div style="margin-top: 10px; text-align:right;">
-			    <p>表示件数：<span>6</span>件</p>
+				<select style="float: left;">
+					<option></option>
+					<option>顧客番号</option>
+				</select>
+			    <p style="padding-top: 5px;">表示件数：<span>6</span>件</p>
 			</div>
 			<!-- 一覧部分 -->
 			<div class="listBox">
-				<div class="infoBox row" v-for="(customer, index) in customers" :key="index">
+				<div class="infoBox row" v-for="(customer, index) in customers" :key="index"　v-on:click="moveMedicalRecord">
 			    	<div class="col-8">
 			      		<div class="info" style="font-size: 15px;">
 			        		<label>{{ customer.kana }}</label>
 			      		</div>
 			      		<div class="info" style="font-size: 40px; border-bottom:1px solid">
 			        		<label>{{ customer.name }}</label><span style="margin-left: 100px;">様</span>
+			        		<label style="margin-left: 45px;font-size: 20px;">
+			        		<span class="icon">
+								<i class="fas fa-solid fa-phone"></i>
+							</span>
+			        		{{ customer.tel }}</label></span>
 			      		</div>
 			      		<div class="info" style="font-size: 20px;">
-					        <label>ID:{{ customer.id }}
-					        <span style="margin-left: 10px;">{{ customer.birthDate }}</span>
-					        <span style="margin-left: 10px;">生{{ customer.age }}歳</span>
+					        <label>顧客番号:{{ customer.id }}
+					        <span style="margin-left: 10px;">{{ customer.birthDate }}生まれ</span>
+					        <span style="margin-left: 10px;">{{ customer.age }}歳</span>
 					        <span style="margin-left: 10px;">{{ customer.gender }}</span>
 					        </label>
 				      	</div>
@@ -75,6 +110,9 @@
 					<div class="col-4" style="text-align: right;">
 					  	<div class="date" style="font-size: 20px;">
 					    	<label>開催日時:</label><label>{{ customer.lastVisit }}</label>
+					  	</div>
+					  	<div class="date" style="font-size: 20px;" :style="customer.reservationSlot === '1時間' ? oneHourStyle : (customer.reservationSlot === '30分' ? halfHourStyle : '')">
+					    	<label>{{ customer.reservationSlot }}</label>
 					  	</div>
 					    <div class="date" style="font-size: 20px;">
 					    	<label>参加回数:</label><label>{{ customer.kaisu }}</label>

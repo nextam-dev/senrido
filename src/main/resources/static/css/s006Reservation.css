@@ -7,9 +7,11 @@ main{
     padding: 10px 0px;
 }
 
+.searchBox select,
+.searchBox input[type="text"],
 .searchBox input[type="date"] {
     width: 200px; 
-    float: left; /* ���Ƀt���[�g */
+    float: left; /* �ｿｽ�ｿｽ�ｿｽﾉフ�ｿｽ�ｿｽ�ｿｽ[�ｿｽg */
 }
 
 .searchBt{
@@ -33,10 +35,10 @@ main{
 .head{
 	border-bottom:1px solid;
 	margin: auto;
-	position: sticky; /* �Œ�ʒu���w�� */
-    top: 0; /* �㕔�ɌŒ� */
-    background-color: #fff; /* �w�i�F��ݒ� */
-    z-index: 10; /* ���̗v�f�̏�ɕ\�����邽�� */
+	position: sticky; /* �ｿｽﾅ抵ｿｽﾊ置�ｿｽ�ｿｽ�ｿｽw�ｿｽ�ｿｽ */
+    top: 0; /* �ｿｽ纒費ｿｽﾉ固抵ｿｽ */
+    background-color: #fff; /* �ｿｽw�ｿｽi�ｿｽF�ｿｽ�ｿｽﾝ抵ｿｽ */
+    z-index: 10; /* �ｿｽ�ｿｽ�ｿｽﾌ要�ｿｽf�ｿｽﾌ擾ｿｽﾉ表�ｿｽ�ｿｽ�ｿｽ�ｿｽ�ｿｽ驍ｽ�ｿｽ�ｿｽ */
 }
 .list{
 	font-size:17px;
@@ -48,11 +50,11 @@ main{
 	height:50px;
 }
 
-/* ���q�l��񕔕� */
+/* �ｿｽ�ｿｽ�ｿｽq�ｿｽl�ｿｽ�ｿｽ�部包ｿｽ */
 .infoBox{
 	border: 3px solid #808080;
     padding: 5px;
-    width: 1000px;
+    width: 1024px;
     margin: auto;
     margin-top: 10px;
     flex: 0 0 auto;
