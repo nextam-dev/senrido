@@ -127,34 +127,32 @@
 			<!-- 一覧部分 -->
 			<div class="listBox">
 				<div class="infoBox row" v-for="(customer, index) in customers" :key="index" v-on:click="moveMedicalRecord">
-			    	<div class="col-7">
+			    	<div class="col-9">
 			      		<div class="info" style="font-size: 15px;">
 			        		<label>{{ customer.kana }}</label>
 			      		</div>
-			      		<div class="info" style="font-size: 40px; border-bottom:1px solid">
+			      		<div class="info" style="font-size: 20px; border-bottom:1px solid">
 			        		<label>{{ customer.name }}</label><span style="margin-left: 100px;">様</span><span style="margin-left: 50px;">
-			        		<label style="margin-left: 45px;font-size: 20px;">
+			        		<label style="margin-left: 45px;font-size: 15px;">
 			        		<span class="icon">
 								<i class="fas fa-solid fa-phone"></i>
 							</span>
 			        		{{ customer.tel }}</label></span>
 			      		</div>
-			      		<div class="info" style="font-size: 20px;">
+			      		<div class="info" style="font-size: 15px;">
 					        <label>顧客番号:{{ customer.id }}
 					        <span style="margin-left: 10px;">{{ customer.birthDate }}生まれ</span>
 					        <span style="margin-left: 10px;">{{ customer.age }}歳</span>
 					        <span style="margin-left: 10px;">{{ customer.gender }}</span>
 					        </label>
+					        <span style="margin-left: 10px;"><label>{{ customer.address }}</label></span>
 				      	</div>
-				      	<div class="info" style="font-size: 20px;　margin-top: -15px;">
-			        		<label>{{ customer.address }}</label></span>
-			      		</div>
 				    </div>
-					<div class="col-5" style="text-align: right;">
-					 	<div class="date" style="font-size: 20px;">
+					<div class="col-3" style="text-align: right;">
+					 	<div class="date" style="font-size: 15px;">
 					    	<label>前回来店日:</label><label>{{ customer.lastVisit }}</label>
 					  	</div>
-					  	<div class="date" style="font-size: 20px;">
+					  	<div class="date" style="font-size: 15px;">
 					    	<label>次回来店日:</label><label>{{ customer.nextVisit }}</label>
 					  	</div>
 					</div>

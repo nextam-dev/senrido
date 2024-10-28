@@ -17,7 +17,7 @@
                 isMenuOpen: false,
                 // アコーディオンのデータ
                 accordionItems: [
-                    { title: '眼科への通院', open: false, inputValue: '' },
+                    { title: '眼科への通院', open: true, inputValue: '' },
                     { title: '眼の手術', open: false, inputValue: '' },
                     { title: '視力の低下を感じたのは', open: false, inputValue: '' },
                     { title: 'メガネ・CLの装用状況', open: false, inputValue: '' },
@@ -33,22 +33,22 @@
                     { title: '眼の使用状況', open: false, inputValue: '' },
                 ],
                 accordionItemGani: {
-                	title: '眼位', open: false, inputValue: ''
+                	title: '眼位', open: true, inputValue: ''
                 },
                 accordionItemDosu: {
-                	title: '作成度数', open: false, inputValue: ''
+                	title: '作成度数', open: true, inputValue: ''
                 },
                 accordionItemKyosei: {
-                	title: '完全矯正', open: false, inputValue: ''
+                	title: '完全矯正', open: true, inputValue: ''
                 },
                 accordionItemRef: {
-                	title: 'レフ', open: false, inputValue: ''
+                	title: 'レフ', open: true, inputValue: ''
                 },
                 accordionItemHistory: {
-                	title: '過去データ', open: false, inputValue: ''
+                	title: '過去データ', open: true, inputValue: ''
                 },
                 accordionItemSales: {
-                	title: '売上データ', open: false, inputValue: ''
+                	title: '売上データ', open: true, inputValue: ''
                 },
                 isFarSelected: true,   // 初期状態で「遠」が選択されている状態
                 isNearSelected: false, // 初期状態で「近」は選択されていない状態
@@ -57,7 +57,7 @@
         methods: {
         	// 検索画面へ遷移
         	back: function() {
-                location.href = editUrl('/s005CustomerInformationSearch');
+        		history.back();
             },
             // ログイン画面へ遷移
             logout: function() {

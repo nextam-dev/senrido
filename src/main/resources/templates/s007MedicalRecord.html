@@ -78,40 +78,46 @@
 			</div>
 			<!-- 個人情報 -->
 			<div class="infoBox row">
-				<div class="col-8">
+				<div class="col-6">
 					<div class="info" style="font-size: 15px;">
 						<label>ヤマダタロウ</label>
 					</div>
 					<div class="info" style="border-bottom:1px solid">
-						<span style="font-size: 40px; "><label>山田太郎</label><span style="margin-left: 200px;">様</span></span>
-						<button class="telBt" v-on:click="openContactModal">
-							<span class="icon">
-								<i class="fas fa-regular fa-phone"></i>
-							</span>
-							<br><span style="font-size: 16px;">連絡先</span>
-						</button>
-						<button class="editBt" v-on:click="openEdit">
-							<span class="icon">
-								<i class="fas fa-regular fa-pen"></i>
-							</span>
-							<br><span style="font-size: 16px;">編集</span>
-						</button>
+						<span style="font-size: 20px; "><label>山田太郎</label><span style="margin-left: 200px;">様</span></span>
 					</div>
-					<div class="info" style="font-size: 20px;">
+					<div class="info" style="font-size: 15px;">
 						<label>ID:0001
-						<span style="margin-left: 10px;">平成11年04月18日</span>
-						<span style="margin-left: 10px;">生25歳</span>
+						<span style="margin-left: 10px;">平成11年04月18日生まれ</span>
+						<span style="margin-left: 10px;">25歳</span>
 						<span style="margin-left: 10px;">男性</span>
 						</label>
 					</div>
 				</div>
-				<div class="col-4" style="text-align: right;">
-					<div class="date" style="font-size: 20px;">
-						<label>前回来店日:</label><label>2024/10/24</label>
-					</div>
-					<div class="date" style="font-size: 20px;">
-						<label>次回来店日:</label><label>2025/01/24</label>
-					</div>
+				<div class="col-6" style="text-align: right;">
+					<div class="row">
+						<div class="col-7" style="margin-top: 5px;">
+							<div class="date" style="font-size: 15px;">
+								<label>前回来店日:</label><label>2024/10/24</label>
+							</div>
+						<br><div class="date" style="font-size: 15px;">
+								<label>次回来店日:</label><label>2025/01/24</label>
+							</div>
+						</div>
+						<div class="col-5" style="margin-top: 5px; display: flex; gap: 10px;">
+							<button class="telBt" v-on:click="openContactModal">
+								<span class="icon">
+									<i class="fas fa-regular fa-phone"></i>
+								</span>
+								<br><span style="font-size: 15px;">連絡先</span>
+							</button>
+							<button class="editBt" v-on:click="openEdit">
+								<span class="icon">
+									<i class="fas fa-regular fa-pen"></i>
+								</span>
+								<br><span style="font-size: 15px;">編集</span>
+							</button>
+						</div>
+					</div>	
 				</div>
 			</div>
 			<div　class="scrollable-content">
