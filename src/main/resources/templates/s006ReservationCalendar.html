@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="jp">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>予約</title>
+    <div th:replace="base_header"></div>
+
+    <!-- ページ固有のCSSファイル -->
+    <link rel="stylesheet" href="/css/s006Reservation.css" th:href="@{/css/s006Reservation.css}"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+
+    <!-- ページ固有のJSファイル -->
+    <script src="/js/page/s006Reservation.js" th:src="@{/js/page/s006Reservation.js}"></script>
+</head>
+<body>
+    <div id="content" class="container">
+    	<div th:replace="header"></div>
+    	<main>
+    		<div>
+    			<h4 class="center-align" id="month-year">{{ monthYear }}</h4>
+    		</div>
+	        <div class="calendar" id="calendar">
+	            <div class="calendar-header" v-for="(day, index) in weekdays" :key="index">{{ day }}</div>
+	            <div class="day" v-for="(day, index) in daysInMonth" :key="index" :class="{'today': isToday(day)}" @click="showAlert(day)">
+	                {{ day.date }}
+	                <div class="count">{{ getDataCount(day) }} 件</div>
+	            </div>
+	        </div>
+    	</main>
+    </div>
+    <div th:replace="footer"></div>
+</body>
+</html>
