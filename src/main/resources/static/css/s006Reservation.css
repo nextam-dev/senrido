@@ -1,6 +1,9 @@
 main{
 	font-size:20px;
 }
+footer{
+	bottom:auto;
+}
 .searchBox{
 	margin-top: 10px;
     border: 1px solid;
@@ -72,4 +75,85 @@ main{
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: inline-block;
     margin-bottom: 10px;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    /* gap: 5px; */
+    padding: 20px;
+    text-align: center;
+}
+.calendar-header {
+    font-weight: bold;
+    background-color: #80bdff;
+}
+.day {
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.day:hover {
+    background-color: #e0e0e0;
+}
+.today {
+    background-color: #ffe493;
+    color: white;
+}
+.count {
+    font-size: 30px;
+    color: #fff;
+    background-color: #0056b3;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.name{
+    width: 100px;
+    height: 100%;
+    display: inline-grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.addBt{
+	width: 65px;
+    height: 65px;
+    background-color: #fff;
+    border: 2px solid orange;
+}
+.empty-cell {
+    display: none;
+}
+
+.half-hour-cell {
+    height: 100%;
+    background-color: rgb(224, 115, 126);
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.one-hour-cell {
+    height: 100%;
+    background-color: rgb(77, 158, 244);
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.merged-cell {
+    height: 100%;
+    background-color: rgb(77, 158, 244);
+    color: rgb(255, 255, 255);
+    grid-column: span 2;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.timeSlot{
+    display: inline-grid;
+    justify-content: center;
+    align-items: center;
+    border-right: 2px solid;
 }

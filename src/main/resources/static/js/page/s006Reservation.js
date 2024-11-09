@@ -46,7 +46,7 @@
             }
         },
         created() {
-            // 何もしない
+        	// 何もしない
         },
         mounted: function () {
             // 何もしない
@@ -55,7 +55,7 @@
         methods: {
         	// メニュー画面へ遷移
         	back: function() {
-                location.href = editUrl('/s004Menu');
+        		history.back();
             },
             // ログイン画面へ遷移
             logout: function() {

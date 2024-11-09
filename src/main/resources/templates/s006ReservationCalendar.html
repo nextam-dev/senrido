@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="jp">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>予約</title>
+    <div th:replace="base_header"></div>
+
+    <!-- ページ固有のCSSファイル -->
+    <link rel="stylesheet" href="/css/s006Reservation.css" th:href="@{/css/s006Reservation.css}"/>
+
+    <!-- ページ固有のJSファイル -->
+    <script src="/js/page/s006ReservationCalendar.js" th:src="@{/js/page/s006ReservationCalendar.js}"></script>
+</head>
+<body>
+    <div id="content">
+        <div th:replace="header"></div>
+        <main>
+            <div style="margin-top: 100px;">
+                <label class="center-align" id="month-year" style="font-size: 40px;">{{ monthYear }}</label>
+                <div class="row center-align">
+                	<div class="col-6">
+                		<button v-on:click="changeMonth(-1)">
+	                		<span class="icon">
+								<i class="fas fa-solid fa-backward"></i>
+							</span>
+						</button>
+                	</div>
+                    <div class="col-6">
+                    	<button v-on:click="changeMonth(1)">
+	                    	<span class="icon">
+								<i class="fas fa-solid fa-forward"></i>
+							</span>
+						</button>
+                    </div>
+                </div>
+            </div>
+            <div class="calendar" id="calendar">
+                <div class="calendar-header" v-for="(day, index) in weekdays" :key="index">{{ day }}</div>
+                <div class="day" v-for="(day, index) in daysInMonth" :key="index" :class="{'today': isToday(day)}" v-on:click="movesReservationTimetable">
+				    {{ day.date }}
+				    <!-- 件数が 0 の場合は非表示 -->
+				    <div class="count" v-if="day.count > 0">{{ day.count }} 件</div>
+				</div>
+            </div>
+        </main>
+    </div>
+    <div th:replace="footer"></div>
+</body>
+</html>

@@ -37,7 +37,7 @@
             },
             // 予約画面へ遷移
             moveReservation: function() {
-                location.href = editUrl('/s006Reservation');
+                location.href = editUrl('/s006ReservationCalendar');
             },
             // ログイン画面へ遷移
             logout: function() {

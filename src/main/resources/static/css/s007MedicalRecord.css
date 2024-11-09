@@ -228,7 +228,205 @@ main {
     height: 200px;
 }
 
-
 .disp-history {
 	background-color: #fff8dc;
+}
+
+.input-label-autoref {
+    position:relative;
+    padding-left:1em;
+}
+
+.past-data-tittle{
+	width: 120px; 
+	border: 1px solid;	
+}
+
+.past-data-text{
+	height: 120px; 
+	width: 120px;
+}
+.no-tittle{
+	font-size: 30px; 
+	font-weight: bold;
+}
+
+.dosu-tittle{
+	margin-top: 10px; 
+	font-weight: bold;
+}
+
+.dosu-text{
+	text-align: center;
+    width: 130px;
+    margin-top: 6px;
+    height: 130px;
+    font-size: 40px;
+}
+
+.dosu-subtittle{
+	writing-mode: vertical-rl; 
+	font-size: 7px;
+}
+
+.frame-box{
+	display: flex; 
+	border-top: 2px solid; 
+	border-left: 2px solid; 
+	border-right: 2px solid; 
+	height: 60px;
+}
+
+.frame-text{
+	width: 425px; 
+	height: 100%; 
+	border: 1px solid;
+}
+
+.eye-point{
+	font-size: 10px; 
+	vertical-align: top;
+}
+
+.eye-point-text{
+	width: 30px; 
+	border: none; 
+	height: 23px;
+}
+
+.input-amount{
+	height: 100%; 
+	border: 1px solid;
+}
+
+.lens-box{
+	display: flex; 
+	border-left: 2px solid; 
+	border-right: 2px solid;
+	border-bottom: 2px solid; 
+	height: 60px;
+}
+
+.lens-text{
+	width: 487px; 
+	height: 100%; 
+	border: 1px solid;
+}
+
+.option-box{
+	display: flex;
+    border-left: 3px solid;
+    border-right: 2px solid;
+    height: 60px;
+    border-bottom: 3px solid;
+}
+
+.option-select{
+	font-size: 14px;
+    width: 175px;
+    height: 90%;
+    border: none;
+    padding: 0px;
+}
+
+.option-text{
+	width: 307px;
+    height: 100%;
+    border: none;
+    border-left: 1px solid;
+    border-right: 3px solid;
+}
+
+.option-input-amount{
+	height: 100%;
+	border: none;
+    border-right: 2px solid;
+}
+
+.subtotal-box{
+	display: flex; 
+	border: 2px solid;
+	background-color: #fff;
+}
+
+.subtotal{
+	font-size: 12px; 
+	font-weight: bold; 
+	margin-left: 10px;
+}
+
+.subtotal-text{
+	width: 95%; 
+	margin-left: 10px;
+	border: none;
+}
+
+.total-amount-box{
+	border-right: 2px solid; 
+	border-left: 2px solid; 
+	border-bottom: 2px solid;
+	background-color: #fff;
+}
+
+.total-amount-subbox{
+	height: 48px; 
+	padding: 0px 10px 0px 35px; 
+	line-height: 48px;
+}
+
+.total-amount{
+	font-size: 25px; 
+	font-weight: bold;
+}
+
+.total-amount-text{
+	width: 70%; 
+	height: 30px; 
+	border: none;
+}
+
+.deposit-box{
+	display: flex; 
+	border-left: 2px solid; 
+	border-right: 2px solid;
+	background-color: #fff;
+}
+
+.deposit-subbox{
+	text-align: center; 
+	border-left: 1px solid; 
+	border-right: 1px solid; 
+	width:47%;
+}
+
+.deposit-label{
+	font-size: 12px; 
+	font-weight: bold;
+}
+
+.deposit-text{
+	width: 70%; 
+	border: none;
+}
+
+.remaining-money-box{
+	display: flex; 
+	border-left: 2px solid; 
+	border-right: 2px solid; 
+	border-top: 1px solid; 
+	border-bottom: 2px solid;
+	background-color: #fff;
+}
+
+.disp-white{
+	background-color: #fff;
+}
+
+.processing-data{
+	text-align: right;
+    margin: 10px 0px;
+}
+
+.processing-data-select{
+	width: 200px;
 }

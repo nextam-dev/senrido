@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="jp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>予約</title>
+    <div th:replace="base_header"></div>
+
+    <!-- ページ固有のCSSファイル -->
+    <link rel="stylesheet" href="/css/s006Reservation.css" th:href="@{/css/s006Reservation.css}"/>
+
+    <!-- ページ固有のJSファイル -->
+    <script src="/js/page/s006ReservationTimetable.js" th:src="@{/js/page/s006ReservationTimetable.js}"></script>
+</head>
+<body>
+    <div id="content">
+        <div th:replace="header"></div>
+        <main>
+            <div class="row" style="margin: 20px 0px;">
+                <div class="date-selector col-6">
+                    <input type="date" v-model="selectedDate" v-on:change="selectDate(selectedDate)">
+                    <span v-if="selectedDate">選択された日付: {{ selectedDate }}</span>
+                </div>
+                <div class="date-selector col-6">
+                    <button v-on:click.stop="movesReservation" class="addBt">
+                        <span class="icon">
+                            <i class="fas fa-regular fa-list"></i>
+                        </span>
+                        <br><span style="font-size: 16px;">一覧</span>
+                    </button>
+                </div>
+            </div>
+            <div class="row" v-for="(timeSlot, index) in timeSlots" :key="index" style="margin:auto; border:1px solid;">
+                <div class="col-2 timeSlot">
+                    <div><label>{{ timeSlot }}</label></div>
+                </div>
+                <div class="col-10">
+                    <div class="row">
+                        <div class="col-9">
+                            <!-- 予約者名表示 -->
+                            <div v-for="(event, eventIndex) in schedule[index]" :key="eventIndex"
+							     :class="getCellClass(event, index)" class="name">
+							    <label>{{ event.title }}</label>
+							</div>
+                        </div>
+                        <div class="col-3">
+                            <button v-on:click.stop="openModal" class="addBt">
+                                <span class="icon">
+                                    <i class="fas fa-regular fa-plus"></i>
+                                </span>
+                                <br><span style="font-size: 16px;">追加</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div th:replace="footer"></div>
+</body>
+</html>
