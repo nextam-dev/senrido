@@ -9,26 +9,42 @@
 
     <!-- ページ固有のCSSファイル -->
     <link rel="stylesheet" href="/css/s006Reservation.css" th:href="@{/css/s006Reservation.css}"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
 
     <!-- ページ固有のJSファイル -->
-    <script src="/js/page/s006Reservation.js" th:src="@{/js/page/s006Reservation.js}"></script>
+    <script src="/js/page/s006ReservationCalendar.js" th:src="@{/js/page/s006ReservationCalendar.js}"></script>
 </head>
 <body>
-    <div id="content" class="container">
-    	<div th:replace="header"></div>
-    	<main>
-    		<div>
-    			<h4 class="center-align" id="month-year">{{ monthYear }}</h4>
-    		</div>
-	        <div class="calendar" id="calendar">
-	            <div class="calendar-header" v-for="(day, index) in weekdays" :key="index">{{ day }}</div>
-	            <div class="day" v-for="(day, index) in daysInMonth" :key="index" :class="{'today': isToday(day)}" @click="showAlert(day)">
-	                {{ day.date }}
-	                <div class="count">{{ getDataCount(day) }} 件</div>
-	            </div>
-	        </div>
-    	</main>
+    <div id="content">
+        <div th:replace="header"></div>
+        <main>
+            <div style="margin-top: 100px;">
+                <label class="center-align" id="month-year" style="font-size: 40px;">{{ monthYear }}</label>
+                <div class="row center-align">
+                	<div class="col-6">
+                		<button v-on:click="changeMonth(-1)">
+	                		<span class="icon">
+								<i class="fas fa-solid fa-backward"></i>
+							</span>
+						</button>
+                	</div>
+                    <div class="col-6">
+                    	<button v-on:click="changeMonth(1)">
+	                    	<span class="icon">
+								<i class="fas fa-solid fa-forward"></i>
+							</span>
+						</button>
+                    </div>
+                </div>
+            </div>
+            <div class="calendar" id="calendar">
+                <div class="calendar-header" v-for="(day, index) in weekdays" :key="index">{{ day }}</div>
+                <div class="day" v-for="(day, index) in daysInMonth" :key="index" :class="{'today': isToday(day)}" v-on:click="movesReservationTimetable">
+				    {{ day.date }}
+				    <!-- 件数が 0 の場合は非表示 -->
+				    <div class="count" v-if="day.count > 0">{{ day.count }} 件</div>
+				</div>
+            </div>
+        </main>
     </div>
     <div th:replace="footer"></div>
 </body>

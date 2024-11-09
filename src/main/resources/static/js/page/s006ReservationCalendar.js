@@ -3,49 +3,44 @@
         el: '#content',
         data: function () {
             return {
-                // 進捗フラグ
+            	currentDate: new Date(), // 現在の月
                 processingFlg: false,
-                // メッセージ
                 message: [],
-                // ローカルストレージ保管鍵
                 localStrageKey: 'standardListConditionKey',
-                // 検索条件初期化フラグ
                 initSearchFlg: false,
-                // ログインフラグ
                 loginFig: true,
                 monthYear: '',
-                weekdays: ["日", "月", "火", "水", "木", "金", "土"],
+                weekdays: ["月", "火", "水", "木", "金", "土", "日"],
                 daysInMonth: [],
-                dataForDate: { // 仮のデータ件数（例として）
-                    '2024-11-01': 5,
-                    '2024-11-02': 3,
-                    '2024-11-03': 8,
-                    '2024-11-04': 2,
-                    '2024-11-05': 10,
-                    '2024-11-06': 7,
-                    '2024-11-07': 4,
-                    '2024-11-08': 6,
-                    '2024-11-09': 1,
-                    // 他の日付も仮データを追加可能
+                dataForDate: {
+                    '2024-11-08': 9,
+                    '2024-11-09': 8,
+                    '2024-11-10': 19,
+                    '2024-11-11': 7,
                 },
             };
         },
         created() {
-        	this.generateCalendar(new Date());
+            this.generateCalendar(this.currentDate);
         },
-        mounted: function () {
-            // 何もしない
+        mounted() {
+            this.generateCalendar(this.currentDate);
         },
         methods: {
-        	// 検索画面へ遷移
-        	back: function() {
-                location.href = editUrl('/s004Menu');
+            // 月を切り替える
+            changeMonth: function (offset) {
+                const newDate = new Date(this.currentDate);
+                newDate.setMonth(this.currentDate.getMonth() + offset);
+                // currentDate を更新
+                this.currentDate = newDate;
+
+                // 強制的に再描画を行う
+                this.generateCalendar(newDate);
+                this.$forceUpdate(); // 強制的に再描画を行う
             },
-            // ログイン画面へ遷移
-            logout: function() {
-                location.href = editUrl('/');
-            },
-            generateCalendar: function(date) {
+            // カレンダーを生成
+            generateCalendar: function (date) {
+                console.log("generateCalendar called with date:", date); // 追加して確認
                 const currentMonth = date.getMonth();
                 const currentYear = date.getFullYear();
                 this.monthYear = `${currentYear}年 ${currentMonth + 1}月`;
@@ -67,17 +62,35 @@
                     this.daysInMonth.push({ date: day, count: this.getDataCount({ date: day }) });
                 }
             },
+            // 今日の日付かチェック
             isToday: function(day) {
                 const today = new Date();
                 return today.getDate() === day.date && today.getMonth() === new Date().getMonth();
             },
+            // データ件数を取得
             getDataCount: function(day) {
                 const date = `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${day.date < 10 ? '0' + day.date : day.date}`;
-                return this.dataForDate[date] || 0; // 仮データ件数を表示
+                return this.dataForDate[date] || 0;
             },
+            // 日付をクリックした時にアラート表示
             showAlert: function(day) {
                 const date = `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${day.date < 10 ? '0' + day.date : day.date}`;
                 alert(`選択した日付: ${date}\nデータ件数: ${this.getDataCount(day)} 件`);
+            },
+    	    // メニュー画面へ遷移
+        	back: function() {
+                location.href = editUrl('/s004Menu');
+            },
+            // ログイン画面へ遷移
+            logout: function() {
+                location.href = editUrl('/');
+            },
+            // 検索画面へ遷移
+            movesReservationTimetable: function() {
+                location.href = editUrl('/s006ReservationTimetable');
+            },
+            toggleMenu() {
+                this.isMenuOpen = !this.isMenuOpen;
             },
             showModalProcessing: function () {
                 this.processingFlg = true;
