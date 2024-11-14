@@ -17,10 +17,16 @@ footer{
     float: left; /* �ｿｽ�ｿｽ�ｿｽﾉフ�ｿｽ�ｿｽ�ｿｽ[�ｿｽg */
 }
 
+input[type='checkbox'] {
+	width: 20px;
+    height: 20px;
+}
+
 .searchBt{
 	width:140px;
 	height:50px;
 }
+
 .listBox {
     border: 0px solid;
     margin: 10px 0px;
