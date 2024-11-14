@@ -12,11 +12,13 @@
 
     <!-- ページ固有のJSファイル -->
     <script src="/js/page/s006ReservationTimetable.js" th:src="@{/js/page/s006ReservationTimetable.js}"></script>
+    <script src="/js/component/individualReservationModal.js" th:src="@{/js/component/individualReservationModal.js}"></script>
 </head>
 <body>
     <div id="content">
         <div th:replace="header"></div>
         <main>
+        	<individual-reservation-modal ref=individualReservationModal></individual-reservation-modal>
             <div class="row" style="margin: 20px 0px;">
                 <div class="date-selector col-6">
                     <input type="date" v-model="selectedDate" v-on:change="selectDate(selectedDate)">

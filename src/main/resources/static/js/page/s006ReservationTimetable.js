@@ -57,6 +57,9 @@
             movesReservation: function() {
                 location.href = editUrl('/s006Reservation');
             },
+            openModal: function() {
+            	this.$refs.individualReservationModal.open();
+            },
         }
     });
 });
