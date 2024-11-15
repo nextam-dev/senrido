@@ -163,3 +163,56 @@ input[type='checkbox'] {
     align-items: center;
     border-right: 2px solid;
 }
+
+.individual-text{
+	width: 100%;
+    border: 1px solid;
+}
+
+.item-title{
+	font-size: 15px;
+	margin-right:5px;
+}
+
+.label-required{
+	color: #FF0000;
+}
+
+.selected-row {
+    background-color: lightblue;
+}
+
+
+
+/* アコーディオン形式部分 */
+.accordion-item {
+    cursor: pointer;
+    padding: 2px;
+    border-bottom: 1px solid #ccc;
+}
+
+.accordion-header{
+    text-align: left;
+    height: 50px;
+    border: 1px solid;
+    padding-left:5px;
+}
+
+.accordion-content {
+	margin-top: 10px;
+    text-align: left;
+    margin-left: 20px;
+}
+
+.accordion-label{
+	background-color: gray;
+    color: #fff;
+    border-radius: 10px;
+    width: 130px;
+    text-align: center;
+}
+
+.accordion-input{
+	border: none;
+    width: 100%;
+}
