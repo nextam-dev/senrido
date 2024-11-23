@@ -17,20 +17,20 @@
                 isMenuOpen: false,
                 // アコーディオンのデータ
                 accordionItems: [
-                    { title: '眼科への通院', open: false, inputValue: '' },
-                    { title: '眼の手術', open: false, inputValue: '' },
-                    { title: '視力の低下を感じたのは', open: false, inputValue: '' },
-                    { title: 'メガネ・CLの装用状況', open: false, inputValue: '' },
-                    { title: 'メガネのトラブル', open: false, inputValue: '' },
-                    { title: '眼・身体の症状', open: false, inputValue: '' },
-                    { title: '眩しさを感じる物事', open: false, inputValue: '' },
-                    { title: '見えないと困るもの', open: false, inputValue: '' },
-                    { title: 'メガネの装用', open: false, inputValue: '' },
-                    { title: '過去の病歴', open: false, inputValue: '' },
-                    { title: '治療中の疫病（服用薬）', open: false, inputValue: '' },
-                    { title: 'ご職業', open: false, inputValue: '' },
-                    { title: '趣味・部活', open: false, inputValue: '' },
-                    { title: '眼の使用状況', open: false, inputValue: '' },
+                    { title: '眼科への通院', open: false, inputValue: '', modalRef: 'visitingHospitalModal' },
+                    { title: '眼の手術', open: false, inputValue: '', modalRef: 'operationModal' },
+                    { title: '視力の低下を感じたのは', open: false, inputValue: '', modalRef: 'impairedVisionModal' },
+                    { title: 'メガネ・CLの装用状況', open: false, inputValue: '', modalRef: 'wearingSituationModal' },
+                    { title: 'メガネのトラブル', open: false, inputValue: '', modalRef: 'glassesTroubleModal' },
+                    { title: '眼・身体の症状', open: false, inputValue: '', modalRef: 'symptomsModal' },
+                    { title: '眩しさを感じる物事', open: false, inputValue: '', modalRef: 'dazzlingThingsModal' },
+                    { title: '見えないと困るもの', open: false, inputValue: '', modalRef: 'seeProblemModal' },
+                    { title: 'メガネの装用', open: false, inputValue: '', modalRef: 'wearingGlassesModal' },
+                    { title: '過去の病歴', open: false, inputValue: '', modalRef: 'caseHistoryModal' },
+                    { title: '治療中の疫病（服用薬）', open: false, inputValue: '', modalRef: 'treatmentDiseaseModal' },
+                    { title: 'ご職業', open: false, inputValue: '', modalRef: 'occupationModal' },
+                    { title: '趣味・部活', open: false, inputValue: '', modalRef: 'hobbyAndClubModal' },
+                    { title: '眼の使用状況', open: false, inputValue: '', modalRef: 'usageStatusModal' }
                 ],
                 accordionItemGani: {
                 	title: '眼位', open: false, inputValue: ''
@@ -180,8 +180,11 @@
             openEdit: function() {
             	this.$refs.customerEditModal.open();
             },
-            openModal: function() {
-            	this.$refs.visitingHospitalModal.open();
+            openModal(index) {
+                const modalRef = this.accordionItems[index].modalRef;
+                if (this.$refs[modalRef]) {
+                    this.$refs[modalRef].open();
+                }
             },
             openEyePositionModal: function() {
             	this.$refs.eyePositionModal.open();

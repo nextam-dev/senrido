@@ -16,6 +16,19 @@
     <script src="/js/page/s007MedicalRecord.js" th:src="@{/js/page/s007MedicalRecord.js}"></script>
     <script src="/js/component/customerEditModal.js" th:src="@{/js/component/customerEditModal.js}"></script>
     <script src="/js/component/visitingHospitalModal.js" th:src="@{/js/component/visitingHospitalModal.js}"></script>
+    <script src="/js/component/operationModal.js" th:src="@{/js/component/operationModal.js}"></script>
+    <script src="/js/component/impairedVisionModal.js" th:src="@{/js/component/impairedVisionModal.js}"></script>
+    <script src="/js/component/wearingSituationModal.js" th:src="@{/js/component/wearingSituationModal.js}"></script>
+    <script src="/js/component/glassesTroubleModal.js" th:src="@{/js/component/glassesTroubleModal.js}"></script>
+    <script src="/js/component/symptomsModal.js" th:src="@{/js/component/symptomsModal.js}"></script>
+    <script src="/js/component/dazzlingThingsModal.js" th:src="@{/js/component/dazzlingThingsModal.js}"></script>
+    <script src="/js/component/seeProblemModal.js" th:src="@{/js/component/seeProblemModal.js}"></script>
+    <script src="/js/component/wearingGlassesModal.js" th:src="@{/js/component/wearingGlassesModal.js}"></script>
+    <script src="/js/component/caseHistoryModal.js" th:src="@{/js/component/caseHistoryModal.js}"></script>
+    <script src="/js/component/treatmentDiseaseModal.js" th:src="@{/js/component/treatmentDiseaseModal.js}"></script>
+    <script src="/js/component/occupationModal.js" th:src="@{/js/component/occupationModal.js}"></script>
+    <script src="/js/component/hobbyAndClubModal.js" th:src="@{/js/component/hobbyAndClubModal.js}"></script>
+    <script src="/js/component/usageStatusModal.js" th:src="@{/js/component/usageStatusModal.js}"></script>
     <script src="/js/component/eyePositionModal.js" th:src="@{/js/component/eyePositionModal.js}"></script>
     <script src="/js/component/createDosuModal.js" th:src="@{/js/component/createDosuModal.js}"></script>
     <script src="/js/component/kanzenKyoseiModal.js" th:src="@{/js/component/kanzenKyoseiModal.js}"></script>
@@ -27,12 +40,25 @@
 	<div id="content">
 		<div th:replace="header"></div>
 		<main>
-			<customer-edit-modal ref=customerEditModal></customer-edit-modal>
-			<contact-modal ref=contactModal></contact-modal>
-			<visiting-hospital-modal ref=visitingHospitalModal></visiting-hospital-modal>
-			<eye-position-modal ref=eyePositionModal></eye-position-modal>
-			<create-dosu-modal ref=createDosuModal></create-dosu-modal>
-			<kanzen-kyosei-modal ref=kanzenKyoseiModal></kanzen-kyosei-modal>
+			<customer-edit-modal ref="customerEditModal"></customer-edit-modal>
+			<contact-modal ref="contactModal"></contact-modal>
+			<visiting-hospital-modal ref="visitingHospitalModal"></visiting-hospital-modal>
+			<operation-modal ref="operationModal"></operation-modal>
+	        <impaired-vision-modal ref="impairedVisionModal"></impaired-vision-modal>
+	        <wearing-situation-modal ref="wearingSituationModal"></wearing-situation-modal>
+	        <glasses-trouble-modal ref="glassesTroubleModal"></glasses-trouble-modal>
+	        <symptoms-modal ref="symptomsModal"></symptoms-modal>
+	        <dazzling-things-modal ref="dazzlingThingsModal"></dazzling-things-modal>
+	        <see-problem-modal ref="seeProblemModal"></see-problem-modal>
+	        <wearing-glasses-modal ref="wearingGlassesModal"></wearing-glasses-modal>
+	        <case-history-modal ref="caseHistoryModal"></case-history-modal>
+	        <treatment-disease-modal ref="treatmentDiseaseModal"></treatment-disease-modal>
+	        <occupation-modal ref="occupationModal"></occupation-modal>
+	        <hobby-and-club-modal ref="hobbyAndClubModal"></hobby-and-club-modal>
+	        <usage-status-modal ref="usageStatusModal"></usage-status-modal>
+			<eye-position-modal ref="eyePositionModal"></eye-position-modal>
+			<create-dosu-modal ref="createDosuModal"></create-dosu-modal>
+			<kanzen-kyosei-modal ref="kanzenKyoseiModal"></kanzen-kyosei-modal>
 			<div class="row">
 				<div class="col-5" style="text-align: left; margin-top: 20px; font-size:25px;">
 					<label>お客様情報詳細画面</label>
@@ -120,14 +146,14 @@
 					</div>	
 				</div>
 			</div>
-			<div　class="scrollable-content">
+			<div class="scrollable-content">
 				<div id="accordionHead"></div>
 				<!-- アコーディオン形式 -->
 				<div v-for="(item, index) in accordionItems" :key="index" class="accordion-item">
 					<div class="accordion-header" @click="toggleAccordion(index)">
 						<label style="margin-top: 15px;">{{ item.title }}</label>
 						<div style="float: right;">
-							<button v-on:click.stop="openModal" class="addBt">
+							<button v-on:click.stop="openModal(index)" class="addBt">
 								<span class="icon">
 									<i class="fas fa-regular fa-plus"></i>
 								</span>
