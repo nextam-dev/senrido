@@ -82,7 +82,7 @@ public class SenridoHandlerInterceptor extends HandlerInterceptorAdapter {
 				// 認証した情報を取得する
 				UserDto userDto = (UserDto)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 				if (userDto != null) {
-					id = userDto.getEmployeeCode();
+					id = userDto.getUserCd();
 				}
 
 	        } catch(Exception ex) {

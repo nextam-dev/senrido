@@ -17,29 +17,34 @@
     <div id="content">
     	<div th:replace="header"></div>
         <main>
-            <div>
-                <label class="screenTitle">ログイン</label>
-            </div>
-            <div class="row">
-            	<div class="box col-2"></div>
-                <label class="koumoku col-3">ログインID:</label>
-                <input type="text" class="box col-4"/>
-                <div class="box col-2"></div>
-            </div>
-            <div class="row">
-            	<div class="box col-2"></div>
-                <label class="koumoku col-3">パスワード:</label>
-                <input type="password" class="box col-4"/>
-                <div class="box col-2"></div>
-            </div>
-            <div>
-                <button v-on:click="login" class="login">ログイン</button>
-            </div>
-            <div style="margin-bottom: 45px;">
-                <button v-on:click="movePasswordReissue" class="PasswordBt">パスワード発行</button>
-            </div>
-            <!-- モーダル -->
-            <processing v-if="processingFlg"></processing>
+		    <form id="mainForm" th:action="@{/login}" th:object="${form}" method="post">
+	            <div>
+	                <label class="screenTitle">ログイン</label>
+	            </div>
+	            <div class="row">
+	            	<div class="box col-2"></div>
+	                <label class="koumoku col-3">ログインID:</label>
+	                <input type="text" v-model="userCd" class="box col-4"/>
+	                <div class="box col-2"></div>
+	            </div>
+	            <div class="row">
+	            	<div class="box col-2"></div>
+	                <label class="koumoku col-3">パスワード:</label>
+	                <input type="password" v-model="password" class="box col-4"/>
+	                <div class="box col-2"></div>
+	            </div>
+	            <div class="center">
+					<p v-for="message in messages">{{ message }}</p>
+				</div>
+	            <div>
+	                <input type="button" v-on:click="login" class="login" value="ログイン" />
+	            </div>
+	            <div style="margin-bottom: 45px;">
+	                <input type="button" v-on:click="movePasswordReissue" class="PasswordBt" value="パスワード発行" />
+	            </div>
+	            <!-- モーダル -->
+	            <processing v-if="processingFlg"></processing>
+			</form>
         </main>
     </div>
     <div th:replace="footer"></div>

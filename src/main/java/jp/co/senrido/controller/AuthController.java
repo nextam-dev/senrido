@@ -38,8 +38,6 @@ public class AuthController {
 
 		BeanUtils.copyProperties(from, sessionUserDto);
 
-		sessionUserDto.setEmployeeName("廣瀬");
-
 		// セッションに格納
 		session.setAttribute("sessionUserDto", sessionUserDto);
 

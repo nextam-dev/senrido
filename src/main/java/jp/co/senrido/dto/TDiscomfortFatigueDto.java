@@ -5,8 +5,7 @@ import java.time.LocalDateTime;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import com.makino_saiten.goitai.annotation.MessageName;
-
+import jp.co.senrido.annotation.MessageName;
 import lombok.Getter;
 import lombok.Setter;
 

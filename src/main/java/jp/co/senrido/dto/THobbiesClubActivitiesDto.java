@@ -6,8 +6,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.makino_saiten.goitai.annotation.MessageName;
-
+import jp.co.senrido.annotation.MessageName;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,45 +14,45 @@ import lombok.Setter;
 @Setter
 public class THobbiesClubActivitiesDto {
 
-    /** ‚¨‹q—lID */
+    /** ï¿½ï¿½ï¿½qï¿½lID */
     @NotNull
-    @MessageName("‚¨‹q—lID")
+    @MessageName("ï¿½ï¿½ï¿½qï¿½lID")
     private Integer id;
 
-    /** —ˆ“X“ú */
+    /** ï¿½ï¿½ï¿½Xï¿½ï¿½ */
     @NotNull
-    @MessageName("—ˆ“X“ú")
+    @MessageName("ï¿½ï¿½ï¿½Xï¿½ï¿½")
     private LocalDateTime visitDate;
 
-    /** ï–¡E•”Šˆ */
+    /** ï¿½ï–¡ï¿½Eï¿½ï¿½ï¿½ï¿½ */
     @Size(max = 100)
-    @MessageName("ï–¡E•”Šˆ")
+    @MessageName("ï¿½ï–¡ï¿½Eï¿½ï¿½ï¿½ï¿½")
     private String hobbiesAndClub;
 
-    /** íœƒtƒ‰ƒO */
+    /** ï¿½íœï¿½tï¿½ï¿½ï¿½O */
     @NotNull
-    @MessageName("íœƒtƒ‰ƒO")
+    @MessageName("ï¿½íœï¿½tï¿½ï¿½ï¿½O")
     private Boolean delFlg;
 
-    /** “o˜^“ú */
+    /** ï¿½oï¿½^ï¿½ï¿½ï¿½ï¿½ */
     @NotNull
-    @MessageName("“o˜^“ú")
+    @MessageName("ï¿½oï¿½^ï¿½ï¿½ï¿½ï¿½")
     private LocalDateTime createDate;
 
-    /** “o˜^ÒƒR[ƒh */
+    /** ï¿½oï¿½^ï¿½ÒƒRï¿½[ï¿½h */
     @NotBlank
     @Size(max = 8)
-    @MessageName("“o˜^ÒƒR[ƒh")
+    @MessageName("ï¿½oï¿½^ï¿½ÒƒRï¿½[ï¿½h")
     private String createId;
 
-    /** XV“ú */
+    /** ï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½ */
     @NotNull
-    @MessageName("XV“ú")
+    @MessageName("ï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½")
     private LocalDateTime updateDate;
 
-    /** XVÒƒR[ƒh */
+    /** ï¿½Xï¿½Vï¿½ÒƒRï¿½[ï¿½h */
     @NotBlank
     @Size(max = 8)
-    @MessageName("XVÒƒR[ƒh")
+    @MessageName("ï¿½Xï¿½Vï¿½ÒƒRï¿½[ï¿½h")
     private String updateId;
 }

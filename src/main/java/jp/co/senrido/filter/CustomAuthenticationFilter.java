@@ -21,11 +21,11 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
         
-        String employeeCode = request.getParameter("idTX");
-        String password = request.getParameter("PasswordTX");
+        String userCd = request.getParameter("userCd");
+        String password = request.getParameter("password");
         
         UserDto user = new UserDto();
-        user.setEmployeeCode(employeeCode);
+        user.setUserCd(userCd);
         
         // トークンの作成
         UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(user, password);

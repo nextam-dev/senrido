@@ -31,7 +31,7 @@ public class AuthenticationProviderImpl implements AuthenticationProvider {
         UserDto user = (UserDto)auth.getPrincipal();
         String password = auth.getCredentials().toString();
 
-        user = authService.auth(user.getEmployeeCode(), password);
+        user = authService.auth(user.getUserCd(), password);
         if (user == null) {
             // 例外はSpringSecurityにあったものを適当に使用
             throw new BadCredentialsException("ログイン情報が存在しません。");

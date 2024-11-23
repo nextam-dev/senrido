@@ -11,8 +11,6 @@ import org.springframework.context.MessageSource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import jp.co.senrido.service.MEmployeeService;
-
 /**
  * 共通リクエストコントローラクラス
  *
@@ -26,9 +24,5 @@ public class CommonRestController {
 	/** */
 	@Autowired
 	MessageSource msg;
-
-	// 社員マスタサービス
-	@Autowired
-	MEmployeeService mEmployeeService;
 
 }
