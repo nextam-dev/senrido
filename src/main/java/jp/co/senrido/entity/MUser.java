@@ -3,8 +3,6 @@
  */
 package jp.co.senrido.entity;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.seasar.doma.Column;
@@ -35,6 +33,10 @@ public class MUser {
 	/** 氏名カナ */
 	@Column(name = "kana")
 	String kana;
+	
+	/** メールアドレス */
+	@Column(name = "email")
+	String email;
 
 	/** 性別 */
 	@Column(name = "sex")
@@ -58,7 +60,7 @@ public class MUser {
 
 	/** 登録日時 */
 	@Column(name = "create_date")
-	String createDate;
+	LocalDateTime createDate;
 
 	/** 登録者コード */
 	@Column(name = "create_id")
@@ -66,7 +68,7 @@ public class MUser {
 
 	/** 更新日時 */
 	@Column(name = "update_date")
-	String updateDate;
+	LocalDateTime updateDate;
 
 	/** 更新者コード */
 	@Column(name = "update_id")

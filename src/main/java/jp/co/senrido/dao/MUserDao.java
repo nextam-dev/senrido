@@ -18,13 +18,20 @@ import jp.co.senrido.entity.MUser;
 public interface MUserDao {
 	/**
 	 * @param userCd
-	 * @return the MEmployee entity
+	 * @return the MUser entity
 	 */
 	@Select
 	MUser selectById(String userCd);
+	
+	/**
+	 * @param email
+	 * @return the MUser entity
+	 */
+	@Select
+	MUser selectByEmail(String email);
 
 	/**
-	 * @return the MEmployee entity List
+	 * @return the MUser entity List
 	 */
 	@Select
 	List<MUser> selectAll();

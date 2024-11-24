@@ -25,7 +25,7 @@ import jp.co.senrido.dto.CodeNameDto;
 import jp.co.senrido.dto.UserDto;
 import jp.co.senrido.json.CommonIO;
 import jp.co.senrido.service.MCodeMasterService;
-import jp.co.senrido.service.S003changeReissueService;
+import jp.co.senrido.service.S003PasswordReissueService;
 import jp.co.senrido.utils.BeanUtils;
 import jp.co.senrido.utils.ObjectUtil;
 
@@ -42,7 +42,7 @@ public class S002PasswordChangeRestController {
 	private MCodeMasterService mCodeMasterService;
 
 	@Autowired
-	private S003changeReissueService s003changeReissueService;
+	private S003PasswordReissueService s003changeReissueService;
 
 	@Autowired
 	private MessageSource msg;

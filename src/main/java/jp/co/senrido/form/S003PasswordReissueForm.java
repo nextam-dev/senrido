@@ -5,8 +5,6 @@
  */
 package jp.co.senrido.form;
 
-import java.util.List;
-
 import jp.co.senrido.dto.UserDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,13 +25,6 @@ public class S003PasswordReissueForm extends BaseSearchForm {
 	/** ログインユーザ情報 */
 	private UserDto userDto;
 
-	/** 受注区分コード */
-	private String orderDivCode;
-
-	/** 施行担当コード */
-	private List<String> operationStaffCode;
-
-	/** 故人名 */
-	private String decedentName;
-
+	/** メールアドレス */
+	private String email;
 }

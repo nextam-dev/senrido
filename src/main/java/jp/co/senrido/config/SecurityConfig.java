@@ -64,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
 	        .authorizeRequests()
 	            // 認証対象外のパスを設定する
-	        .antMatchers("/", "/login", "/fail", "/Common/**", "/s002PasswordChange", "/s003PasswordReissue", "/s005CustomerInformationSearch", "/s006Reservation", "/s006ReservationCalendar/**", "/s006ReservationTimetable/**", "/s007MedicalRecord", "/s007MedicalNewRecord", "/s008Questionnaire/**").permitAll()
+	        .antMatchers("/", "/login", "/fail", "/error/**", "/timeout/**", "/Common/**", "/s002PasswordChange", "/s003PasswordReissue", "/s003PasswordReissue/**", "/s005CustomerInformationSearch", "/s006Reservation", "/s006ReservationCalendar/**", "/s006ReservationTimetable/**", "/s007MedicalRecord", "/s007MedicalNewRecord", "/s008Questionnaire/**").permitAll()
 	            // その他のリクエストは認証が必要
 				.anyRequest().authenticated().and().logout()
 				// ログアウトがパス(GET)の場合設定する（CSRF対応）

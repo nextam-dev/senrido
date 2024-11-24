@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jp.co.senrido.dto.UserDto;
 import jp.co.senrido.service.MCodeMasterService;
-import jp.co.senrido.service.S003changeReissueService;
+import jp.co.senrido.service.S003PasswordReissueService;
 
 /**
  * リクエスト制御クラス
@@ -29,7 +29,7 @@ public class S007MedicalRecordRestController {
 	private MCodeMasterService mCodeMasterService;
 
 	@Autowired
-	private S003changeReissueService s003changeReissueService;
+	private S003PasswordReissueService s003changeReissueService;
 
 	@Autowired
 	private MessageSource msg;

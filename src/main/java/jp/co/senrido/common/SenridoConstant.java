@@ -51,110 +51,6 @@ public class SenridoConstant {
 	public class DivCode {
 		/** 和暦 */
 		public static final String DEV_CODE_WAREKI = "wareki";
-		/** 車種区分 */
-		public final static String CAR_MAKE_DIV = "car_make_div";
-		/** 完了ステータス区分 */
-		public final static String COMPLETE_STATUS_DIV = "complete_status_div";
-		/** 目的地区分 */
-		public final static String DESTINATION_CLASS_DIV = "destination_class_div";
-		public final static String DESTINATION_DIV = "destination_div";
-		/** 検知器有無 */
-		public final static String DETECTOR_EXISTENCE = "detector_existence";
-		/** 運行区分 */
-		public final static String OPERATION_DIV = "operation_div";
-		/** 運行目的区分 */
-		public final static String OPERATION_PURPOSE_DIV = "operation_purpose_div";
-		/** 疫病疲労有無 */
-		public final static String PLAGUE_FATIGUE_EXISTENCE = "plague_fatigue_existence";
-		/** 点呼方法区分 */
-		public final static String ROLL_CALL_METHOD_DIV = "roll_call_method_div";
-		/** 酒氣有無 */
-		public final static String SAKE_EXISTENCE = "sake_existence";
-
-	}
-
-	/**
-	 * 完了ステータス
-	 *
-	 * @author hirokawa
-	 * @version 2023/12/25
-	 */
-	public class CompleteStatus {
-		/** 完了 */
-		public final static String COMPLETE = "1";
-
-		/** 未完了 */
-		public final static String NOT_COMPLETE = "2";
-	}
-
-	/**
-	 * 車種区分
-	 *
-	 * @author hirokawa
-	 * @version 2023/12/25
-	 */
-	public class CarMake {
-		/** 実車 */
-		public final static String EXIST = "1";
-
-		/** 空車 */
-		public final static String BLANK = "2";
-	}
-
-	/**
-	 * 点呼方法区分
-	 *
-	 * @author hirokawa
-	 * @version 2023/12/25
-	 */
-	public class RollCallMethod {
-		/** 対面 */
-		public final static String FACE = "1";
-
-		/** 電話 */
-		public final static String CALL = "2";
-	}
-
-	/**
-	 * 検知器有無
-	 *
-	 * @author hirokawa
-	 * @version 2023/12/25
-	 */
-	public class Detector {
-		/** 有 */
-		public final static String EXIST = "1";
-
-		/** 無 */
-		public final static String NONE = "2";
-	}
-
-	/**
-	 * 酒氣有無
-	 *
-	 * @author hirokawa
-	 * @version 2023/12/25
-	 */
-	public class Sake {
-		/** 有 */
-		public final static String EXIST = "1";
-
-		/** 無 */
-		public final static String NONE = "2";
-	}
-
-	/**
-	 * 疫病疲労有無
-	 *
-	 * @author hirokawa
-	 * @version 2023/12/25
-	 */
-	public class PlagueFatigue {
-		/** 有 */
-		public final static String EXIST = "1";
-
-		/** 無 */
-		public final static String NONE = "2";
 	}
 
 	/** 半角カンマ */
@@ -208,22 +104,6 @@ public class SenridoConstant {
 	/** 改行コード(CRLF) */
 	public final static String CRLF = "\r\n";
 
-	public class JasperCd {
-		/** Jasperファイル */
-		public final static String JRXML_ROLLCALL_RECORD = "rollCallRecordBook";
-
-		/** タイトル */
-		public final static String TITLE_ROLLCALL_RECORD = "乗務記録兼点呼記録簿";
-
-		/** 固定値 */
-		// 基本料金
-		public final static String BASIS = "12000";
-		// 走行距離/1km
-		public final static String MILEAGE_PER = "310";
-		// 深夜料金/1作業
-		public final static String LATE_NIGHT_PER = "1";
-	}
-
 	public class Application {
 		/** プロパティファイル名 */
 		public static final String PROPERTIES = "application";
@@ -231,6 +111,10 @@ public class SenridoConstant {
 		public static final String CONTEXT_PATH = "context.path";
 		/** 環境情報 */
 		public static final String KEY_PROFILES_ACTIVE = "spring.profiles.active";
+		/** URL */
+		public static final String KEY_URL = "system.url";
+		/** メール送信元 */
+		public static final String KEY_MAIL_FROM = "mail.from";
 	}
 
 }

@@ -79,7 +79,7 @@ public class TVisit {
 
 	/** 登録日時 */
 	@Column(name = "create_date")
-	String createDate;
+	LocalDateTime createDate;
 
 	/** 登録者コード */
 	@Column(name = "create_id")
@@ -87,7 +87,7 @@ public class TVisit {
 
 	/** 更新日時 */
 	@Column(name = "update_date")
-	String updateDate;
+	LocalDateTime updateDate;
 
 	/** 更新者コード */
 	@Column(name = "update_id")
