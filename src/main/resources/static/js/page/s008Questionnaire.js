@@ -6,7 +6,7 @@
                 // 進捗フラグ
                 processingFlg: false,
                 // メッセージ
-                message: [],
+                messages: [],
                 // ローカルストレージ保管鍵
                 localStrageKey: 's008Questionnaire',
                 // 処理中モーダル表示/非表示
@@ -15,16 +15,62 @@
                 initSearchFlg: false,
                 // ログインフラグ
                 loginFig:true,
+                // 性別
+                sexItems: [],
+                // アンケート情報
+                survey: {
+                	// お客様ID
+                	id: null,
+                	// 来店日
+                	visitDate: null,
+                	// 客様名
+                	name: null,
+                	// お客様名カナ
+                	nameKana: null,
+                	// 生年月日
+                	birthday: null,
+                	// メールアドレス
+                	mail: null,
+                	// 性別
+                	sex: null,
+                	// 性別その他
+                	sexOther: null,
+                	// 郵便番号
+                	zipcode: null,
+                	// 住所
+                	address: null,
+                	// 電話番号
+                	telephone: null,
+                	// 紹介者
+                	referrer: null,
+                }
             }
         },
         created() {
-            // 何もしない
+        	this.init();
         },
         mounted: function () {
             // 何もしない
         },
         computed: {},
         methods: {
+        	// 初期表示
+        	init: function() {
+    			var self = this;
+                self.processingFlg = true;
+                var postItem = {};
+                var url = editUrl('/s008Questionnaire/initStatus');
+                axios.post(url, postItem)
+                    .then(function (response) {
+                        console.log(response.data);
+                        self.sexItems = response.data.sexItems;
+                    }).catch(function (err) {
+                        // error(err);
+                    	location.href = editUrl('/error');
+                    }).then(function () {
+                        self.processingFlg = false;
+                    });
+        	},
         	// 検索画面へ遷移
         	back: function() {
                 location.href = editUrl('/s005CustomerInformationSearch');
@@ -34,6 +80,31 @@
             	if (!confirm('アンケートを送信します。よろしいですか？')) {
             		return;
             	}
+            	
+            	var self = this;
+                
+                this.messages = [];
+                
+                var postItem = {
+                		survey : this.survey,
+				}
+                
+                self.processingFlg = true;
+                var url = editUrl('/s008Questionnaire/insert');
+                axios.post(url, postItem)
+                    .then(function (response) {
+                        console.log(response.data);
+                        // TODO エラーチェック
+                        
+                        // ログイン画面へ遷移
+                        location.href = editUrl('/s008Questionnaire/complete');
+                    }).catch(function (err) {
+                        // error(err);
+                    	location.href = editUrl('/error');
+                    }).then(function () {
+                        self.processingFlg = false;
+                    });
+            	
             	location.href = editUrl('/s008Questionnaire/complete');
             },
             // 閉じる

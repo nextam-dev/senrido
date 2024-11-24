@@ -5,6 +5,7 @@
  */
 package jp.co.senrido.form;
 
+import jp.co.senrido.dto.TSurveyDto;
 import jp.co.senrido.dto.UserDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,5 +25,7 @@ public class S008QuestionnaireForm extends BaseSearchForm {
 
 	/** ログインユーザ情報 */
 	private UserDto userDto;
-
+	
+	/** アンケート情報 */
+	private TSurveyDto servey;
 }

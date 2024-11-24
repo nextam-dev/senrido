@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 //import com.makino_saiten.jomu.entity.MEmployee;
 //import com.makino_saiten.jomu.entity.MVehicle;
 
+import jp.co.senrido.dto.CodeNameDto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -57,79 +58,10 @@ public class CommonIO implements Serializable {
 	// --------------------------------
 	/** 消費税 */
 	Integer tax;
+	
+	/** 性別 */
+	List<CodeNameDto> sexItems = new ArrayList<CodeNameDto>();
 
-//	// --------------------------------
-//	// メニュー(j002)
-//	// --------------------------------
-//	/** 前回点呼記録 */
-//	RollCallRecordDto rollCallRecordLastInfo;
-//
-//	// --------------------------------
-//	// メニュー(j003)
-//	// --------------------------------
-//	/** 点呼記録一覧情報 */
-//	List<RollCallRecordDto> rollCallRecordList;
-//
-//	// --------------------------------
-//	// 点呼記録簿(j004)
-//	// --------------------------------
-//	/** 点呼記録 */
-//	RollCallRecordDto rollCallRecordInfo;
-//	/** 点呼記録詳細 */
-//	List<RollCallRecordDetailDto> rollCallRecordDetailList;
-//
-//	// --------------------------------
-//	// コードマスタ関連
-//	// --------------------------------
-//	/** 運行区分 */
-//	List<CodeNameDto> operationDivCodeList = new ArrayList<CodeNameDto>();
-//	/** 出庫点呼方法区分 */
-//	List<CodeNameDto> shippRollCallMethodDivList = new ArrayList<CodeNameDto>();
-//	/** 出庫検知器有無 */
-//	List<CodeNameDto> shippDetectorExistenceCodeList = new ArrayList<CodeNameDto>();
-//	/** 出庫酒氣有無 */
-//	List<CodeNameDto> shippSakeExistenceCodeList = new ArrayList<CodeNameDto>();
-//	/** 出庫疫病疲労有無 */
-//	List<CodeNameDto> shippPlagueFatigueExistenceCodeList = new ArrayList<CodeNameDto>();
-//	/** 帰庫点呼方法区分 */
-//	List<CodeNameDto> returnRollCallMethodDivList = new ArrayList<CodeNameDto>();
-//	/** 帰庫検知器有無 */
-//	List<CodeNameDto> returnDetectorExistenceCodeList = new ArrayList<CodeNameDto>();
-//	/** 帰庫酒氣有無 */
-//	List<CodeNameDto> returnSakeExistenceCodeList = new ArrayList<CodeNameDto>();
-//	/** 帰庫疫病疲労有無 */
-//	List<CodeNameDto> returnPlagueFatigueExistenceCodeList = new ArrayList<CodeNameDto>();
-//	/** 完了ステータス */
-//	List<CodeNameDto> completeStatusList = new ArrayList<CodeNameDto>();
-//	/** 車種区分 */
-//	List<CodeNameDto> carMakeDivList = new ArrayList<CodeNameDto>();
-//	/** 目的地区分 */
-//	List<CodeNameDto> purposeAreaDivList = new ArrayList<CodeNameDto>();
-//	/** 運行目的区分 */
-//	List<CodeNameDto> operationPurposeDivList = new ArrayList<CodeNameDto>();
-//
-//	// --------------------------------
-//	// 社員マスタ関連
-//	// --------------------------------
-//	/** 起票者 */
-//	List<MEmployee> voterList = new ArrayList<MEmployee>();
-//	/** 出庫点呼執行者 */
-//	List<MEmployee> shippRollCallEnforcerList = new ArrayList<MEmployee>();
-//	/** 出庫記載者 */
-//	List<MEmployee> shippAuthorList = new ArrayList<MEmployee>();
-//	/** 帰庫点呼執行者 */
-//	List<MEmployee> returnRollCallEnforcerList = new ArrayList<MEmployee>();
-//	/** 帰庫記載者 */
-//	List<MEmployee> returnAuthorList = new ArrayList<MEmployee>();
-//	/** 記載者 */
-//	List<MEmployee> authorList = new ArrayList<MEmployee>();
-//	/** 運転者 */
-//	List<MEmployee> driverList = new ArrayList<MEmployee>();
-//
-//	// --------------------------------
-//	// 車両マスタ
-//	// --------------------------------
-//	List<MVehicle> vehicleList = new ArrayList<MVehicle>();
 	
 	// --------------------------------
 	// 結果（一番最後、これより下に情報を入れない）

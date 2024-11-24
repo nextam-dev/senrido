@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import jp.co.senrido.form.S008QuestionnaireForm;
 
 /**
+ * お客様アンケート用コントローラー.
+ * 
  * @author hirose
  *
  */
@@ -25,34 +27,42 @@ public class S008QuestionnaireController {
 	@Autowired
 	private Environment eivironment;
 
+	/**
+	 * お客様アンケート初回用.
+	 * 
+	 * @param form
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/s008Questionnaire", method = RequestMethod.GET)
     public String getInit(@ModelAttribute("form") S008QuestionnaireForm form, Model model) {
-		// 認証した情報を取得する
-//		UserDto userDto = (UserDto) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		model.addAttribute("userDto",userDto);
-//		model.addAttribute("path", eivironment.getProperty(GoitaiConstant.Application.CONTEXT_PATH));
 
         return "/s008Questionnaire";
     }
 	
+	/**
+	 * お客様アンケート2回目以降用.
+	 * 
+	 * @param form
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/s008Questionnaire/continuation", method = RequestMethod.GET)
     public String getContinuation(@ModelAttribute("form") S008QuestionnaireForm form, Model model) {
-		// 認証した情報を取得する
-//		UserDto userDto = (UserDto) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		model.addAttribute("userDto",userDto);
-//		model.addAttribute("path", eivironment.getProperty(GoitaiConstant.Application.CONTEXT_PATH));
 
         return "/s008QuestionnaireContinuation";
     }
 	
+	/**
+	 * 完了画面.
+	 * 
+	 * @param form
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/s008Questionnaire/complete", method = RequestMethod.GET)
     public String getComplete(@ModelAttribute("form") S008QuestionnaireForm form, Model model) {
-		// 認証した情報を取得する
-//		UserDto userDto = (UserDto) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		model.addAttribute("userDto",userDto);
-//		model.addAttribute("path", eivironment.getProperty(GoitaiConstant.Application.CONTEXT_PATH));
 
         return "/s008QuestionnaireComplete";
     }
-
 }
