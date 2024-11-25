@@ -27,5 +27,5 @@ public class S008QuestionnaireForm extends BaseSearchForm {
 	private UserDto userDto;
 	
 	/** アンケート情報 */
-	private TSurveyDto servey;
+	private TSurveyDto survey;
 }

@@ -3,13 +3,13 @@
  */
 package jp.co.senrido.dto;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import lombok.Getter;
 import lombok.Setter;
 
 /**
+ * アンケート用
  * @author takam
  *
  */
@@ -21,7 +21,7 @@ public class TSurveyDto {
 	private Integer id;
 
     /** 来店日 */
-	private LocalDateTime visitDate;
+	private String visitDate;
 
 	/** お客様名 */
 	private String name;
@@ -30,7 +30,7 @@ public class TSurveyDto {
 	private String nameKana;
 
 	/** 生年月日 */
-	private LocalDateTime birthday;
+	private String birthday;
 	
 	/** メールアドレス */
 	private String mail;

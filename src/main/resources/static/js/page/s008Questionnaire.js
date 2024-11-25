@@ -47,6 +47,12 @@
             }
         },
         created() {
+        	// パラメータからお客様IDと来店日を取得する
+        	var params = URI.parseQuery(window.location.search);
+
+            this.survey.id = params.id || null;
+            this.survey.visitDate = params.visitDate || null;
+        	
         	this.init();
         },
         mounted: function () {
@@ -82,7 +88,6 @@
             	}
             	
             	var self = this;
-                
                 this.messages = [];
                 
                 var postItem = {
@@ -96,7 +101,7 @@
                         console.log(response.data);
                         // TODO エラーチェック
                         
-                        // ログイン画面へ遷移
+                        // 完了画面へ遷移
                         location.href = editUrl('/s008Questionnaire/complete');
                     }).catch(function (err) {
                         // error(err);
@@ -104,8 +109,6 @@
                     }).then(function () {
                         self.processingFlg = false;
                     });
-            	
-            	location.href = editUrl('/s008Questionnaire/complete');
             },
             // 閉じる
             close: function() {

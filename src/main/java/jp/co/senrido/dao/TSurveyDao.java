@@ -3,6 +3,7 @@
  */
 package jp.co.senrido.dao;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.seasar.doma.Dao;
@@ -21,6 +22,12 @@ import jp.co.senrido.entity.TSurvey;
 @Dao
 @ConfigAutowireable
 public interface TSurveyDao {
+
+	/**
+	 * @return the TSurvey entity List
+	 */
+	@Select
+	TSurvey selectById(Integer id, LocalDateTime visitDate);
 
 	/**
 	 * @return the TSurvey entity List

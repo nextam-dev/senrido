@@ -35,13 +35,13 @@ public class TCustomer {
 	@Column(name = "customer_cd")
 	String customerCd;
 
-	/** お客様名 */
-	@Column(name = "customer_name")
-	String customerName;
+	/** お名前 */
+	@Column(name = "name")
+	String name;
 
-	/** お客様名カナ */
-	@Column(name = "customer_kana")
-	String customerKana;
+	/** お名前カナ */
+	@Column(name = "name_kana")
+	String nameKana;
 
 	/** 生年月日和暦年号 */
 	@Column(name = "birthday_nengo")

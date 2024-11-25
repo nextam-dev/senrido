@@ -21,6 +21,12 @@ import jp.co.senrido.entity.TCustomer;
 @Dao
 @ConfigAutowireable
 public interface TCustomerDao {
+	
+	/**
+	 * @return the TCustomer entity List
+	 */
+	@Select
+	TCustomer selectById(Integer id);
 
 	/**
 	 * @return the TCustomer entity List

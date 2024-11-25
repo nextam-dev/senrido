@@ -19,6 +19,7 @@ import jp.co.senrido.dto.CodeNameDto;
 import jp.co.senrido.form.S008QuestionnaireForm;
 import jp.co.senrido.json.CommonIO;
 import jp.co.senrido.service.MCodeMasterService;
+import jp.co.senrido.service.S008QuestionnaireService;
 
 /**
  * リクエスト制御クラス
@@ -31,6 +32,9 @@ public class S008QuestionnaireRestController {
 
 	@Autowired
 	private MCodeMasterService mCodeMasterService;
+	
+	@Autowired
+	private S008QuestionnaireService s008QuestionnaireService;
 
 	@Autowired
 	private MessageSource msg;
@@ -82,6 +86,8 @@ public class S008QuestionnaireRestController {
 		
 		CommonIO io = new CommonIO();
 		
+		// 登録処理
+		s008QuestionnaireService.insertSurvey(form.getSurvey());
 
 		return io;
 	}

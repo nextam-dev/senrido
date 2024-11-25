@@ -7,7 +7,7 @@ import javax.sql.DataSource;
 
 import org.seasar.doma.jdbc.Config;
 import org.seasar.doma.jdbc.dialect.Dialect;
-import org.seasar.doma.jdbc.dialect.MysqlDialect;
+import org.seasar.doma.jdbc.dialect.PostgresDialect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -64,7 +64,7 @@ public class WebAppConfig {
         return new Config() {
             @Override
             public Dialect getDialect() {
-                return new MysqlDialect();
+                return new PostgresDialect();
             }
 
             @Override
