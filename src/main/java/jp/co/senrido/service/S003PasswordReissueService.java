@@ -48,17 +48,17 @@ public class S003PasswordReissueService extends BaseTransactionalService {
      * @param fromAddress
      * @throws Throwable
      */
-	public String sendMail(String email) throws Throwable {
+	public String sendMail(String mail) throws Throwable {
 
 		String ret = null;
 		
 		String fromAddress = SenridoResources.getString(SenridoConstant.Application.PROPERTIES, SenridoConstant.Application.KEY_MAIL_FROM);
-		String[] toAddress = {email};
+		String[] toAddress = {mail};
 		String subject = "【お客様情報管理システム】パスワード再発行のお知らせ";
 		
 		// ユーザー情報を取得
 		// メールアドレスを条件に取得する
-		MUser mUser = mUserDao.selectByEmail(email);
+		MUser mUser = mUserDao.selectByMail(mail);
 		if (mUser == null) {
 			ret = "メールアドレスが登録されておりません。";
 			return ret;

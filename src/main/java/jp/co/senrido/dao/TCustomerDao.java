@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package jp.co.senrido.dao;
 
 import java.util.List;
@@ -9,51 +12,40 @@ import org.seasar.doma.Select;
 import org.seasar.doma.Update;
 import org.seasar.doma.boot.ConfigAutowireable;
 
-import jp.co.senrido.entity.MUser;
+import jp.co.senrido.entity.TCustomer;
 
 /**
+ * @author takam
+ *
  */
 @Dao
 @ConfigAutowireable
-public interface MUserDao {
-	/**
-	 * @param userCd
-	 * @return the MUser entity
-	 */
-	@Select
-	MUser selectById(String userCd);
-	
-	/**
-	 * @param mail
-	 * @return the MUser entity
-	 */
-	@Select
-	MUser selectByMail(String mail);
+public interface TCustomerDao {
 
 	/**
-	 * @return the MUser entity List
+	 * @return the TCustomer entity List
 	 */
 	@Select
-	List<MUser> selectAll();
+	List<TCustomer> selectAll();
 
 	/**
 	 * @param entity
 	 * @return affected rows
 	 */
 	@Insert
-	int insert(MUser entity);
+	int insert(TCustomer entity);
 
 	/**
 	 * @param entity
 	 * @return affected rows
 	 */
 	@Update
-	int update(MUser entity);
+	int update(TCustomer entity);
 
 	/**
 	 * @param entity
 	 * @return affected rows
 	 */
 	@Delete
-	int delete(MUser entity);
+	int delete(TCustomer entity);
 }

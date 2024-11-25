@@ -16,7 +16,7 @@
                 // ログインフラグ
                 loginFig:false,
                 // メールアドレス
-                email: "",
+                mail: "",
             }
         },
         created() {
@@ -36,13 +36,13 @@
                 
                 this.messages = [];
                 
-                if (!this.email) {
+                if (!this.mail) {
                 	this.messages.push("メールアドレスは必須です。");
                 	return;
                 }
                 
                 var postItem = {
-					email : this.email,
+                		mail : this.mail,
 				}
                 
                 self.processingFlg = true;

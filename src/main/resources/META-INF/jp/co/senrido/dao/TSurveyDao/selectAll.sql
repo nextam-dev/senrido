@@ -1,6 +1,6 @@
 select
   /*%expand*/*
 from
-  m_user
+  t_survey
 where
   del_flg = false

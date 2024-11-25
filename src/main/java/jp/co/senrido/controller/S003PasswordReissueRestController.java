@@ -59,7 +59,7 @@ public class S003PasswordReissueRestController {
 	public String reissuePassword(@RequestBody S003PasswordReissueForm form) throws Throwable {
 		
 		// パスワード再発行処理
-		String ret = s003PasswordReissueService.sendMail(form.getEmail());
+		String ret = s003PasswordReissueService.sendMail(form.getMail());
 
 		return ret;
 	}

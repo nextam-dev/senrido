@@ -35,8 +35,8 @@ public class MUser {
 	String kana;
 	
 	/** メールアドレス */
-	@Column(name = "email")
-	String email;
+	@Column(name = "mail")
+	String mail;
 
 	/** 性別 */
 	@Column(name = "sex")

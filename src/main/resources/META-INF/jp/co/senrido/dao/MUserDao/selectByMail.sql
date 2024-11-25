@@ -3,4 +3,4 @@ select
 from
   m_user
 where
-  email = /* email */'1'
+  mail = /* mail */'1'

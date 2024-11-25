@@ -26,5 +26,5 @@ public class S003PasswordReissueForm extends BaseSearchForm {
 	private UserDto userDto;
 
 	/** メールアドレス */
-	private String email;
+	private String mail;
 }

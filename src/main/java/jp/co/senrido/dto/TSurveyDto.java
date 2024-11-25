@@ -30,10 +30,10 @@ public class TSurveyDto {
 	private String nameKana;
 
 	/** 生年月日 */
-	private LocalDate birthday;
+	private LocalDateTime birthday;
 	
 	/** メールアドレス */
-	private String mmail;
+	private String mail;
 
 	/** 性別 */
 	private String sex;

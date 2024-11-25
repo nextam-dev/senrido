@@ -3,13 +3,14 @@
  */
 package jp.co.senrido.entity;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.seasar.doma.Column;
 import org.seasar.doma.Entity;
+import org.seasar.doma.GeneratedValue;
+import org.seasar.doma.GenerationType;
 import org.seasar.doma.Id;
+import org.seasar.doma.SequenceGenerator;
 import org.seasar.doma.Table;
 
 import lombok.Data;
@@ -25,6 +26,8 @@ public class TCustomer {
 
 	/** お客様ID */
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(sequence = "t_customer_id_seq")
 	@Column(name = "id")
 	Integer id;
 
@@ -46,7 +49,7 @@ public class TCustomer {
 
 	/** 生年月日 */
 	@Column(name = "birthday")
-	String birthday;
+	LocalDateTime birthday;
 
 	/** 性別 */
 	@Column(name = "sex")
@@ -102,11 +105,11 @@ public class TCustomer {
 
 	/** 次回来店日 */
 	@Column(name = "next_visit_date")
-	String nextVisitDate;
+	LocalDateTime nextVisitDate;
 
 	/** 前回来店日 */
 	@Column(name = "previous_visit_date")
-	String previousVisitDate;
+	LocalDateTime previousVisitDate;
 
 	/** 削除フラグ */
 	@Column(name = "del_flg")
@@ -114,7 +117,7 @@ public class TCustomer {
 
 	/** 登録日時 */
 	@Column(name = "create_date")
-	String createDate;
+	LocalDateTime createDate;
 
 	/** 登録者コード */
 	@Column(name = "create_id")
@@ -122,7 +125,7 @@ public class TCustomer {
 
 	/** 更新日時 */
 	@Column(name = "update_date")
-	String updateDate;
+	LocalDateTime updateDate;
 
 	/** 更新者コード */
 	@Column(name = "update_id")

@@ -1,6 +1,6 @@
 select
   /*%expand*/*
 from
-  m_user
+  t_visit
 where
   del_flg = false

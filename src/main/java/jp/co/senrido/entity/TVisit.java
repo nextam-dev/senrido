@@ -3,8 +3,6 @@
  */
 package jp.co.senrido.entity;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.seasar.doma.Column;
@@ -31,15 +29,15 @@ public class TVisit {
 	/** 来店日 */
 	@Id
 	@Column(name = "visit_date")
-	String visitDate;
+	LocalDateTime visitDate;
 
 	/** 開始時間 */
 	@Column(name = "start_time")
-	String startTime;
+	LocalDateTime startTime;
 
 	/** 終了時間 */
 	@Column(name = "end_time")
-	String endTime;
+	LocalDateTime endTime;
 
 	/** 東京測定会フラグ */
 	@Column(name = "tokyo_measurement_event_flag")
@@ -67,7 +65,7 @@ public class TVisit {
 
 	/** アンケート回答日 */
 	@Column(name = "survey_response_date")
-	String surveyResponseDate;
+	LocalDateTime surveyResponseDate;
 
 	/** 通知種別 */
 	@Column(name = "notification_type")
