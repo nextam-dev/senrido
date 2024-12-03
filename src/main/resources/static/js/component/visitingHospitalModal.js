@@ -84,10 +84,10 @@ Vue.component('visiting-hospital-modal', {
 		                        <div class="col-8 modal-item-value">
 					                <div class="row">
 					                    <div class="col-3">
-					                        <label class="input-label"><input type="radio" name="sakuseiSiji" v-model="visitingHospitalInfo.glassesMaking"><span class="spaceLeft">あり</span></label>
+					                        <label class="input-label"><input type="radio" name="sakuseiSiji" v-model="visitingHospitalInfo.glassesMaking" value="true"><span class="spaceLeft">あり</span></label>
 					                    </div>
 					                    <div class="col-3">
-					                        <label class="input-label"><input type="radio" name="sakuseiSiji" v-model="visitingHospitalInfo.glassesMaking"><span class="spaceLeft">なし</span></label>
+					                        <label class="input-label"><input type="radio" name="sakuseiSiji" v-model="visitingHospitalInfo.glassesMaking" value="false"><span class="spaceLeft">なし</span></label>
 					                    </div>
 					                </div>
 		                        </div>
@@ -101,10 +101,10 @@ Vue.component('visiting-hospital-modal', {
 		                        <div class="col-8 modal-item-value">
 					                <div class="row">
 					                    <div class="col-3">
-					                        <label class="input-label"><input type="radio" name="sakuseiSiji" v-model="visitingHospitalInfo.prescription"><span class="spaceLeft">あり</span></label>
+					                        <label class="input-label"><input type="radio" name="prescription" v-model="visitingHospitalInfo.prescription" value="true"><span class="spaceLeft">あり</span></label>
 					                    </div>
 					                    <div class="col-3">
-					                        <label class="input-label"><input type="radio" name="sakuseiSiji" v-model="visitingHospitalInfo.prescription"><span class="spaceLeft">なし</span></label>
+					                        <label class="input-label"><input type="radio" name="prescription" v-model="visitingHospitalInfo.prescription" value="false"><span class="spaceLeft">なし</span></label>
 					                    </div>
 					                </div>
 		                        </div>
@@ -158,14 +158,16 @@ Vue.component('visiting-hospital-modal', {
 	methods: {
 		open: function (item) {
 			this.displayFlg = true;
+			this.id = item.id;
+			this.visitDate = item.visitDate;
 			this.visitingHospitalItems = item.visitingHospitalItems;
     	},
     	update:function() {
     		var self = this;
     		self.showModalProcessing();
 			var postItem = {
-				//id: this.id,
-				//visitData = this.visitData
+				id: this.id,
+				visitData: this.visitDate,
 				visitingHospitalInfo: self.visitingHospitalInfo,
 			};
 			axios.post(editUrl('/s007MedicalRecord/upsertVisitingHospital'), postItem)

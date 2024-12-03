@@ -6,18 +6,14 @@
  */
 package jp.co.senrido.form;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.seasar.doma.Column;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import jp.co.senrido.annotation.DatePattern;
 import jp.co.senrido.annotation.MessageName;
-import jp.co.senrido.entity.MCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -36,10 +32,12 @@ public class UpdateVisitingHospitalForm extends BaseSearchForm {
 
     /** 受診日 */
     @MessageName("受診日")
-    private String consultationDate;
+	@DatePattern(pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private String consultationDate;
     
     /** 眼科名 */
-    @Column(name = "ophthalmology_name")
+    @MessageName("眼科名")
     private String ophthalmologyName;
 
     /** 眼科への通院 */

@@ -5,9 +5,9 @@
  */
 package jp.co.senrido.controller;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -17,7 +17,6 @@ import javax.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,7 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jp.co.senrido.common.SenridoConstant;
 import jp.co.senrido.dto.TVisitingHospitalDto;
-import jp.co.senrido.entity.MCode;
 import jp.co.senrido.form.S007MedicalRecordForm;
 import jp.co.senrido.form.S007MedicalRecordUpdateForm;
 import jp.co.senrido.form.S007VisitingHospitalConditionForm;
@@ -85,23 +83,47 @@ public class S007MedicalRecordRestController {
 	@RequestMapping(value = "/upsertVisitingHospital", method = RequestMethod.POST)
 	public CommonIO update(@Valid @RequestBody S007VisitingHospitalConditionForm form) throws Throwable {
 		CommonIO io = new CommonIO();
-
+		Integer id = Integer.parseInt(form.getId());
+		String visitDateStr = form.getVisitDate();
 		String resultCd = "";
 
 		// Form→dto
 		TVisitingHospitalDto dto = new TVisitingHospitalDto();
 
 		if (form.getVisitingHospitalInfo() != null) {
-			// UpdateVisitingHospitalForm から TVisitingHospitalDto にコピー
 			BeanUtils.copyProperties(form.getVisitingHospitalInfo(), dto);
 
+			String consultationDateStr = form.getVisitingHospitalInfo().getConsultationDate();
+			if (consultationDateStr != null && !consultationDateStr.isEmpty()) {
+			    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			    LocalDate consultationDate = LocalDate.parse(consultationDateStr, formatter);
+			    dto.setConsultationDate(consultationDate);
+			}
 			List<String> medicalHistoryList = form.getVisitingHospitalInfo().getMedicalHistory();
 			if (medicalHistoryList != null && !medicalHistoryList.isEmpty()) {
 				String medicalHistory = String.join(",", medicalHistoryList);
 				dto.setMedicalHistory(medicalHistory);
 			}
+			String visitEyeDoctorStr = form.getVisitingHospitalInfo().getVisitEyeDoctor();
+		    if (visitEyeDoctorStr != null) {
+		        dto.setVisitEyeDoctor(Boolean.valueOf(visitEyeDoctorStr));
+		    }
+		    String glassesMakingStr = form.getVisitingHospitalInfo().getGlassesMaking();
+		    if (glassesMakingStr != null) {
+		        dto.setGlassesMaking(Boolean.valueOf(glassesMakingStr));
+		    }
+		    String prescriptionStr = form.getVisitingHospitalInfo().getPrescription();
+		    if (prescriptionStr != null) {
+		        dto.setPrescription(Boolean.valueOf(prescriptionStr));
+		    }
+			
 		}
-
+		
+		dto.setId(id);
+		if (visitDateStr != null && !visitDateStr.isEmpty()) {
+		    LocalDateTime visitDate = LocalDateTime.parse(visitDateStr);
+		    dto.setVisitDate(visitDate);
+		}
 		// 登録・更新処理
 		resultCd = s007MedicalRecordService.upsertVisitingHospital(dto);
 
