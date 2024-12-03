@@ -18,6 +18,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 //import com.makino_saiten.jomu.entity.MEmployee;
 //import com.makino_saiten.jomu.entity.MVehicle;
 
+import jp.co.senrido.dto.CodeNameDto;
+import jp.co.senrido.dto.TCustomerDto;
+import jp.co.senrido.dto.TVisitingHospitalDto;
 import jp.co.senrido.entity.MCode;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -94,7 +97,53 @@ public class CommonIO implements Serializable {
 	/** コロナ開示 */
 	List<MCode> covidDisclosureList = new ArrayList<MCode>();
 	
-
+	/** 症状 */
+	List<CodeNameDto> visitingHospitalItems = new ArrayList<CodeNameDto>();
+	/** 眼の症状 */
+	List<CodeNameDto> eyeSymptomsItems = new ArrayList<CodeNameDto>();
+	/** 身体の症状 */
+	List<CodeNameDto> bodySymptomsItems = new ArrayList<CodeNameDto>();
+	/** メガネトラブル */
+	List<CodeNameDto> glassesIssuesItems = new ArrayList<CodeNameDto>();
+	/** フレームトラブル */
+	List<CodeNameDto> frameIssuesItems = new ArrayList<CodeNameDto>();
+	/** 眩しさを感じる物事 */
+	List<CodeNameDto> glareSourcesItems = new ArrayList<CodeNameDto>();
+	/** メガネの装用現状 */
+	List<CodeNameDto> useGlassesCurrentItems = new ArrayList<CodeNameDto>();
+	/** メガネの装用CL併用 */
+	List<CodeNameDto> useGlassesWithClItems = new ArrayList<CodeNameDto>();
+	/** メガネの装用用途 */
+	List<CodeNameDto> useGlassesPurposeItems = new ArrayList<CodeNameDto>();
+	/** ピッチリスト（輻輳　開散　水平斜位量　上下寄せ　上下斜位量　P）*/
+	List<CodeNameDto> pitchRangeRyePItems = new ArrayList<CodeNameDto>();
+	/** ピッチリスト（NPC アイポイント） */
+	List<CodeNameDto> pitchRangeNpcEyepointItems = new ArrayList<CodeNameDto>();
+	/** ピッチリスト（V CV） */
+	List<CodeNameDto> pitchRangeVCvItems = new ArrayList<CodeNameDto>();
+	/** ピッチリスト（S C ADD） */
+	List<CodeNameDto> pitchRangeSCAddItems = new ArrayList<CodeNameDto>();
+	/** ピッチリスト（AX） */
+	List<CodeNameDto> pitchRangeAxItems = new ArrayList<CodeNameDto>();
+	/** ピッチリスト（BASE） */
+	List<CodeNameDto> pitchRangeBaseItems = new ArrayList<CodeNameDto>();
+	/** ピッチリスト（PD） */
+	List<CodeNameDto> pitchRangePdItems = new ArrayList<CodeNameDto>();
+	/** オプションリスト */
+	List<CodeNameDto> optionItems = new ArrayList<CodeNameDto>();
+	/** 決済方法リスト */
+	List<CodeNameDto> depositKindCdItems = new ArrayList<CodeNameDto>();
+	/** 完成連絡方法リスト */
+	List<CodeNameDto> completionContactItems = new ArrayList<CodeNameDto>();
+	
+	
+	// --------------------------------
+	// s007
+	// --------------------------------
+	/** お客様情報 */
+	TCustomerDto customerInfo;
+	/** 眼科への通院情報 */
+	List<TVisitingHospitalDto> visitingHospitalInfoList;
 	
 	// --------------------------------
 	// 結果（一番最後、これより下に情報を入れない）

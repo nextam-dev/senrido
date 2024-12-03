@@ -3,6 +3,7 @@
  */
 package jp.co.senrido.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.seasar.doma.Column;
@@ -105,11 +106,11 @@ public class TCustomer {
 
 	/** 次回来店日 */
 	@Column(name = "next_visit_date")
-	LocalDateTime nextVisitDate;
+	LocalDate nextVisitDate;
 
 	/** 前回来店日 */
 	@Column(name = "previous_visit_date")
-	LocalDateTime previousVisitDate;
+	LocalDate previousVisitDate;
 
 	/** 削除フラグ */
 	@Column(name = "del_flg")

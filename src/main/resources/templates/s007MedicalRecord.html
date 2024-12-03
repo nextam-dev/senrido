@@ -106,16 +106,16 @@
 			<div class="infoBox row">
 				<div class="col-6">
 					<div class="info" style="font-size: 15px;">
-						<label>ヤマダタロウ</label>
+						<label>{{ customerInfo.nameKana }}</label>
 					</div>
 					<div class="info" style="border-bottom:1px solid">
-						<span style="font-size: 20px; "><label>山田太郎</label><span style="margin-left: 200px;">様</span></span>
+						<span style="font-size: 20px; "><label>{{ customerInfo.name }}</label><span style="margin-left: 200px;">様</span></span>
 					</div>
 					<div class="info" style="font-size: 15px;">
 						<label>ID:0001
-						<span style="margin-left: 10px;">平成11年04月18日生まれ</span>
+						<span style="margin-left: 10px;">{{ customerInfo.birthdayNengo }}{{ customerInfo.birthday }}生まれ</span>
 						<span style="margin-left: 10px;">25歳</span>
-						<span style="margin-left: 10px;">男性</span>
+						<span style="margin-left: 10px;">{{ customerInfo.sex }}</span>
 						</label>
 					</div>
 				</div>
@@ -123,10 +123,10 @@
 					<div class="row">
 						<div class="col-7" style="margin-top: 5px;">
 							<div class="date" style="font-size: 15px;">
-								<label>前回来店日:</label><label>2024/10/24</label>
+								<label>前回来店日:</label><label>{{ customerInfo.previousVisitDateStr }}</label>
 							</div>
 						<br><div class="date" style="font-size: 15px;">
-								<label>次回来店日:</label><label>2025/01/24</label>
+								<label>次回来店日:</label><label>{{ customerInfo.nextVisitDate }}</label>
 							</div>
 						</div>
 						<div class="col-5" style="margin-top: 5px; display: flex; gap: 10px;">
@@ -161,23 +161,16 @@
 							</button>
 						</div>
 					</div>
-					<div v-if="item.open" class="accordion-content">
-						<label class="accordion-label">2024/10/24</label>
+					<!-- 眼科への通院 -->
+					<div v-for="(item1, index) in visitingHospitalInfoList" :key="index" v-if="item.visitingHospitalInfoList && item.open" class="accordion-content">
+ 						<label class="accordion-label">{{ item.visitDate }}</label>
 						<br>
 						<div class="row">
 							<div class="col-3">
 								<label>眼科への通院：</label>
 							</div>
 							<div class="col-7">
-								<input type="text" class="accordion-input" v-model="item.inputValue" placeholder="有" disabled>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-3">
-								<label>眼科への通院：</label>
-							</div>
-							<div class="col-7">
-								<input type="text" class="accordion-input" v-model="item.inputValue" placeholder="有" disabled>
+								<input type="text" class="accordion-input" v-model="item1.visitEyeDoctor" disabled>
 							</div>
 						</div>
 						<div class="row">
@@ -185,7 +178,7 @@
 								<label>受信日：</label>
 							</div>
 							<div class="col-7">
-								<input type="text" class="accordion-input" v-model="item.inputValue" placeholder="2024/10/24" disabled>
+								<input type="text" class="accordion-input" v-model="item1.consultationDate" placeholder="2024/10/24" disabled>
 							</div>
 						</div>
 						<div class="row">
@@ -193,7 +186,7 @@
 								<label>眼科名：</label>
 							</div>
 							<div class="col-7">
-								<input type="text" class="accordion-input" v-model="item.inputValue" placeholder="黒川眼科" disabled>
+								<input type="text" class="accordion-input" v-model="item1.visitEyeDoctor" placeholder="黒川眼科" disabled>
 							</div>
 						</div>
 						<div class="row">
@@ -201,7 +194,7 @@
 								<label>症状：</label>
 							</div>
 							<div class="col-7">
-								<input type="text" class="accordion-input" v-model="item.inputValue" placeholder="近視、白内障、レーシック" disabled>
+								<input type="text" class="accordion-input" v-model="item1.medicalHistoryName" placeholder="近視、白内障、レーシック" disabled>
 							</div>
 						</div>
 						<div class="row">
@@ -209,7 +202,7 @@
 								<label>メガネの作成指示：</label>
 							</div>
 							<div class="col-7">
-								<input type="text" class="accordion-input" v-model="item.inputValue" placeholder="無" disabled>
+								<input type="text" class="accordion-input" v-model="item1.glassesMaking" disabled>
 							</div>
 						</div>
 						<div class="row">
@@ -217,7 +210,7 @@
 								<label>処方箋：</label>
 							</div>
 							<div class="col-7">
-								<input type="text" class="accordion-input" v-model="item.inputValue" placeholder="有" disabled>
+								<input type="text" class="accordion-input" v-model="item1.prescription" disabled>
 							</div>
 						</div>
 						<div class="row">
@@ -225,7 +218,472 @@
 								<label>眼科医の指示・意見：</label>
 							</div>
 							<div class="col-7">
-								<input type="text" class="accordion-input" v-model="item.inputValue" placeholder="経過観察" disabled>
+								<input type="text" class="accordion-input" v-model="item1.ophthalmologistInstructions" disabled>
+							</div>
+						</div>
+					</div>
+					<!-- 眼の手術 -->
+					<div v-for="(item1, index) in surgeryInfoList" :key="index" v-if="item.surgeryInfoList && item.open" class="accordion-content">
+ 						<label class="accordion-label">{{ item1.visitDate }}</label>
+						<br>
+						<div class="row">
+							<div class="col-3">
+								<label>白内障：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.cataractName" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>緑内障：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.glaucomaName" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>飛蚊症：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.floatersName" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>網膜剥離：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.retinalDetachmentName" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>斜視：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.strabismusName" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>硝子体：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.vitreousBodyName" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>レーシック：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.lasikName" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>ICL/IOL：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.iclIolName" disabled>
+							</div>
+						</div>
+					</div>
+					<!-- 視力の低下を感じたのは -->
+					<div v-for="(item1, index) in visionLossInfoList" :key="index" v-if="visionLossInfoList && item.open" class="accordion-content">
+ 						<label class="accordion-label">{{ item1.visitDate }}</label>
+						<br>
+						<div class="row">
+							<div class="col-3">
+								<label>視力を感じたのは：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.decreaseEyesight" disabled><label>歳頃</label>
+							</div>
+						</div>
+					</div>
+					<!-- メガネの装用は -->
+					<div v-for="(item1, index) in glassesUsageInfoList" :key="index" v-if="glassesUsageInfoList && item.open" class="accordion-content">
+ 						<label class="accordion-label">{{ item1.visitDate }}</label>
+						<br>
+						<div class="row">
+							<div class="col-3">
+								<label>メガネの装用は：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.useGlasses" disabled><label>歳頃</label>
+							</div>
+						</div>
+					</div>
+					<!-- メガネ・CLの装用状況 -->
+					<div v-for="(item1, index) in usageStatusInfoList" :key="index" v-if="usageStatusInfoList && item.open" class="accordion-content">
+ 						<label class="accordion-label">{{ item1.visitDate }}</label>
+						<br>
+						<div class="row">
+							<div class="col-3">
+								<label>現状：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.glassesClUsageCurrentName" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>CL併用：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.glassesClUsageCombinedName" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>メガネ用途：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.glassesPurposeName" disabled>
+							</div>
+						</div>
+					</div>
+					<!-- メガネトラブル -->
+					<div v-for="(item1, index) in troubleInfoList" :key="index" v-if="troubleInfoList && item.open" class="accordion-content">
+ 						<label class="accordion-label">{{ item1.visitDate }}</label>
+						<br>
+						<div class="row">
+							<div class="col-3">
+								<label>メガネ：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.glassesIssuesName" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>フレーム：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.frameIssuesName" disabled>
+							</div>
+						</div>
+					</div>
+					<!-- 眼・身体の症状 -->
+					<div v-for="(item1, index) in symptomsInfoList" :key="index" v-if="symptomsInfoList && item.open" class="accordion-content">
+ 						<label class="accordion-label">{{ item1.visitDate }}</label>
+						<br>
+						<div class="row">
+							<div class="col-3">
+								<label>眼の症状：</label>
+							</div>
+							<div class="col-7" v-if="item1.eyeSymptomsOther">
+							    <input type="text" class="accordion-input" v-model="item1.eyeSymptomsOther" disabled>
+							</div>
+							<div class="col-7" v-else>
+								<input type="text" class="accordion-input" v-model="item1.eyeSymptomsName" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>身体の症状：</label>
+							</div>
+							<div class="col-7" v-if="item1.bodySymptomsOther">
+							    <input type="text" class="accordion-input" v-model="item1.bodySymptomsOther" disabled>
+							</div>
+							<div class="col-7" v-else>
+								<input type="text" class="accordion-input" v-model="item1.bodySymptomsName" disabled>
+							</div>
+						</div>
+					</div>
+					<!-- 眩しさを感じる物事 -->
+					<div v-for="(item1, index) in glareInfoList" :key="index" v-if="glareInfoList && item.open" class="accordion-content">
+ 						<label class="accordion-label">{{ item1.visitDate }}</label>
+						<br>
+						<div class="row">
+							<div class="col-3">
+								<label>物事：</label>
+							</div>
+							<div class="col-7" v-if="item1.glareSourcesOther">
+							    <input type="text" class="accordion-input" v-model="item1.glareSourcesOther" disabled>
+							</div>
+							<div class="col-7" v-else>
+								<input type="text" class="accordion-input" v-model="item1.glareSourcesName" disabled>
+							</div>
+							<div class="col-3">
+								<label>眼の痛み：</label>
+							</div>
+							<div class="col-7"　v-if="item1.eyePainStrongLight">
+								<input type="text" class="accordion-input" disabled><label>ある</label>
+							</div>
+							<div class="col-7"　v-else>
+								<input type="text" class="accordion-input" disabled><label>ない</label>
+							</div>
+						</div>
+					</div>
+					<!-- 見づらさや疲れを感じるとき -->
+					<div v-for="(item1, index) in discomfortFatigueInfoList" :key="index" v-if="discomfortFatigueInfoList && item.open" class="accordion-content">
+ 						<label class="accordion-label">{{ item1.visitDate }}</label>
+						<br>
+						<div class="row">
+							<div class="col-3">
+								<label>感じる時：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.feelTired" disabled>
+							</div>
+						</div>
+					</div>
+					<!-- 見えないと困るもの -->
+					<div v-for="(item1, index) in criticalVisibilityNeedsInfoList" :key="index" v-if="criticalVisibilityNeedsInfoList && item.open" class="accordion-content">
+ 						<label class="accordion-label">{{ item1.visitDate }}</label>
+						<br>
+						<div class="row">
+							<div class="col-3">
+								<label>困るもの：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.whatToSee" disabled>
+							</div>
+						</div>
+					</div>
+					<!-- ご職業 -->
+					<div v-for="(item1, index) in occupationInfoList" :key="index" v-if="occupationInfoList && item.open" class="accordion-content">
+ 						<label class="accordion-label">{{ item1.visitDate }}</label>
+						<br>
+						<div class="row">
+							<div class="col-3">
+								<label>ご職業：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.occupationType" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>仕事内容：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.jobDetails" disabled>
+							</div>
+						</div>
+					</div>
+					<!-- 趣味・部活 -->
+					<div v-for="(item1, index) in hobbiesClubActivitiesInfoList" :key="index" v-if="hobbiesClubActivitiesInfoList && item.open" class="accordion-content">
+ 						<label class="accordion-label">{{ item1.visitDate }}</label>
+						<br>
+						<div class="row">
+							<div class="col-3">
+								<label>趣味・部活：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.hobbiesAndClub" disabled>
+							</div>
+						</div>
+					</div>
+					<!-- 眼の使用状況 -->
+					<div v-for="(item1, index) in eyeUsageStatusInfoList" :key="index" v-if="eyeUsageStatusInfoList && item.open" class="accordion-content">
+ 						<label class="accordion-label">{{ item1.visitDate }}</label>
+						<br>
+						<div class="row">
+							<div class="col-3">
+								<label>携帯・スマホの使用時間：</label>
+							</div>
+							<div class="col-7">
+								<label>約</label><input type="text" class="accordion-input" v-model="item1.useTimeMobilePhone" disabled><label>時間</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>携帯・スマホとの距離：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.distanceMobilePhone" disabled><label>cm</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>PC環境：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.computerTypeName" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>タブレットの使用時間：</label>
+							</div>
+							<div class="col-7">
+								<label>約</label><input type="text" class="accordion-input" v-model="item1.useTimeTablet" disabled><label>時間</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>PCの使用時間：</label>
+							</div>
+							<div class="col-7">
+								<label>約</label><input type="text" class="accordion-input" v-model="item1.useTimePC" disabled><label>時間</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>タブレット・PCとの距離：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.monitorDistance" disabled><label>cm</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>読書の時間：</label>
+							</div>
+							<div class="col-7">
+								<label>約</label><input type="text" class="accordion-input" v-model="item1.readingTime" disabled><label>時間</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>読書習慣：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.readingHabitsName" disabled>
+								<input type="text" class="accordion-input" v-model="item1.numberOfBooks" disabled><label>冊</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>本との距離：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.distanceBook" disabled><label>cm</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>字を書く時の距離：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.distanceWriting" disabled><label>cm</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>ゲームの使用時間：</label>
+							</div>
+							<div class="col-7">
+								<label>約</label><input type="text" class="accordion-input" v-model="item1.gameTime" disabled><label>時間</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>ゲーム機種：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.gamingName" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>ゲーム時のテレビとの距離：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.distanceTVGame" disabled><label>cm</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>ゲーム時の手元の距離：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.distanceGame" disabled><label>cm</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>テレビの使用時間：</label>
+							</div>
+							<div class="col-7">
+								<label>約</label><input type="text" class="accordion-input" v-model="item1.tvTime" disabled><label>時間</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>テレビとの距離：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.distanceTV" disabled><label>cm</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>テレビの大きさ：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.tvSize" disabled><label>インチ</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>車の運転回数：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.drivingCount" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>運転に関して：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.drivingEyeName" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>免許の種類：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.licenseTypeName" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>次回免許更新日：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.nextLicenseRenewalDateStr" disabled>
+							</div>
+						</div>
+					</div>
+					<!-- 過去の病歴 -->
+					<div v-for="(item1, index) in pastMedicalHistoryInfoList" :key="index" v-if="pastMedicalHistoryInfoList && item.open" class="accordion-content">
+ 						<label class="accordion-label">{{ item1.visitDate }}</label>
+						<br>
+						<div class="row">
+							<div class="col-3">
+								<label>過去の病歴：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.pastMedicalHistory" disabled>
+							</div>
+						</div>
+					</div>
+					<!-- 治療中の疾病（服用薬） -->
+					<div v-for="(item1, index) in pastMedicalHistoryInfoList" :key="index" v-if="pastMedicalHistoryInfoList && item.open" class="accordion-content">
+ 						<label class="accordion-label">{{ item1.visitDate }}</label>
+						<br>
+						<div class="row">
+							<div class="col-3">
+								<label>過去の病歴：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.ongoingConditions" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3">
+								<label>服用薬：</label>
+							</div>
+							<div class="col-7">
+								<input type="text" class="accordion-input" v-model="item1.medications" disabled>
 							</div>
 						</div>
 					</div>
@@ -275,12 +733,25 @@
 										<label class="diamondTitle" style="font-size: 20px;">◆水平斜位量◆</label>
 										<label class="horizontalSubTitle">in=exo　out=eso<br>exo=マイナス表記</label>
 									</div>
+									<div v-if="isFarSelected">
+										<label>期待値：1exo±1</label>
+										<br>
+										<select class="horizontalSelect">
+											<option></option>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+										<label>△</label>
+									</div>
 									<div style="text-align: left;" class="margin" v-if="isNearSelected">
 										<label class="diamondTitle" style="font-size: 20px;">◆水平斜位量（A）◆</label>
 										<label class="horizontalSubTitle">in=exo　out=eso<br>exo=マイナス表記</label>
 									</div>
-									<div>
-										<label>期待値：1exo±1</label>
+									<div v-if="isNearSelected">
+										<label>期待値：3exo±3</label>
 										<br>
 										<select class="horizontalSelect">
 											<option></option>
@@ -315,22 +786,71 @@
 										<label>A－B&nbsp;&nbsp;&nbsp;&nbsp;High&nbsp;6～：Normal&nbsp;4～6：Low&nbsp;～4</label>
 										<br>
 										<!-- 自動計算 -->
-										<select class="horizontalSelect">
-											<option></option>
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-											<option>4</option>
-											<option>5</option>
-										</select>
-										<label>△</label>
+										<label>A-B＝AC/A比</label>
 									</div>
 									<div class="row margin">
 										<div class="col-12 totalValueEyes">
 											<label>開散力(IN)<br><span>両眼合計値で記録</span></label>
 										</div>
 									</div>
-									<div class="row">
+									<div class="row" v-if="isFarSelected">
+										<div class="col-4">
+											<label>ボヤケ</label>
+											<br>
+											<select class="totalValueEyesSelect">
+												<option></option>
+												<option>1</option>
+											</select>
+										</div>
+										<div class="col-4">
+											<label>分離:7±2</label>
+											<br>
+											<select class="totalValueEyesSelect">
+												<option></option>
+												<option>1</option>
+											</select>
+										</div>
+										<div class="col-4">
+											<label>回復:4±1</label>
+											<br>
+											<select class="totalValueEyesSelect">
+												<option></option>
+												<option>1</option>
+											</select>
+										</div>
+									</div>
+									<div class="row" v-if="isNearSelected">
+										<div class="col-4">
+											<label>ボヤケ:13±2</label>
+											<br>
+											<select class="totalValueEyesSelect">
+												<option></option>
+												<option>1</option>
+											</select>
+										</div>
+										<div class="col-4">
+											<label>分離:21±2</label>
+											<br>
+											<select class="totalValueEyesSelect">
+												<option></option>
+												<option>1</option>
+											</select>
+										</div>
+										<div class="col-4">
+											<label>回復:13±1</label>
+											<br>
+											<select class="totalValueEyesSelect">
+												<option></option>
+												<option>1</option>
+											</select>
+										</div>
+									</div>
+									<div class="row margin">
+										<div class="col-12 totalValueEyes">
+											<label>輻輳力 (OUT)<br><span>両眼合計値で記録</span></label>
+										</div>
+									</div>
+									<div class="row" v-if="isFarSelected">
 										<div class="col-4">
 											<label>ボヤケ:9±2</label>
 											<br>
@@ -356,14 +876,9 @@
 											</select>
 										</div>
 									</div>
-									<div class="row margin">
-										<div class="col-12 totalValueEyes">
-											<label>輻輳力 (OUT)<br><span>両眼合計値で記録</span></label>
-										</div>
-									</div>
-									<div class="row">
+									<div class="row" v-if="isNearSelected">
 										<div class="col-4">
-											<label>ボヤケ</label>
+											<label>ボヤケ:17±3</label>
 											<br>
 											<select class="totalValueEyesSelect">
 												<option></option>
@@ -371,7 +886,7 @@
 											</select>
 										</div>
 										<div class="col-4">
-											<label>分離:7±2</label>
+											<label>分離:21±3</label>
 											<br>
 											<select class="totalValueEyesSelect">
 												<option></option>
@@ -379,7 +894,7 @@
 											</select>
 										</div>
 										<div class="col-4">
-											<label>回復:4±1</label>
+											<label>回復:11±4</label>
 											<br>
 											<select class="totalValueEyesSelect">
 												<option></option>
@@ -1146,7 +1661,7 @@
 			            </div>
 		                <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
 	                        <div class="col-6 botton-area" style="margin-top: 10px; min-height:40px;">
-	                            <button class="modal-regist">追加</button>
+	                            <button class="modal-regist"　v-on:click="addBt">★★★追加</button>
 	                        </div>
 	                        <div class="col-6 botton-area" style="margin-top: 10px; min-height:40px;">
 	                            <button class="modal-regist">登録</button>

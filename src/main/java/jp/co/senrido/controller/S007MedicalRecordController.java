@@ -25,14 +25,14 @@ public class S007MedicalRecordController {
 	@Autowired
 	private Environment eivironment;
 
-	@RequestMapping(value="/s007MedicalNewRecord", method = RequestMethod.GET)
+	@RequestMapping(value="/s007MedicalRecord", method = RequestMethod.GET)
     public String getMenu(@ModelAttribute("form") S007MedicalRecordForm form, Model model) {
 		// 認証した情報を取得する
 //		UserDto userDto = (UserDto) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //		model.addAttribute("userDto",userDto);
 //		model.addAttribute("path", eivironment.getProperty(GoitaiConstant.Application.CONTEXT_PATH));
 
-        return "/s007MedicalNewRecord";
+        return "/s007MedicalRecord";
     }
 
 }

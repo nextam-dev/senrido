@@ -72,5 +72,16 @@ public interface MCodeDao {
 	 */
 	@Select
 	MCode selectByDivCodeAllocation(String divCode, String code);
+	
+	/**
+	 * コード名称曖昧検索
+	 *
+	 * @param divCode
+	 * @param code
+	 * @param name
+	 * @return
+	 */
+	@Select
+	List<String> selectByCode(String divCode, List<String> code);
 
 }

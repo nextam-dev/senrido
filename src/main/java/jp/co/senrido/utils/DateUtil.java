@@ -758,28 +758,28 @@ public class DateUtil {
 	 * @param mCodeList
 	 * @return
 	 */
-//	public static String adToJapaneseCalWareki(LocalDate date, List<MCode> mCodeList) {
-//		String adDate =  DateUtil.changeFormat(date, DateUtil.DATE_FORMAT_YMD_SLASH_OMIT);
-//		String[] yyyymmdd = adDate.split(SPLITTER);
-//		String JapaneseDate = null;
-//		try {
-//			for(MCode mCode : mCodeList) {
-//				if (adDate.compareTo(mCode.getName()) >= 0) {
-//					String[] ggmmddBase = mCode.getName().split(SPLITTER);
-//					String gg = StringConvertUtil.add(yyyymmdd[0], "-" + ggmmddBase[0], "1");
-//					if(Objects.equals(gg, "1")) {
-//						gg = "元";
-//					}
-//					JapaneseDate = mCode.getDivName() + " " + gg + YEAR + yyyymmdd[1] + MONTH + yyyymmdd[2] + DATE;
-//					return JapaneseDate;
-//				}
-//			}
-//		}
-//		catch (Exception e) {
-//			return null;
-//		}
-//		return JapaneseDate;
-//	}
+	public static String adToJapaneseCalWareki(LocalDate date, List<MCode> mCodeList) {
+		String adDate =  DateUtil.changeFormat(date, DateUtil.DATE_FORMAT_YMD_SLASH_OMIT);
+		String[] yyyymmdd = adDate.split(SPLITTER);
+		String JapaneseDate = null;
+		try {
+			for(MCode mCode : mCodeList) {
+				if (adDate.compareTo(mCode.getName()) >= 0) {
+					String[] ggmmddBase = mCode.getName().split(SPLITTER);
+					String gg = StringConvertUtil.add(yyyymmdd[0], "-" + ggmmddBase[0], "1");
+					if(Objects.equals(gg, "1")) {
+						gg = "元";
+					}
+					JapaneseDate = mCode.getGlassesFlame() + " " + gg + YEAR + yyyymmdd[1] + MONTH + yyyymmdd[2] + DATE;
+					return JapaneseDate;
+				}
+			}
+		}
+		catch (Exception e) {
+			return null;
+		}
+		return JapaneseDate;
+	}
 
 	/**
 	 * LocalDateTimeから和暦([和暦コード,和暦年月日 元号 gg年 mm月 dd日])への変換
@@ -787,29 +787,29 @@ public class DateUtil {
 	 * @param mCodeList
 	 * @return
 	 */
-//	public static String adToJapaneseCalWareki(LocalDateTime dateTime, List<MCode> mCodeList) {
-//		LocalDate date = LocalDate.of(dateTime.getYear(), dateTime.getMonth(), dateTime.getDayOfMonth());
-//		String adDate =  DateUtil.changeFormat(date, DateUtil.DATE_FORMAT_YMD_SLASH_OMIT);
-//		String[] yyyymmdd = adDate.split(SPLITTER);
-//		String JapaneseDate = null;
-//		try {
-//			for(MCode mCode : mCodeList) {
-//				if (adDate.compareTo(mCode.getName()) >= 0) {
-//					String[] ggmmddBase = mCode.getName().split(SPLITTER);
-//					String gg = StringConvertUtil.add(yyyymmdd[0], "-" + ggmmddBase[0], "1");
-//					if(Objects.equals(gg, "1")) {
-//						gg = "元";
-//					}
-//					JapaneseDate = mCode.getDivName() + " " + gg + YEAR + yyyymmdd[1] + MONTH + yyyymmdd[2] + DATE;
-//					return JapaneseDate;
-//				}
-//			}
-//		}
-//		catch (Exception e) {
-//			return null;
-//		}
-//		return JapaneseDate;
-//	}
+	public static String adToJapaneseCalWareki(LocalDateTime dateTime, List<MCode> mCodeList) {
+		LocalDate date = LocalDate.of(dateTime.getYear(), dateTime.getMonth(), dateTime.getDayOfMonth());
+		String adDate =  DateUtil.changeFormat(date, DateUtil.DATE_FORMAT_YMD_SLASH_OMIT);
+		String[] yyyymmdd = adDate.split(SPLITTER);
+		String JapaneseDate = null;
+		try {
+			for(MCode mCode : mCodeList) {
+				if (adDate.compareTo(mCode.getName()) >= 0) {
+					String[] ggmmddBase = mCode.getName().split(SPLITTER);
+					String gg = StringConvertUtil.add(yyyymmdd[0], "-" + ggmmddBase[0], "1");
+					if(Objects.equals(gg, "1")) {
+						gg = "元";
+					}
+					JapaneseDate = mCode.getGlassesFlame() + " " + gg + YEAR + yyyymmdd[1] + MONTH + yyyymmdd[2] + DATE;
+					return JapaneseDate;
+				}
+			}
+		}
+		catch (Exception e) {
+			return null;
+		}
+		return JapaneseDate;
+	}
 //
 //	/**
 //	 * LocalDateから和暦([和暦コード,和暦年月日 元号 gg年])への変換

@@ -5,14 +5,20 @@
  */
 package jp.co.senrido.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import jp.co.senrido.dto.UserDto;
+import jp.co.senrido.dto.CodeNameDto;
+import jp.co.senrido.entity.MCode;
+import jp.co.senrido.form.S007MedicalRecordForm;
+import jp.co.senrido.json.CommonIO;
 import jp.co.senrido.service.MCodeMasterService;
 import jp.co.senrido.service.S003PasswordReissueService;
 
@@ -22,7 +28,7 @@ import jp.co.senrido.service.S003PasswordReissueService;
  * @author kurokawa
  */
 @RestController
-@RequestMapping(value = "**/s007MedicalRecord")
+@RequestMapping(value = "**/s007MedicalNewRecord")
 public class S007MedicalNewRecordRestController {
 
 	@Autowired
@@ -40,12 +46,35 @@ public class S007MedicalNewRecordRestController {
 	 * @return
 	 */
 	@RequestMapping(value = "/initStatus", method = RequestMethod.POST)
-	public UserDto initStatus() throws Throwable {
+	public CommonIO initStatus(@RequestBody S007MedicalRecordForm form) throws Throwable {
+		
+		CommonIO io = new CommonIO();
+		
+		// お客様情報を取得
+		
+		// コードマスタから選択肢を取得
+		// 性別
+		List<MCode> sexItems = new ArrayList<MCode>();
+		MCode codeNameDto = new MCode();
+		codeNameDto.setCode("00001");
+		codeNameDto.setName("男性");
+		sexItems.add(codeNameDto);
+		codeNameDto = new MCode();
+		codeNameDto.setCode("00002");
+		codeNameDto.setName("女性");
+		sexItems.add(codeNameDto);
+		codeNameDto = new MCode();
+		codeNameDto.setCode("00003");
+		codeNameDto.setName("回答しない");
+		sexItems.add(codeNameDto);
+		codeNameDto = new MCode();
+		codeNameDto.setCode("00004");
+		codeNameDto.setName("その他");
+		sexItems.add(codeNameDto);
+		io.setSexList(sexItems);
+		
 
-		// ログイン社員取得
-		UserDto userDto = (UserDto) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-		return userDto;
+		return io;
 	}
 
 }

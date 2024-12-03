@@ -14,188 +14,188 @@ import lombok.Data;
 @Data
 public class TEyePosition {
 
-    /** ‚¨‹q—lID */
+    /** ï¿½ï¿½ï¿½qï¿½lID */
     @Id
     @Column(name = "id")
     Integer id;
 
-    /** —ˆ“X“ú */
+    /** ï¿½ï¿½ï¿½Xï¿½ï¿½ */
     @Column(name = "visit_date")
     LocalDateTime visitDate;
 
-    /** ˜A”Ô */
+    /** ï¿½Aï¿½ï¿½ */
     @Column(name = "seq")
     Integer seq;
 
-    /** ‰“‘¼ŠoƒR[ƒh */
+    /** ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½Rï¿½[ï¿½h */
     @Column(name = "f_other_awareness")
     String fOtherAwareness;
 
-    /** ‰“©ŠoƒR[ƒh */
+    /** ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½Rï¿½[ï¿½h */
     @Column(name = "f_self_awareness")
     String fSelfAwareness;
 
-    /** ‰“…•½ÎˆÊ—Ê */
+    /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎˆÊ—ï¿½ */
     @Column(name = "f_horizontal_angle")
     String fHorizontalAngle;
 
-    /** ‰“ŠJU—Í(IN)•ª—£ */
+    /** ï¿½ï¿½ï¿½Jï¿½Uï¿½ï¿½(IN)ï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "f_in_dispersal_separation")
     String fInDispersalSeparation;
 
-    /** ‰“ŠJU—Í(IN)‰ñ•œ */
+    /** ï¿½ï¿½ï¿½Jï¿½Uï¿½ï¿½(IN)ï¿½ï¿½ */
     @Column(name = "f_in_dispersal_recovery")
     String fInDispersalRecovery;
 
-    /** ‰“çtçs—Í(OUT)‚Ú‚â‚¯ */
+    /** ï¿½ï¿½ï¿½tï¿½sï¿½ï¿½(OUT)ï¿½Ú‚â‚¯ */
     @Column(name = "f_out_dispersal_blurry")
     String fOutDispersalBlurry;
 
-    /** ‰“çtçs—Í(OUT)•ª—£ */
+    /** ï¿½ï¿½ï¿½tï¿½sï¿½ï¿½(OUT)ï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "f_out_dispersal_separation")
     String fOutDispersalSeparation;
 
-    /** ‰“çtçs—Í(OUT)‰ñ•œ */
+    /** ï¿½ï¿½ï¿½tï¿½sï¿½ï¿½(OUT)ï¿½ï¿½ */
     @Column(name = "f_out_dispersal_recovery")
     String fOutDispersalRecovery;
 
-    /** ‰“ã‰ºŠñ‚¹UP•ª—£ */
+    /** ï¿½ï¿½ï¿½ã‰ºï¿½ï¿½UPï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "f_alignment_up_separation")
     String fAlignmentUpSeparation;
 
-    /** ‰“ã‰ºŠñ‚¹UP‰ñ•œ */
+    /** ï¿½ï¿½ï¿½ã‰ºï¿½ï¿½UPï¿½ï¿½ */
     @Column(name = "f_alignment_up_recovery")
     String fAlignmentUpRecovery;
 
-    /** ‰“ã‰ºŠñ‚¹DOWN•ª—£ */
-    @Column(name = "f_alignment_downm_separation")
-    String fAlignmentDownmSeparation;
+    /** ï¿½ï¿½ï¿½ã‰ºï¿½ï¿½DOWNï¿½ï¿½ï¿½ï¿½ */
+    @Column(name = "f_alignment_down_separation")
+    String fAlignmentDownSeparation;
 
-    /** ‰“ã‰ºŠñ‚¹DOWN‰ñ•œ */
+    /** ï¿½ï¿½ï¿½ã‰ºï¿½ï¿½DOWNï¿½ï¿½ */
     @Column(name = "f_alignment_down_recovery")
     String fAlignmentDownRecovery;
 
-    /** ‰“ã‰ºÎˆÊ—Ê */
+    /** ï¿½ï¿½ï¿½ã‰ºï¿½ÎˆÊ—ï¿½ */
     @Column(name = "f_vertical_angle")
     String fVerticalAngle;
 
-    /** ‰“R UPEDOWNƒR[ƒh */
+    /** ï¿½ï¿½R UPï¿½EDOWNï¿½Rï¿½[ï¿½h */
     @Column(name = "f_updown_cd")
     String fUpdownCd;
 
-    /** ‰“—˜–Ú */
+    /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "f_dominant_eye")
     String fDominantEye;
 
-    /** ‰“NPC‚Ú‚â‚¯ */
+    /** ï¿½ï¿½NPCï¿½Ú‚â‚¯ */
     @Column(name = "f_npc_blurry")
     String fNpcBlurry;
 
-    /** ‰“NPC•ª—£ */
+    /** ï¿½ï¿½NPCï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "f_npc_separation")
     String fNpcSeparation;
 
-    /** ‰“NPC‰ñ•œ */
+    /** ï¿½ï¿½NPCï¿½ï¿½ */
     @Column(name = "f_npc_recovery")
     String fNpcRecovery;
 
-    /** ‰“ƒƒ‚ */
+    /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "far_notes")
     String farNotes;
 
-    /** ‹ß‘¼ŠoƒR[ƒh */
+    /** ï¿½ß‘ï¿½ï¿½oï¿½Rï¿½[ï¿½h */
     @Column(name = "n_other_awareness")
     String nOtherAwareness;
 
-    /** ‹ß©ŠoƒR[ƒh */
+    /** ï¿½ßï¿½ï¿½oï¿½Rï¿½[ï¿½h */
     @Column(name = "n_self_awareness")
     String nSelfAwareness;
 
-    /** ‹ß…•½ÎˆÊ—Ê */
+    /** ï¿½ßï¿½ï¿½ï¿½ï¿½ÎˆÊ—ï¿½ */
     @Column(name = "n_horizontal_angle")
     String nHorizontalAngle;
 
-    /** ‹ßŠJU—Í(IN)•ª—£ */
+    /** ï¿½ßŠJï¿½Uï¿½ï¿½(IN)ï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "n_in_dispersal_separation")
     String nInDispersalSeparation;
 
-    /** ‹ßŠJU—Í(IN)‰ñ•œ */
+    /** ï¿½ßŠJï¿½Uï¿½ï¿½(IN)ï¿½ï¿½ */
     @Column(name = "n_in_dispersal_recovery")
     String nInDispersalRecovery;
 
-    /** ‹ßŠJU—Í(OUT)‚Ú‚â‚¯ */
+    /** ï¿½ßŠJï¿½Uï¿½ï¿½(OUT)ï¿½Ú‚â‚¯ */
     @Column(name = "n_out_dispersal_blurry")
     String nOutDispersalBlurry;
 
-    /** ‹ßŠJU—Í(OUT)•ª—£ */
+    /** ï¿½ßŠJï¿½Uï¿½ï¿½(OUT)ï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "n_out_dispersal_separation")
     String nOutDispersalSeparation;
 
-    /** ‹ßŠJU—Í(OUT)‰ñ•œ */
+    /** ï¿½ßŠJï¿½Uï¿½ï¿½(OUT)ï¿½ï¿½ */
     @Column(name = "n_out_dispersal_recovery")
     String nOutDispersalRecovery;
 
-    /** ‹ßã‰ºŠñ‚¹UP•ª—£ */
+    /** ï¿½ßã‰ºï¿½ï¿½UPï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "n_alignment_up_separation")
     String nAlignmentUpSeparation;
 
-    /** ‹ßã‰ºŠñ‚¹UP‰ñ•œ */
+    /** ï¿½ßã‰ºï¿½ï¿½UPï¿½ï¿½ */
     @Column(name = "n_alignment_up_recovery")
     String nAlignmentUpRecovery;
 
-    /** ‹ßã‰ºŠñ‚¹DOWN•ª—£ */
+    /** ï¿½ßã‰ºï¿½ï¿½DOWNï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "n_alignment_downm_separation")
     String nAlignmentDownmSeparation;
 
-    /** ‹ßã‰ºŠñ‚¹DOWN‰ñ•œ */
+    /** ï¿½ßã‰ºï¿½ï¿½DOWNï¿½ï¿½ */
     @Column(name = "n_alignment_down_recovery")
     String nAlignmentDownRecovery;
 
-    /** ‹ßã‰ºÎˆÊ—Ê */
+    /** ï¿½ßã‰ºï¿½ÎˆÊ—ï¿½ */
     @Column(name = "n_vertical_angle")
     String nVerticalAngle;
 
-    /** ‹ßR UPEDOWNƒR[ƒh */
+    /** ï¿½ï¿½R UPï¿½EDOWNï¿½Rï¿½[ï¿½h */
     @Column(name = "n_updown_cd")
     String nUpdownCd;
 
-    /** ‹ß—˜–Ú */
+    /** ï¿½ß—ï¿½ï¿½ï¿½ */
     @Column(name = "n_dominant_eye")
     String nDominantEye;
 
-    /** ‹ßNPC‚Ú‚â‚¯ */
+    /** ï¿½ï¿½NPCï¿½Ú‚â‚¯ */
     @Column(name = "near_npc_blur")
     String nearNpcBlur;
 
-    /** ‹ßNPC•ª—£ */
+    /** ï¿½ï¿½NPCï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "near_npc_separation")
     String nearNpcSeparation;
 
-    /** ‹ßNPC‰ñ•œ */
+    /** ï¿½ï¿½NPCï¿½ï¿½ */
     @Column(name = "near_npc_recovery")
     String nearNpcRecovery;
 
-    /** ‹ßƒƒ‚ */
+    /** ï¿½ßƒï¿½ï¿½ï¿½ */
     @Column(name = "near_notes")
     String nearNotes;
 
-    /** íœƒtƒ‰ƒO */
+    /** ï¿½íœï¿½tï¿½ï¿½ï¿½O */
     @Column(name = "del_flg")
     Boolean delFlg;
 
-    /** “o˜^“ú */
+    /** ï¿½oï¿½^ï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "create_date")
     LocalDateTime createDate;
 
-    /** “o˜^ÒƒR[ƒh */
+    /** ï¿½oï¿½^ï¿½ÒƒRï¿½[ï¿½h */
     @Column(name = "create_id")
     String createId;
 
-    /** XV“ú */
+    /** ï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "update_date")
     LocalDateTime updateDate;
 
-    /** XVÒƒR[ƒh */
+    /** ï¿½Xï¿½Vï¿½ÒƒRï¿½[ï¿½h */
     @Column(name = "update_id")
     String updateId;
 }

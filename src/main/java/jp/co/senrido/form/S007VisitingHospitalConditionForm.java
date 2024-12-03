@@ -5,21 +5,20 @@
  */
 package jp.co.senrido.form;
 
-import jp.co.senrido.dto.TSurveyDto;
+import javax.validation.Valid;
+
 import jp.co.senrido.dto.UserDto;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 /**
  * Formクラス
  * @author kurokawa
  *
  */
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
-public class S007MedicalRecordForm extends BaseSearchForm {
+public class S007VisitingHospitalConditionForm extends BaseSearchForm {
 
 	private static final long serialVersionUID = 1L;
 
@@ -32,7 +31,8 @@ public class S007MedicalRecordForm extends BaseSearchForm {
 	/** 来店日 */
 	private String visitDate;
 	
-	/** アンケート情報 */
-	private TSurveyDto survey;
+	/** 各入力対象項目 */
+	@Valid
+	private UpdateVisitingHospitalForm visitingHospitalInfo;
 
 }

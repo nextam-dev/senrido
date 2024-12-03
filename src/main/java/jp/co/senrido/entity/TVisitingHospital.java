@@ -17,68 +17,72 @@ import lombok.Data;
 @Data
 public class TVisitingHospital {
 
-    /** ‚¨‹q—lID */
+    /** ãŠå®¢æ§˜ID */
     @Id
     @Column(name = "id")
     Integer id;
 
-    /** —ˆ“X“ú */
+    /** æ¥åº—æ—¥ */
     @Column(name = "visit_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     LocalDateTime visitDate;
 
-    /** óf“ú */
+    /** å—è¨ºæ—¥ */
     @Column(name = "consultation_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     LocalDateTime consultationDate;
+    
+    /** çœ¼ç§‘å */
+    @Column(name = "ophthalmology_name")
+    String ophthalmologyName;
 
-    /** Šá‰È‚Ö‚Ì’Ê‰@ */
+    /** çœ¼ç§‘ã¸ã®é€šé™¢ */
     @Column(name = "visit_eye_doctor")
     Boolean visitEyeDoctor;
 
-    /** •a—ğ */
+    /** ç—…æ­´ */
     @Column(name = "medical_history")
     String medicalHistory;
 
-    /** •a—ğ‚»‚Ì‘¼ */
+    /** ç—…æ­´ï¼ˆãã®ä»–ï¼‰ */
     @Column(name = "medical_history_other")
     String medicalHistoryOther;
 
-    /** •a—ğ–¼Ì */
+    /** ç—…æ­´åç§° */
     @Column(name = "medical_history_name")
     String medicalHistoryName;
 
-    /** ƒƒKƒlì»‚Ìw¦ */
+    /** ãƒ¡ã‚¬ãƒä½œæˆæŒ‡ç¤º */
     @Column(name = "glasses_making")
     Boolean glassesMaking;
 
-    /** ˆ•ûâ³ */
+    /** å‡¦æ–¹ç®‹ */
     @Column(name = "prescription")
     Boolean prescription;
 
-    /** Šá‰Èˆã‚Ìw¦EˆÓŒ© */
+    /** çœ¼ç§‘åŒ»æŒ‡ç¤º */
     @Column(name = "ophthalmologist_instructions")
     String ophthalmologistInstructions;
 
-    /** íœƒtƒ‰ƒO */
+    /** å‰Šé™¤ãƒ•ãƒ©ã‚° */
     @Column(name = "del_flg")
     Boolean delFlg;
 
-    /** “o˜^“ú */
+    /** ä½œæˆæ—¥ */
     @Column(name = "create_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     LocalDateTime createDate;
 
-    /** “o˜^ÒƒR[ƒh */
+    /** ä½œæˆè€…ID */
     @Column(name = "create_id")
     String createId;
 
-    /** XV“ú */
+    /** æ›´æ–°æ—¥ */
     @Column(name = "update_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     LocalDateTime updateDate;
 
-    /** XVÒƒR[ƒh */
+    /** æ›´æ–°è€…ID */
     @Column(name = "update_id")
     String updateId;
 }
