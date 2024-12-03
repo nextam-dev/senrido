@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import jp.co.senrido.dto.CodeNameDto;
 import jp.co.senrido.dto.TCustomerDto;
 import jp.co.senrido.dto.TVisitingHospitalDto;
+import jp.co.senrido.entity.MCode;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -62,7 +63,40 @@ public class CommonIO implements Serializable {
 	Integer tax;
 	
 	/** 性別 */
-	List<CodeNameDto> sexItems = new ArrayList<CodeNameDto>();
+	List<MCode> sexList = new ArrayList<MCode>();
+	/** メガネ使用状況 */
+	List<MCode> usageStatusList = new ArrayList<MCode>();
+	/** パソコン種類*/
+	List<MCode> computerTypeList = new ArrayList<MCode>();
+	/** パソコン使用時間 */
+	List<MCode> computerUsageTimeList = new ArrayList<MCode>();
+	/** スマートフォン使用時間 */
+	List<MCode> smartphoneUsageTimeList = new ArrayList<MCode>();
+	/** スマートフォン見るもの */
+	List<MCode> smartphoneContentList = new ArrayList<MCode>();
+	/** 読書 */
+	List<MCode> readingList = new ArrayList<MCode>();
+	/** ゲーム */
+	List<MCode> gamingNameList = new ArrayList<MCode>();
+	/** ゲーム時間 */
+	List<MCode> gamingTimeList = new ArrayList<MCode>();
+	/** 運転 */
+	List<MCode> drivingList = new ArrayList<MCode>();
+	/** 免許種類 */
+	List<MCode> licenseTypeList = new ArrayList<MCode>();
+	/** 眼科受診 */
+	List<MCode> ophthalmologyVisitList = new ArrayList<MCode>();
+	/** 眼の疲れ */
+	List<MCode> eyeFatigueList = new ArrayList<MCode>();
+	/** 目の症状 */
+	List<MCode> eyeSymptomsList = new ArrayList<MCode>();
+	/** 身体の症状 */
+	List<MCode> bodySymptomsList = new ArrayList<MCode>();
+	/** 手術 */
+	List<MCode> surgeryList = new ArrayList<MCode>();
+	/** コロナ開示 */
+	List<MCode> covidDisclosureList = new ArrayList<MCode>();
+	
 	/** 症状 */
 	List<CodeNameDto> visitingHospitalItems = new ArrayList<CodeNameDto>();
 	/** 眼の症状 */
@@ -118,6 +152,5 @@ public class CommonIO implements Serializable {
 	String message;
 	public void setResultCd(String success) {
 		// TODO Auto-generated method stub
-		
 	}
 }

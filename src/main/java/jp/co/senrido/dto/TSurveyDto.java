@@ -3,7 +3,8 @@
  */
 package jp.co.senrido.dto;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -52,4 +53,163 @@ public class TSurveyDto {
 
 	/** 紹介者 */
 	private String referrer;
+	
+	/** 職業・職種 */
+	private String occupationType;
+
+	/** お仕事の内容 */
+	private String jobDescription;
+
+	/** 使用状況 */
+	private List<String> usageStatus;
+
+	/** 使用状況その他 */
+	private String usageStatusOther;
+
+	/** 使用状況名称 */
+	private String usageStatusName;
+
+	/** 使用開始年齢 */
+	private String usageStartAge;
+
+	/** パソコン種類 */
+	private List<String> computerType;
+
+	/** パソコン種類その他 */
+	private String computerTypeOther;
+
+	/** パソコン種類名称 */
+	private String computerTypeName;
+
+	/** パソコン使用時間 */
+	private String computerUsageTime;
+
+	/** パソコン使用時間その他 */
+	private String computerUsageTimeOther;
+
+	/** パソコン使用時間名称 */
+	private String computerUsageTimeName;
+
+	/** 距離 */
+	private String distance;
+
+	/** スマートフォン使用時間 */
+	private String smartphoneUsageTime;
+
+	/** スマートフォン使用時間その他 */
+	private String smartphoneUsageTimeOther;
+
+	/** スマートフォン使用時間名称 */
+	private String smartphoneUsageTimeName;
+
+	/** スマートフォン見るもの */
+	private List<String> smartphoneContent;
+
+	/** スマートフォン見るものその他 */
+	private String smartphoneContentOther;
+
+	/** スマートフォン見るもの名称 */
+	private String smartphoneContentName;
+
+	/** 読書 */
+	private String reading;
+
+	/** 読書その他 */
+	private String readingOther;
+
+	/** 読書名称 */
+	private String readingName;
+
+	/** ゲーム */
+	private List<String> gaming;
+
+	/** ゲームその他 */
+	private String gamingOther;
+
+	/** ゲーム名称 */
+	private String gamingName;
+
+	/** ゲーム時間 */
+	private String gamingTime;
+
+	/** ゲーム時間その他 */
+	private String gamingTimeOther;
+
+	/** ゲーム時間名称 */
+	private String gamingTimeName;
+
+	/** 運転 */
+	private String driving;
+
+	/** 運転その他 */
+	private String drivingOther;
+
+	/** 運転目名称 */
+	private String drivingEyeName;
+
+	/** 免許種類 */
+	private List<String> licenseType;
+
+	/** 免許種類その他 */
+	private String licenseTypeOther;
+
+	/** 免許種類名称 */
+	private String licenseTypeName;
+
+	/** 眼科受診 */
+	private List<String> ophthalmologyVisit;
+
+	/** 眼科受診その他 */
+	private String ophthalmologyVisitOther;
+
+	/** 眼科受診名称 */
+	private String ophthalmologyVisitName;
+
+	/** 眼の疲れ */
+	private String eyeFatigue;
+
+	/** 眼の疲れ名称 */
+	private String eyeFatigueName;
+
+	/** 疲れを感じるとき */
+	private String fatigueTiming;
+
+	/** 目の症状 */
+	private List<String> eyeSymptoms;
+
+	/** 目の症状その他 */
+	private String eyeSymptomsOther;
+
+	/** 目の症状名称 */
+	private String eyeSymptomsName;
+
+	/** 身体の症状 */
+	private List<String> bodySymptoms;
+
+	/** 身体の症状その他 */
+	private String bodySymptomsOther;
+
+	/** 身体の症状名称 */
+	private String bodySymptomsName;
+
+	/** 手術 */
+	private List<String> surgery;
+
+	/** 手術その他 */
+	private String surgeryOther;
+
+	/** 手術名称 */
+	private String surgeryName;
+
+	/** 趣味 */
+	private String hobbies;
+
+	/** コロナ開示 */
+	private String covidDisclosure;
+
+	/** コロナ開示その他 */
+	private String covidDisclosureOther;
+
+	/** 備考 */
+	private String remarks;
 }

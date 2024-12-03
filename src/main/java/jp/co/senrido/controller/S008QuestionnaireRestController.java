@@ -52,26 +52,23 @@ public class S008QuestionnaireRestController {
 		// お客様情報を取得
 		
 		// コードマスタから選択肢を取得
-		// 性別
-		List<CodeNameDto> sexItems = new ArrayList<CodeNameDto>();
-		CodeNameDto codeNameDto = new CodeNameDto();
-		codeNameDto.setCode("00001");
-		codeNameDto.setName("男性");
-		sexItems.add(codeNameDto);
-		codeNameDto = new CodeNameDto();
-		codeNameDto.setCode("00002");
-		codeNameDto.setName("女性");
-		sexItems.add(codeNameDto);
-		codeNameDto = new CodeNameDto();
-		codeNameDto.setCode("00003");
-		codeNameDto.setName("回答しない");
-		sexItems.add(codeNameDto);
-		codeNameDto = new CodeNameDto();
-		codeNameDto.setCode("00004");
-		codeNameDto.setName("その他");
-		sexItems.add(codeNameDto);
-		io.setSexItems(sexItems);
-		
+		io.setSexList(mCodeMasterService.getMCode("sex"));
+		io.setUsageStatusList(mCodeMasterService.getMCode("usage_status"));
+		io.setComputerTypeList(mCodeMasterService.getMCode("computer_type"));
+		io.setComputerUsageTimeList(mCodeMasterService.getMCode("computer_usage_time"));
+		io.setSmartphoneUsageTimeList(mCodeMasterService.getMCode("smartphone_usage_time"));
+		io.setSmartphoneContentList(mCodeMasterService.getMCode("smartphone_content"));
+		io.setReadingList(mCodeMasterService.getMCode("reading"));
+		io.setGamingNameList(mCodeMasterService.getMCode("gaming_name"));
+		io.setGamingTimeList(mCodeMasterService.getMCode("gaming_time"));
+		io.setDrivingList(mCodeMasterService.getMCode("driving"));
+		io.setLicenseTypeList(mCodeMasterService.getMCode("license_type"));
+		io.setOphthalmologyVisitList(mCodeMasterService.getMCode("ophthalmology_visit"));
+		io.setEyeFatigueList(mCodeMasterService.getMCode("eye_fatigue"));
+		io.setEyeSymptomsList(mCodeMasterService.getMCode("eye_symptoms"));
+		io.setBodySymptomsList(mCodeMasterService.getMCode("body_symptoms"));
+		io.setSurgeryList(mCodeMasterService.getMCode("surgery"));
+		io.setCovidDisclosureList(mCodeMasterService.getMCode("covid_disclosure"));
 
 		return io;
 	}

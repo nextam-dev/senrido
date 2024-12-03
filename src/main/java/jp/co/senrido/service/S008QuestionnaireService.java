@@ -82,6 +82,34 @@ public class S008QuestionnaireService extends BaseTransactionalService {
 		entity.setVisitDate(DateUtil.changeFormatStrToLocalDateTime(dto.getVisitDate(), DateUtil.DATE_FORMAT_YMD_HYPHEN));
 		entity.setBirthday(DateUtil.changeFormatStrToLocalDateTime(dto.getBirthday(), DateUtil.DATE_FORMAT_YMD_HYPHEN));
 		
+		// 選択肢を名称に変換
+		entity.setUsageStatusName(chaceCodeToName("usage_status", dto.getUsageStatus()));
+		entity.setComputerTypeName(chaceCodeToName("computer_type", dto.getComputerType()));
+		entity.setComputerUsageTimeName(chaceCodeToName("computer_usage_time", dto.getComputerUsageTime()));
+		entity.setSmartphoneUsageTimeName(chaceCodeToName("smartphone_usage_time", dto.getSmartphoneUsageTime()));
+		entity.setSmartphoneContentName(chaceCodeToName("smartphone_content", dto.getSmartphoneContent()));
+		entity.setReadingName(chaceCodeToName("reading", dto.getReading()));
+		entity.setGamingName(chaceCodeToName("gaming_name", dto.getGaming()));
+		entity.setGamingTimeName(chaceCodeToName("gaming_time", dto.getGamingTime()));
+		entity.setDrivingEyeName(chaceCodeToName("driving", dto.getDriving()));
+		entity.setLicenseTypeName(chaceCodeToName("license_type", dto.getLicenseType()));
+		entity.setOphthalmologyVisitName(chaceCodeToName("ophthalmology_visit", dto.getOphthalmologyVisit()));
+		entity.setEyeFatigueName(chaceCodeToName("eye_fatigue", dto.getEyeFatigue()));
+		entity.setEyeSymptomsName(chaceCodeToName("eye_symptoms", dto.getEyeSymptoms()));
+		entity.setBodySymptomsName(chaceCodeToName("body_symptoms", dto.getBodySymptoms()));
+		entity.setSurgeryName(chaceCodeToName("surgery", dto.getSurgery()));
+		
+		// Listをカンマ区切りに変更
+		entity.setUsageStatus(String.join(",", dto.getUsageStatus()));
+		entity.setComputerType(String.join(",", dto.getComputerType()));
+		entity.setSmartphoneContent(String.join(",", dto.getSmartphoneContent()));
+		entity.setGamingName(String.join(",", dto.getGamingName()));
+		entity.setLicenseType(String.join(",", dto.getLicenseType()));
+		entity.setOphthalmologyVisit(String.join(",", dto.getOphthalmologyVisit()));
+		entity.setEyeSymptoms(String.join(",", dto.getEyeSymptoms()));
+		entity.setBodySymptoms(String.join(",", dto.getBodySymptoms()));
+		entity.setSurgery(String.join(",", dto.getSurgery()));
+		
 		entity.setDelFlg(false);
 		entity.setUpdateDate(this.createCurrentDate());
 		entity.setUpdateId("system");
@@ -95,7 +123,7 @@ public class S008QuestionnaireService extends BaseTransactionalService {
 		
 		// TODO アンケート結果を頭書き情報へ登録
 		
-		// TODO アンケート登録後のメール送信
+		// TODO アンケート登録後のメール送信（千里堂様の管理者宛にメールを出す）
 		
 	}
 }
