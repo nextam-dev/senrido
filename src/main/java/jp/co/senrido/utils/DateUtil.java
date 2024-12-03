@@ -770,7 +770,7 @@ public class DateUtil {
 					if(Objects.equals(gg, "1")) {
 						gg = "元";
 					}
-					JapaneseDate = mCode.getDivName() + " " + gg + YEAR + yyyymmdd[1] + MONTH + yyyymmdd[2] + DATE;
+					JapaneseDate = mCode.getGlassesFlame() + " " + gg + YEAR + yyyymmdd[1] + MONTH + yyyymmdd[2] + DATE;
 					return JapaneseDate;
 				}
 			}
@@ -800,7 +800,7 @@ public class DateUtil {
 					if(Objects.equals(gg, "1")) {
 						gg = "元";
 					}
-					JapaneseDate = mCode.getDivName() + " " + gg + YEAR + yyyymmdd[1] + MONTH + yyyymmdd[2] + DATE;
+					JapaneseDate = mCode.getGlassesFlame() + " " + gg + YEAR + yyyymmdd[1] + MONTH + yyyymmdd[2] + DATE;
 					return JapaneseDate;
 				}
 			}

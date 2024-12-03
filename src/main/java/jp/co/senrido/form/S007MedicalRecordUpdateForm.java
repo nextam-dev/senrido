@@ -5,7 +5,8 @@
  */
 package jp.co.senrido.form;
 
-import jp.co.senrido.dto.TSurveyDto;
+import java.util.List;
+
 import jp.co.senrido.dto.UserDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,20 +20,20 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class S007MedicalRecordForm extends BaseSearchForm {
+public class S007MedicalRecordUpdateForm extends BaseSearchForm {
 
 	private static final long serialVersionUID = 1L;
 
 	/** ログインユーザ情報 */
 	private UserDto userDto;
-	
-	/** お客様ID */
-	private String id;
-	
-	/** 来店日 */
-	private String visitDate;
-	
-	/** アンケート情報 */
-	private TSurveyDto survey;
+
+	/** 受注区分コード */
+	private String orderDivCode;
+
+	/** 施行担当コード */
+	private List<String> operationStaffCode;
+
+	/** 故人名 */
+	private String decedentName;
 
 }

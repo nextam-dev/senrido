@@ -45,12 +45,49 @@ public class SenridoConstant {
 	/**
 	 * コードマスタ検索DIV_CODE
 	 *
-	 * @author hirokawa
-	 * @version 2023/12/25
+	 * @author kurokawa
 	 */
 	public class DivCode {
 		/** 和暦 */
 		public static final String DEV_CODE_WAREKI = "wareki";
+		/** 病歴 */
+		public final static String MEDICAL_HISTORY = "medical_history";
+		/** 眼の症状 */
+		public final static String EYE_SYMPTOMS = "eye_symptoms";
+		/** 病歴 */
+		public final static String BODY_SYMPTOMS = "body_symptoms";
+		/** メガネトラブル */
+		public final static String GLASSES_ISSUES = "glasses_issues";
+		/** フレームトラブル */
+		public final static String FRAME_ISSUES = "frame_issues";
+		/** 眩しさを感じる */
+		public final static String GLARE_SOURCES = "glare_sources";
+		/** メガネの装用現状 */
+		public final static String USE_GLASSES_CURRENT = "use_glasses_current";
+		/** メガネの装用CL併用 */
+		public final static String USE_GLASSES_WITH_CL = "use_glasses_with_cl";
+		/** メガネの装用用途 */
+		public final static String USE_GLASSES_PURPOSE = "use_glasses_purpose";
+		/** ピッチリスト（輻輳　開散　水平斜位量　上下寄せ　上下斜位量　P）*/
+		public final static String PITCH_RANGE_EYE_P = "pitch_range_eye_p";
+		/** ピッチリスト（NPC アイポイント） */
+		public final static String PITCH_RANGE_NPC_EYEPOINT = "pitch_range_npc_eyepoint";
+		/** ピッチリスト（V CV） */
+		public final static String PITCH_RANGE_V_CV = "pitch_range_v_cv";
+		/** ピッチリスト（S C ADD） */
+		public final static String PITCH_RANGE_S_C_ADD = "pitch_range_s_c_add";
+		/** ピッチリスト（AX） */
+		public final static String PITCH_RANGE_AX = "pitch_range_ax";
+		/** ピッチリスト（BASE） */
+		public final static String PITCH_RANGE_BASE = "pitch_range_base";
+		/** ピッチリスト（PD） */
+		public final static String PITCH_RANGE_PD = "pitch_range_pd";
+		/**オプションリスト */
+		public final static String OPTION = "option";
+		/** 決済方法リスト */
+		public final static String DEPOSIT_KIND_CD = "deposit_kind_cd";
+		/** 完成連絡方法リスト */
+		public final static String COMPLETION_CONTACT = "completion_contact";
 	}
 
 	/** 半角カンマ */

@@ -94,8 +94,8 @@ public class TSales {
     String processing;
 
     /** チェック */
-    @Column(name = "check")
-    String check;
+    @Column(name = "glasses_check")
+    String glassesCheck;
 
     /** お渡し */
     @Column(name = "delivery")

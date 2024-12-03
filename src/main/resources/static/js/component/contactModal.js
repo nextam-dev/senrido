@@ -16,43 +16,43 @@ Vue.component('contact-modal', {
                     <div class="row">
                         <div class="col-4 item-title">郵便番号</div>
                         <div class="col-8 modal-item-value">
-                            <label class="ef">141-0031</label>
+                            <label class="ef">{{ customerInfo.zipcode }}</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-4 item-title">ご住所</div>
                         <div class="col-8 modal-item-value">
-                            <label class="ef">東京都品川区西五反田1-2-10 CIRCLES五反田5階</label>
+                            <label class="ef">{{ customerInfo.address }}</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-4 item-title">メールアドレス</div>
                         <div class="col-8 modal-item-value">
-                            <label class="ef">test@sample.jp</label>
+                            <label class="ef">{{ customerInfo.mail }}</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-4 item-title">電話番号</div>
                         <div class="col-8 modal-item-value">
-                            <label class="ef">01-1111-2222</label>
+                            <label class="ef">{{ customerInfo.telephone }}</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-4 item-title">携帯電話番号</div>
                         <div class="col-8 modal-item-value">
-                            <label class="ef">090-1111-2222</label>
+                            <label class="ef">{{ customerInfo.mobilePhone }}</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-4 item-title">勤務先電話番号</div>
                         <div class="col-8 modal-item-value">
-                            <label class="ef">01-9999-9999</label>
+                            <label class="ef">{{ customerInfo.workPhone }}</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-4 item-title">ご紹介者</div>
                         <div class="col-8 modal-item-value">
-                            <label class="ef">札幌次郎</label>
+                            <label class="ef">{{ customerInfo.referrer }}</label>
                         </div>
                     </div>
 	            </div><!-- /modal-content -->
@@ -65,6 +65,10 @@ Vue.component('contact-modal', {
 			displayFlg: false,
 			// 進捗フラグ
 			processingFlg:false,
+			// パラメータ
+            id: "",
+			// お客様情報
+            customerInfo: {},
     	}
     },
     computed:{
@@ -72,8 +76,9 @@ Vue.component('contact-modal', {
 	watch:{
 	},
 	methods: {
-		open: function () {
+		open: function (customerInfo) {
 			this.displayFlg = true;
+			this.customerInfo = customerInfo;
     	},
     	close: function () {
             this.displayFlg = false;

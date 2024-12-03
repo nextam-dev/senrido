@@ -25,8 +25,8 @@ public class MCode {
     String divCode;
 
     /**  */
-    @Column(name = "div_name")
-    String divName;
+    @Column(name = "glasses_flame")
+    String glassesFlame;
 
     /**  */
     @Id
@@ -88,8 +88,8 @@ public class MCode {
      *
      * @return the divName
      */
-    public String getDivName() {
-        return divName;
+    public String getGlassesFlame() {
+        return glassesFlame;
     }
 
     /**
@@ -97,8 +97,8 @@ public class MCode {
      *
      * @param divName the divName
      */
-    public void setDivName(String divName) {
-        this.divName = divName;
+    public void setGlassesFlame(String glassesFlame) {
+        this.glassesFlame = glassesFlame;
     }
 
     /**
