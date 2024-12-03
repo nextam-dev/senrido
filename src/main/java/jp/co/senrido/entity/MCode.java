@@ -46,16 +46,16 @@ public class MCode {
     Integer dispOrder;
 
     /**  */
-    @Column(name = "create_name")
-    String createName;
+    @Column(name = "create_id")
+    String createId;
 
     /**  */
     @Column(name = "create_date")
     LocalDateTime createDate;
 
     /**  */
-    @Column(name = "update_name")
-    String updateName;
+    @Column(name = "update_id")
+    String updateId;
 
     /**  */
     @Column(name = "update_date")
@@ -160,8 +160,8 @@ public class MCode {
      *
      * @return the createName
      */
-    public String getCreateName() {
-        return createName;
+    public String getCreateId() {
+        return createId;
     }
 
     /**
@@ -169,8 +169,8 @@ public class MCode {
      *
      * @param createName the createName
      */
-    public void setCreateName(String createName) {
-        this.createName = createName;
+    public void setCreateId(String createId) {
+        this.createId = createId;
     }
 
     /**
@@ -196,8 +196,8 @@ public class MCode {
      *
      * @return the updateName
      */
-    public String getUpdateName() {
-        return updateName;
+    public String getUpdateId() {
+        return updateId;
     }
 
     /**
@@ -205,8 +205,8 @@ public class MCode {
      *
      * @param updateName the updateName
      */
-    public void setUpdateName(String updateName) {
-        this.updateName = updateName;
+    public void setUpdateId(String updateId) {
+        this.updateId = updateId;
     }
 
     /**
