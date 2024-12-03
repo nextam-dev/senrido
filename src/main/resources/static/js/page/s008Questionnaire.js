@@ -15,8 +15,24 @@
                 initSearchFlg: false,
                 // ログインフラグ
                 loginFig:true,
-                // 性別
-                sexItems: [],
+                // プルダウン情報
+                sexList: [],
+                usageStatusList: [],
+                computerTypeList: [],
+                computerUsageTimeList: [],
+                smartphoneUsageTimeList: [],
+                smartphoneContentList: [],
+                readingList: [],
+                gamingNameList: [],
+                gamingTimeList: [],
+                drivingList: [],
+                licenseTypeList: [],
+                ophthalmologyVisitList: [],
+                eyeFatigueList: [],
+                eyeSymptomsList: [],
+                bodySymptomsList: [],
+                surgeryList: [],
+                covidDisclosureList: [],
                 // アンケート情報
                 survey: {
                 	// お客様ID
@@ -43,6 +59,82 @@
                 	telephone: null,
                 	// 紹介者
                 	referrer: null,
+                	// 職業
+                	occupationType: null,
+                	// お仕事の内容 
+                	jobDescription: null,
+                	// 使用状況
+                	usageStatus: [],
+                	// 使用状況その他
+                	usageStatusOther: null,
+                	// 使用開始年齢
+                	usageStartAge: null,
+                	// パソコン種類
+                	computerType: [],
+                	// パソコン種類その他
+                	computerTypeOther: null,
+                	// パソコン使用時間
+                	computerUsageTime: null,
+                	// パソコン使用時間その他
+                	computerUsageTimeOther: null,
+                	// パソコン距離
+                	distance: null,
+                	// スマートフォン使用時間
+                	smartphoneUsageTime: null,
+                	// スマートフォン使用時間その他
+                	smartphoneUsageTimeOther: null,
+                	// スマートフォン見るもの
+                	smartphoneContent: [],
+                	// スマートフォン見るものその他
+                	smartphoneContentOther: null,
+                	// 読書
+                	reading: null,
+                	// 読書その他
+                	readingOther: null,
+                	// ゲーム
+                	gaming: [],
+                	// ゲームその他
+                	gamingOther: null,
+                	// ゲーム時間
+                	gamingTime: null,
+                	// ゲーム時間その他
+                	gamingTimeOther: null,
+                	// 運転
+                	driving: null,
+                	// 運転その他
+                	drivingOther: null,
+                	// 免許種類
+                	licenseType: [],
+                	// 免許種類その他
+                	licenseTypeOther: null,
+                	// 眼科受診
+                	ophthalmologyVisit: [],
+                	// 眼科受診その他
+                	ophthalmologyVisitOther: null,
+                	// 眼の疲れ
+                	eyeFatigue: null,
+                	// 眼の疲れ名称
+                	eyeFatigueName: null,
+                	// 目の症状
+                	eyeSymptoms: [],
+                	// 目の症状その他
+                	eyeSymptomsOther: null,
+                	// 身体の症状
+                	bodySymptoms: [],
+                	// 身体の症状その他
+                	bodySymptomsOther: null,
+                	// 手術
+                	surgery: [],
+                	// 手術その他
+                	surgeryOther: null,
+                	// 趣味
+                	hobbies: null,
+                	// コロナ開示
+                	covidDisclosure: null,
+                	// コロナ開示その他
+                	covidDisclosureOther: null,
+                	// 備考
+                	remarks: null,
                 }
             }
         },
@@ -69,7 +161,23 @@
                 axios.post(url, postItem)
                     .then(function (response) {
                         console.log(response.data);
-                        self.sexItems = response.data.sexItems;
+                        self.sexList = response.data.sexList;
+                        self.usageStatusList = response.data.usageStatusList;
+                        self.computerTypeList = response.data.computerTypeList;
+                        self.computerUsageTimeList = response.data.computerUsageTimeList;
+                        self.smartphone_UsageTimeList = response.data.smartphone_UsageTimeList;
+                        self.smartphoneContentList = response.data.smartphoneContentList;
+                        self.readingList = response.data.readingList;
+                        self.gamingNameList = response.data.gamingNameList;
+                        self.gamingTimeList = response.data.gamingTimeList;
+                        self.drivingList = response.data.drivingList;
+                        self.licenseTypeList = response.data.licenseTypeList;
+                        self.ophthalmologyVisitList = response.data.ophthalmologyVisitList;
+                        self.eyeFatigueList = response.data.eyeFatigueList;
+                        self.eyeSymptomsList = response.data.eyeSymptomsList;
+                        self.bodySymptomsList = response.data.bodySymptomsList;
+                        self.surgeryList = response.data.surgeryList;
+                        self.covidDisclosureList = response.data.covidDisclosureList;
                     }).catch(function (err) {
                         // error(err);
                     	location.href = editUrl('/error');
