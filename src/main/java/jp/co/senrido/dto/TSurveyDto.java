@@ -23,6 +23,9 @@ public class TSurveyDto {
 
     /** 来店日 */
 	private String visitDate;
+	
+    /** 初回フラグ */
+	private String firstTimeFlag;
 
 	/** お客様名 */
 	private String name;
@@ -212,4 +215,46 @@ public class TSurveyDto {
 
 	/** 備考 */
 	private String remarks;
+	
+	/** 作成メガネ使用状況 */
+	private String createdGlassesUsage;
+	
+	/** 作成メガネ使用状況その他 */
+	private String createdGlassesUsageOther;
+	
+	/** 作成メガネ使用状況名称 */
+	private String createdGlassesUsageName;
+	
+	/** 変化 */
+	private List<String> changes;
+	
+	/** 変化名称 */
+	private String changesName;
+	
+	/** メガネ気になること */
+	private List<String> glassesConcerns;
+	
+	/** メガネ気になることその他 */
+	private String glassesConcernsOther;
+	
+	/** メガネ気になること名称 */
+	private String glassesConcernsName;
+	
+	/** 環境変化 */
+	private String environmentalChanges;
+	
+	/** 目の疲れ2回目 */
+	private String eyeFatigueSecond;
+	
+	/** 目の疲れ名称 */
+	private String eyeFatigueSecondName;
+	
+	/** 度数 */
+	private List<String> prescriptionStrength;
+	
+	/** 度数その他 */
+	private String prescriptionStrengthOther;
+	
+	/** 度数名称 */
+	private String prescriptionStrengthName;
 }

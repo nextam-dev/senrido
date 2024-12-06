@@ -5,6 +5,7 @@ package jp.co.senrido.service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -13,10 +14,12 @@ import org.seasar.doma.jdbc.SelectOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import jp.co.senrido.common.SenridoConstant;
 import jp.co.senrido.dto.PageFactory;
 import jp.co.senrido.dto.Pageable;
 import jp.co.senrido.dto.UserDto;
 import jp.co.senrido.entity.MCode;
+import jp.co.senrido.utils.StringUtil;
 
 /**
  * @author t_hirose
@@ -84,7 +87,7 @@ public abstract class BaseTransactionalService extends BaseService {
      * @return
      * @throws Throwable
      */
-    protected String chaceCodeToName(String divCode, List<String> codeList) throws Throwable {
+    protected String changeCodeToName(String divCode, List<String> codeList) throws Throwable {
     	
     	List<String> nameList = new ArrayList<>();
     	
@@ -95,7 +98,7 @@ public abstract class BaseTransactionalService extends BaseService {
                     .filter(s -> Objects.equals(s.getCode(), code))
                     .collect(Collectors.toList());
     		
-    		if (matches != null) {
+    		if (matches != null && matches.size() > 0) {
     			nameList.add(matches.get(0).getName());
     		}
     	}
@@ -111,7 +114,7 @@ public abstract class BaseTransactionalService extends BaseService {
      * @return
      * @throws Throwable
      */
-    protected String chaceCodeToName(String divCode, String code) throws Throwable {
+    protected String changeCodeToName(String divCode, String code) throws Throwable {
     	
     	String name = null;
     	
@@ -121,10 +124,31 @@ public abstract class BaseTransactionalService extends BaseService {
                 .filter(s -> Objects.equals(s.getCode(), code))
                 .collect(Collectors.toList());
 		
-		if (matches != null) {
+		if (matches != null && matches.size() > 0) {
 			name = matches.get(0).getName();
 		}
     	
     	return name;
+    }
+    
+    /**
+     * カンマ文字列をListに変換する処理.
+     * 
+     * @param str
+     * @param delimita
+     * @return List<String>
+     * @throws Throwable
+     */
+    protected List<String> changeCanmaToList(String str, String delimita) throws Throwable {
+    	
+    	List<String> lsit = new ArrayList();
+    	
+    	if (StringUtil.isEmpty(str)) {
+    		return lsit;
+    	}
+    	
+    	lsit = Arrays.asList(str.split(delimita));
+    	
+    	return lsit;
     }
 }

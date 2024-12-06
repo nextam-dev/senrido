@@ -33,12 +33,19 @@
                 bodySymptomsList: [],
                 surgeryList: [],
                 covidDisclosureList: [],
+                createdGlassesUsageList: [],
+                changesList: [],
+                glassesConcernsList: [],
+                eyeFatigueSecondList: [],
+                prescriptionStrengthList: [],
                 // アンケート情報
                 survey: {
                 	// お客様ID
                 	id: null,
                 	// 来店日
                 	visitDate: null,
+                	// 初回フラグ
+                	firstTimeFlag: false,
                 	// 客様名
                 	name: null,
                 	// お客様名カナ
@@ -115,6 +122,8 @@
                 	eyeFatigue: null,
                 	// 眼の疲れ名称
                 	eyeFatigueName: null,
+                	// 疲れを感じるとき
+                	fatigueTiming: null,
                 	// 目の症状
                 	eyeSymptoms: [],
                 	// 目の症状その他
@@ -135,6 +144,25 @@
                 	covidDisclosureOther: null,
                 	// 備考
                 	remarks: null,
+                	// 作成メガネ使用状況
+                	createdGlassesUsage: null,
+                	// 作成メガネ使用状況その他
+                	createdGlassesUsageOther: null,
+                	// 変化
+                	changes: [],
+                	// メガネ気になること
+                	glassesConcerns: [],
+                	// メガネ気になることその他
+                	glassesConcernsOther: null,
+                	// 環境変化
+                	environmentalChanges: null,
+                	// 目の疲れ2回目
+                	eyeFatigueSecond: null,
+                	// 度数
+                	prescriptionStrength: [],
+                	// 度数その他
+                	prescriptionStrengthOther: null,
+                	
                 }
             }
         },
@@ -165,7 +193,7 @@
                         self.usageStatusList = response.data.usageStatusList;
                         self.computerTypeList = response.data.computerTypeList;
                         self.computerUsageTimeList = response.data.computerUsageTimeList;
-                        self.smartphone_UsageTimeList = response.data.smartphone_UsageTimeList;
+                        self.smartphoneUsageTimeList = response.data.smartphoneUsageTimeList;
                         self.smartphoneContentList = response.data.smartphoneContentList;
                         self.readingList = response.data.readingList;
                         self.gamingNameList = response.data.gamingNameList;
@@ -178,6 +206,11 @@
                         self.bodySymptomsList = response.data.bodySymptomsList;
                         self.surgeryList = response.data.surgeryList;
                         self.covidDisclosureList = response.data.covidDisclosureList;
+                        self.createdGlassesUsageList = response.data.createdGlassesUsageList;
+                        self.changesList = response.data.changesList;
+                        self.glassesConcernsList = response.data.glassesConcernsList;
+                        self.eyeFatigueSecondList = response.data.eyeFatigueSecondList;
+                        self.prescriptionStrengthList = response.data.prescriptionStrengthList;
                     }).catch(function (err) {
                         // error(err);
                     	location.href = editUrl('/error');
@@ -190,7 +223,7 @@
                 location.href = editUrl('/s005CustomerInformationSearch');
             },
             // 送信処理
-            sendAuestionnaire: function() {
+            sendAuestionnaire: function(var firstTimeFlag) {
             	if (!confirm('アンケートを送信します。よろしいですか？')) {
             		return;
             	}
@@ -198,6 +231,7 @@
             	var self = this;
                 this.messages = [];
                 
+                this.survey.firstTimeFlag = firstTimeFlag;
                 var postItem = {
                 		survey : this.survey,
 				}

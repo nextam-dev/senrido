@@ -96,6 +96,16 @@ public class CommonIO implements Serializable {
 	List<MCode> surgeryList = new ArrayList<MCode>();
 	/** コロナ開示 */
 	List<MCode> covidDisclosureList = new ArrayList<MCode>();
+	/** 作成メガネ使用状況 */
+	List<MCode> createdGlassesUsageList = new ArrayList<MCode>();
+	/** 変化 */
+	List<MCode> changesList = new ArrayList<MCode>();
+	/** メガネ気になること */
+	List<MCode> glassesConcernsList = new ArrayList<MCode>();
+	/** 目の疲れ2回目 */
+	List<MCode> eyeFatigueSecondList = new ArrayList<MCode>();
+	/** 度数 */
+	List<MCode> prescriptionStrengthList = new ArrayList<MCode>();
 	
 	/** 症状 */
 	List<CodeNameDto> visitingHospitalItems = new ArrayList<CodeNameDto>();

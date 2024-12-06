@@ -69,6 +69,12 @@ public class S008QuestionnaireRestController {
 		io.setBodySymptomsList(mCodeMasterService.getMCode("body_symptoms"));
 		io.setSurgeryList(mCodeMasterService.getMCode("surgery"));
 		io.setCovidDisclosureList(mCodeMasterService.getMCode("covid_disclosure"));
+		// 2回目
+		io.setCreatedGlassesUsageList(mCodeMasterService.getMCode("created_glasses_usage"));
+		io.setChangesList(mCodeMasterService.getMCode("changes"));
+		io.setGlassesConcernsList(mCodeMasterService.getMCode("glasses_concerns"));
+		io.setEyeFatigueSecondList(mCodeMasterService.getMCode("eye_fatigue_second"));
+		io.setPrescriptionStrengthList(mCodeMasterService.getMCode("prescription_strength"));
 
 		return io;
 	}

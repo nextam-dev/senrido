@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
+import jp.co.senrido.common.SenridoConstant;
 import jp.co.senrido.dao.TCustomerDao;
 import jp.co.senrido.dao.TSurveyDao;
 import jp.co.senrido.dto.TSurveyDto;
@@ -32,6 +33,39 @@ public class S008QuestionnaireService extends BaseTransactionalService {
 	
 	@Autowired
 	private TSurveyDao tSurveyDao;
+	
+	/**
+	 * アンケート検索処理.
+	 * 
+	 * @param id
+	 * @param visitDate
+	 * @return
+	 * @throws Throwable
+	 */
+	public TSurveyDto serachSurvey(String id, String visitDate ) throws Throwable {
+		
+		TSurveyDto dto = new TSurveyDto();
+		
+		// 検索処理
+		TSurvey entity = tSurveyDao.selectById(dto.getId(), DateUtil.changeFormatStrToLocalDateTime(dto.getVisitDate(), DateUtil.DATE_FORMAT_YMD_HYPHEN));
+		
+		// カンマ区切りをリストに変換
+		dto.setUsageStatus(changeCanmaToList(entity.getUsageStatus(), SenridoConstant.HALF_CAMMA));
+		dto.setComputerType(changeCanmaToList(entity.getComputerType(), SenridoConstant.HALF_CAMMA));
+		dto.setSmartphoneContent(changeCanmaToList(entity.getSmartphoneContent(), SenridoConstant.HALF_CAMMA));
+		dto.setGaming(changeCanmaToList(entity.getGaming(), SenridoConstant.HALF_CAMMA));
+		dto.setLicenseType(changeCanmaToList(entity.getLicenseType(), SenridoConstant.HALF_CAMMA));
+		dto.setOphthalmologyVisit(changeCanmaToList(entity.getOphthalmologyVisit(), SenridoConstant.HALF_CAMMA));
+		dto.setEyeSymptoms(changeCanmaToList(entity.getEyeSymptoms(), SenridoConstant.HALF_CAMMA));
+		dto.setBodySymptoms(changeCanmaToList(entity.getBodySymptoms(), SenridoConstant.HALF_CAMMA));
+		dto.setSurgery(changeCanmaToList(entity.getSurgery(), SenridoConstant.HALF_CAMMA));
+		// 2回目以降分
+		dto.setChanges(changeCanmaToList(entity.getChanges(), SenridoConstant.HALF_CAMMA));
+		dto.setGlassesConcerns(changeCanmaToList(entity.getGlassesConcerns(), SenridoConstant.HALF_CAMMA));
+		dto.setPrescriptionStrength(changeCanmaToList(entity.getPrescriptionStrength(), SenridoConstant.HALF_CAMMA));
+		
+		return dto;
+	}
 	
     /**
      * アンケート登録処理.
@@ -83,32 +117,43 @@ public class S008QuestionnaireService extends BaseTransactionalService {
 		entity.setBirthday(DateUtil.changeFormatStrToLocalDateTime(dto.getBirthday(), DateUtil.DATE_FORMAT_YMD_HYPHEN));
 		
 		// 選択肢を名称に変換
-		entity.setUsageStatusName(chaceCodeToName("usage_status", dto.getUsageStatus()));
-		entity.setComputerTypeName(chaceCodeToName("computer_type", dto.getComputerType()));
-		entity.setComputerUsageTimeName(chaceCodeToName("computer_usage_time", dto.getComputerUsageTime()));
-		entity.setSmartphoneUsageTimeName(chaceCodeToName("smartphone_usage_time", dto.getSmartphoneUsageTime()));
-		entity.setSmartphoneContentName(chaceCodeToName("smartphone_content", dto.getSmartphoneContent()));
-		entity.setReadingName(chaceCodeToName("reading", dto.getReading()));
-		entity.setGamingName(chaceCodeToName("gaming_name", dto.getGaming()));
-		entity.setGamingTimeName(chaceCodeToName("gaming_time", dto.getGamingTime()));
-		entity.setDrivingEyeName(chaceCodeToName("driving", dto.getDriving()));
-		entity.setLicenseTypeName(chaceCodeToName("license_type", dto.getLicenseType()));
-		entity.setOphthalmologyVisitName(chaceCodeToName("ophthalmology_visit", dto.getOphthalmologyVisit()));
-		entity.setEyeFatigueName(chaceCodeToName("eye_fatigue", dto.getEyeFatigue()));
-		entity.setEyeSymptomsName(chaceCodeToName("eye_symptoms", dto.getEyeSymptoms()));
-		entity.setBodySymptomsName(chaceCodeToName("body_symptoms", dto.getBodySymptoms()));
-		entity.setSurgeryName(chaceCodeToName("surgery", dto.getSurgery()));
+		entity.setUsageStatusName(changeCodeToName("usage_status", dto.getUsageStatus()));
+		entity.setComputerTypeName(changeCodeToName("computer_type", dto.getComputerType()));
+		entity.setComputerUsageTimeName(changeCodeToName("computer_usage_time", dto.getComputerUsageTime()));
+		entity.setSmartphoneUsageTimeName(changeCodeToName("smartphone_usage_time", dto.getSmartphoneUsageTime()));
+		entity.setSmartphoneContentName(changeCodeToName("smartphone_content", dto.getSmartphoneContent()));
+		entity.setReadingName(changeCodeToName("reading", dto.getReading()));
+		entity.setGamingName(changeCodeToName("gaming_name", dto.getGaming()));
+		entity.setGamingTimeName(changeCodeToName("gaming_time", dto.getGamingTime()));
+		entity.setDrivingEyeName(changeCodeToName("driving", dto.getDriving()));
+		entity.setLicenseTypeName(changeCodeToName("license_type", dto.getLicenseType()));
+		entity.setOphthalmologyVisitName(changeCodeToName("ophthalmology_visit", dto.getOphthalmologyVisit()));
+		entity.setEyeFatigueName(changeCodeToName("eye_fatigue", dto.getEyeFatigue()));
+		entity.setEyeSymptomsName(changeCodeToName("eye_symptoms", dto.getEyeSymptoms()));
+		entity.setBodySymptomsName(changeCodeToName("body_symptoms", dto.getBodySymptoms()));
+		entity.setSurgeryName(changeCodeToName("surgery", dto.getSurgery()));
+		// 2回目以降分
+		entity.setCreatedGlassesUsageName(changeCodeToName("created_glasses_usage", dto.getCreatedGlassesUsage()));
+		entity.setChangesName(changeCodeToName("changes", dto.getChanges()));
+		entity.setGlassesConcernsName(changeCodeToName("glasses_concerns", dto.getGlassesConcerns()));
+		entity.setEyeFatigueSecondName(changeCodeToName("eye_fatigue_second", dto.getEyeFatigueSecond()));
+		entity.setPrescriptionStrengthName(changeCodeToName("prescription_strength", dto.getPrescriptionStrength()));
 		
 		// Listをカンマ区切りに変更
-		entity.setUsageStatus(String.join(",", dto.getUsageStatus()));
-		entity.setComputerType(String.join(",", dto.getComputerType()));
-		entity.setSmartphoneContent(String.join(",", dto.getSmartphoneContent()));
-		entity.setGamingName(String.join(",", dto.getGamingName()));
-		entity.setLicenseType(String.join(",", dto.getLicenseType()));
-		entity.setOphthalmologyVisit(String.join(",", dto.getOphthalmologyVisit()));
-		entity.setEyeSymptoms(String.join(",", dto.getEyeSymptoms()));
-		entity.setBodySymptoms(String.join(",", dto.getBodySymptoms()));
-		entity.setSurgery(String.join(",", dto.getSurgery()));
+		String delimita = SenridoConstant.HALF_CAMMA;
+		entity.setUsageStatus(String.join(delimita, dto.getUsageStatus()));
+		entity.setComputerType(String.join(delimita, dto.getComputerType()));
+		entity.setSmartphoneContent(String.join(delimita, dto.getSmartphoneContent()));
+		entity.setGaming(String.join(delimita, dto.getGaming()));
+		entity.setLicenseType(String.join(delimita, dto.getLicenseType()));
+		entity.setOphthalmologyVisit(String.join(delimita, dto.getOphthalmologyVisit()));
+		entity.setEyeSymptoms(String.join(delimita, dto.getEyeSymptoms()));
+		entity.setBodySymptoms(String.join(delimita, dto.getBodySymptoms()));
+		entity.setSurgery(String.join(delimita, dto.getSurgery()));
+		// 2回目以降分
+		entity.setChanges(String.join(delimita, dto.getChanges()));
+		entity.setGlassesConcerns(String.join(delimita, dto.getGlassesConcerns()));
+		entity.setPrescriptionStrength(String.join(delimita, dto.getPrescriptionStrength()));
 		
 		entity.setDelFlg(false);
 		entity.setUpdateDate(this.createCurrentDate());
