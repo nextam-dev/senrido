@@ -7,6 +7,8 @@ package jp.co.senrido.form;
 
 import javax.validation.Valid;
 
+import jp.co.senrido.dto.TPrescribedLensStrengthDto;
+import jp.co.senrido.dto.TVisitingHospitalDto;
 import jp.co.senrido.dto.UserDto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,14 +27,13 @@ public class S007VisitingHospitalConditionForm extends BaseSearchForm {
 	/** ログインユーザ情報 */
 	private UserDto userDto;
 	
-	/** お客様ID */
-	private String id;
-	
-	/** 来店日 */
-	private String visitDate;
+	/** 各入力対象項目 */
+	@Valid
+	private TVisitingHospitalDto visitingHospitalInfo;
 	
 	/** 各入力対象項目 */
 	@Valid
-	private UpdateVisitingHospitalForm visitingHospitalInfo;
+	private TPrescribedLensStrengthDto prescribedLensStrengthInfo;
+	
 
 }

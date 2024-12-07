@@ -27,13 +27,6 @@ public class S002PasswordChangeForm extends BaseSearchForm {
 	/** ログインユーザ情報 */
 	private UserDto userDto;
 
-	/** 受注区分コード */
-	private String orderDivCode;
-
-	/** 施行担当コード */
-	private List<String> operationStaffCode;
-
-	/** 故人名 */
-	private String decedentName;
-
+	/** パスワード */
+	private String password;
 }

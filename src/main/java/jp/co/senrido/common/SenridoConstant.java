@@ -68,6 +68,8 @@ public class SenridoConstant {
 		public final static String USE_GLASSES_WITH_CL = "use_glasses_with_cl";
 		/** メガネの装用用途 */
 		public final static String USE_GLASSES_PURPOSE = "use_glasses_purpose";
+		/** 度数用途 */
+		public final static String PRESCRIPTION_STRENGTH_NAME = "prescription_strength_name";
 		/** ピッチリスト（輻輳　開散　水平斜位量　上下寄せ　上下斜位量　P）*/
 		public final static String PITCH_RANGE_EYE_P = "pitch_range_eye_p";
 		/** ピッチリスト（NPC アイポイント） */

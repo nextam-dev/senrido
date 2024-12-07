@@ -5,29 +5,18 @@
  */
 package jp.co.senrido.controller;
 
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import jp.co.senrido.dto.CodeNameDto;
 import jp.co.senrido.dto.UserDto;
-import jp.co.senrido.json.CommonIO;
+import jp.co.senrido.form.S002PasswordChangeForm;
 import jp.co.senrido.service.MCodeMasterService;
-import jp.co.senrido.service.S003PasswordReissueService;
-import jp.co.senrido.utils.BeanUtils;
-import jp.co.senrido.utils.ObjectUtil;
+import jp.co.senrido.service.S002PasswordChangeService;
 
 /**
  * リクエスト制御クラス
@@ -42,7 +31,7 @@ public class S002PasswordChangeRestController {
 	private MCodeMasterService mCodeMasterService;
 
 	@Autowired
-	private S003PasswordReissueService s003changeReissueService;
+	private S002PasswordChangeService s002PasswordChangeService;
 
 	@Autowired
 	private MessageSource msg;
@@ -59,6 +48,20 @@ public class S002PasswordChangeRestController {
 		UserDto userDto = (UserDto) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 		return userDto;
+	}
+	
+	/**
+	 * パスワード変更
+	 *
+	 * @return
+	 */
+	@RequestMapping(value = "/changePassword", method = RequestMethod.POST)
+	public String reissuePassword(@RequestBody S002PasswordChangeForm form) throws Throwable {
+
+		// パスワード再発行処理
+		String ret = s002PasswordChangeService.changePassword(form.getPassword());
+
+		return ret;
 	}
 
 }

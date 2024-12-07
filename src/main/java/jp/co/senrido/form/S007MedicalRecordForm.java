@@ -27,7 +27,7 @@ public class S007MedicalRecordForm extends BaseSearchForm {
 	private UserDto userDto;
 	
 	/** お客様ID */
-	private String id;
+	private Integer id;
 	
 	/** 来店日 */
 	private String visitDate;

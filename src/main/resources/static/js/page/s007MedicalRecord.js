@@ -17,40 +17,59 @@
                 isMenuOpen: false,
                 // パラメータ
                 id: "",
+                file: "",
                 // お客様情報
                 customerInfo: {},
+                // 作製度数情報
+                prescribedLensStrengthInfo: {
+    				// お客様ID
+                	id: null,
+                	// 来店日
+                	visitDate: null,
+                	// 連番
+                	seq : null,
+                	// 度数
+                	prescriptionStrength : null,
+    			},
                 // 眼科への通院情報
                 visitingHospitalInfoList: [],
+                // 作製度数情報
+                prescribedLensStrengthInfoList: [],
                 // 眼の手術情報
                 surgeryInfoList: [
                     { cataractName: '白内障右' } // 眼の手術情報をここに追加
                 ],
-                //　視力の低下情報
+                // 視力の低下情報
                 visionLossInfoList: [],
                 // メガネ・CL装用状況情報
                 usageStatusInfoList: [],
-                //　メガネのトラブル情報
+                // メガネのトラブル情報
                 troubleInfoList: [],
-                // 眼・身体の症状情報  
+                // 眼・身体の症状情報
                 symptomsInfoList: [],
                 // 眩しさを感じる物事情報
                 glareInfoList: [],
-                //　見えないと困るもの情報
+                // 見えないと困るもの情報
                 criticalVisibilityNeedsInfoList: [],
                 // 見づらさや疲れを感じるとき
                 discomfortFatigueInfoList: [],
-                // メガネの装用情報 
+                // メガネの装用情報
                 glassesUsageInfoList: [],
-                //　過去の病歴情報
+                // 過去の病歴情報
                 pastMedicalHistoryInfoList: [],
                 // 治療中の疫病（服用薬）情報
                 ongoingDiseasesMedicationInfoList: [],
-                //　ご職業情報
+                // ご職業情報
                 occupationInfoList: [],
-                // 趣味・部活情報 
+                // 趣味・部活情報
                 hobbiesClubActivitiesInfoList: [],
                 // 眼の使用状況情報
                 eyeUsageStatusInfoList: [],
+                
+                // 作製度数情報
+                prescribedLensStrengthInfoList: [
+                	{ prescriptionStrength: '000001' } 
+                	],
                 
                 // 売上詳細情報
                 salesInfoList: [
@@ -75,25 +94,27 @@
                 useGlassesWithClItems:[],
                 // メガネの装用－用途
                 useGlassesPurposeItems:[],
-                // ピッチリスト（輻輳　開散　水平斜位量　上下寄せ　上下斜位量　P）
+                // 用途
+                prescriptionStrengthNameItems:[],
+                // ピッチリスト（輻輳 開散 水平斜位量 上下寄せ 上下斜位量 P）
                 pitchRangeRyePItems:[],
-                // ピッチリスト（NPC アイポイント） 
+                // ピッチリスト（NPC アイポイント）
                 pitchRangeNpcEyepointItems:[],
-                // ピッチリスト（V CV） 
+                // ピッチリスト（V CV）
                 pitchRangeVCvItems:[],
-                // ピッチリスト（S C ADD） 
+                // ピッチリスト（S C ADD）
                 pitchRangeSCAddItems:[],
-                // ピッチリスト（AX） 
+                // ピッチリスト（AX）
                 pitchRangeAxItems:[],
-                // ピッチリスト（BASE） 
+                // ピッチリスト（BASE）
                 pitchRangeBaseItems:[],
-                // ピッチリスト（PD） 
+                // ピッチリスト（PD）
                 pitchRangePdItems:[],
-                // オプションリスト 
+                // オプションリスト
                 optionItems:[],
-                // 決済方法リスト 
+                // 決済方法リスト
                 depositKindCdItems:[],
-                // 完成連絡方法リスト 
+                // 完成連絡方法リスト
                 completionContactItems:[],
                 
                 // モーダル用
@@ -136,6 +157,10 @@
                 },
                 isFarSelected: true,   // 初期状態で「遠」が選択されている状態
                 isNearSelected: false, // 初期状態で「近」は選択されていない状態
+                imagePreview: null,
+                ocrResult: null,
+                apiKey: 'AIzaSyAj2LTHtZq3yAC93SPySh1QjSS3L5rch2c',
+                apiUrl: 'https://vision.googleapis.com/v1/images:annotate',
             };
         },
         created(){
@@ -176,20 +201,20 @@
         			// 初期表示情報
         			self.customerInfo = response.data.customerInfo;
         			self.visitingHospitalInfoList = response.data.visitingHospitalInfoList;
-        			//self.surgeryInfoList = response.data.surgeryInfoList;
-        			//self.visionLossInfoList = response.data.visionLossInfoList;
-        			//self.usageStatusInfoList = response.data.usageStatusInfoList;
-        			//self.troubleInfoList = response.data.troubleInfoList;
-        			//self.symptomsInfoList = response.data.symptomsInfoList;
-        			//self.glareInfoList = response.data.glareInfoList;
-        			//self.criticalVisibilityNeedsInfoList = response.data.criticalVisibilityNeedsInfoList;
-        			//self.discomfortFatigueInfoList = response.data.discomfortFatigueInfoList;
-        			//self.glassesUsageInfoList = response.data.glassesUsageInfoList;
-        			//self.pastMedicalHistoryInfoList = response.data.pastMedicalHistoryInfoList;
-        			//self.ongoingDiseasesMedicationInfoList = response.data.ongoingDiseasesMedicationInfoList;
-        			//self.occupationInfoList = response.data.occupationInfoList;
-        			//self.hobbiesClubActivitiesInfoList = response.data.hobbiesClubActivitiesInfoList;
-        			//self.eyeUsageStatusInfoList = response.data.eyeUsageStatusInfoList;
+        			self.surgeryInfoList = response.data.surgeryInfoList;
+        			self.visionLossInfoList =response.data.visionLossInfoList;
+        			self.usageStatusInfoList =response.data.usageStatusInfoList;
+        			self.troubleInfoList = response.data.troubleInfoList;
+        			self.symptomsInfoList = response.data.symptomsInfoList;
+        			self.glareInfoList = response.data.glareInfoList;
+        			self.criticalVisibilityNeedsInfoList =response.data.criticalVisibilityNeedsInfoList;
+        			self.discomfortFatigueInfoList =response.data.discomfortFatigueInfoList;
+        			self.glassesUsageInfoList =response.data.glassesUsageInfoList;
+        			self.pastMedicalHistoryInfoList =response.data.pastMedicalHistoryInfoList;
+        			self.ongoingDiseasesMedicationInfoList =response.data.ongoingDiseasesMedicationInfoList;
+        			self.occupationInfoList =response.data.occupationInfoList;
+        			self.hobbiesClubActivitiesInfoList =response.data.hobbiesClubActivitiesInfoList;
+        			self.eyeUsageStatusInfoList =response.data.eyeUsageStatusInfoList;
         			
         			self.salesInfoList = response.data.salesInfoList;
         			
@@ -202,6 +227,7 @@
         			self.useGlassesCurrentItems = response.data.useGlassesCurrentItems;
         			self.useGlassesWithClItems = response.data.useGlassesWithClItems;
         			self.useGlassesPurposeItems = response.data.useGlassesPurposeItems;
+        			self.prescriptionStrengthNameItems = response.data.prescriptionStrengthNameItems;
         			self.pitchRangeRyePItems = response.data.pitchRangeRyePItems;
         			self.pitchRangeNpcEyepointItems = response.data.pitchRangeNpcEyepointItems;
         			self.pitchRangeVCvItems = response.data.pitchRangeVCvItems;
@@ -351,7 +377,17 @@
             openModal(index) {
                 const modalRef = this.accordionItems[index].modalRef;
                 if (this.$refs[modalRef]) {
+                	this.modalItem.id = this.id;
+                	this.modalItem.visitDate = this.visitDate;
                 	this.modalItem.visitingHospitalItems = this.visitingHospitalItems;
+                	this.modalItem.eyeSymptomsItems = this.eyeSymptomsItems;
+                	this.modalItem.bodySymptomsItems = this.bodySymptomsItems;
+                	this.modalItem.glassesIssuesItems = this.glassesIssuesItems;
+                	this.modalItem.frameIssuesItems = this.frameIssuesItems;
+                	this.modalItem.glareSourcesItems = this.glareSourcesItems;
+                	this.modalItem.useGlassesCurrentItems = this.useGlassesCurrentItems;
+                	this.modalItem.useGlassesWithClItems = this.useGlassesWithClItems;
+                	this.modalItem.useGlassesPurposeItems = this.useGlassesPurposeItems;
                     this.$refs[modalRef].open(this.modalItem);
                 }
             },
@@ -369,8 +405,58 @@
             	this.$refs.contactModal.open(this.customerInfo);
             },
             addBt: function(){
-            	return;
-            }
+            	this.prescribedLensStrengthInfoList.push({
+                    prescriptionStrength: '',
+                    prescriptionStrengthOther: ''
+                });
+            },
+            handleFileUpload: function(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                  this.imagePreview = e.target.result;
+                };
+                reader.readAsDataURL(file);
+              },
+              async submitImage: function() {
+                  if (!this.imagePreview) {
+                    alert('画像をアップロードしてください');
+                    return;
+                  }
+
+                  try {
+                    // Base64エンコードされた画像データを抽出
+                    const base64string = this.imagePreview.split(',')[1];
+                    const requestBody = {
+                      requests: [
+                        {
+                          image: { content: base64string },
+                          features: [{ type: 'TEXT_DETECTION' }],
+                        },
+                      ],
+                    };
+
+                    const response = await fetch(`${this.apiUrl}?key=${this.apiKey}`, {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify(requestBody),
+                    });
+
+                    if (!response.ok) {
+                      throw new Error(`Failed with ${response.status}: ${response.statusText}`);
+                    }
+
+                    const data = await response.json();
+                    const text =
+                      data.responses?.[0]?.fullTextAnnotation?.text || '認識されたテキストはありません';
+                    this.ocrResult = text;
+                  } catch (error) {
+                    console.error('Error:', error);
+                    this.ocrResult = 'エラーが発生しました';
+                  }
+                },
         },
     });
 });

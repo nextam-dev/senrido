@@ -11,14 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-//import com.makino_saiten.jomu.dto.CodeNameDto;
+//import com.makino_saiten.jomu.dto.MCode;
 //import com.makino_saiten.jomu.dto.MVehicleDto;
 //import com.makino_saiten.jomu.dto.RollCallRecordDetailDto;
 //import com.makino_saiten.jomu.dto.RollCallRecordDto;
 //import com.makino_saiten.jomu.entity.MEmployee;
 //import com.makino_saiten.jomu.entity.MVehicle;
 
-import jp.co.senrido.dto.CodeNameDto;
 import jp.co.senrido.dto.TCustomerDto;
 import jp.co.senrido.dto.TVisitingHospitalDto;
 import jp.co.senrido.entity.MCode;
@@ -108,43 +107,45 @@ public class CommonIO implements Serializable {
 	List<MCode> prescriptionStrengthList = new ArrayList<MCode>();
 	
 	/** 症状 */
-	List<CodeNameDto> visitingHospitalItems = new ArrayList<CodeNameDto>();
+	List<MCode> visitingHospitalItems = new ArrayList<MCode>();
 	/** 眼の症状 */
-	List<CodeNameDto> eyeSymptomsItems = new ArrayList<CodeNameDto>();
+	List<MCode> eyeSymptomsItems = new ArrayList<MCode>();
 	/** 身体の症状 */
-	List<CodeNameDto> bodySymptomsItems = new ArrayList<CodeNameDto>();
+	List<MCode> bodySymptomsItems = new ArrayList<MCode>();
 	/** メガネトラブル */
-	List<CodeNameDto> glassesIssuesItems = new ArrayList<CodeNameDto>();
+	List<MCode> glassesIssuesItems = new ArrayList<MCode>();
 	/** フレームトラブル */
-	List<CodeNameDto> frameIssuesItems = new ArrayList<CodeNameDto>();
+	List<MCode> frameIssuesItems = new ArrayList<MCode>();
 	/** 眩しさを感じる物事 */
-	List<CodeNameDto> glareSourcesItems = new ArrayList<CodeNameDto>();
+	List<MCode> glareSourcesItems = new ArrayList<MCode>();
 	/** メガネの装用現状 */
-	List<CodeNameDto> useGlassesCurrentItems = new ArrayList<CodeNameDto>();
+	List<MCode> useGlassesCurrentItems = new ArrayList<MCode>();
 	/** メガネの装用CL併用 */
-	List<CodeNameDto> useGlassesWithClItems = new ArrayList<CodeNameDto>();
+	List<MCode> useGlassesWithClItems = new ArrayList<MCode>();
 	/** メガネの装用用途 */
-	List<CodeNameDto> useGlassesPurposeItems = new ArrayList<CodeNameDto>();
+	List<MCode> useGlassesPurposeItems = new ArrayList<MCode>();
+	/** 度数用途*/
+	List<MCode> prescriptionStrengthNameItems = new ArrayList<MCode>();
 	/** ピッチリスト（輻輳　開散　水平斜位量　上下寄せ　上下斜位量　P）*/
-	List<CodeNameDto> pitchRangeRyePItems = new ArrayList<CodeNameDto>();
+	List<MCode> pitchRangeRyePItems = new ArrayList<MCode>();
 	/** ピッチリスト（NPC アイポイント） */
-	List<CodeNameDto> pitchRangeNpcEyepointItems = new ArrayList<CodeNameDto>();
+	List<MCode> pitchRangeNpcEyepointItems = new ArrayList<MCode>();
 	/** ピッチリスト（V CV） */
-	List<CodeNameDto> pitchRangeVCvItems = new ArrayList<CodeNameDto>();
+	List<MCode> pitchRangeVCvItems = new ArrayList<MCode>();
 	/** ピッチリスト（S C ADD） */
-	List<CodeNameDto> pitchRangeSCAddItems = new ArrayList<CodeNameDto>();
+	List<MCode> pitchRangeSCAddItems = new ArrayList<MCode>();
 	/** ピッチリスト（AX） */
-	List<CodeNameDto> pitchRangeAxItems = new ArrayList<CodeNameDto>();
+	List<MCode> pitchRangeAxItems = new ArrayList<MCode>();
 	/** ピッチリスト（BASE） */
-	List<CodeNameDto> pitchRangeBaseItems = new ArrayList<CodeNameDto>();
+	List<MCode> pitchRangeBaseItems = new ArrayList<MCode>();
 	/** ピッチリスト（PD） */
-	List<CodeNameDto> pitchRangePdItems = new ArrayList<CodeNameDto>();
+	List<MCode> pitchRangePdItems = new ArrayList<MCode>();
 	/** オプションリスト */
-	List<CodeNameDto> optionItems = new ArrayList<CodeNameDto>();
+	List<MCode> optionItems = new ArrayList<MCode>();
 	/** 決済方法リスト */
-	List<CodeNameDto> depositKindCdItems = new ArrayList<CodeNameDto>();
+	List<MCode> depositKindCdItems = new ArrayList<MCode>();
 	/** 完成連絡方法リスト */
-	List<CodeNameDto> completionContactItems = new ArrayList<CodeNameDto>();
+	List<MCode> completionContactItems = new ArrayList<MCode>();
 	
 	
 	// --------------------------------

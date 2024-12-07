@@ -13,7 +13,32 @@ Vue.component('symptoms-modal', {
 	            </div>
 	            <!-- 入力エリア -->
 	            <div class="modal-content">
-	                
+	                <div class="row">
+						<div class="col-3 item-title">眼</div>
+					</div>
+	                <div class="row">
+						<template v-for="(item, index) in visitingHospitalItems" :key="index">
+							<div class="col-4 modal-item-value" v-if="['00001', '00002', '00003', '00004', '00005'].includes(item.code)">
+								<label class="input-label">
+									<input type="checkbox" :value="item.code" v-model="visitingHospitalInfo.medicalHistory">
+									<span class="spaceLeft">{{ item.name }}</span>
+								</label>
+							</div>
+						</template>
+					</div>
+					<div class="row">
+						<div class="col-3 item-title">身体</div>
+					</div>
+	                <div class="row">
+						<template v-for="(item, index) in visitingHospitalItems" :key="index">
+							<div class="col-4 modal-item-value" v-if="['00001', '00002', '00003', '00004', '00005'].includes(item.code)">
+								<label class="input-label">
+									<input type="checkbox" :value="item.code" v-model="visitingHospitalInfo.medicalHistory">
+									<span class="spaceLeft">{{ item.name }}</span>
+								</label>
+							</div>
+						</template>
+					</div>
 	            </div><!-- /modal-content -->
                 <div class="row">
 	                <div class="col-6">
@@ -40,6 +65,10 @@ Vue.component('symptoms-modal', {
 			displayFlg: false,
 			// 進捗フラグ
 			processingFlg:false,
+			// 
+			visitingHospitalInfo :{},
+			// リスト
+			visitingHospitalItems:[],
     	}
     },
     computed:{

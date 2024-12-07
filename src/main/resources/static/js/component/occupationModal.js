@@ -13,7 +13,23 @@ Vue.component('occupation-modal', {
 	            </div>
 	            <!-- 入力エリア -->
 	            <div class="modal-content">
-	                
+	                <div class="row">
+                        <div class="col-12 modal-item-value">
+			                <label class="ef">
+			                	<input type="text" v-model="visitingHospitalInfo.ophthalmologyName"/>
+			                </label>
+                        </div>
+                    </div>
+                    <div class="row">
+						<div class="col-3 item-title">仕事の主な内容</div>
+					</div>
+					<div class="row">
+                        <div class="col-12 modal-item-value">
+			                <label class="ef">
+			                	<input type="text" v-model="visitingHospitalInfo.ophthalmologyName"/>
+			                </label>
+                        </div>
+                    </div>
 	            </div><!-- /modal-content -->
                 <div class="row">
 	                <div class="col-6">
@@ -40,6 +56,8 @@ Vue.component('occupation-modal', {
 			displayFlg: false,
 			// 進捗フラグ
 			processingFlg:false,
+			// 
+			visitingHospitalInfo :{},
     	}
     },
     computed:{

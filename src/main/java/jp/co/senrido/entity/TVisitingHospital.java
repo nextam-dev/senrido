@@ -1,11 +1,10 @@
 package jp.co.senrido.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.seasar.doma.Column;
 import org.seasar.doma.Entity;
-import org.seasar.doma.GeneratedValue;
-import org.seasar.doma.GenerationType;
 import org.seasar.doma.Id;
 import org.seasar.doma.Table;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -30,7 +29,7 @@ public class TVisitingHospital {
     /** 受診日 */
     @Column(name = "consultation_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    LocalDateTime consultationDate;
+    LocalDate consultationDate;
     
     /** 眼科名 */
     @Column(name = "ophthalmology_name")
@@ -70,7 +69,6 @@ public class TVisitingHospital {
 
     /** 作成日 */
     @Column(name = "create_date")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     LocalDateTime createDate;
 
     /** 作成者ID */
@@ -79,7 +77,6 @@ public class TVisitingHospital {
 
     /** 更新日 */
     @Column(name = "update_date")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     LocalDateTime updateDate;
 
     /** 更新者ID */

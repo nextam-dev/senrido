@@ -45,20 +45,17 @@
 			<visiting-hospital-modal ref="visitingHospitalModal"></visiting-hospital-modal>
 			<operation-modal ref="operationModal"></operation-modal>
 	        <impaired-vision-modal ref="impairedVisionModal"></impaired-vision-modal>
+	        <wearing-glasses-modal ref="wearingGlassesModal"></wearing-glasses-modal>
 	        <wearing-situation-modal ref="wearingSituationModal"></wearing-situation-modal>
 	        <glasses-trouble-modal ref="glassesTroubleModal"></glasses-trouble-modal>
 	        <symptoms-modal ref="symptomsModal"></symptoms-modal>
 	        <dazzling-things-modal ref="dazzlingThingsModal"></dazzling-things-modal>
 	        <see-problem-modal ref="seeProblemModal"></see-problem-modal>
-	        <wearing-glasses-modal ref="wearingGlassesModal"></wearing-glasses-modal>
 	        <case-history-modal ref="caseHistoryModal"></case-history-modal>
 	        <treatment-disease-modal ref="treatmentDiseaseModal"></treatment-disease-modal>
 	        <occupation-modal ref="occupationModal"></occupation-modal>
 	        <hobby-and-club-modal ref="hobbyAndClubModal"></hobby-and-club-modal>
-	        <usage-status-modal ref="usageStatusModal"></usage-status-modal>
-			<eye-position-modal ref="eyePositionModal"></eye-position-modal>
-			<create-dosu-modal ref="createDosuModal"></create-dosu-modal>
-			<kanzen-kyosei-modal ref="kanzenKyoseiModal"></kanzen-kyosei-modal>
+	        <!-- <usage-status-modal ref="usageStatusModal"></usage-status-modal> -->
 			<div class="row">
 				<div class="col-5" style="text-align: left; margin-top: 20px; font-size:25px;">
 					<label>お客様情報詳細画面</label>
@@ -1357,311 +1354,262 @@
 						<label style="margin-top: 15px;">{{ accordionItemDosu.title }}</label>
 					</div>
 					<div v-if="accordionItemDosu.open" class="accordion-content">
-						<div class="row">
-							<div class="col-12">
-			                    <div class="row">
-			                        <div class="col-11 item-title">主な用途</div>
-			                        <div class="col-11 modal-item-value">
-			                            <div class="row item-margin">
-			                                <div class="col-2">
-			                                    <label class="input-label"><input type="radio" name="sex" value="0"><span class="spaceLeft">遠用</span></label>
-			                                </div>
-			                                <div class="col-2">
-			                                    <label class="input-label"><input type="radio" name="sex" value="1"><span class="spaceLeft">近用</span></label>
-			                                </div>
-			                                <div class="col-2">
-			                                    <label class="input-label"><input type="radio" name="sex" value="2"><span class="spaceLeft">室内</span></label>
-			                                </div>
-			                                <div class="col-2">
-			                                    <label class="input-label"><input type="radio" name="sex" value="3"><span class="spaceLeft">室外</span></label>
-			                                </div>
-			                                <div class="col-2">
-			                                    <label class="input-label"><input type="radio" name="sex" value="4"><span class="spaceLeft">常用</span></label>
-			                                </div>
-			                                <div class="col-2">
-			                                    <label class="input-label"><input type="radio" name="sex" value="5"><span class="spaceLeft">CLの上用</span></label>
-			                                </div>
-			                            </div>
-			                            <div class="row item-margin">
-			                                <div class="col-3">
-			                                    <label class="input-label"><input type="radio" name="sex" value="6"><span class="spaceLeft">必要に応じて</span></label>
-			                                </div>
-			                                <div class="col-2">
-			                                    <label class="input-label"><input type="radio" name="sex" value="9"><span class="spaceLeft">その他</span></label>
-			                                </div>
-			                                <div class="col-7">
-			                                    <label class="ef"><input type="text" /></label>
-			                                </div>
-			                            </div>
-			                        </div>
-			                    </div>
-								<div class="row">
-									<div class="col-12">
-										<div class="allrow">
-											<!-- R・L -->
-											<div class="black-border" style="height: 147px; flex-direction: column;">
-												<div class="border-bottom" style="height: 27px; width: 60px; border: 1px solid;">
-													<label></label>
-												</div>
-												<div class="leftright border-bottom" style="height: 60px; width: 60px; border: 1px solid;">
-													<label>R</label>
-												</div>
-												<div class="leftright" style="height: 60px; width: 60px; border: 1px solid;">
-													<label>L</label>
-												</div>
-											</div>		
-											<!-- CV列 -->
-											<div>
-												<div class="col-border" style="width: 150px; border: 1px solid;">
-													<label class="lavel-left">CV</label>
-												</div>
-												<div style="display: flex; height: 120px;">
-													<div style="width: 75px;">
-														<select class="inputsize1" style="width: 75px; height: 120px; border: 1px solid;">
-															<option></option>
-															<option>0.25</option>
-															<option>0.5</option>
-															<option>0.75</option>
-															<option>1.0</option>
-														</select>
+						<div v-for="(item, index) in prescribedLensStrengthInfoList" :key="index">
+							<div class="row">
+								<div class="col-12">
+				                    <div class="row">
+				                        <div class="col-11 item-title">主な用途</div>
+				                        <div class="col-11 modal-item-value">
+				                            <div class="row item-margin">
+					                            <template v-for="(item, index) in prescriptionStrengthNameItems">
+											        <div class="col-2" v-if="['00001', '00002', '00003', '00004', '00005'].includes(item.code)"　:key="index">
+													    <label class="input-label">
+													        <input type="radio" :value="item.code" v-model="prescribedLensStrengthInfo.prescriptionStrength">
+													        <span class="spaceLeft">{{ item.name }}</span>
+													    </label>
 													</div>
-													<div class="double-row" style="width: 75px;">
-														<select class="inputsize1">
-															<option></option>
-															<option>0.25</option>
-															<option>0.5</option>
-															<option>0.75</option>
-															<option>1.0</option>
-														</select>
-														<select class="inputsize1">
-															<option></option>
-															<option>0.25</option>
-															<option>0.5</option>
-															<option>0.75</option>
-															<option>1.0</option>
-														</select>
+											    </template>
+				                            </div>
+				                            <div class="row item-margin">
+				                            	<template v-for="(item, index) in prescriptionStrengthNameItems">
+											        <div class="col-3" v-if="item.code == '00006'">
+													    <label class="input-label">
+													        <input type="radio" :value="item.code" v-model="prescribedLensStrengthInfo.prescriptionStrength">
+													        <span class="spaceLeft">{{ item.name }}</span>
+													    </label>
 													</div>
-												</div>
-											</div>
-											<!-- S列 -->
-											<div>
-												<div class="row-height">
-													<div class="col-border" style="width: 75px; border: 1px solid;">
-														<label class="lavel-left">S</label>
+													<div class="col-2" v-if="item.code == '00007'">
+				                                    	<label class="input-label"><input type="radio" v-model="prescribedLensStrengthInfo.prescriptionStrength"><span class="spaceLeft">その他</span></label>
+				                               		</div>
+											    </template>
+				                                <div class="col-7">
+				                                    <label class="ef"><input type="text" v-model="prescribedLensStrengthInfo.prescriptionStrengthOther"/></label>
+				                                </div>
+				                            </div>
+				                        </div>
+				                    </div>
+									<div class="row">
+										<div class="col-12">
+											<div class="allrow">
+												<!-- R・L -->
+												<div class="black-border" style="height: 147px; flex-direction: column;">
+													<div class="border-bottom" style="height: 27px; width: 60px; border: 1px solid;">
+														<label></label>
 													</div>
-													<div class="double-row" style="height: 120px; width: 75px;">
-														<select class="inputsize1">
-															<option></option>
-															<option>0.25</option>
-															<option>0.5</option>
-															<option>0.75</option>
-															<option>1.0</option>
-														</select>
-														<select class="inputsize1">
-															<option></option>
-															<option>0.25</option>
-															<option>0.5</option>
-															<option>0.75</option>
-															<option>1.0</option>
-														</select>
-
+													<div class="leftright border-bottom" style="height: 60px; width: 60px; border: 1px solid;">
+														<label>R</label>
 													</div>
-												</div>
-											</div>
-											<div>
-												<div class="row-height">
-													<div class="col-border" style="width: 75px; border: 1px solid;">
-														<label class="lavel-left">C</label>
+													<div class="leftright" style="height: 60px; width: 60px; border: 1px solid;">
+														<label>L</label>
 													</div>
-														<div class="double-row" style="height: 120px; width: 75px;">
-															<select class="inputsize1">
-																<option></option>
-																<option>0.25</option>
-																<option>0.5</option>
-																<option>0.75</option>
-																<option>1.0</option>
+												</div>		
+												<!-- CV列 -->
+												<div>
+													<div class="col-border" style="width: 150px; border: 1px solid;">
+														<label class="lavel-left">CV</label>
+													</div>
+													<div style="display: flex; height: 120px;">
+														<div style="width: 75px;">
+															<select class="inputsize1" style="width: 75px; height: 120px; border: 1px solid;" v-model="prescribedLensStrengthInfo.cv" >
+																<option v-for="(item, index) in pitchRangeVCvItems" :key="item.code" :value="item.code">
+																	{{ item.name }}
+																</option>
 															</select>
-															<select class="inputsize1">
-																<option></option>
-																<option>0.25</option>
-																<option>0.5</option>
-																<option>0.75</option>
-																<option>1.0</option>
+														</div>
+														<div class="double-row" style="width: 75px;">
+															<select class="inputsize1" v-model="prescribedLensStrengthInfo.rCv" >
+																<option v-for="(item, index) in pitchRangeVCvItems" :key="item.code" :value="item.code">
+																	{{ item.name }}
+																</option>
+															</select>
+															<select class="inputsize1" v-model="prescribedLensStrengthInfo.lCv" >
+																<option v-for="(item, index) in pitchRangeVCvItems" :key="item.code" :value="item.code">
+																	{{ item.name }}
+																</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<!-- S列 -->
+												<div>
+													<div class="row-height">
+														<div class="col-border" style="width: 75px; border: 1px solid;">
+															<label class="lavel-left">S</label>
+														</div>
+														<div class="double-row" style="height: 120px; width: 75px;">
+															<select class="inputsize1" v-model="prescribedLensStrengthInfo.rS" >
+																<option v-for="(item, index) in pitchRangeSCAddItems" :key="item.code" :value="item.code">
+																	{{ item.name }}
+																</option>
+															</select>
+															<select class="inputsize1" v-model="prescribedLensStrengthInfo.lS" >
+																<option v-for="(item, index) in pitchRangeSCAddItems" :key="item.code" :value="item.code">
+																	{{ item.name }}
+																</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<!-- C列 -->
+												<div>
+													<div class="row-height">
+														<div class="col-border" style="width: 75px; border: 1px solid;">
+															<label class="lavel-left">C</label>
+														</div>
+														<div class="double-row" style="height: 120px; width: 75px;">
+															<select class="inputsize1" v-model="prescribedLensStrengthInfo.rC" >
+																<option v-for="(item, index) in pitchRangeSCAddItems" :key="item.code" :value="item.code">
+																	{{ item.name }}
+																</option>
+															</select>
+															<select class="inputsize1" v-model="prescribedLensStrengthInfo.lC" >
+																<option v-for="(item, index) in pitchRangeSCAddItems" :key="item.code" :value="item.code">
+																	{{ item.name }}
+																</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<!-- AX列 -->
+												<div>
+													<div class="row-height">
+														<div class="col-border" style="width: 75px; border: 1px solid;">
+															<label class="lavel-left">AX</label>
+														</div>
+														<div class="double-row" style="height: 120px; width: 75px;">
+															<select class="inputsize1" v-model="prescribedLensStrengthInfo.rAx" >
+																<option v-for="(item, index) in pitchRangeAxItems" :key="item.code" :value="item.code">
+																	{{ item.name }}
+																</option>
+															</select>
+															<select class="inputsize1" v-model="prescribedLensStrengthInfo.lAx" >
+																<option v-for="(item, index) in pitchRangeAxItems" :key="item.code" :value="item.code">
+																	{{ item.name }}
+																</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<!-- P/BASE 1列-->
+												<div>
+													<div class="col-border" style="width: 150px; border: 1px solid;">
+														<label class="lavel-left">P/BASE 1</label>
+													</div>
+													<div style="display: flex; height: 120px;">
+														<div class="double-row" style="width: 75px;">
+															<select class="inputsize1" v-model="prescribedLensStrengthInfo.rPBase1Left" >
+																<option v-for="(item, index) in pitchRangeBaseItems" :key="item.code" :value="item.code">
+																	{{ item.name }}
+																</option>
+															</select>
+															<select class="inputsize1" v-model="prescribedLensStrengthInfo.rPBase1Right" >
+																<option v-for="(item, index) in pitchRangeBaseItems" :key="item.code" :value="item.code">
+																	{{ item.name }}
+																</option>
+															</select>
+														</div>
+														<div class="double-row" style="width: 75px;">
+															<select class="inputsize1" v-model="prescribedLensStrengthInfo.lPBase1Left" >
+																<option v-for="(item, index) in pitchRangeBaseItems" :key="item.code" :value="item.code">
+																	{{ item.name }}
+																</option>
+															</select>
+															<select class="inputsize1" v-model="prescribedLensStrengthInfo.lPBase1Right" >
+																<option v-for="(item, index) in pitchRangeBaseItems" :key="item.code" :value="item.code">
+																	{{ item.name }}
+																</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<!-- P/BASE 2列-->
+												<div>
+													<div class="col-border" style="width: 150px; border: 1px solid;">
+														<label class="lavel-left">P/BASE 2</label>
+													</div>
+													<div style="display: flex; height: 120px;">
+														<div class="double-row" style="width: 75px;">
+															<select class="inputsize1" v-model="prescribedLensStrengthInfo.rPBase2Left" >
+																<option v-for="(item, index) in pitchRangeBaseItems" :key="item.code" :value="item.code">
+																	{{ item.name }}
+																</option>
+															</select>
+															<select class="inputsize1" v-model="prescribedLensStrengthInfo.rPBase2Right" >
+																<option v-for="(item, index) in pitchRangeBaseItems" :key="item.code" :value="item.code">
+																	{{ item.name }}
+																</option>
+															</select>
+														</div>
+														<div class="double-row" style="width: 75px;">
+															<select class="inputsize1" v-model="prescribedLensStrengthInfo.lPBase2Left" >
+																<option v-for="(item, index) in pitchRangeBaseItems" :key="item.code" :value="item.code">
+																	{{ item.name }}
+																</option>
+															</select>
+															<select class="inputsize1" v-model="prescribedLensStrengthInfo.lPBase2Right" >
+																<option v-for="(item, index) in pitchRangeBaseItems" :key="item.code" :value="item.code">
+																	{{ item.name }}
+																</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<!-- ADD列 -->
+												<div>
+													<div class="col-border" style="width: 75px; border: 1px solid;">
+														<label class="lavel-left">ADD</label>
+													</div>
+													<div style="height: 120px; width: 75px;">
+														<select class="inputsize1" v-model="prescribedLensStrengthInfo.add" style="width: 100%; border: 1px solid; height: 120px;">
+															<option v-for="(item, index) in pitchRangeSCAddItems" :key="item.code" :value="item.code">
+																{{ item.name }}
+															</option>
+														</select>
+													</div>
+												</div>
+												<!-- PD列 -->
+												<div>
+													<div class="col-border" style="width: 75px; border: 1px solid;">
+														<label class="lavel-left">PD</label>
+													</div>
+													<div class="double-row" style="width: 75px; height: 120px;">
+															<select class="inputsize1" v-model="prescribedLensStrengthInfo.rPd" >
+																<option v-for="(item, index) in pitchRangePdItems" :key="item.code" :value="item.code">
+																	{{ item.name }}
+																</option>
+															</select>
+															<select class="inputsize1" v-model="prescribedLensStrengthInfo.lPd" >
+																<option v-for="(item, index) in pitchRangePdItems" :key="item.code" :value="item.code">
+																	{{ item.name }}
+																</option>
 															</select>
 														</div>
 												</div>
-											</div>
-											<!-- AX列 -->
-											<div>
-												<div class="row-height">
-													<div class="col-border" style="width: 75px; border: 1px solid;">
-														<label class="lavel-left">AX</label>
+												<!-- 近用作業距離 -->
+												<div>
+													<div class="col-border" style="width: 110px; border: 1px solid;">
+														<label class="lavel-left">近用作業距離(cm)</label>
 													</div>
-													<div class="double-row" style="height: 120px; width: 75px;">
-														<select class="inputsize1">
-															<option></option>
-															<option>0.25</option>
-															<option>0.5</option>
-															<option>0.75</option>
-															<option>1.0</option>
-														</select>
-														<select class="inputsize1">
-															<option></option>
-															<option>0.25</option>
-															<option>0.5</option>
-															<option>0.75</option>
-															<option>1.0</option>
-														</select>
+													<div style="height: 120px; width: 110px;">
+														<input type="text" class="inputsize1" style="width: 100%; border: 1px solid; height: 120px;" v-model="prescribedLensStrengthInfo.nearVorkingDistance" >
 													</div>
-												</div>
-											</div>
-											<!-- P/BASE 1列-->
-											<div>
-												<div class="col-border" style="width: 150px; border: 1px solid;">
-													<label class="lavel-left">P/BASE 1</label>
-												</div>
-												<div style="display: flex; height: 120px;">
-													<div class="double-row" style="width: 75px;">
-														<select class="inputsize1">
-															<option></option>
-															<option>0.25</option>
-															<option>0.5</option>
-															<option>0.75</option>
-															<option>1.0</option>
-														</select>
-														<select class="inputsize1">
-															<option></option>
-															<option>0.25</option>
-															<option>0.5</option>
-															<option>0.75</option>
-															<option>1.0</option>
-														</select>
-													</div>
-													<div class="double-row" style="width: 75px;">
-														<select class="inputsize1">
-															<option></option>
-															<option>0.25</option>
-															<option>0.5</option>
-															<option>0.75</option>
-															<option>1.0</option>
-														</select>
-														<select class="inputsize1">
-															<option></option>
-															<option>0.25</option>
-															<option>0.5</option>
-															<option>0.75</option>
-															<option>1.0</option>
-														</select>
-													</div>
-												</div>
-											</div>
-											<!-- P/BASE 2列-->
-											<div>
-												<div class="col-border" style="width: 150px; border: 1px solid;">
-													<label class="lavel-left">P/BASE 2</label>
-												</div>
-												<div style="display: flex; height: 120px;">
-													<div class="double-row" style="width: 75px;">
-														<select class="inputsize1">
-															<option></option>
-															<option>0.25</option>
-															<option>0.5</option>
-															<option>0.75</option>
-															<option>1.0</option>
-														</select>
-														<select class="inputsize1">
-															<option></option>
-															<option>0.25</option>
-															<option>0.5</option>
-															<option>0.75</option>
-															<option>1.0</option>
-														</select>
-													</div>
-													<div class="double-row" style="width: 75px;">
-														<select class="inputsize1">
-															<option></option>
-															<option>0.25</option>
-															<option>0.5</option>
-															<option>0.75</option>
-															<option>1.0</option>
-														</select>
-														<select class="inputsize1">
-															<option></option>
-															<option>0.25</option>
-															<option>0.5</option>
-															<option>0.75</option>
-															<option>1.0</option>
-														</select>
-													</div>
-												</div>
-											</div>
-											<!-- ADD列 -->
-											<div>
-												<div class="col-border" style="width: 75px; border: 1px solid;">
-													<label class="lavel-left">ADD</label>
-												</div>
-												<div style="height: 120px; width: 75px;">
-													<select class="inputsize1" style="width: 100%; border: 1px solid; height: 120px;">
-														<option></option>
-														<option>0.25</option>
-														<option>0.5</option>
-														<option>0.75</option>
-														<option>1.0</option>
-													</select>
-												</div>
-											</div>
-											<!-- PD列 -->
-											<div>
-												<div class="col-border" style="width: 75px; border: 1px solid;">
-													<label class="lavel-left">PD</label>
-												</div>
-												<div class="double-row" style="width: 75px; height: 120px;">
-													<select class="inputsize1">
-														<option></option>
-														<option>0.25</option>
-														<option>0.5</option>
-														<option>0.75</option>
-														<option>1.0</option>
-													</select>
-													<select class="inputsize1">
-														<option></option>
-														<option>0.25</option>
-														<option>0.5</option>
-														<option>0.75</option>
-														<option>1.0</option>
-													</select>
-												</div>
-											</div>
-											<!-- 近用作業距離 -->
-											<div>
-												<div class="col-border" style="width: 110px; border: 1px solid;">
-													<label class="lavel-left">近用作業距離(cm)</label>
-												</div>
-												<div style="height: 120px; width: 110px;">
-													<select class="inputsize1" style="width: 100%; border: 1px solid; height: 120px;">
-														<option></option>
-														<option>0.25</option>
-														<option>0.5</option>
-														<option>0.75</option>
-														<option>1.0</option>
-													</select>
 												</div>
 											</div>
 										</div>
-									</div>
-			                    </div><!-- 作製度数 -->
-			                    <!-- コメント -->
-			                    <div class="row" style="margin-top: 10px;">
-			                        <div class="col-12 item-title">メモ</div>
-			                        <div class="col-12 modal-item-value">
-			                        	<div><textarea class="memoArea"　style="height: 100px;"></textarea></div>
-			                    	</div>
-			                    </div>
-			                </div>
-			            </div>
+				                    </div><!-- 作製度数 -->
+				                    <!-- コメント -->
+				                    <div class="row" style="margin-top: 10px;">
+				                        <div class="col-12 item-title">メモ</div>
+				                        <div class="col-12 modal-item-value">
+				                        	<div><textarea class="memoArea"　style="height: 100px;" v-model="prescribedLensStrengthInfo.memo" ></textarea></div>
+				                    	</div>
+				                    </div>
+				                </div>
+				            </div>
+						</div>
 		                <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
 	                        <div class="col-6 botton-area" style="margin-top: 10px; min-height:40px;">
-	                            <button class="modal-regist"　v-on:click="addBt">★★★追加</button>
+	                            <button class="modal-regist"　v-on:click="addBt">追加</button>
 	                        </div>
 	                        <div class="col-6 botton-area" style="margin-top: 10px; min-height:40px;">
 	                            <button class="modal-regist">登録</button>
@@ -2809,16 +2757,19 @@
 					</div>
 					<div v-if="accordionItemRef.open" class="accordion-content">
 						<div class="row">
-<!-- 							<div class="col-12">
-								<img src="/senrido/img/ref_img.png" style="width: 100%;" />
-							</div> -->
 							<div class="col-6">
 								<div>
-									<div style="border: 1px dotted; height: 600px;"></div>
-									<div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
-										<button　class="modal-regist">画像を選択</button>
-									</div>
-								</div>
+				                    <div style="border: 1px dotted; height: 600px; display: flex; align-items: center; justify-content: center;">
+				                        <!-- 画像プレビュー -->
+				                        <img v-if="imagePreview" :src="imagePreview" alt="プレビュー画像" style="max-width: 100%; max-height: 100%;" />
+				                        <span v-else>ここに画像プレビューが表示されます</span>
+				                    </div>
+				                    <div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+				                        <!-- 画像アップロード -->
+				                        <input type="file" accept="image/*" @change="handleFileUpload" />
+				                        <button @click="submitImage">OCRを実行</button>
+				                    </div>
+				                </div>
 								<div>
 									<div>
 										<label>オートレフ</label>
@@ -2832,6 +2783,15 @@
 									</div>
 								</div>
 							</div>
+							<div class="col-6">
+				                <!-- OCR結果表示エリア -->
+				                <div>
+				                    <label>OCR結果</label>
+				                    <div style="border: 1px solid #ccc; padding: 10px; min-height: 200px;">
+				                        <pre>{{ ocrResult }}</pre>
+				                    </div>
+				                </div>
+				            </div>
 						</div>
 					</div>
 				</div>

@@ -13,7 +13,36 @@ Vue.component('operation-modal', {
 	            </div>
 	            <!-- 入力エリア -->
 	            <div class="modal-content">
-	                
+                    <div class="row">
+                        <div class="col-2 item-title">手術時期：</div>
+                        <div class="col-3 modal-item-value">
+                            <select id="era" v-model="surgeryInfo.surgeryWareki" aria-label="和暦年号">
+						        <option value="reiwa">令和</option>
+						        <option value="heisei">平成</option>
+						        <option value="showa">昭和</option>
+						        <option value="taisho">大正</option>
+						    </select>
+                        </div>
+                        <div class="col-4 modal-item-value">
+                            <label class="ef">
+                                <input type="number" v-model="surgeryInfo.surgeryYear"/>
+                            </label>
+                        </div>
+                        <div class="col-1 item-title">年</div>
+                        <div class="col-4 modal-item-value">
+                            <label class="ef">
+                                <input type="number" v-model="surgeryInfo.surgeryMonth"/>
+                            </label>
+                        </div>
+                        <div class="col-1 item-title">月</div>
+                        <div class="col-2 item-title">予定：</div>
+                        <div class="col-3 modal-item-value">
+                            <label class="ef">
+                                <input type="date"/>
+                            </label>
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
 	            </div><!-- /modal-content -->
                 <div class="row">
 	                <div class="col-6">
@@ -40,6 +69,8 @@ Vue.component('operation-modal', {
 			displayFlg: false,
 			// 進捗フラグ
 			processingFlg:false,
+			// 目の手術情報
+			surgeryInfo: {},
     	}
     },
     computed:{
