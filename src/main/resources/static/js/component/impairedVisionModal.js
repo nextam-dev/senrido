@@ -13,7 +13,16 @@ Vue.component('impaired-vision-modal', {
 	            </div>
 	            <!-- 入力エリア -->
 	            <div class="modal-content">
-	                
+	                 <div class="row">
+	                 	<div class="col-3"></div>
+                        <div class="col-4 modal-item-value">
+                            <label class="ef">
+                                <input type="number" v-model="visionLossInfo.decreaseEyesight"/>
+                            </label>
+                        </div>
+                        <div class="col-2 item-title">歳頃</div>
+                        <div class="col-3"></div>
+                    </div>
 	            </div><!-- /modal-content -->
                 <div class="row">
 	                <div class="col-6">
@@ -40,6 +49,8 @@ Vue.component('impaired-vision-modal', {
 			displayFlg: false,
 			// 進捗フラグ
 			processingFlg:false,
+			// 視力の低下情報
+			visionLossInfo: {},
     	}
     },
     computed:{

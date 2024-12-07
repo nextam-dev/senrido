@@ -69,7 +69,6 @@ public class TVisitingHospital {
 
     /** 作成日 */
     @Column(name = "create_date")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     LocalDateTime createDate;
 
     /** 作成者ID */
@@ -78,7 +77,6 @@ public class TVisitingHospital {
 
     /** 更新日 */
     @Column(name = "update_date")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     LocalDateTime updateDate;
 
     /** 更新者ID */

@@ -145,7 +145,26 @@ Vue.component('visiting-hospital-modal', {
 			processingFlg:false,
 			// お客様情報
 			visitingHospitalInfo: {
-			      medicalHistory: [] // ここは配列として初期化
+				// お客様ID
+            	id: null,
+            	// 来店日
+            	visitDate: null,
+            	// 通院有無
+            	visitEyeDoctor : null,
+            	// 受信日
+            	consultationDate : null,
+            	// 眼科名
+            	ophthalmologyName : null,
+            	// 症状
+            	medicalHistory : [],
+            	// 症状その他
+            	medicalHistoryOther : null,
+            	// 作成指示
+            	glassesMaking : null,
+            	// 処方箋
+            	prescription : null,
+            	// 眼科指示・意見
+            	ophthalmologistInstructions : null,
 			},
 			// 眼科への通院リスト
             visitingHospitalItems:[],
@@ -158,16 +177,14 @@ Vue.component('visiting-hospital-modal', {
 	methods: {
 		open: function (item) {
 			this.displayFlg = true;
-			this.id = item.id;
-			this.visitDate = item.visitDate;
+			this.visitingHospitalInfo.id = item.id;
+			this.visitingHospitalInfo.visitDate = item.visitDate;
 			this.visitingHospitalItems = item.visitingHospitalItems;
     	},
     	update:function() {
     		var self = this;
     		self.showModalProcessing();
 			var postItem = {
-				id: this.id,
-				visitData: this.visitDate,
 				visitingHospitalInfo: self.visitingHospitalInfo,
 			};
 			axios.post(editUrl('/s007MedicalRecord/upsertVisitingHospital'), postItem)

@@ -13,7 +13,33 @@ Vue.component('dazzling-things-modal', {
 	            </div>
 	            <!-- 入力エリア -->
 	            <div class="modal-content">
-	                
+	                <div class="row">
+						<template v-for="(item, index) in visitingHospitalItems" :key="index">
+							<div class="col-4 modal-item-value" v-if="['00001', '00002', '00003', '00004', '00005'].includes(item.code)">
+								<label class="input-label">
+									<input type="checkbox" :value="item.code" v-model="visitingHospitalInfo.medicalHistory">
+									<span class="spaceLeft">{{ item.name }}</span>
+								</label>
+							</div>
+						</template>
+					</div>
+					<div class="row">
+	                    <div class="col-12">
+		                    <div class="row">
+		                        <div class="col-4 item-title">強い光を感じたとき目に痛みは？</div>
+		                        <div class="col-8 modal-item-value">
+					                <div class="row">
+					                    <div class="col-3">
+					                        <label class="input-label"><input type="radio" name="sakuseiSiji" v-model="visitingHospitalInfo.prescription"><span class="spaceLeft">ある</span></label>
+					                    </div>
+					                    <div class="col-3">
+					                        <label class="input-label"><input type="radio" name="sakuseiSiji" v-model="visitingHospitalInfo.prescription"><span class="spaceLeft">なし</span></label>
+					                    </div>
+					                </div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
 	            </div><!-- /modal-content -->
                 <div class="row">
 	                <div class="col-6">
@@ -40,6 +66,10 @@ Vue.component('dazzling-things-modal', {
 			displayFlg: false,
 			// 進捗フラグ
 			processingFlg:false,
+			// 
+			visitingHospitalInfo :{},
+			// リスト
+			visitingHospitalItems:[],
     	}
     },
     computed:{

@@ -13,7 +13,13 @@ Vue.component('see-problem-modal', {
 	            </div>
 	            <!-- 入力エリア -->
 	            <div class="modal-content">
-	                
+	                <div class="row">
+                        <div class="col-12 modal-item-value">
+			                <label class="ef">
+			                	<input type="text" v-model="visitingHospitalInfo.ophthalmologyName"/>
+			                </label>
+                        </div>
+                    </div>
 	            </div><!-- /modal-content -->
                 <div class="row">
 	                <div class="col-6">
@@ -40,6 +46,8 @@ Vue.component('see-problem-modal', {
 			displayFlg: false,
 			// 進捗フラグ
 			processingFlg:false,
+			// 
+			visitingHospitalInfo :{},
     	}
     },
     computed:{
