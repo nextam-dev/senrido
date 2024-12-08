@@ -20,6 +20,7 @@ import jp.co.senrido.form.S008QuestionnaireForm;
 import jp.co.senrido.json.CommonIO;
 import jp.co.senrido.service.MCodeMasterService;
 import jp.co.senrido.service.S008QuestionnaireService;
+import jp.co.senrido.utils.StringUtil;
 
 /**
  * リクエスト制御クラス
@@ -50,6 +51,9 @@ public class S008QuestionnaireRestController {
 		CommonIO io = new CommonIO();
 		
 		// お客様情報を取得
+		if (form.getSurvey() != null && form.getSurvey().getId() != null) {
+			io.setSurveyInfo(s008QuestionnaireService.serachCumstomer(form.getSurvey().getId(), form.getSurvey().getVisitDate()));
+		}
 		
 		// コードマスタから選択肢を取得
 		io.setSexList(mCodeMasterService.getMCode("sex"));
@@ -75,6 +79,22 @@ public class S008QuestionnaireRestController {
 		io.setGlassesConcernsList(mCodeMasterService.getMCode("glasses_concerns"));
 		io.setEyeFatigueSecondList(mCodeMasterService.getMCode("eye_fatigue_second"));
 		io.setPrescriptionStrengthList(mCodeMasterService.getMCode("prescription_strength"));
+
+		return io;
+	}
+	
+	/**
+	 * 検索処理.
+	 *
+	 * @return
+	 */
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public CommonIO search(@RequestBody S008QuestionnaireForm form) throws Throwable {
+		
+		CommonIO io = new CommonIO();
+		
+		// 検索処理
+		io.setSurveyInfo(s008QuestionnaireService.serachSurvey(form.getSurvey().getId(), form.getSurvey().getVisitDate()));
 
 		return io;
 	}

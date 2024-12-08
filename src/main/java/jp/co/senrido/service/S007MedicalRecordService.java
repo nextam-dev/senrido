@@ -232,7 +232,7 @@ public class S007MedicalRecordService extends BaseTransactionalService {
 			if (dto.getMedicalHistory() != null) {
 				tVisitingHospital.setMedicalHistory(String.join(",", dto.getMedicalHistory()));
 				tVisitingHospital.setMedicalHistoryName(
-						chaceCodeToName(SenridoConstant.DivCode.MEDICAL_HISTORY, dto.getMedicalHistory()));
+						changeCodeToName(SenridoConstant.DivCode.MEDICAL_HISTORY, dto.getMedicalHistory()));
 			}
 			String glassesMakingStr = dto.getGlassesMaking();
 			if (glassesMakingStr != null) {
@@ -273,7 +273,7 @@ public class S007MedicalRecordService extends BaseTransactionalService {
 			if (dto.getMedicalHistory() != null) {
 				tVisitingHospital.setMedicalHistory(String.join(",", dto.getMedicalHistory()));
 				tVisitingHospital.setMedicalHistoryName(
-						chaceCodeToName(SenridoConstant.DivCode.MEDICAL_HISTORY, dto.getMedicalHistory()));
+						changeCodeToName(SenridoConstant.DivCode.MEDICAL_HISTORY, dto.getMedicalHistory()));
 			}
 			String glassesMakingStr = dto.getGlassesMaking();
 			if (glassesMakingStr != null) {

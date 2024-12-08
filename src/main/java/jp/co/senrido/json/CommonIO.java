@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 //import com.makino_saiten.jomu.entity.MVehicle;
 
 import jp.co.senrido.dto.TCustomerDto;
+import jp.co.senrido.dto.TSurveyDto;
 import jp.co.senrido.dto.TVisitingHospitalDto;
 import jp.co.senrido.entity.MCode;
 import lombok.Data;
@@ -155,6 +156,13 @@ public class CommonIO implements Serializable {
 	TCustomerDto customerInfo;
 	/** 眼科への通院情報 */
 	List<TVisitingHospitalDto> visitingHospitalInfoList;
+	
+	
+	// --------------------------------
+	// s007
+	// --------------------------------
+	/** アンケート情報 */
+	TSurveyDto surveyInfo;
 	
 	// --------------------------------
 	// 結果（一番最後、これより下に情報を入れない）

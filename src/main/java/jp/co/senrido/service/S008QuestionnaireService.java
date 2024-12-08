@@ -16,7 +16,6 @@ import jp.co.senrido.entity.TCustomer;
 import jp.co.senrido.entity.TSurvey;
 import jp.co.senrido.helper.SendMailHelper;
 import jp.co.senrido.utils.DateUtil;
-import jp.co.senrido.utils.ObjectUtil;
 
 /**
  * @author takam
@@ -35,6 +34,25 @@ public class S008QuestionnaireService extends BaseTransactionalService {
 	private TSurveyDao tSurveyDao;
 	
 	/**
+	 * お客様情報検索処理.
+	 * 
+	 * @return
+	 * @throws Throwable
+	 */
+	public TSurveyDto serachCumstomer(Integer id, String visitDate) throws Throwable {
+		
+		TSurveyDto dto = new TSurveyDto();
+		
+		// 検索処理
+		TCustomer tCustomer = tCustomerDao.selectById(id);
+		// 値コピー
+		BeanUtils.copyProperties(tCustomer, dto);
+		dto.setVisitDate(visitDate);
+		
+		return dto;
+	}
+	
+	/**
 	 * アンケート検索処理.
 	 * 
 	 * @param id
@@ -42,12 +60,17 @@ public class S008QuestionnaireService extends BaseTransactionalService {
 	 * @return
 	 * @throws Throwable
 	 */
-	public TSurveyDto serachSurvey(String id, String visitDate ) throws Throwable {
+	public TSurveyDto serachSurvey(Integer id, String visitDate ) throws Throwable {
 		
 		TSurveyDto dto = new TSurveyDto();
 		
 		// 検索処理
-		TSurvey entity = tSurveyDao.selectById(dto.getId(), DateUtil.changeFormatStrToLocalDateTime(dto.getVisitDate(), DateUtil.DATE_FORMAT_YMD_HYPHEN));
+		TSurvey entity = tSurveyDao.selectById(id, DateUtil.changeFormatStrToLocalDateTime(visitDate, DateUtil.DATE_FORMAT_YMD_HYPHEN));
+		
+		// 値コピー
+		BeanUtils.copyProperties(entity, dto);
+		dto.setVisitDate(visitDate);
+		dto.setBirthday(DateUtil.changeFormat(entity.getBirthday(), DateUtil.DATE_FORMAT_YMD_HYPHEN));
 		
 		// カンマ区切りをリストに変換
 		dto.setUsageStatus(changeCanmaToList(entity.getUsageStatus(), SenridoConstant.HALF_CAMMA));
@@ -62,7 +85,6 @@ public class S008QuestionnaireService extends BaseTransactionalService {
 		// 2回目以降分
 		dto.setChanges(changeCanmaToList(entity.getChanges(), SenridoConstant.HALF_CAMMA));
 		dto.setGlassesConcerns(changeCanmaToList(entity.getGlassesConcerns(), SenridoConstant.HALF_CAMMA));
-		dto.setPrescriptionStrength(changeCanmaToList(entity.getPrescriptionStrength(), SenridoConstant.HALF_CAMMA));
 		
 		return dto;
 	}
@@ -91,6 +113,8 @@ public class S008QuestionnaireService extends BaseTransactionalService {
 			BeanUtils.copyProperties(dto, tCustomer);
 			// 日付項目は個別に設定
 			tCustomer.setBirthday(DateUtil.changeFormatStrToLocalDateTime(dto.getBirthday(), DateUtil.DATE_FORMAT_YMD_HYPHEN));
+			// 次回来店日
+			tCustomer.setNextVisitDate(DateUtil.changeFormatStrToLocalDate(dto.getVisitDate()));
 			
 			tCustomer.setDelFlg(false);
 			tCustomer.setUpdateDate(this.createCurrentDate());
@@ -117,6 +141,7 @@ public class S008QuestionnaireService extends BaseTransactionalService {
 		entity.setBirthday(DateUtil.changeFormatStrToLocalDateTime(dto.getBirthday(), DateUtil.DATE_FORMAT_YMD_HYPHEN));
 		
 		// 選択肢を名称に変換
+		entity.setSexName(changeCodeToName("sex", dto.getSex()));
 		entity.setUsageStatusName(changeCodeToName("usage_status", dto.getUsageStatus()));
 		entity.setComputerTypeName(changeCodeToName("computer_type", dto.getComputerType()));
 		entity.setComputerUsageTimeName(changeCodeToName("computer_usage_time", dto.getComputerUsageTime()));
@@ -125,13 +150,14 @@ public class S008QuestionnaireService extends BaseTransactionalService {
 		entity.setReadingName(changeCodeToName("reading", dto.getReading()));
 		entity.setGamingName(changeCodeToName("gaming_name", dto.getGaming()));
 		entity.setGamingTimeName(changeCodeToName("gaming_time", dto.getGamingTime()));
-		entity.setDrivingEyeName(changeCodeToName("driving", dto.getDriving()));
+		entity.setDrivingName(changeCodeToName("driving", dto.getDriving()));
 		entity.setLicenseTypeName(changeCodeToName("license_type", dto.getLicenseType()));
 		entity.setOphthalmologyVisitName(changeCodeToName("ophthalmology_visit", dto.getOphthalmologyVisit()));
 		entity.setEyeFatigueName(changeCodeToName("eye_fatigue", dto.getEyeFatigue()));
 		entity.setEyeSymptomsName(changeCodeToName("eye_symptoms", dto.getEyeSymptoms()));
 		entity.setBodySymptomsName(changeCodeToName("body_symptoms", dto.getBodySymptoms()));
 		entity.setSurgeryName(changeCodeToName("surgery", dto.getSurgery()));
+		entity.setCovidDisclosureName(changeCodeToName("covid_disclosure", dto.getCovidDisclosure()));
 		// 2回目以降分
 		entity.setCreatedGlassesUsageName(changeCodeToName("created_glasses_usage", dto.getCreatedGlassesUsage()));
 		entity.setChangesName(changeCodeToName("changes", dto.getChanges()));
@@ -153,7 +179,6 @@ public class S008QuestionnaireService extends BaseTransactionalService {
 		// 2回目以降分
 		entity.setChanges(String.join(delimita, dto.getChanges()));
 		entity.setGlassesConcerns(String.join(delimita, dto.getGlassesConcerns()));
-		entity.setPrescriptionStrength(String.join(delimita, dto.getPrescriptionStrength()));
 		
 		entity.setDelFlg(false);
 		entity.setUpdateDate(this.createCurrentDate());
@@ -167,8 +192,37 @@ public class S008QuestionnaireService extends BaseTransactionalService {
 		}
 		
 		// TODO アンケート結果を頭書き情報へ登録
+		// 新規の場合
+		// 眼科への通院
+		// 眼の手術
+		// メガネCLの使用状況
+		// 目の症状
+		// 体の症状
+		// 使用開始年齢
+		// 職業
+		// 趣味
+		////// 目の使用状況
+		// パソコンは何を使用していますか？
+		// パソコンは１日に何時間使用しますか？
+		// パソコン画面と眼の距離は何ｃｍ離れていますか？
+		// スマートフォンまたは携帯電話は１日に何時間使用しますか？
+		// スマートフォンでは何をよく見ますか？
+		// 読書はしますか？
+		// ゲームはしますか？
+		// ゲームは１日に何時間使用しますか？
+		// 自動車の運転はしますか？
+		// 運転免許の種類を教えてください。
 		
+		// 2回目以降
 		// TODO アンケート登録後のメール送信（千里堂様の管理者宛にメールを出す）
-		
+		////// 不明
+		// 作製したメガネの一日当たりの使用状況はどのくらいですか？
+		// メガネを掛けて変化は感じますか？
+		// メガネを掛けていてきになることはありますか？
+		// 現在、目の疲れは感じていますか？
+		// コンタクトをご使用中の方のみお答えください。前回の測定からコンタクトの度数は変わりましたか？
+		////// ご職業
+		// お仕事の内容や環境に変化はありましたか？
+
 	}
 }

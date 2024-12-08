@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="jp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>事前アンケート</title>
+    <div th:replace="base_header"></div>
+
+    <!-- ページ固有のCSSファイル -->
+    <link rel="stylesheet" href="/css/s008Questionnaire.css" th:href="@{/css/s008Questionnaire.css}"/>
+
+    <!-- ページ固有のJSファイル -->
+    <script src="/js/page/s008QuestionnaireDisp.js" th:src="@{/js/page/s008QuestionnaireDisp.js}"></script>
+</head>
+
+<body>
+    <div id="content">
+        <div th:replace="questionnaireHeader"></div>
+        <main>
+            <div class="row mainTable contensMargin">
+                <div class="col-12 page-title">
+                    <label>{{survey.visitDate | dateToYM}}測定会　事前アンケート</label>
+                </div>
+                <!-- コンテンツ -->
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">お名前</div>
+                        <div class="col-12 item-value">
+                            <label class="ef">{{ survey.name }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">お名前（カタカナ）</div>
+                        <div class="col-12 item-value">
+                            <label class="ef">{{ survey.nameKana }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">性別</div>
+                        <div class="col-12 item-value">
+                        	<label class="ef">{{ survey.sexName }}</label>
+                            <label class="ef" v-if="survey.sexOther != null || survey.sexOther != ''">{{ survey.sexOther }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">生年月日</div>
+                        <div class="col-12 item-value">
+                            <label class="ef">{{ survey.birthday }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <!-- 生年月日から自動計算するか -->
+                    <div class="row card">
+                        <div class="col-12 item-title">年齢</div>
+                        <div class="col-12 item-value">
+                            <label class="ef">{{ survey.age }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">メールアドレス</div>
+                        <div class="col-12 item-value">
+                            <label class="ef">{{ survey.mail }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">郵便番号</div>
+                        <div class="col-12 item-value">
+                            <div class="col-2">
+                                <label class="ef">{{ survey.zipcode }}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">ご住所</div>
+                        <div class="col-12 item-value">
+                            <label class="ef">{{ survey.address }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">電話番号</div>
+                        <div class="col-12 item-value">
+                            <label class="ef">{{ survey.telephone }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">ご紹介者</div>
+                        <div class="col-12 item-value">
+                            <label class="ef">{{ survey.referrer }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">職業または職種</div>
+                        <div class="col-12 item-value">
+                            <label class="ef">{{ survey.occupationType }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">お仕事の内容</div>
+                        <div class="col-12 item-value">
+                            <label class="ef">{{ survey.jobDescription }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">現在、メガネやコンタクトの使用状況をお聞かせください。</div>
+                        <div class="col-12 item-value">
+                        	<label class="ef">{{ survey.usageStatusName }}</label>
+                            <label class="ef" v-if="survey.usageStatusOther != null || survey.usageStatusOther != ''"><br>{{ survey.usageStatusOther }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">はじめてメガネまたはコンタクトを使用したのは何歳ですか？</div>
+                        <div class="col-12 item-value">
+                            <label class="ef">{{ survey.usageStartAge }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">パソコンは何を使用していますか？</div>
+                        <div class="col-12 item-value">
+                        	<label class="ef">{{ survey.computerTypeName }}</label>
+                            <label class="ef" v-if="survey.computerTypeOther != null || survey.computerTypeOther != ''">{{ survey.computerTypeOther }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">パソコンは１日に何時間使用しますか？</div>
+                        <div class="col-12 item-value">
+                        	<label class="ef">{{ survey.computerUsageTimeName }}</label>
+                            <label class="ef" v-if="survey.computerUsageTimeOther != null || survey.computerUsageTimeOther != ''">{{ survey.computerUsageTimeOther }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">パソコン画面と眼の距離は何ｃｍ離れていますか？</div>
+                        <div class="col-12 item-value">
+                            <label class="ef">{{ survey.distance }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">スマートフォンまたは携帯電話は１日に何時間使用しますか？</div>
+                        <div class="col-12 item-value">
+                        	<label class="ef">{{ survey.smartphoneUsageTimeName }}</label>
+                            <label class="ef" v-if="survey.smartphoneUsageTimeOther != null || survey.smartphoneUsageTimeOther != ''">{{ survey.smartphoneUsageTimeOther }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">スマートフォンでは何をよく見ますか？</div>
+                        <div class="col-12 item-value">
+                        	<label class="ef">{{ survey.smartphoneContentName }}</label>
+                            <label class="ef" v-if="survey.smartphoneContentOther != null || survey.smartphoneContentOther != ''">{{ survey.smartphoneContentOther }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">読書はしますか？</div>
+                        <div class="col-12 item-value">
+	                       	<label class="ef">{{ survey.readingName }}</label>
+                            <label class="ef" v-if="survey.readingOther != null || survey.readingOther != ''">{{ survey.readingOther }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">ゲームはしますか？</div>
+                        <div class="col-12 item-value">
+                        	<label class="ef">{{ survey.gamingName }}</label>
+                            <label class="ef" v-if="survey.gamingOther != null || survey.gamingOther != ''">{{ survey.gamingOther }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">ゲームは１日に何時間使用しますか？</div>
+                        <div class="col-12 item-value">
+                        	<label class="ef">{{ survey.gamingTimeName }}</label>
+                            <label class="ef" v-if="survey.gamingTimeOther != null || survey.gamingTimeOther != ''">{{ survey.gamingTimeOther }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">自動車の運転はしますか？</div>
+                        <div class="col-12 item-value">
+                        	<label class="ef">{{ survey.drivingName }}</label>
+                            <label class="ef" v-if="survey.drivingOther != null || survey.drivingOther != ''">{{ survey.drivingOther }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">運転免許の種類を教えてください。</div>
+                        <div class="col-12 item-value">
+                        	<label class="ef">{{ survey.licenseTypeName }}</label>
+                            <label class="ef" v-if="survey.licenseTypeOther != null || survey.licenseTypeOther != ''">{{ survey.licenseTypeOther }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">眼科さんへ受診はしていますか？</div>
+                        <div class="col-12 item-value">
+                        	<label class="ef">{{ survey.ophthalmologyVisitName }}</label>
+                            <label class="ef" v-if="survey.ophthalmologyVisitOther != null || survey.ophthalmologyVisitOther != ''">{{ survey.ophthalmologyVisitOther }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">目の疲れは感じていますか？</div>
+                        <div class="col-12 item-value">
+	                       	<label class="ef">{{ survey.eyeFatigueName }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">どのような時に疲れを感じますか？</div>
+                        <div class="col-12 item-value">
+                            <label class="ef">{{ survey.fatigueTiming }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">現在、目に下記のような症状はありますか？</div>
+                        <div class="col-12 item-value">
+                        	<label class="ef">{{ survey.eyeSymptomsName }}</label>
+                            <label class="ef" v-if="survey.eyeSymptomsOther != null || survey.eyeSymptomsOther != ''">{{ survey.eyeSymptomsOther }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">お身体に下記のような症状・疾患はありますか？</div>
+                        <div class="col-12 item-value">
+                        	<label class="ef">{{ survey.bodySymptomsName }}</label>
+                            <label class="ef" v-if="survey.bodySymptomsOther != null || survey.bodySymptomsOther != ''">{{ survey.bodySymptomsOther }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">眼の手術は受けたことありますか？</div>
+                        <div class="col-12 item-value">
+                        	<label class="ef">{{ survey.surgeryName }}</label>
+                            <label class="ef" v-if="survey.surgeryOther != null || survey.surgeryOther != ''">{{ survey.surgeryOther }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">趣味はなんですか？</div>
+                        <div class="col-12 item-value">
+                            <label class="ef">{{ survey.hobbies }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">必ずご確認ください。</div>
+                        <div class="col-12 item-title">測定会参加者にコロナ陽性者が発生した場合、保健所の指示により、氏名連絡先等の提供を求められたときには、速やかに開示致します。</div>
+                        <div class="col-12 item-value">
+                        	<label class="ef">{{ survey.covidDisclosureName }}</label>
+                            <label class="ef" v-if="survey.covidDisclosureOther != null || survey.covidDisclosureOther != ''">{{ survey.covidDisclosureOther }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row card">
+                        <div class="col-12 item-title">気になることや確認したいこと、補足等、ありましたらこちらにご記入ください。</div>
+                        <div class="col-12 item-value">
+                            <label class="ef">{{ survey.remarks }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 botton-area">
+                            <button class="newRegist" v-on:click="close">閉じる</button>
+                        </div>
+                    </div>
+                </div>                
+                <!-- ボタン -->
+            </div>
+
+            <!-- モーダル -->
+            <processing v-if="processingFlg"></processing>
+        </main>
+    </div>
+    <div th:replace="footer"></div>
+</body>
+</html>

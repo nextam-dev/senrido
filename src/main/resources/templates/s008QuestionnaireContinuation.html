@@ -20,7 +20,7 @@
         <main>
             <div class="row mainTable contensMargin">
                 <div class="col-12 page-title">
-                    <label>２０２４年７月測定会　事前アンケート</label>
+                    <label>{{survey.visitDate | dateToYM}}測定会　事前アンケート</label>
                 </div>
                 <div class="page-header" style="text-align: left;">
                     <div class="col-12">
@@ -52,7 +52,7 @@
                         <div class="col-12 item-title">お名前<label class="label-required">必須</label></div>
                         <div class="col-12 item-value">
                             <label class="ef">
-                                <input type="text" placeholder="フルネームをご記入ください。" value="東京太郎" />
+                                <input type="text" v-model="survey.name" placeholder="フルネームをご記入ください。" value="東京太郎" />
                             </label>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                         <div class="col-12 item-title">お名前（カタカナ）<label class="label-required">必須</label></div>
                         <div class="col-12 item-value">
                             <label class="ef">
-                                <input type="text" placeholder="カタカナでご記入ください。" value="トウキョウタロウ" />
+                                <input type="text" v-model="survey.nameKana" placeholder="カタカナでご記入ください。" value="トウキョウタロウ" />
                             </label>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                     <div class="row card">
                         <div class="col-12 item-title">メールアドレス<label class="label-required">必須</label></div>
                         <div class="col-12 item-value">
-                            <label class="ef"><input type="mail" class="width-full" placeholder="回答を入力"　value="test@hogehoge.jp" /></label>
+                            <label class="ef"><input type="mail" v-model="survey.mail" class="width-full" placeholder="回答を入力"　value="test@hogehoge.jp" /></label>
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                         <div class="col-12 item-value">
                             <div class="row">
                                 <div class="col-2">
-                                    <label class="ef"><input type="text" placeholder="回答を入力" value="1410031" /></label>
+                                    <label class="ef"><input type="text" v-model="survey.zipcode" placeholder="回答を入力" value="1410031" /></label>
                                 </div>
                                 <div class="col-10">
                                     <button value="郵便番号検索" >郵便番号検索</button>
@@ -94,7 +94,7 @@
                     <div class="row card">
                         <div class="col-12 item-title">ご住所</div>
                         <div class="col-12 item-value">
-                            <label class="ef"><input type="text" placeholder="回答を入力" value="東京都品川区西五反田1-2-10 CIRCLES五反田5階" /></label>
+                            <label class="ef"><input type="text" v-model="survey.address" placeholder="回答を入力" value="東京都品川区西五反田1-2-10 CIRCLES五反田5階" /></label>
                         </div>
                     </div>
                 </div>
@@ -102,16 +102,7 @@
                     <div class="row card">
                         <div class="col-12 item-title">電話番号</div>
                         <div class="col-12 item-value">
-                            <label class="ef"><input type="text" placeholder="回答を入力" value="090-1234-5678" /></label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <!-- 生年月日から自動計算するか -->
-                    <div class="row card">
-                        <div class="col-12 item-title">年齢<label class="label-required">必須</label></div>
-                        <div class="col-12 item-value">
-                            <label class="ef"><input type="text" placeholder="回答を入力" value="40" /></label>
+                            <label class="ef"><input type="text" v-model="survey.telephone" placeholder="ー(ハイフン)を入れてご記入ください。"/></label>
                         </div>
                     </div>
                 </div>
@@ -119,7 +110,7 @@
                     <div class="row card">
                         <div class="col-12 item-title">ご紹介者<label class="label-required">必須</label></div>
                         <div class="col-12 item-value">
-                            <label class="ef"><input type="text" placeholder="どなたからのご紹介で千里堂を知りましたか？" value="網走一郎" /></label>
+                            <label class="ef"><input type="text" v-model="survey.referrer" placeholder="どなたからのご紹介で千里堂を知りましたか？" /></label>
                         </div>
                     </div>
                 </div>
@@ -127,34 +118,21 @@
                     <div class="row card">
                         <div class="col-12 item-title">作製したメガネの一日当たりの使用状況はどのくらいですか？<label class="label-required">必須</label></div>
                         <div class="col-12 item-value">
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="radio" name="useGlasses" value="0"><span class="spaceLeft">一日中掛けている</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="radio" name="useGlasses" value="1"><span class="spaceLeft">スマホやパソコンなど近くを見る時には掛けている</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="radio" name="useGlasses" value="2"><span class="spaceLeft">1日のうち、1～3時間程度</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="radio" name="useGlasses" value="3"><span class="spaceLeft">掛けていない。または掛けられない。</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-2">
-                                    <label class="input-label"><input type="radio" name="useGlasses" value="9"><span class="spaceLeft">その他:</span></label>
-                                </div>
-                                <div class="col-10">
-                                    <label class="ef"><input type="text" style="widht: 100%;" /></label>
-                                </div>
-                            </div>
+                        	<div v-for="item in createdGlassesUsageList" >
+	                            <div class="row item-margin" v-if="item.name != 'その他'">
+	                                <div class="col-12">
+	                                    <label class="input-label"><input type="radio" name="createdGlassesUsage"　v-bind:value="item.code" v-model="survey.createdGlassesUsage"><span class="spaceLeft">{{item.name}}</span></label>
+	                                </div>
+	                            </div>
+	                            <div class="row item-margin" v-else>
+	                                <div class="col-2">
+	                                    <label class="input-label"><input type="radio" name="createdGlassesUsage"　v-bind:value="item.code" v-model="survey.createdGlassesUsage"><span class="spaceLeft">{{item.name}}:</span></label>
+	                                </div>
+	                                <div class="col-10">
+	                                    <label class="ef"><input type="text" v-model="survey.createdGlassesUsageOther" style="widht: 100%;" /></label>
+	                                </div>
+	                            </div>
+	                        </div>
                         </div>
                     </div>
                 </div>
@@ -163,25 +141,12 @@
                         <div class="col-12 item-title">メガネを掛けて変化は感じますか？</div>
                         <div class="col-12 item-subtitle">あてはまるものすべてにチェックを入れてください。</div>
                         <div class="col-12 item-value">
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">視力が良くなった気がする</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">疲れ目を感じることが減った</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">頭痛・肩こり改善した</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">特別変化を感じていない</span></label>
-                                </div>
+                        	<div v-for="item in changesList" >
+	                            <div class="row item-margin">
+	                                <div class="col-12">
+	                                    <label class="input-label"><input type="checkbox" name="changes"　v-bind:value="item.code" v-model="survey.changes"><span class="spaceLeft">{{item.name}}</span></label>
+	                                </div>
+	                            </div>
                             </div>
                         </div>
                     </div>
@@ -191,44 +156,21 @@
                         <div class="col-12 item-title">メガネを掛けていてきになることはありますか？</div>
                         <div class="col-12 item-subtitle">メガネを掛けられない方のみお答えください。</div>
                         <div class="col-12 item-value">
-                             <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">フワフワ・ユラユラする</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">床などが歪んで見える</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">見たいものが見えない（遠く）</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">見たいものが見えない（近く）</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">頭痛が発生する</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">耳や鼻などが痛くなる・メガネが下がる</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-2">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">その他:</span></label>
-                                </div>
-                                <div class="col-10">
-                                    <label class="ef"><input type="text" style="widht: 100%;" /></label>
-                                </div>
-                            </div>
+                        	<div v-for="item in glassesConcernsList" >
+	                             <div class="row item-margin" v-if="item.name != 'その他'">
+	                                <div class="col-12">
+	                                    <label class="input-label"><input type="checkbox" name="glassesConcerns"　v-bind:value="item.code" v-model="survey.glassesConcerns"><span class="spaceLeft">{{item.name}}</span></label>
+	                                </div>
+	                            </div>
+	                            <div class="row item-margin" v-else>
+	                                <div class="col-2">
+	                                    <label class="input-label"><input type="checkbox" name="glassesConcerns"　v-bind:value="item.code" v-model="survey.glassesConcerns"><span class="spaceLeft">{{item.name}}:</span></label>
+	                                </div>
+	                                <div class="col-10">
+	                                    <label class="ef"><input type="text" v-model="survey.glassesConcernsOther" style="widht: 100%;" /></label>
+	                                </div>
+	                            </div>
+	                        </div>
                         </div>
                     </div>
                 </div>
@@ -237,7 +179,7 @@
                         <div class="col-12 item-title">お仕事の内容や環境に変化はありましたか？<label class="label-required">必須</label></div>
                         <div class="col-12 item-subtitle">記入例：モニターを増設した。部署が変わった。etc...</div>
                         <div class="col-12 item-value">
-                            <label class="ef"><input type="text" placeholder="回答を入力" /></label>
+                            <label class="ef"><input type="text" v-model="survey.environmentalChanges" placeholder="回答を入力" /></label>
                         </div>
                     </div>
                 </div>
@@ -245,20 +187,12 @@
                     <div class="row card">
                         <div class="col-12 item-title">現在、目の疲れは感じていますか？<label class="label-required">必須</label></div>
                         <div class="col-12 item-value">
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="radio" name="fatigueEye" value="0"><span class="spaceLeft">以前より軽減した</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="radio" name="fatigueEye" value="1"><span class="spaceLeft">たまに感じる</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="radio" name="fatigueEye" value="2"><span class="spaceLeft">疲れは感じていない</span></label>
-                                </div>
+                        	<div v-for="item in eyeFatigueSecondList" >
+	                            <div class="row item-margin">
+	                                <div class="col-12">
+	                                    <label class="input-label"><input type="radio" name="eyeFatigueSecond"　v-bind:value="item.code" v-model="survey.eyeFatigueSecond"><span class="spaceLeft">{{item.name}}</span></label>
+	                                </div>
+	                            </div>
                             </div>
                         </div>
                     </div>
@@ -268,54 +202,21 @@
                         <div class="col-12 item-title">現在、目に下記のような症状はありますか？<label class="label-required">必須</label></div>
                         <div class="col-12 item-subtitle">あてはまるものすべてにチェックを入れてください。</div>
                         <div class="col-12 item-value">
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">痛み</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">充血</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">ドライアイ</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">白内障</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">緑内障</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">黄斑変性症</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">飛蚊症</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">特になし</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-2">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">その他:</span></label>
-                                </div>
-                                <div class="col-10">
-                                    <label class="ef"><input type="text" style="widht: 100%;" /></label>
-                                </div>
-                            </div>
+                        	<div v-for="item in eyeSymptomsList" >
+	                            <div class="row item-margin" v-if="item.name != 'その他'">
+	                                <div class="col-12">
+	                                    <label class="input-label"><input type="checkbox" name="eyeSymptoms" v-bind:value="item.code" v-model="survey.eyeSymptoms"><span class="spaceLeft">{{item.name}}</span></label>
+	                                </div>
+	                            </div>
+	                            <div class="row item-margin" v-else>
+	                                <div class="col-2">
+	                                    <label class="input-label"><input type="checkbox" name="eyeSymptoms" v-bind:value="item.code" v-model="survey.eyeSymptoms"><span class="spaceLeft">{{item.name}}:</span></label>
+	                                </div>
+	                                <div class="col-10">
+	                                    <label class="ef"><input type="text" v-model="survey.eyeSymptomsOther" style="widht: 100%;" /></label>
+	                                </div>
+	                            </div>
+	                        </div>
                         </div>
                     </div>
                 </div>
@@ -324,49 +225,21 @@
                         <div class="col-12 item-title">お身体に下記のような症状・疾患はありますか？<label class="label-required">必須</label></div>
                         <div class="col-12 item-subtitle">あてはまるものすべてにチェックを入れてください。</div>
                         <div class="col-12 item-value">
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">頭痛</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">肩こり</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">耳鳴り</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">めまい</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">糖尿病</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">甲状腺疾患</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">特になし</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-2">
-                                    <label class="input-label"><input type="checkbox"><span class="spaceLeft">その他:</span></label>
-                                </div>
-                                <div class="col-10">
-                                    <label class="ef"><input type="text" style="widht: 100%;" /></label>
-                                </div>
-                            </div>
+                        	<div v-for="item in bodySymptomsList" >
+	                            <div class="row item-margin" v-if="item.name != 'その他'">
+	                                <div class="col-12">
+	                                    <label class="input-label"><input type="checkbox" name="bodySymptoms" v-bind:value="item.code" v-model="survey.bodySymptoms"><span class="spaceLeft">{{item.name}}</span></label>
+	                                </div>
+	                            </div>
+	                            <div class="row item-margin" v-else>
+	                                <div class="col-2">
+	                                    <label class="input-label"><input type="checkbox" name="bodySymptoms" v-bind:value="item.code" v-model="survey.bodySymptoms"><span class="spaceLeft">{{item.name}}:</span></label>
+	                                </div>
+	                                <div class="col-10">
+	                                    <label class="ef"><input type="text" v-model="survey.bodySymptomsOther" style="widht: 100%;" /></label>
+	                                </div>
+	                            </div>
+	                        </div>
                         </div>
                     </div>
                 </div>
@@ -374,34 +247,21 @@
                     <div class="row card">
                         <div class="col-12 item-title">コンタクトをご使用中の方のみお答えください。前回の測定からコンタクトの度数は変わりましたか？</div>
                         <div class="col-12 item-value">
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="radio" name="useContact" value="0"><span class="spaceLeft">度数を下げた</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="radio" name="useContact" value="1"><span class="spaceLeft">度数を上げた</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="radio" name="useContact" value="2"><span class="spaceLeft">変えていない</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="radio" name="useContact" value="3"><span class="spaceLeft">コンタクトの使用をやめた</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-2">
-                                    <label class="input-label"><input type="radio" name="useContact" value="9"><span class="spaceLeft">その他:</span></label>
-                                </div>
-                                <div class="col-10">
-                                    <label class="ef"><input type="text" style="widht: 100%;" /></label>
-                                </div>
-                            </div>
+                        	<div v-for="item in prescriptionStrengthList" >
+	                            <div class="row item-margin" v-if="item.name != 'その他'">
+	                                <div class="col-12">
+	                                    <label class="input-label"><input type="radio" name="prescriptionStrength" v-bind:value="item.code" v-model="survey.prescriptionStrength"><span class="spaceLeft">{{item.name}}</span></label>
+	                                </div>
+	                            </div>
+	                            <div class="row item-margin" v-else>
+	                                <div class="col-2">
+	                                    <label class="input-label"><input type="radio" name="prescriptionStrength" v-bind:value="item.code" v-model="survey.prescriptionStrength"><span class="spaceLeft">{{item.name}}:</span></label>
+	                                </div>
+	                                <div class="col-10">
+	                                    <label class="ef"><input type="text" v-model="survey.prescriptionStrengthOther" style="widht: 100%;" /></label>
+	                                </div>
+	                            </div>
+	                        </div>
                         </div>
                     </div>
                 </div>
@@ -411,19 +271,21 @@
                         <div class="col-12 item-title">測定会参加者にコロナ陽性者が発生した場合、保健所の指示により、氏名連絡先等の提供を求められたときには、速やかに開示致します。</div>
                         <div class="col-12 item-subtitle">ご了承が得られない場合、測定会への参加をお断りする場合がございます。<br>予めご了承ください。</div>
                         <div class="col-12 item-value">
-                            <div class="row item-margin">
-                                <div class="col-12">
-                                    <label class="input-label"><input type="radio" name="checkCorona" value="0"><span class="spaceLeft">確認しました</span></label>
-                                </div>
-                            </div>
-                            <div class="row item-margin">
-                                <div class="col-2">
-                                    <label class="input-label"><input type="radio" name="checkCorona" value="9"><span class="spaceLeft">その他:</span></label>
-                                </div>
-                                <div class="col-10">
-                                    <label class="ef"><input type="text" style="widht: 100%;" /></label>
-                                </div>
-                            </div>
+                        	<div v-for="item in covidDisclosureList" >
+	                            <div class="row item-margin" v-if="item.name != 'その他'">
+	                                <div class="col-12">
+	                                    <label class="input-label"><input type="radio" name="covidDisclosure" v-bind:value="item.code" v-model="survey.covidDisclosure"><span class="spaceLeft">{{item.name}}</span></label>
+	                                </div>
+	                            </div>
+	                            <div class="row item-margin" v-else>
+	                                <div class="col-2">
+	                                    <label class="input-label"><input type="radio" name="covidDisclosure" v-bind:value="item.code" v-model="survey.covidDisclosure"><span class="spaceLeft">{{item.name}}:</span></label>
+	                                </div>
+	                                <div class="col-10">
+	                                    <label class="ef"><input type="text" v-model="survey.covidDisclosureOther" style="widht: 100%;" /></label>
+	                                </div>
+	                            </div>
+	                        </div>
                         </div>
                     </div>
                 </div>
@@ -431,14 +293,14 @@
                     <div class="row card">
                         <div class="col-12 item-title">メガネを使用するようになってからの変化や、気になることや補足等、ありましたらこちらにご記入ください。</div>
                         <div class="col-12 item-value">
-                            <label class="ef"><textarea placeholder="回答を入力" rows="3" cols="90"></textarea></label>
+                            <label class="ef"><textarea placeholder="回答を入力" rows="3" cols="90" v-model="survey.remarks"></textarea></label>
                         </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="row">
                         <div class="col-12 botton-area">
-                            <button class="newRegist" v-on:click="sendAuestionnaire">送信</button>
+                            <button class="newRegist" v-on:click="sendAuestionnaire(false)">送信</button>
                         </div>
                     </div>
                 </div>                

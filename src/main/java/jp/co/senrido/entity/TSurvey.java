@@ -50,6 +50,10 @@ public class TSurvey {
 	/** 性別その他 */
 	@Column(name = "sex_other")
 	String sexOther;
+	
+	/** 性別名称 */
+	@Column(name = "sex_name")
+	String sexName;
 
 	/** 生年月日 */
 	@Column(name = "birthday")
@@ -195,9 +199,9 @@ public class TSurvey {
 	@Column(name = "driving_other")
 	String drivingOther;
 
-	/** 運転目名称 */
-	@Column(name = "driving_eye_name")
-	String drivingEyeName;
+	/** 運転名称 */
+	@Column(name = "driving_name")
+	String drivingName;
 
 	/** 免許種類 */
 	@Column(name = "license_type")
@@ -282,6 +286,10 @@ public class TSurvey {
 	/** コロナ開示その他 */
 	@Column(name = "covid_disclosure_other")
 	String covidDisclosureOther;
+	
+	/** コロナ開示 名称*/
+	@Column(name = "covid_disclosure_name")
+	String covidDisclosureName;
 
 	/** 備考 */
 	@Column(name = "remarks")

@@ -20,7 +20,7 @@
         <main>
             <div class="row mainTable contensMargin">
                 <div class="col-12 page-title">
-                    <label>２０２４年７月測定会　事前アンケート</label>
+                    <label>{{survey.visitDate | dateToYM}}測定会　事前アンケート</label>
                 </div>
                 <div class="page-header" style="text-align: left;">
                     <div class="col-12">
@@ -90,7 +90,7 @@
                     <div class="row card">
                         <div class="col-12 item-title">生年月日<label class="label-required">必須</label></div>
                         <div class="col-12 item-value">
-                            <label class="ef"><input type="date" v-model="survey.birthday" placeholder="回答を入力" /></label>
+                            <label class="ef"><input type="date" v-model="survey.birthday" placeholder="回答を入力" v-on:change="calculateAge" /></label>
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                     <div class="row card">
                         <div class="col-12 item-title">年齢<label class="label-required">必須</label></div>
                         <div class="col-12 item-value">
-                            <label class="ef"><input type="text" placeholder="回答を入力" /></label>
+                            <label class="ef"><input type="text" v-model="survey.age" disabled="disabled"/></label>
                         </div>
                     </div>
                 </div>

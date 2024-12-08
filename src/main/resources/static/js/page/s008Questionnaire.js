@@ -33,6 +33,7 @@
                 bodySymptomsList: [],
                 surgeryList: [],
                 covidDisclosureList: [],
+                
                 createdGlassesUsageList: [],
                 changesList: [],
                 glassesConcernsList: [],
@@ -52,6 +53,8 @@
                 	nameKana: null,
                 	// 生年月日
                 	birthday: null,
+                	// 年齢
+                	age: null,
                 	// メールアドレス
                 	mail: null,
                 	// 性別
@@ -159,7 +162,7 @@
                 	// 目の疲れ2回目
                 	eyeFatigueSecond: null,
                 	// 度数
-                	prescriptionStrength: [],
+                	prescriptionStrength: null,
                 	// 度数その他
                 	prescriptionStrengthOther: null,
                 	
@@ -184,7 +187,9 @@
         	init: function() {
     			var self = this;
                 self.processingFlg = true;
-                var postItem = {};
+                var postItem = {
+                		survey : this.survey,
+                };
                 var url = editUrl('/s008Questionnaire/initStatus');
                 axios.post(url, postItem)
                     .then(function (response) {
@@ -211,6 +216,25 @@
                         self.glassesConcernsList = response.data.glassesConcernsList;
                         self.eyeFatigueSecondList = response.data.eyeFatigueSecondList;
                         self.prescriptionStrengthList = response.data.prescriptionStrengthList;
+                        
+                        // お客様情報を取得
+                        if (self.survey.id) {
+                        	self.survey = response.data.surveyInfo;
+                        	
+                        	// 配列がnullの場合は初期化する
+                        	self.survey.usageStatus = self.isNullToList(self.survey.usageStatus);
+                        	self.survey.computerType = self.isNullToList(self.survey.computerType);
+                        	self.survey.smartphoneContent = self.isNullToList(self.survey.smartphoneContent);
+                        	self.survey.gaming = self.isNullToList(self.survey.gaming);
+                        	self.survey.licenseType = self.isNullToList(self.survey.licenseType);
+                        	self.survey.ophthalmologyVisit = self.isNullToList(self.survey.ophthalmologyVisit);
+                        	self.survey.eyeSymptoms = self.isNullToList(self.survey.eyeSymptoms);
+                        	self.survey.bodySymptoms = self.isNullToList(self.survey.bodySymptoms);
+                        	self.survey.surgery = self.isNullToList(self.survey.surgery);
+                        	self.survey.changes = self.isNullToList(self.survey.changes);
+                        	self.survey.glassesConcerns = self.isNullToList(self.survey.glassesConcerns);
+                        	self.survey.prescriptionStrength = self.isNullToList(self.survey.prescriptionStrength);
+                        }
                     }).catch(function (err) {
                         // error(err);
                     	location.href = editUrl('/error');
@@ -218,12 +242,18 @@
                         self.processingFlg = false;
                     });
         	},
+        	isNullToList: function(val) {
+        		if (val == null || !val) {
+        			return [];
+        		}
+        		return val;
+        	},
         	// 検索画面へ遷移
         	back: function() {
                 location.href = editUrl('/s005CustomerInformationSearch');
             },
             // 送信処理
-            sendAuestionnaire: function(var firstTimeFlag) {
+            sendAuestionnaire: function(firstTimeFlag) {
             	if (!confirm('アンケートを送信します。よろしいですか？')) {
             		return;
             	}
@@ -252,6 +282,26 @@
                         self.processingFlg = false;
                     });
             },
+            calculateAge: function() {
+                if (!this.survey.birthday) {
+                  this.age = null;
+                  return;
+                }
+
+                const today = new Date();
+                const birthday = new Date(this.survey.birthday);
+                
+                let age = today.getFullYear() - birthday.getFullYear();
+                const monthDiff = today.getMonth() - birthday.getMonth();
+                const dayDiff = today.getDate() - birthday.getDate();
+
+                // 誕生日前の場合は年齢を1歳引く
+                if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+                  age--;
+                }
+
+                this.survey.age = age;
+            },
             // 閉じる
             close: function() {
             	window.close();
@@ -263,5 +313,10 @@
                 this.processingFlg = false;
             },
         },
+        filters: {
+            dateToYM: function (date) {
+                return moment(date).format('YYYY年MM月');
+            }
+        }
     });
 });

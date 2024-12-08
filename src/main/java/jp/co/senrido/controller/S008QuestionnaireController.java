@@ -35,7 +35,7 @@ public class S008QuestionnaireController {
 	 * @return
 	 */
 	@RequestMapping(value="/s008Questionnaire", method = RequestMethod.GET)
-    public String getInit(@ModelAttribute("form") S008QuestionnaireForm form, Model model) {
+    public String init(@ModelAttribute("form") S008QuestionnaireForm form, Model model) {
 
         return "/s008Questionnaire";
     }
@@ -48,7 +48,7 @@ public class S008QuestionnaireController {
 	 * @return
 	 */
 	@RequestMapping(value="/s008Questionnaire/continuation", method = RequestMethod.GET)
-    public String getContinuation(@ModelAttribute("form") S008QuestionnaireForm form, Model model) {
+    public String continuation(@ModelAttribute("form") S008QuestionnaireForm form, Model model) {
 
         return "/s008QuestionnaireContinuation";
     }
@@ -61,8 +61,21 @@ public class S008QuestionnaireController {
 	 * @return
 	 */
 	@RequestMapping(value="/s008Questionnaire/complete", method = RequestMethod.GET)
-    public String getComplete(@ModelAttribute("form") S008QuestionnaireForm form, Model model) {
+    public String complete(@ModelAttribute("form") S008QuestionnaireForm form, Model model) {
 
         return "/s008QuestionnaireComplete";
+    }
+	
+	/**
+	 * お客様アンケート初回表示用.
+	 * 
+	 * @param form
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/s008Questionnaire/view", method = RequestMethod.GET)
+    public String view(@ModelAttribute("form") S008QuestionnaireForm form, Model model) {
+
+        return "/s008QuestionnaireDisp";
     }
 }

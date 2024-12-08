@@ -3,8 +3,9 @@
  */
 package jp.co.senrido.dto;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import org.seasar.doma.Column;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -44,6 +45,9 @@ public class TSurveyDto {
 
 	/** 性別その他 */
 	private String sexOther;
+
+	/** 性別名称 */
+	private String sexName;
 
 	/** 郵便番号 */
 	private String zipcode;
@@ -147,8 +151,8 @@ public class TSurveyDto {
 	/** 運転その他 */
 	private String drivingOther;
 
-	/** 運転目名称 */
-	private String drivingEyeName;
+	/** 運転名称 */
+	private String drivingName;
 
 	/** 免許種類 */
 	private List<String> licenseType;
@@ -212,6 +216,9 @@ public class TSurveyDto {
 
 	/** コロナ開示その他 */
 	private String covidDisclosureOther;
+	
+	/** コロナ開示 名称*/
+	private String covidDisclosureName;
 
 	/** 備考 */
 	private String remarks;
@@ -250,7 +257,7 @@ public class TSurveyDto {
 	private String eyeFatigueSecondName;
 	
 	/** 度数 */
-	private List<String> prescriptionStrength;
+	private String prescriptionStrength;
 	
 	/** 度数その他 */
 	private String prescriptionStrengthOther;
