@@ -6,7 +6,6 @@
  */
 package jp.co.senrido.service;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +66,6 @@ import jp.co.senrido.entity.TOngoingDiseasesMedication;
 import jp.co.senrido.entity.TPastMedicalHistory;
 import jp.co.senrido.entity.TPrescribedLensStrength;
 import jp.co.senrido.entity.TSurgery;
-import jp.co.senrido.entity.TSurvey;
 import jp.co.senrido.entity.TSymptoms;
 import jp.co.senrido.entity.TTrouble;
 import jp.co.senrido.entity.TUsageStatus;
