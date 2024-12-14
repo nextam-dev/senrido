@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 import jp.co.senrido.dto.TCriticalVisibilityNeedsDto;
 import jp.co.senrido.dto.TCustomerDto;
+import jp.co.senrido.dto.TSurveyDto;
 import jp.co.senrido.dto.TDiscomfortFatigueDto;
 import jp.co.senrido.dto.TGlareDto;
 import jp.co.senrido.dto.TGlassesUsageDto;
@@ -108,6 +109,16 @@ public class CommonIO implements Serializable {
 	List<MCode> surgeryList = new ArrayList<MCode>();
 	/** コロナ開示 */
 	List<MCode> covidDisclosureList = new ArrayList<MCode>();
+	/** 作成メガネ使用状況 */
+	List<MCode> createdGlassesUsageList = new ArrayList<MCode>();
+	/** 変化 */
+	List<MCode> changesList = new ArrayList<MCode>();
+	/** メガネ気になること */
+	List<MCode> glassesConcernsList = new ArrayList<MCode>();
+	/** 目の疲れ2回目 */
+	List<MCode> eyeFatigueSecondList = new ArrayList<MCode>();
+	/** 度数 */
+	List<MCode> prescriptionStrengthList = new ArrayList<MCode>();
 	
 	/** 症状 */
 	List<MCode> visitingHospitalItems = new ArrayList<MCode>();
@@ -158,6 +169,8 @@ public class CommonIO implements Serializable {
 	// --------------------------------
 	/** お客様情報 */
 	TCustomerDto customerInfo;
+	/** アンケート情報 */
+	TSurveyDto surveyInfo;
 	/** 眼科への通院情報 */
 	List<TVisitingHospitalDto> visitingHospitalInfoList;
 	/** 眼の手術情報 */
