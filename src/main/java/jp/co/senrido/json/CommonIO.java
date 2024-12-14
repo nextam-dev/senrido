@@ -18,8 +18,21 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 //import com.makino_saiten.jomu.entity.MEmployee;
 //import com.makino_saiten.jomu.entity.MVehicle;
 
+import jp.co.senrido.dto.TCriticalVisibilityNeedsDto;
 import jp.co.senrido.dto.TCustomerDto;
 import jp.co.senrido.dto.TSurveyDto;
+import jp.co.senrido.dto.TDiscomfortFatigueDto;
+import jp.co.senrido.dto.TGlareDto;
+import jp.co.senrido.dto.TGlassesUsageDto;
+import jp.co.senrido.dto.THobbiesClubActivitiesDto;
+import jp.co.senrido.dto.TOccupationDto;
+import jp.co.senrido.dto.TOngoingDiseasesMedicationDto;
+import jp.co.senrido.dto.TPastMedicalHistoryDto;
+import jp.co.senrido.dto.TSurgeryDto;
+import jp.co.senrido.dto.TSymptomsDto;
+import jp.co.senrido.dto.TTroubleDto;
+import jp.co.senrido.dto.TUsageStatusDto;
+import jp.co.senrido.dto.TVisionLossDto;
 import jp.co.senrido.dto.TVisitingHospitalDto;
 import jp.co.senrido.entity.MCode;
 import lombok.Data;
@@ -109,6 +122,8 @@ public class CommonIO implements Serializable {
 	
 	/** 症状 */
 	List<MCode> visitingHospitalItems = new ArrayList<MCode>();
+	/** 白内障 */
+	List<MCode> surgeryTargetItems = new ArrayList<MCode>();
 	/** 眼の症状 */
 	List<MCode> eyeSymptomsItems = new ArrayList<MCode>();
 	/** 身体の症状 */
@@ -154,15 +169,36 @@ public class CommonIO implements Serializable {
 	// --------------------------------
 	/** お客様情報 */
 	TCustomerDto customerInfo;
-	/** 眼科への通院情報 */
-	List<TVisitingHospitalDto> visitingHospitalInfoList;
-	
-	
-	// --------------------------------
-	// s007
-	// --------------------------------
 	/** アンケート情報 */
 	TSurveyDto surveyInfo;
+	/** 眼科への通院情報 */
+	List<TVisitingHospitalDto> visitingHospitalInfoList;
+	/** 眼の手術情報 */
+	List<TSurgeryDto> surgeryInfoList;
+	/** 視力低下情報 */
+	List<TVisionLossDto> visionLossInfoList;
+	/** メガネ装用情報 */
+	List<TGlassesUsageDto> glassesUsageInfoList;
+	/** 装用状況情報 */
+	List<TUsageStatusDto> usageStatusInfoList;
+	/** トラブル情報 */
+	List<TTroubleDto> troubleInfoList;
+	/** 症状情報 */
+	List<TSymptomsDto> symptomsInfoList;
+	/** 眩しさ情報 */
+	List<TGlareDto> glareInfoList;
+	/** 見づらさ疲れ情報 */
+	List<TDiscomfortFatigueDto> discomfortFatigueInfoList;
+	/** 見えないと困るもの情報 */
+	List<TCriticalVisibilityNeedsDto> criticalVisibilityNeedsInfoList;
+	/** 見づらさ疲れ情報 */
+	List<TOccupationDto> occupationInfoList;
+	/** 見えないと困るもの情報 */
+	List<THobbiesClubActivitiesDto> hobbiesClubActivitiesInfoList;
+	/** 過去の病歴情報 */
+	List<TPastMedicalHistoryDto> pastMedicalHistoryInfoList;
+	/** 治療中の疫病・服用薬情報 */
+	List<TOngoingDiseasesMedicationDto> ongoingDiseasesMedicationInfoList;
 	
 	// --------------------------------
 	// 結果（一番最後、これより下に情報を入れない）
