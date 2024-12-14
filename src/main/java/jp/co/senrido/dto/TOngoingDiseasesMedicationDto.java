@@ -1,9 +1,6 @@
 package jp.co.senrido.dto;
 
-import java.time.LocalDateTime;
-
-import javax.validation.constraints.Size;
-
+import jp.co.senrido.annotation.MessageName;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,32 +8,18 @@ import lombok.Setter;
 @Setter
 public class TOngoingDiseasesMedicationDto {
 
-    /** ‚¨‹q—lID */
+	/** ãŠå®¢æ§˜ID */
+    @MessageName("ãŠå®¢æ§˜ID")
     private Integer id;
 
-    /** —ˆ“X“ú */
-    private LocalDateTime visitDate;
+    /** æ¥åº—æ—¥ */
+    @MessageName("æ¥åº—æ—¥")
+    private String visitDate;
+    private String visitDateStr;
 
-    /** ¡—Ã’†‚Ì¾•a */
-    @Size(max = 2000)
+    /** ï¿½ï¿½ï¿½Ã’ï¿½ï¿½Ìï¿½ï¿½a */
     private String ongoingConditions;
 
-    /** •—p–ò */
-    @Size(max = 2000)
+    /** ï¿½ï¿½ï¿½pï¿½ï¿½ */
     private String medications;
-
-    /** íœƒtƒ‰ƒO */
-    private Boolean delFlg;
-
-    /** “o˜^“ú */
-    private LocalDateTime createDate;
-
-    /** “o˜^ÒƒR[ƒh */
-    private String createId;
-
-    /** XV“ú */
-    private LocalDateTime updateDate;
-
-    /** XVÒƒR[ƒh */
-    private String updateId;
 }

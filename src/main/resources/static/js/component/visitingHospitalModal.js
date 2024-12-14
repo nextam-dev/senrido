@@ -209,6 +209,7 @@ Vue.component('visiting-hospital-modal', {
 		},
     	close: function () {
             this.displayFlg = false;
+            this.$parent.getData();
         },
     	back: function () {
     		this.displayFlg = false;

@@ -13,10 +13,13 @@ Vue.component('case-history-modal', {
 	            </div>
 	            <!-- 入力エリア -->
 	            <div class="modal-content">
+	            	<div class="row">
+						<div class="col-3 item-title">過去の病歴</div>
+					</div>
 	                <div class="row">
                         <div class="col-12 modal-item-value">
 			                <label class="ef">
-			                	<input type="text" v-model="visitingHospitalInfo.ophthalmologyName"/>
+			                	<input type="text" v-model="pastMedicalHistoryInfo.pastMedicalHistory"/>
 			                </label>
                         </div>
                     </div>
@@ -32,7 +35,7 @@ Vue.component('case-history-modal', {
 	                <div class="col-6">
 	                    <div class="row">
 	                        <div class="col-12 botton-area" style="min-height:40px;">
-	                            <button class="modal-regist">登録</button>
+	                            <button class="modal-regist" @click="update">登録</button>
 	                        </div>
 	                    </div>
 	                </div>
@@ -47,7 +50,14 @@ Vue.component('case-history-modal', {
 			// 進捗フラグ
 			processingFlg:false,
 			// 
-			visitingHospitalInfo :{},
+			pastMedicalHistoryInfo :{
+				// お客様ID
+				id: null,
+				// 来店日
+				visitDate: null,
+				// 
+				pastMedicalHistory: null,
+			},
     	}
     },
     computed:{
@@ -55,11 +65,40 @@ Vue.component('case-history-modal', {
 	watch:{
 	},
 	methods: {
-		open: function () {
+		open: function (item) {
 			this.displayFlg = true;
+			this.pastMedicalHistoryInfo.id = item.id;
+			this.pastMedicalHistoryInfo.visitDate = item.visitDate;
     	},
+    	update:function() {
+    		var self = this;
+    		self.showModalProcessing();
+			var postItem = {
+					pastMedicalHistoryInfo: self.pastMedicalHistoryInfo,
+			};
+			axios.post(editUrl('/s007MedicalRecord/upsertCaseHistory'), postItem)
+			.then(response => {
+				console.log("リクエスト成功:", response.data);
+				// バリデーション・システムエラーチェック
+				var alertMessage = checkValid(response.data.resultCd, response.data.messageList);
+                if(alertMessage.length != 0) {
+                	alert(alertMessage);
+                	self.closeModalProcessing();
+                	return;
+                }
+				// 処理後メッセージ
+				alert(response.data.message);
+				self.closeModalProcessing();
+			})
+			.catch(err => {
+				console.log('err:', err);
+				err_function(err);
+				self.closeModalProcessing();
+			});
+		},
     	close: function () {
             this.displayFlg = false;
+            this.$parent.getData();
         },
     	back: function () {
     		this.displayFlg = false;

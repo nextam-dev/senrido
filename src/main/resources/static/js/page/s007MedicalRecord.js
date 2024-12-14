@@ -18,27 +18,27 @@
                 // パラメータ
                 id: "",
                 file: "",
+                
+                //　★★初期表示（過去分）用格納★★
                 // お客様情報
                 customerInfo: {},
+                // 眼位情報
+    			eyePositionInfo: {},
                 // 作製度数情報
-                prescribedLensStrengthInfo: {
-    				// お客様ID
-                	id: null,
-                	// 来店日
-                	visitDate: null,
-                	// 連番
-                	seq : null,
-                	// 度数
-                	prescriptionStrength : null,
-    			},
+                prescribedLensStrengthInfo: {},
+    			// 完全矯正情報
+    			fullCorrectionInfo: {},
+    			// 完全矯正情報
+    			fullClCorrectionInfo: {},
+    			// 売上情報
+    			salesInfo: {},
+                
+    			// ★★履歴表示格納リスト★★
+    			
                 // 眼科への通院情報
                 visitingHospitalInfoList: [],
-                // 作製度数情報
-                prescribedLensStrengthInfoList: [],
                 // 眼の手術情報
-                surgeryInfoList: [
-                    { cataractName: '白内障右' } // 眼の手術情報をここに追加
-                ],
+                surgeryInfoList: [],
                 // 視力の低下情報
                 visionLossInfoList: [],
                 // メガネ・CL装用状況情報
@@ -65,19 +65,41 @@
                 hobbiesClubActivitiesInfoList: [],
                 // 眼の使用状況情報
                 eyeUsageStatusInfoList: [],
-                
                 // 作製度数情報
                 prescribedLensStrengthInfoList: [
                 	{ prescriptionStrength: '000001' } 
                 	],
-                
+               // 完全矯正情報
+               fullCorrectionInfoList: [
+                   { V: '000001' } 
+                    ],
                 // 売上詳細情報
                 salesInfoList: [
                     { seq: '1' } 
                     ],
+                // 売上詳細情報
+                pastDataInfoList: [
+                    { seq: '1' } 
+                    ],
                 
+                //　★★登録処理用変数★★
+                // 眼位情報
+        		upsertEyePositionInfo: {},
+                // 作製度数情報
+       			upsertPrescribedLensStrengthInfo: {},
+     			// 完全矯正情報
+       			upsertFullCorrectionInfo: {},
+        		// 完全矯正情報
+        		upsertFullClCorrectionInfo: {},
+       			// 売上情報
+       			upsertSalesInfo: {},
+                    
+                // 性別リスト  
+       		    sexList: [],
                 // 眼科への通院リスト
                 visitingHospitalItems:[],
+                // 左右リスト
+                surgeryTargetItems:[],
                 // 眼の症状リスト
                 eyeSymptomsItems:[],
                 // 身体の症状リスト
@@ -116,6 +138,12 @@
                 depositKindCdItems:[],
                 // 完成連絡方法リスト
                 completionContactItems:[],
+                // カーブリスト（フレーム　レンズ）
+                curveItems:[],
+                // カーブリスト（溝深さ、溝幅）
+                curveGrooveItems:[],
+                // 担当者リスト
+                
                 
                 // モーダル用
 				modalItem: {},
@@ -167,7 +195,7 @@
 			// URLからパラメータ取得
 			// this.id = getParam('id');
         	this.id = '2';
-        	this.visitDate = '2024-11-30 17:00:00';
+        	this.visitDate = '2024-12-30 17:00:00';
         	var params = URI.parseQuery(window.location.search);
 			// データ取得
 			this.getData();
@@ -216,9 +244,11 @@
         			self.hobbiesClubActivitiesInfoList =response.data.hobbiesClubActivitiesInfoList;
         			self.eyeUsageStatusInfoList =response.data.eyeUsageStatusInfoList;
         			
-        			self.salesInfoList = response.data.salesInfoList;
+        			//self.salesInfoList = response.data.salesInfoList;
         			
+        			self.sexList = response.data.sexList;
         			self.visitingHospitalItems = response.data.visitingHospitalItems;
+        			self.surgeryTargetItems = response.data.surgeryTargetItems;
         			self.eyeSymptomsItems = response.data.eyeSymptomsItems;
         			self.bodySymptomsItems = response.data.bodySymptomsItems;
         			self.glassesIssuesItems = response.data.glassesIssuesItems;
@@ -238,6 +268,8 @@
         			self.optionItems = response.data.optionItems;
         			self.depositKindCdItems = response.data.depositKindCdItems;
         			self.completionContactItems = response.data.completionContactItems;
+        			//self.curveItems = response.data.curveItems;
+        			//self.curveGrooveItems = response.data.curveGrooveItems;
         			
         			
         			self.closeModalProcessing();
@@ -372,7 +404,9 @@
                 this.isNearSelected = true;
             },
             openEdit: function() {
-            	this.$refs.customerEditModal.open();
+            	this.modalItem.customerInfo = this.customerInfo;
+            	this.modalItem.sexList = this.sexList;
+            	this.$refs.customerEditModal.open(this.modalItem);
             },
             openModal(index) {
                 const modalRef = this.accordionItems[index].modalRef;
@@ -380,6 +414,7 @@
                 	this.modalItem.id = this.id;
                 	this.modalItem.visitDate = this.visitDate;
                 	this.modalItem.visitingHospitalItems = this.visitingHospitalItems;
+                	this.modalItem.surgeryTargetItems = this.surgeryTargetItems;
                 	this.modalItem.eyeSymptomsItems = this.eyeSymptomsItems;
                 	this.modalItem.bodySymptomsItems = this.bodySymptomsItems;
                 	this.modalItem.glassesIssuesItems = this.glassesIssuesItems;
@@ -404,11 +439,17 @@
             	// スケジュール並び替えモーダル表示
             	this.$refs.contactModal.open(this.customerInfo);
             },
-            addBt: function(){
-            	this.prescribedLensStrengthInfoList.push({
-                    prescriptionStrength: '',
-                    prescriptionStrengthOther: ''
-                });
+            addBt: function(item){
+            	if(item === "prescribedLensStrength"){
+            		this.prescribedLensStrengthInfoList.push({
+                        prescriptionStrength: '',
+                        prescriptionStrengthOther: ''
+                    });	
+            	}else if(item === "salesInfo"){
+            		this.salesInfoList.push({
+            			seq: this.salesInfoList.length + 1
+                    });	
+            	}
             },
             handleFileUpload: function(event) {
                 const file = event.target.files[0];
@@ -420,43 +461,43 @@
                 };
                 reader.readAsDataURL(file);
               },
-              async submitImage: function() {
-                  if (!this.imagePreview) {
-                    alert('画像をアップロードしてください');
-                    return;
-                  }
-
-                  try {
-                    // Base64エンコードされた画像データを抽出
-                    const base64string = this.imagePreview.split(',')[1];
-                    const requestBody = {
-                      requests: [
-                        {
-                          image: { content: base64string },
-                          features: [{ type: 'TEXT_DETECTION' }],
-                        },
-                      ],
-                    };
-
-                    const response = await fetch(`${this.apiUrl}?key=${this.apiKey}`, {
-                      method: 'POST',
-                      headers: { 'Content-Type': 'application/json' },
-                      body: JSON.stringify(requestBody),
-                    });
-
-                    if (!response.ok) {
-                      throw new Error(`Failed with ${response.status}: ${response.statusText}`);
-                    }
-
-                    const data = await response.json();
-                    const text =
-                      data.responses?.[0]?.fullTextAnnotation?.text || '認識されたテキストはありません';
-                    this.ocrResult = text;
-                  } catch (error) {
-                    console.error('Error:', error);
-                    this.ocrResult = 'エラーが発生しました';
-                  }
-                },
+//              async submitImage: function() {
+//                  if (!this.imagePreview) {
+//                    alert('画像をアップロードしてください');
+//                    return;
+//                  }
+//
+//                  try {
+//                    // Base64エンコードされた画像データを抽出
+//                    const base64string = this.imagePreview.split(',')[1];
+//                    const requestBody = {
+//                      requests: [
+//                        {
+//                          image: { content: base64string },
+//                          features: [{ type: 'TEXT_DETECTION' }],
+//                        },
+//                      ],
+//                    };
+//
+//                    const response = await fetch(`${this.apiUrl}?key=${this.apiKey}`, {
+//                      method: 'POST',
+//                      headers: { 'Content-Type': 'application/json' },
+//                      body: JSON.stringify(requestBody),
+//                    });
+//
+//                    if (!response.ok) {
+//                      throw new Error(`Failed with ${response.status}: ${response.statusText}`);
+//                    }
+//
+//                    const data = await response.json();
+//                    const text =
+//                      data.responses?.[0]?.fullTextAnnotation?.text || '認識されたテキストはありません';
+//                    this.ocrResult = text;
+//                  } catch (error) {
+//                    console.error('Error:', error);
+//                    this.ocrResult = 'エラーが発生しました';
+//                  }
+//                },
         },
     });
 });

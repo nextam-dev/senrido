@@ -5,7 +5,7 @@
  */
 package jp.co.senrido.form;
 
-import jp.co.senrido.dto.TSurveyDto;
+import jp.co.senrido.dto.TCustomerInitDto;
 import jp.co.senrido.dto.UserDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,6 +33,6 @@ public class S007MedicalRecordForm extends BaseSearchForm {
 	private String visitDate;
 	
 	/** アンケート情報 */
-	private TSurveyDto survey;
+	private TCustomerInitDto customerInfo;
 
 }

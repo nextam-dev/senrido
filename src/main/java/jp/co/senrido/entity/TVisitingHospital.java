@@ -22,6 +22,7 @@ public class TVisitingHospital {
     Integer id;
 
     /** 来店日 */
+    @Id
     @Column(name = "visit_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     LocalDateTime visitDate;

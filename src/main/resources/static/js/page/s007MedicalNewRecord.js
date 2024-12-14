@@ -14,43 +14,29 @@
                 // ログインフラグ
                 loginFig:true,
                 // 性別
-                sexItems: [],
-                // アンケート情報
-                survey: {
-                	// お客様ID
-                	id: null,
-                	// 来店日
-                	visitDate: null,
-                	// 客様名
-                	name: null,
-                	// お客様名カナ
-                	nameKana: null,
-                	// 生年月日
-                	birthday: null,
-                	// メールアドレス
-                	mail: null,
-                	// 性別
-                	sex: null,
-                	// 性別その他
-                	sexOther: null,
-                	// 郵便番号
-                	zipcode: null,
-                	// 住所
-                	address: null,
-                	// 電話番号
-                	telephone: null,
-                	// 紹介者
-                	referrer: null,
-                }
+                sexList: [],
+                id: "",
+                // お客様情報
+                customerInfo: {
+                    customerCd: null,
+                    name: null,
+                    nameKana: null,
+                    sex: null,
+                    sexOther: null,
+                    birthday: null,
+                    visitData: null,
+                    zipcode: null,
+                    address: null,
+                    mail: null,
+                    mainContactType: null,
+                    telephone: null,
+                    mobilePhone: null,
+                    workPhone: null,
+                    referrer: null,
+                },
             }
         },
-        created() {
-        	// パラメータからお客様IDと来店日を取得する
-        	var params = URI.parseQuery(window.location.search);
-
-            this.survey.id = params.id || null;
-            this.survey.visitDate = params.visitDate || null;
-        	
+        created() {        	
         	this.init();
         },
         mounted: function () {
@@ -58,23 +44,68 @@
         },
         computed: {},
         methods: {
-        	// 初期表示
-        	init: function() {
-    			var self = this;
-                self.processingFlg = true;
-                var postItem = {};
-                var url = editUrl('/s007MedicalNewRecord/initStatus');
-                axios.post(url, postItem)
-                    .then(function (response) {
-                        console.log(response.data);
-                        self.sexItems = response.data.sexItems;
-                    }).catch(function (err) {
-                        // error(err);
-                    	location.href = editUrl('/error');
-                    }).then(function () {
-                        self.processingFlg = false;
-                    });
+        	init:function(){
+        		this.showModalProcessing();
+        		var postItem = {};
+        		var self = this;
+        		axios.post(editUrl('/s007MedicalNewRecord/initStatus'))
+        		.then(response => {
+        			// バリデーション・システムエラーチェック
+        			var alertMessage = checkValid(response.data.resultCd, response.data.messageList);
+        	        if(alertMessage.length != 0) {
+        	        	alert(alertMessage);
+        	        	self.closeModalProcessing();
+        	        	return;
+        	        }
+        			// エラーの場合
+        			if(response.data.message != null){
+        				alert(response.data.message);
+        				self.closeModalProcessing();
+        				return;
+        			}
+
+        			// 初期表示情報
+        			self.sexList = response.data.sexList;
+        			
+        			self.closeModalProcessing();
+        		})
+        		.catch(err => {
+        			console.log('err:', err);
+        			err_function(err);
+        			self.closeModalProcessing();
+        		});
         	},
+        	update:function() {
+        		var self = this;
+        		self.showModalProcessing();
+    			var postItem = {
+    				visitingHospitalInfo: self.visitingHospitalInfo,
+    			};
+    			axios.post(editUrl('/s007MedicalNewRecord/insert'), postItem)
+    			.then(response => {
+    				console.log("リクエスト成功:", response.data);
+    				// バリデーション・システムエラーチェック
+    				var alertMessage = checkValid(response.data.resultCd, response.data.messageList);
+                    if(alertMessage.length != 0) {
+                    	alert(alertMessage);
+                    	self.closeModalProcessing();
+                    	return;
+                    }
+    				// 処理後メッセージ
+    				alert(response.data.message);
+    				self.closeModalProcessing();
+    				location.href = editUrl('/s007MedicalRecord');
+    			})
+    			.catch(err => {
+    				console.log('err:', err);
+    				err_function(err);
+    				self.closeModalProcessing();
+    			});
+    		},
+    		// 検索画面へ遷移
+        	back: function() {
+                location.href = editUrl('/s005CustomerInformationSearch');
+            },
         	// 検索画面へ遷移
         	cansel: function() {
                 location.href = editUrl('/s005CustomerInformationSearch');
@@ -86,10 +117,6 @@
             // 更新画面へ遷移
             movePasswordChange: function() {
                 location.href = editUrl('/s002PasswordChange');
-            },
-            // 詳細画面へ遷移
-        	moveMedicalRecord: function() {
-                location.href = editUrl('/s007MedicalRecord');
             },
             showModalProcessing: function () {
                 this.processingFlg = true;

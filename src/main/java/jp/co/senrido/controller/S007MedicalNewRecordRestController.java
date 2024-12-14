@@ -7,6 +7,10 @@ package jp.co.senrido.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -15,12 +19,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import jp.co.senrido.common.SenridoConstant;
 import jp.co.senrido.dto.CodeNameDto;
+import jp.co.senrido.dto.TCustomerDto;
 import jp.co.senrido.entity.MCode;
 import jp.co.senrido.form.S007MedicalRecordForm;
+import jp.co.senrido.form.S007VisitingHospitalConditionForm;
+import jp.co.senrido.form.S008QuestionnaireForm;
 import jp.co.senrido.json.CommonIO;
 import jp.co.senrido.service.MCodeMasterService;
 import jp.co.senrido.service.S003PasswordReissueService;
+import jp.co.senrido.service.S007MedicalRecordService;
 
 /**
  * リクエスト制御クラス
@@ -35,7 +44,7 @@ public class S007MedicalNewRecordRestController {
 	private MCodeMasterService mCodeMasterService;
 
 	@Autowired
-	private S003PasswordReissueService s003changeReissueService;
+	private S007MedicalRecordService s007MedicalRecordService;
 
 	@Autowired
 	private MessageSource msg;
@@ -46,33 +55,30 @@ public class S007MedicalNewRecordRestController {
 	 * @return
 	 */
 	@RequestMapping(value = "/initStatus", method = RequestMethod.POST)
-	public CommonIO initStatus(@RequestBody S007MedicalRecordForm form) throws Throwable {
+	public CommonIO initStatus() throws Throwable {
 		
 		CommonIO io = new CommonIO();
 		
-		// お客様情報を取得
-		
 		// コードマスタから選択肢を取得
 		// 性別
-		List<MCode> sexItems = new ArrayList<MCode>();
-		MCode codeNameDto = new MCode();
-		codeNameDto.setCode("00001");
-		codeNameDto.setName("男性");
-		sexItems.add(codeNameDto);
-		codeNameDto = new MCode();
-		codeNameDto.setCode("00002");
-		codeNameDto.setName("女性");
-		sexItems.add(codeNameDto);
-		codeNameDto = new MCode();
-		codeNameDto.setCode("00003");
-		codeNameDto.setName("回答しない");
-		sexItems.add(codeNameDto);
-		codeNameDto = new MCode();
-		codeNameDto.setCode("00004");
-		codeNameDto.setName("その他");
-		sexItems.add(codeNameDto);
-		io.setSexList(sexItems);
+		io.setSexList(mCodeMasterService.getMCode("sex"));
 		
+
+		return io;
+	}
+		
+	/**
+	 * 登録処理.
+	 *
+	 * @return
+	 */
+	@RequestMapping(value = "/insert", method = RequestMethod.POST)
+	public CommonIO insert(@RequestBody S007MedicalRecordForm form) throws Throwable {
+		
+		CommonIO io = new CommonIO();
+		
+		// 登録処理
+		s007MedicalRecordService.insertCustomer(form.getCustomerInfo());
 
 		return io;
 	}

@@ -27,7 +27,13 @@ public interface TVisitingHospitalDao {
 	 * @return the TVisitingHospital entity List
 	 */
 	@Select
-	List<TVisitingHospital> selectById(Integer id, LocalDateTime visitDate);
+	List<TVisitingHospital> selectById(Integer id);
+	
+	/**
+	 * @return the TVisitingHospital entity List
+	 */
+	@Select
+	TVisitingHospital selectByDto(Integer id, LocalDateTime visitDate);
 
 	/**
 	 * @return the TVisitingHospital entity List

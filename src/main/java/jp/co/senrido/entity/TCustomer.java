@@ -50,7 +50,7 @@ public class TCustomer {
 
 	/** 生年月日 */
 	@Column(name = "birthday")
-	LocalDateTime birthday;
+	LocalDate birthday;
 
 	/** 性別 */
 	@Column(name = "sex")

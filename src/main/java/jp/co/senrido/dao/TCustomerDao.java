@@ -13,6 +13,7 @@ import org.seasar.doma.Update;
 import org.seasar.doma.boot.ConfigAutowireable;
 
 import jp.co.senrido.entity.TCustomer;
+import jp.co.senrido.entity.ext.TCustomerExt;
 
 /**
  * @author takam
@@ -33,7 +34,19 @@ public interface TCustomerDao {
 	 */
 	@Select
 	List<TCustomer> selectAll();
+	
+	/**
+	 * @return the TCustomer entity List
+	 */
+	@Select
+	Integer selectMaxId();
 
+	/**
+	 * @return the TCustomer entity List
+	 */
+	@Select
+	TCustomerExt selectByTCustomerInfo(Integer id);
+	
 	/**
 	 * @param entity
 	 * @return affected rows

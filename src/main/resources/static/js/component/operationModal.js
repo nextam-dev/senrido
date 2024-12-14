@@ -14,35 +14,107 @@ Vue.component('operation-modal', {
 	            <!-- 入力エリア -->
 	            <div class="modal-content">
                     <div class="row">
-                        <div class="col-2 item-title">手術時期：</div>
+                        <div class="col-3 item-title">手術時期：</div>
                         <div class="col-3 modal-item-value">
-                            <select id="era" v-model="surgeryInfo.surgeryWareki" aria-label="和暦年号">
-						        <option value="reiwa">令和</option>
-						        <option value="heisei">平成</option>
-						        <option value="showa">昭和</option>
-						        <option value="taisho">大正</option>
-						    </select>
-                        </div>
-                        <div class="col-4 modal-item-value">
-                            <label class="ef">
-                                <input type="number" v-model="surgeryInfo.surgeryYear"/>
+                             <label class="ef">
+                                <input type="date" v-model="surgeryInfo.surgeryDate"/>
                             </label>
                         </div>
-                        <div class="col-1 item-title">年</div>
-                        <div class="col-4 modal-item-value">
-                            <label class="ef">
-                                <input type="number" v-model="surgeryInfo.surgeryMonth"/>
-                            </label>
-                        </div>
-                        <div class="col-1 item-title">月</div>
-                        <div class="col-2 item-title">予定：</div>
+                        <div class="col-3 item-title">予定：</div>
                         <div class="col-3 modal-item-value">
-                            <label class="ef">
-                                <input type="date"/>
+                             <label class="ef">
+                                <input type="date" v-model="surgeryInfo.surgeryPlannedDate"/>
                             </label>
                         </div>
-                        <div class="col-2"></div>
                     </div>
+		             <div class="row">
+		              <div class="col-4 item-title">白内障：</div>
+		                <template v-for="(item, index) in surgeryTargetItems" :key="index">
+							 <div class="col-3 modal-item-value">
+								<label class="input-label">
+									<input type="checkbox" :value="item.code" v-model="surgeryInfo.cataract">
+									<span class="spaceLeft">{{ item.name }}</span>
+								</label>
+							</div>
+						</template>
+		             </div>
+		             <div class="row">
+		              <div class="col-4 item-title">緑内障：</div>
+		                <template v-for="(item, index) in surgeryTargetItems" :key="index">
+							 <div class="col-3 modal-item-value">
+								<label class="input-label">
+									<input type="checkbox" :value="item.code" v-model="surgeryInfo.glaucoma">
+									<span class="spaceLeft">{{ item.name }}</span>
+								</label>
+							</div>
+						</template>
+		             </div>
+		             <div class="row">
+		              <div class="col-4 item-title">飛蚊症：</div>
+		                <template v-for="(item, index) in surgeryTargetItems" :key="index">
+							 <div class="col-3 modal-item-value">
+								<label class="input-label">
+									<input type="checkbox" :value="item.code" v-model="surgeryInfo.floaters">
+									<span class="spaceLeft">{{ item.name }}</span>
+								</label>
+							</div>
+						</template>
+		             </div>
+		             <div class="row">
+		              <div class="col-4 item-title">網膜剥離：</div>
+		                <template v-for="(item, index) in surgeryTargetItems" :key="index">
+							 <div class="col-3 modal-item-value">
+								<label class="input-label">
+									<input type="checkbox" :value="item.code" v-model="surgeryInfo.retinalDetachment">
+									<span class="spaceLeft">{{ item.name }}</span>
+								</label>
+							</div>
+						</template>
+		             </div>
+		              <div class="row">
+		              <div class="col-4 item-title">斜視：</div>
+		                <template v-for="(item, index) in surgeryTargetItems" :key="index">
+							 <div class="col-3 modal-item-value">
+								<label class="input-label">
+									<input type="checkbox" :value="item.code" v-model="surgeryInfo.strabismus">
+									<span class="spaceLeft">{{ item.name }}</span>
+								</label>
+							</div>
+						</template>
+		             </div>
+		             <div class="row">
+		              <div class="col-4 item-title">硝子体：</div>
+		                <template v-for="(item, index) in surgeryTargetItems" :key="index">
+							 <div class="col-3 modal-item-value">
+								<label class="input-label">
+									<input type="checkbox" :value="item.code" v-model="surgeryInfo.vitreousBody">
+									<span class="spaceLeft">{{ item.name }}</span>
+								</label>
+							</div>
+						</template>
+		             </div>
+		              <div class="row">
+		              <div class="col-4 item-title">レーシック：</div>
+		                <template v-for="(item, index) in surgeryTargetItems" :key="index">
+							 <div class="col-3 modal-item-value">
+								<label class="input-label">
+									<input type="checkbox" :value="item.code" v-model="surgeryInfo.lasik">
+									<span class="spaceLeft">{{ item.name }}</span>
+								</label>
+							</div>
+						</template>
+		             </div>
+		             <div class="row">
+		              <div class="col-4 item-title">ICL/IOL：</div>
+		                <template v-for="(item, index) in surgeryTargetItems" :key="index">
+							 <div class="col-3 modal-item-value">
+								<label class="input-label">
+									<input type="checkbox" :value="item.code" v-model="surgeryInfo.iclIol">
+									<span class="spaceLeft">{{ item.name }}</span>
+								</label>
+							</div>
+						</template>
+		             </div>
 	            </div><!-- /modal-content -->
                 <div class="row">
 	                <div class="col-6">
@@ -55,7 +127,7 @@ Vue.component('operation-modal', {
 	                <div class="col-6">
 	                    <div class="row">
 	                        <div class="col-12 botton-area" style="min-height:40px;">
-	                            <button class="modal-regist">登録</button>
+	                            <button class="modal-regist" @click="update">登録</button>
 	                        </div>
 	                    </div>
 	                </div>
@@ -70,7 +142,34 @@ Vue.component('operation-modal', {
 			// 進捗フラグ
 			processingFlg:false,
 			// 目の手術情報
-			surgeryInfo: {},
+			surgeryInfo: {
+				// お客様ID
+            	id: null,
+            	// 来店日
+            	visitDate: null,
+				//
+				surgeryDate: null,
+				//
+				surgeryPlannedDate: null,
+				//
+				cataract: [],
+				//
+				glaucoma: [],
+				//
+				floaters: [],
+				//
+				retinalDetachment: [],
+				//
+				strabismus: [],
+				//
+				vitreousBody: [],
+				//
+				lasik: [],
+				//
+				iclIol: [],
+			},
+			// 左右リスト
+			surgeryTargetItems:[],
     	}
     },
     computed:{
@@ -78,11 +177,41 @@ Vue.component('operation-modal', {
 	watch:{
 	},
 	methods: {
-		open: function () {
+		open: function (item) {
 			this.displayFlg = true;
+			this.surgeryInfo.id = item.id;
+			this.surgeryInfo.visitDate = item.visitDate;
+			this.surgeryTargetItems = item.surgeryTargetItems;
     	},
+    	update:function() {
+    		var self = this;
+    		self.showModalProcessing();
+			var postItem = {
+					surgeryInfo: self.surgeryInfo,
+			};
+			axios.post(editUrl('/s007MedicalRecord/upsertOperation'), postItem)
+			.then(response => {
+				console.log("リクエスト成功:", response.data);
+				// バリデーション・システムエラーチェック
+				var alertMessage = checkValid(response.data.resultCd, response.data.messageList);
+                if(alertMessage.length != 0) {
+                	alert(alertMessage);
+                	self.closeModalProcessing();
+                	return;
+                }
+				// 処理後メッセージ
+				alert(response.data.message);
+				self.closeModalProcessing();
+			})
+			.catch(err => {
+				console.log('err:', err);
+				err_function(err);
+				self.closeModalProcessing();
+			});
+		},
     	close: function () {
             this.displayFlg = false;
+            this.$parent.getData();
         },
     	back: function () {
     		this.displayFlg = false;
