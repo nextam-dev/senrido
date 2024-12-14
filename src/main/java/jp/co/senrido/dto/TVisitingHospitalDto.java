@@ -23,10 +23,12 @@ public class TVisitingHospitalDto {
     /** 来店日 */
     @MessageName("来店日")
     private String visitDate;
+    private String visitDateStr;
 
     /** 受診日 */
     @MessageName("受診日")
     private String consultationDate;
+    private String consultationDateStr;
     
     /** 眼科名 */
     @MessageName("眼科名")

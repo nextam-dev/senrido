@@ -13,10 +13,13 @@ Vue.component('occupation-modal', {
 	            </div>
 	            <!-- 入力エリア -->
 	            <div class="modal-content">
+	            	<div class="row">
+						<div class="col-3 item-title">ご職業</div>
+					</div>
 	                <div class="row">
                         <div class="col-12 modal-item-value">
 			                <label class="ef">
-			                	<input type="text" v-model="visitingHospitalInfo.ophthalmologyName"/>
+			                	<input type="text" v-model="occupationInfo.occupationType"/>
 			                </label>
                         </div>
                     </div>
@@ -26,7 +29,7 @@ Vue.component('occupation-modal', {
 					<div class="row">
                         <div class="col-12 modal-item-value">
 			                <label class="ef">
-			                	<input type="text" v-model="visitingHospitalInfo.ophthalmologyName"/>
+			                	<input type="text" v-model="occupationInfo.jobDetails"/>
 			                </label>
                         </div>
                     </div>
@@ -42,7 +45,7 @@ Vue.component('occupation-modal', {
 	                <div class="col-6">
 	                    <div class="row">
 	                        <div class="col-12 botton-area" style="min-height:40px;">
-	                            <button class="modal-regist">登録</button>
+	                            <button class="modal-regist" @click="update">登録</button>
 	                        </div>
 	                    </div>
 	                </div>
@@ -57,7 +60,16 @@ Vue.component('occupation-modal', {
 			// 進捗フラグ
 			processingFlg:false,
 			// 
-			visitingHospitalInfo :{},
+			occupationInfo :{
+				// お客様ID
+				id: null,
+				// 来店日
+				visitDate: null,
+				// 職業・職種
+				occupationType: null,
+				// 仕事内容
+				jobDetails: null,
+			},
     	}
     },
     computed:{
@@ -65,11 +77,40 @@ Vue.component('occupation-modal', {
 	watch:{
 	},
 	methods: {
-		open: function () {
+		open: function (item) {
 			this.displayFlg = true;
+			this.occupationInfo.id = item.id;
+			this.occupationInfo.visitDate = item.visitDate;
     	},
+    	update:function() {
+    		var self = this;
+    		self.showModalProcessing();
+			var postItem = {
+					occupationInfo: self.occupationInfo,
+			};
+			axios.post(editUrl('/s007MedicalRecord/upsertOccupation'), postItem)
+			.then(response => {
+				console.log("リクエスト成功:", response.data);
+				// バリデーション・システムエラーチェック
+				var alertMessage = checkValid(response.data.resultCd, response.data.messageList);
+                if(alertMessage.length != 0) {
+                	alert(alertMessage);
+                	self.closeModalProcessing();
+                	return;
+                }
+				// 処理後メッセージ
+				alert(response.data.message);
+				self.closeModalProcessing();
+			})
+			.catch(err => {
+				console.log('err:', err);
+				err_function(err);
+				self.closeModalProcessing();
+			});
+		},
     	close: function () {
             this.displayFlg = false;
+            this.$parent.getData();
         },
     	back: function () {
     		this.displayFlg = false;

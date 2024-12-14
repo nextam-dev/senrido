@@ -11,99 +11,99 @@ import lombok.Setter;
 @Setter
 public class TSalesDto {
 
-    /** ‚¨‹q—lID */
+    /** ï¿½ï¿½ï¿½qï¿½lID */
     private Integer id;
 
-    /** —ˆ“X“ú */
+    /** ï¿½ï¿½ï¿½Xï¿½ï¿½ */
     private LocalDateTime visitDate;
 
-    /** ˜A”Ô */
+    /** ï¿½Aï¿½ï¿½ */
     private Integer seq;
 
-    /** Á”ïÅ */
+    /** ï¿½ï¿½ï¿½ï¿½ï¿½ */
     private BigDecimal tax;
 
-    /** ‡Œv‹àŠz */
+    /** ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½z */
     private BigDecimal totalPrice;
 
-    /** “à‹à1 */
+    /** ï¿½ï¿½ï¿½ï¿½1 */
     private BigDecimal deposit1;
 
-    /** “à‹àí•ÊƒR[ƒh1 */
+    /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÊƒRï¿½[ï¿½h1 */
     private String depositKindCd1;
 
-    /** “à‹à2 */
+    /** ï¿½ï¿½ï¿½ï¿½2 */
     private BigDecimal deposit2;
 
-    /** “à‹àí•ÊƒR[ƒh2 */
+    /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÊƒRï¿½[ï¿½h2 */
     private String depositKindCd2;
 
-    /** c‹à1 */
+    /** ï¿½cï¿½ï¿½1 */
     private BigDecimal balance1;
 
-    /** c‹àí•ÊƒR[ƒh1 */
+    /** ï¿½cï¿½ï¿½ï¿½ï¿½ÊƒRï¿½[ï¿½h1 */
     private String balanceKindCd1;
 
-    /** c‹à2 */
+    /** ï¿½cï¿½ï¿½2 */
     private BigDecimal balance2;
 
-    /** c‹àí•ÊƒR[ƒh2 */
+    /** ï¿½cï¿½ï¿½ï¿½ï¿½ÊƒRï¿½[ï¿½h2 */
     private String balanceKindCd2;
 
-    /** ƒtƒŒ[ƒ€ƒJ[ƒu” */
+    /** ï¿½tï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Jï¿½[ï¿½uï¿½ï¿½ */
     private Integer frameCurveCount;
 
-    /** ƒŒƒ“ƒYƒJ[ƒu” */
+    /** ï¿½ï¿½ï¿½ï¿½ï¿½Yï¿½Jï¿½[ï¿½uï¿½ï¿½ */
     private Integer lensCurveCount;
 
-    /** ƒTƒCƒY */
+    /** ï¿½Tï¿½Cï¿½Y */
     private Integer size;
 
-    /** a[‚³ */
+    /** ï¿½aï¿½[ï¿½ï¿½ */
     private Integer grooveDepth;
 
-    /** a• */
+    /** ï¿½aï¿½ï¿½ */
     private Integer grooveWidth;
 
-    /** ‰ÁH */
+    /** ï¿½ï¿½ï¿½H */
     private String processing;
 
-    /** ƒ`ƒFƒbƒN */
-    private String check;
+    /** ï¿½`ï¿½Fï¿½bï¿½N */
+    private String glassesCheck;
 
-    /** ‚¨“n‚µ */
+    /** ï¿½ï¿½ï¿½nï¿½ï¿½ */
     private String delivery;
 
-    /** ƒtƒBƒbƒeƒBƒ“ƒO */
+    /** ï¿½tï¿½Bï¿½bï¿½eï¿½Bï¿½ï¿½ï¿½O */
     private String fitting;
 
-    /** Š®¬˜A— */
+    /** ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ */
     private String completionContact;
 
-    /** Š®¬˜A—–¼Ì */
+    /** ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     private String completionContactName;
 
-    /** Š®¬—\’è“ú */
+    /** ï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½ï¿½ï¿½ */
     private LocalDate completionScheduledDate;
 
-    /** ƒŒƒ“ƒY”­‘—“ú */
+    /** ï¿½ï¿½ï¿½ï¿½ï¿½Yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     private LocalDate lensShippingDate;
 
-    /** ˜A—“ú */
+    /** ï¿½Aï¿½ï¿½ï¿½ï¿½ */
     private LocalDate contactDate;
 
-    /** íœƒtƒ‰ƒO */
+    /** ï¿½íœï¿½tï¿½ï¿½ï¿½O */
     private Boolean delFlg;
 
-    /** “o˜^“ú */
+    /** ï¿½oï¿½^ï¿½ï¿½ï¿½ï¿½ */
     private LocalDateTime createDate;
 
-    /** “o˜^ÒƒR[ƒh */
+    /** ï¿½oï¿½^ï¿½ÒƒRï¿½[ï¿½h */
     private String createId;
 
-    /** XV“ú */
+    /** ï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½ */
     private LocalDateTime updateDate;
 
-    /** XVÒƒR[ƒh */
+    /** ï¿½Xï¿½Vï¿½ÒƒRï¿½[ï¿½h */
     private String updateId;
 }

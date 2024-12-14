@@ -26,13 +26,17 @@ public class TCustomerDto {
     private String birthdayNengo;
 
     /** 生年月日 */
-    private LocalDate birthday;
+    private String birthday;
+    private String birthdayStr;
 
     /** 性別 */
     private String sex;
 
     /** 性別その他 */
     private String sexOther;
+    
+    /** 性別名称 */
+    private String sexName;
 
     /** 郵便番号 */
     private String zipcode;
@@ -68,25 +72,10 @@ public class TCustomerDto {
     private String mail;
 
     /** 次回来店日 */
-    private LocalDate nextVisitDate;
+    private String nextVisitDate;
     private String nextVisitDateStr;
 
     /** 前回来店日 */
-    private LocalDate previousVisitDate;
+    private String previousVisitDate;
     private String previousVisitDateStr;
-
-    /** 削除フラグ */
-    private Boolean delFlg;
-
-    /** 登録日時 */
-    private LocalDateTime createDate;
-
-    /** 登録者コード */
-    private String createId;
-
-    /** 更新日時 */
-    private LocalDateTime updateDate;
-
-    /** 更新者コード */
-    private String updateId;
 }

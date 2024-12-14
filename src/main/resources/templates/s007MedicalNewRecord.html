@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="jp">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>お客様情報新規登録</title>
@@ -30,17 +30,17 @@
                         <div class="col-12 item-title">顧客番号</div>
                         <div class="col-12 item-value">
                             <label class="ef">
-                                <input type="text"　placeholder="Zipシステムで採番されたIDを入力してください。"/>
+                                <input type="text" v-model="customerInfo.customerCd" placeholder="Zipシステムで採番されたIDを入力してください。"/>
                             </label>
                         </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="row card">
-                        <div class="col-12 item-title">お名前</div>
+                         <div class="col-12 item-title">お名前<label class="label-required">必須</label></div>
                         <div class="col-12 item-value">
                             <label class="ef">
-                                <input type="text"　placeholder="フルネームをご記入ください。"/>
+                                <input type="text" v-model="customerInfo.name" placeholder="フルネームをご記入ください。" />
                             </label>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                         <div class="col-12 item-title">お名前（カタカナ）<label class="label-required">必須</label></div>
                         <div class="col-12 item-value">
                             <label class="ef">
-                                <input type="text" placeholder="カタカナでご記入ください。"/>
+                                <input type="text" v-model="customerInfo.nameKana" placeholder="カタカナでご記入ください。" />
                             </label>
                         </div>
                     </div>
@@ -59,18 +59,18 @@
                     <div class="row card">
                         <div class="col-12 item-title">性別<label class="label-required">必須</label></div>
                         <div class="col-12 item-value">
-                        	<div v-for="item in sexItems" >
-	                            <div class="row item-margin" v-if="item.code != '00004'">
+                        	<div v-for="item in sexList" >
+	                            <div class="row item-margin" v-if="item.name != 'その他'">
 	                                <div class="col-12">
-	                                    <label class="input-label"><input type="radio" name="sex" v-bind:value="item.code" v-model="survey.sex"><span class="spaceLeft">{{item.name}}</span></label>
+	                                    <label class="input-label"><input type="radio" name="sex" v-bind:value="item.code" v-model="customerInfo.sex"><span class="spaceLeft">{{item.name}}</span></label>
 	                                </div>
 	                            </div>
 	                            <div class="row item-margin" v-else>
 	                                <div class="col-2">
-	                                    <label class="input-label"><input type="radio" name="sex" v-bind:value="item.code" v-model="survey.sex"><span class="spaceLeft">{{item.name}}</span></label>
+	                                    <label class="input-label"><input type="radio" name="sex" v-bind:value="item.code" v-model="customerInfo.sex"><span class="spaceLeft">{{item.name}}</span></label>
 	                                </div>
 	                                <div class="col-10">
-	                                    <label class="ef"><input type="text" v-model="survey.sexOther" /></label>
+	                                    <label class="ef"><input type="text" v-model="customerInfo.sexOther" /></label>
 	                                </div>
 	                            </div>
                             </div>
@@ -79,18 +79,18 @@
                 </div>
                 <div class="col-12">
                     <div class="row card">
-                        <div class="col-12 item-title">生年月日</div>
+                        <div class="col-12 item-title">生年月日<label class="label-required">必須</label></div>
                         <div class="col-12 item-value">
-                            <label class="ef"><input type="date"/></label>
+                            <label class="ef"><input type="date" v-model="customerInfo.birthday" placeholder="回答を入力" /></label>
                         </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <!-- 生年月日から自動計算するか -->
                     <div class="row card">
-                        <div class="col-12 item-title">年齢</div>
+                        <div class="col-12 item-title">年齢<label class="label-required">必須</label></div>
                         <div class="col-12 item-value">
-                            <label class="ef"><input type="text"/></label>
+                            <label class="ef"><input type="text" placeholder="回答を入力" /></label>
                         </div>
                     </div>
                 </div>
@@ -98,17 +98,17 @@
                     <div class="row card">
                         <div class="col-12 item-title">来店日</div>
                         <div class="col-12 item-value">
-                            <label class="ef"><input type="date"/></label>
+                            <label class="ef"><input type="date" v-model="customerInfo.visitData"/></label>
                         </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="row card">
-                        <div class="col-12 item-title">郵便番号</div>
+                        <div class="col-12 item-title">郵便番号<label class="label-required">必須</label></div>
                         <div class="col-12 item-value">
                             <div class="row">
                                 <div class="col-2">
-                                    <label class="ef"><input type="text"/></label>
+                                    <label class="ef"><input type="text" v-model="customerInfo.zipcode" placeholder="回答を入力" /></label>
                                 </div>
                                 <div class="col-10">
                                     <button value="郵便番号検索" >郵便番号検索</button>
@@ -119,45 +119,44 @@
                 </div>
                 <div class="col-12">
                     <div class="row card">
-                        <div class="col-12 item-title">ご住所</div>
+                        <div class="col-12 item-title">ご住所<label class="label-required">必須</label></div>
                         <div class="col-12 item-value">
-                            <label class="ef"><input type="text"/></label>
+                            <label class="ef"><input type="text" v-model="customerInfo.address" placeholder="回答を入力" /></label>
                         </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="row card">
-	                    <div class="col-12 item-title">メールアドレス</div>
-	                    <div class="col-12 modal-item-value">
-	                        <label class="ef"><input type="text" placeholder="" /></label>
-	                    </div>
+	                    <div class="col-12 item-title">メールアドレス<label class="label-required">必須</label></div>
+                        <div class="col-12 item-value">
+                            <label class="ef"><input type="mail" v-model="customerInfo.mail" class="width-full" placeholder="回答を入力" /></label>
+                        </div>
                     </div>
 	            </div>
                 <div class="col-12">
                     <div class="row card">
                         <div class="col-4 item-title">電話番号<label class="label-required">必須</label></div>
-                        <div class="col-4 item-title"><label class="input-label"><input type="radio" name="mainTel" value="0"><span class="spaceLeft">主番号</span></label></div>
+                        <div class="col-4 item-title"><label class="input-label"><input type="radio" name="mainTel" v-model="customerInfo.mainContactType"　value="0"><span class="spaceLeft">主番号</span></label></div>
                         <div class="col-12 item-value">
-                            <label class="ef"><input type="text" placeholder="ー(ハイフン)を入れてご記入ください。" /></label>
+                           <label class="ef"><input type="text" v-model="customerInfo.telephone" placeholder="ー(ハイフン)を入れてご記入ください。" /></label>
                         </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="row card">
                         <div class="col-4 item-title">携帯電話番号</div>
-                        <div class="col-4 item-title"><label class="input-label"><input type="radio" name="mainTel" value="1"><span class="spaceLeft">主番号</span></label></div>
-                        
+                        <div class="col-4 item-title"><label class="input-label"><input type="radio" name="mainTel" v-model="customerInfo.mainContactType" value="1"><span class="spaceLeft">主番号</span></label></div>
                         <div class="col-12 item-value">
-                            <label class="ef"><input type="text" placeholder="ー(ハイフン)を入れてご記入ください。" /></label>
+                            <label class="ef"><input type="text" v-model="customerInfo.mobilePhone" placeholder="ー(ハイフン)を入れてご記入ください。" /></label>
                         </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="row card">
                         <div class="col-4 item-title">勤務先電話番号</div>
-                        <div class="col-4 item-title"><label class="input-label"><input type="radio" name="mainTel" value="2"><span class="spaceLeft">主番号</span></label></div>
+                        <div class="col-4 item-title"><label class="input-label"><input type="radio" name="mainTel" v-model="customerInfo.mainContactType" value="2"><span class="spaceLeft">主番号</span></label></div>
                         <div class="col-12 item-value">
-                            <label class="ef"><input type="text" placeholder="ー(ハイフン)を入れてご記入ください。" /></label>
+                           <label class="ef"><input type="text" v-model="customerInfo.workPhone" placeholder="ー(ハイフン)を入れてご記入ください。" /></label>
                         </div>
                     </div>
                 </div>
@@ -165,14 +164,14 @@
                     <div class="row card">
                         <div class="col-12 item-title">ご紹介者</div>
                         <div class="col-12 item-value">
-                            <label class="ef"><input type="text"/></label>
+                            <label class="ef"><input type="text" v-model="customerInfo.referrer" placeholder="どなたからのご紹介で千里堂を知りましたか？" /></label>
                         </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="row">
                         <div class="col-6 botton-area">
-                            <button class="newRegist" v-on:click="moveMedicalRecord">登録</button>
+                            <button class="newRegist" v-on:click="update">登録</button>
                         </div>
                         <div class="col-6 botton-area">
                             <button class="newRegist" v-on:click="cansel">キャンセル</button>

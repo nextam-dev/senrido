@@ -14,76 +14,76 @@ import lombok.Data;
 @Data
 public class TSurgery {
 
-    /** ‚¨‹q—lID */
+    /** ï¿½ï¿½ï¿½qï¿½lID */
     @Id
     @Column(name = "id")
     Integer id;
 
-    /** —ˆ“X“ú */
+    /** ï¿½ï¿½ï¿½Xï¿½ï¿½ */
     @Column(name = "visit_date")
     LocalDateTime visitDate;
 
-    /** èpŠú */
+    /** ï¿½ï¿½pï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "surgery_date")
     LocalDateTime surgeryDate;
 
-    /** èp—\’èŠú */
-    @Column(name = "scheduled_surgery_date")
-    LocalDateTime scheduledSurgeryDate;
+    /** ï¿½ï¿½pï¿½\ï¿½èï¿½ï¿½ */
+    @Column(name = "surgery_planned_Date")
+    LocalDateTime surgeryPlannedDate;
 
-    /** ”’“àá */
+    /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "cataract")
     String cataract;
 
-    /** ”’“àá–¼Ì */
+    /** ï¿½ï¿½ï¿½ï¿½ï¿½á–¼ï¿½ï¿½ */
     @Column(name = "cataract_name")
     String cataractName;
 
-    /** —Î“àá */
+    /** ï¿½Î“ï¿½ï¿½ï¿½ */
     @Column(name = "glaucoma")
     String glaucoma;
 
-    /** —Î“àá–¼Ì */
+    /** ï¿½Î“ï¿½ï¿½á–¼ï¿½ï¿½ */
     @Column(name = "glaucoma_name")
     String glaucomaName;
 
-    /** ”ò‰áÇ */
+    /** ï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "floaters")
     String floaters;
 
-    /** ”ò‰áÇ–¼Ì */
+    /** ï¿½ï¿½ï¿½Ç–ï¿½ï¿½ï¿½ */
     @Column(name = "floaters_name")
     String floatersName;
 
-    /** –Ô–Œ”—£ */
+    /** ï¿½Ô–ï¿½ï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "retinal_detachment")
     String retinalDetachment;
 
-    /** –Ô–Œ”—£–¼Ì */
+    /** ï¿½Ô–ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "retinal_detachment_name")
     String retinalDetachmentName;
 
-    /** Î‹ */
+    /** ï¿½Îï¿½ */
     @Column(name = "strabismus")
     String strabismus;
 
-    /** Î‹–¼Ì */
+    /** ï¿½Îï¿½ï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "strabismus_name")
     String strabismusName;
 
-    /** Éq‘Ì */
+    /** ï¿½Éqï¿½ï¿½ */
     @Column(name = "vitreous_body")
     String vitreousBody;
 
-    /** Éq‘Ì–¼Ì */
+    /** ï¿½Éqï¿½Ì–ï¿½ï¿½ï¿½ */
     @Column(name = "vitreous_body_name")
     String vitreousBodyName;
 
-    /** ƒŒ[ƒVƒbƒN */
+    /** ï¿½ï¿½ï¿½[ï¿½Vï¿½bï¿½N */
     @Column(name = "lasik")
     String lasik;
 
-    /** ƒŒ[ƒVƒbƒN–¼Ì */
+    /** ï¿½ï¿½ï¿½[ï¿½Vï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "lasik_name")
     String lasikName;
 
@@ -91,27 +91,27 @@ public class TSurgery {
     @Column(name = "icl_iol")
     String iclIol;
 
-    /** ICL/IOL–¼Ì */
+    /** ICL/IOLï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "icl_iol_name")
     String iclIolName;
 
-    /** íœƒtƒ‰ƒO */
+    /** ï¿½íœï¿½tï¿½ï¿½ï¿½O */
     @Column(name = "del_flg")
     Boolean delFlg;
 
-    /** “o˜^“ú */
+    /** ï¿½oï¿½^ï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "create_date")
     LocalDateTime createDate;
 
-    /** “o˜^ÒƒR[ƒh */
+    /** ï¿½oï¿½^ï¿½ÒƒRï¿½[ï¿½h */
     @Column(name = "create_id")
     String createId;
 
-    /** XV“ú */
+    /** ï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "update_date")
     LocalDateTime updateDate;
 
-    /** XVÒƒR[ƒh */
+    /** ï¿½Xï¿½Vï¿½ÒƒRï¿½[ï¿½h */
     @Column(name = "update_id")
     String updateId;
 }

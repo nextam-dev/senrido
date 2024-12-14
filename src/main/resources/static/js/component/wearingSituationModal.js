@@ -17,10 +17,10 @@ Vue.component('wearing-situation-modal', {
 						<div class="col-3 item-title">現状</div>
 					</div>
 	                <div class="row">
-						<template v-for="(item, index) in visitingHospitalItems" :key="index">
-							<div class="col-4 modal-item-value" v-if="['00001', '00002', '00003', '00004', '00005'].includes(item.code)">
+						<template v-for="(item, index) in useGlassesCurrentItems" :key="index">
+							<div class="col-4 modal-item-value">
 								<label class="input-label">
-									<input type="checkbox" :value="item.code" v-model="visitingHospitalInfo.medicalHistory">
+									<input type="checkbox" :value="item.code" v-model="usageStatusInfo.currentStatusCd">
 									<span class="spaceLeft">{{ item.name }}</span>
 								</label>
 							</div>
@@ -30,10 +30,10 @@ Vue.component('wearing-situation-modal', {
 						<div class="col-3 item-title">CL併用</div>
 					</div>
 	                <div class="row">
-						<template v-for="(item, index) in visitingHospitalItems" :key="index">
-							<div class="col-4 modal-item-value" v-if="['00001', '00002', '00003', '00004', '00005'].includes(item.code)">
+						<template v-for="(item, index) in useGlassesWithClItems" :key="index">
+							<div class="col-4 modal-item-value">
 								<label class="input-label">
-									<input type="checkbox" :value="item.code" v-model="visitingHospitalInfo.medicalHistory">
+									<input type="checkbox" :value="item.code" v-model="usageStatusInfo.combinedUseClCd">
 									<span class="spaceLeft">{{ item.name }}</span>
 								</label>
 							</div>
@@ -43,10 +43,10 @@ Vue.component('wearing-situation-modal', {
 						<div class="col-3 item-title">メガネ用途</div>
 					</div>
 	                <div class="row">
-						<template v-for="(item, index) in visitingHospitalItems" :key="index">
-							<div class="col-4 modal-item-value" v-if="['00001', '00002', '00003', '00004', '00005'].includes(item.code)">
+						<template v-for="(item, index) in useGlassesPurposeItems" :key="index">
+							<div class="col-4 modal-item-value">
 								<label class="input-label">
-									<input type="checkbox" :value="item.code" v-model="visitingHospitalInfo.medicalHistory">
+									<input type="checkbox" :value="item.code" v-model="usageStatusInfo.glassesPurpose">
 									<span class="spaceLeft">{{ item.name }}</span>
 								</label>
 							</div>
@@ -64,7 +64,7 @@ Vue.component('wearing-situation-modal', {
 	                <div class="col-6">
 	                    <div class="row">
 	                        <div class="col-12 botton-area" style="min-height:40px;">
-	                            <button class="modal-regist">登録</button>
+	                            <button class="modal-regist" @click="update">登録</button>
 	                        </div>
 	                    </div>
 	                </div>
@@ -79,9 +79,24 @@ Vue.component('wearing-situation-modal', {
 			// 進捗フラグ
 			processingFlg:false,
 			// 
-			visitingHospitalInfo :{},
-			// リスト
-			visitingHospitalItems:[],
+			usageStatusInfo :{
+				// お客様ID
+				id: null,
+				// 来店日
+				visitDate: null,
+				// メガネ・CL の装用状況-現状
+				currentStatusCd : [],
+				// メガネ・CL の装用状況-CL併用
+				combinedUseClCd : [],
+				// メガネ用途
+				glassesPurpose : [],
+			},
+			// メガネの装用－現状
+            useGlassesCurrentItems:[],
+            // メガネの装用－CL装用
+            useGlassesWithClItems:[],
+            // メガネの装用－用途
+            useGlassesPurposeItems:[],
 			
     	}
     },
@@ -90,11 +105,43 @@ Vue.component('wearing-situation-modal', {
 	watch:{
 	},
 	methods: {
-		open: function () {
+		open: function (item) {
 			this.displayFlg = true;
+			this.usageStatusInfo.id = item.id;
+			this.usageStatusInfo.visitDate = item.visitDate;
+			this.useGlassesCurrentItems = item.useGlassesCurrentItems;
+			this.useGlassesWithClItems = item.useGlassesWithClItems;
+			this.useGlassesPurposeItems = item.useGlassesPurposeItems;
     	},
+    	update:function() {
+    		var self = this;
+    		self.showModalProcessing();
+			var postItem = {
+					usageStatusInfo: self.usageStatusInfo,
+			};
+			axios.post(editUrl('/s007MedicalRecord/upsertWearingSituation'), postItem)
+			.then(response => {
+				console.log("リクエスト成功:", response.data);
+				// バリデーション・システムエラーチェック
+				var alertMessage = checkValid(response.data.resultCd, response.data.messageList);
+                if(alertMessage.length != 0) {
+                	alert(alertMessage);
+                	self.closeModalProcessing();
+                	return;
+                }
+				// 処理後メッセージ
+				alert(response.data.message);
+				self.closeModalProcessing();
+			})
+			.catch(err => {
+				console.log('err:', err);
+				err_function(err);
+				self.closeModalProcessing();
+			});
+		},
     	close: function () {
             this.displayFlg = false;
+            this.$parent.getData();
         },
     	back: function () {
     		this.displayFlg = false;

@@ -17,10 +17,10 @@ Vue.component('glasses-trouble-modal', {
 						<div class="col-3 item-title">メガネ</div>
 					</div>
 	                <div class="row">
-						<template v-for="(item, index) in visitingHospitalItems" :key="index">
-							<div class="col-4 modal-item-value" v-if="['00001', '00002', '00003', '00004', '00005'].includes(item.code)">
+						<template v-for="(item, index) in glassesIssuesItems" :key="index">
+							<div class="col-4 modal-item-value">
 								<label class="input-label">
-									<input type="checkbox" :value="item.code" v-model="visitingHospitalInfo.medicalHistory">
+									<input type="checkbox" :value="item.code" v-model="troubleInfo.glassesIssues">
 									<span class="spaceLeft">{{ item.name }}</span>
 								</label>
 							</div>
@@ -30,10 +30,10 @@ Vue.component('glasses-trouble-modal', {
 						<div class="col-3 item-title">フレーム</div>
 					</div>
 	                <div class="row">
-						<template v-for="(item, index) in visitingHospitalItems" :key="index">
-							<div class="col-4 modal-item-value" v-if="['00001', '00002', '00003', '00004', '00005'].includes(item.code)">
+						<template v-for="(item, index) in frameIssuesItems" :key="index">
+							<div class="col-4 modal-item-value">
 								<label class="input-label">
-									<input type="checkbox" :value="item.code" v-model="visitingHospitalInfo.medicalHistory">
+									<input type="checkbox" :value="item.code" v-model="troubleInfo.frameIssues">
 									<span class="spaceLeft">{{ item.name }}</span>
 								</label>
 							</div>
@@ -51,7 +51,7 @@ Vue.component('glasses-trouble-modal', {
 	                <div class="col-6">
 	                    <div class="row">
 	                        <div class="col-12 botton-area" style="min-height:40px;">
-	                            <button class="modal-regist">登録</button>
+	                            <button class="modal-regist" @click="update">登録</button>
 	                        </div>
 	                    </div>
 	                </div>
@@ -66,9 +66,20 @@ Vue.component('glasses-trouble-modal', {
 			// 進捗フラグ
 			processingFlg:false,
 			// 
-			visitingHospitalInfo :{},
-			// リスト
-			visitingHospitalItems:[],
+			troubleInfo :{
+				// お客様ID
+				id: null,
+				// 来店日
+				visitDate: null,
+				// メガネトラブル
+				glassesIssues : [],
+				// フレームトラブル
+				frameIssues : [],
+			},
+			// メガネトラブルリスト
+            glassesIssuesItems:[],
+            // フレームトラブルリスト
+            frameIssuesItems:[],
     	}
     },
     computed:{
@@ -76,11 +87,42 @@ Vue.component('glasses-trouble-modal', {
 	watch:{
 	},
 	methods: {
-		open: function () {
+		open: function (item) {
 			this.displayFlg = true;
+			this.troubleInfo.id = item.id;
+			this.troubleInfo.visitDate = item.visitDate;
+			this.glassesIssuesItems = item.glassesIssuesItems;
+			this.frameIssuesItems = item.frameIssuesItems;
     	},
+    	update:function() {
+    		var self = this;
+    		self.showModalProcessing();
+			var postItem = {
+					troubleInfo: self.troubleInfo,
+			};
+			axios.post(editUrl('/s007MedicalRecord/upsertGlassesTrouble'), postItem)
+			.then(response => {
+				console.log("リクエスト成功:", response.data);
+				// バリデーション・システムエラーチェック
+				var alertMessage = checkValid(response.data.resultCd, response.data.messageList);
+                if(alertMessage.length != 0) {
+                	alert(alertMessage);
+                	self.closeModalProcessing();
+                	return;
+                }
+				// 処理後メッセージ
+				alert(response.data.message);
+				self.closeModalProcessing();
+			})
+			.catch(err => {
+				console.log('err:', err);
+				err_function(err);
+				self.closeModalProcessing();
+			});
+		},
     	close: function () {
             this.displayFlg = false;
+            this.$parent.getData();
         },
     	back: function () {
     		this.displayFlg = false;

@@ -54,7 +54,9 @@ public class SenridoConstant {
 		public final static String MEDICAL_HISTORY = "medical_history";
 		/** 眼の症状 */
 		public final static String EYE_SYMPTOMS = "eye_symptoms";
-		/** 病歴 */
+		/** 左右 */
+		public final static String SURGERY_TARGET = "surgery_target";
+		/** 身体の症状*/
 		public final static String BODY_SYMPTOMS = "body_symptoms";
 		/** メガネトラブル */
 		public final static String GLASSES_ISSUES = "glasses_issues";
@@ -92,6 +94,30 @@ public class SenridoConstant {
 		public final static String COMPLETION_CONTACT = "completion_contact";
 	}
 
+	/**
+	 * 手術名称DIV_CODE
+	 *
+	 * @author kurokawa
+	 */
+	public class Surgery {
+
+		public static final String CATARACT = "白内障";
+
+		public final static String GLAUCOMA = "緑内障";
+
+		public final static String FLOATERS = "飛蚊症";
+
+		public final static String RETINAL_DETACHMENT = "網膜剥離";
+
+		public final static String STRABISMUS = "斜視";
+
+		public final static String VITREOUS_BODY = "硝子体";
+
+		public final static String LASIK = "レーシック";
+
+		public final static String ICL_IOL = "ICL/IOL";
+	}
+	
 	/** 半角カンマ */
 	public final static String HALF_CAMMA = ",";
 

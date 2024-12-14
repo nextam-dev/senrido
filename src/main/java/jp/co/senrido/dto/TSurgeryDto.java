@@ -1,10 +1,7 @@
 package jp.co.senrido.dto;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.List;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import jp.co.senrido.annotation.MessageName;
@@ -16,27 +13,28 @@ import lombok.Setter;
 public class TSurgeryDto {
 
     /** お客様ID */
-    @NotNull
     @MessageName("お客様ID")
     private Integer id;
 
     /** 来店日 */
-    @NotNull
     @MessageName("来店日")
-    private LocalDateTime visitDate;
+    private String visitDate;
+    private String visitDateStr;
 
     /** 手術時期 */
     @MessageName("手術時期")
-    private LocalDate surgeryDate;
+    private String surgeryDate;
+    private String surgeryDateStr;
 
     /** 手術予定時期 */
     @MessageName("手術予定時期")
-    private LocalDate surgeryPlannedDate;
+    private String surgeryPlannedDate;
+    private String surgeryPlannedDateStr;
 
     /** 白内障 */
     @Size(max = 20)
     @MessageName("白内障")
-    private String cataract;
+    private List<String> cataract;
 
     /** 白内障名称 */
     @Size(max = 100)
@@ -46,7 +44,7 @@ public class TSurgeryDto {
     /** 緑内障 */
     @Size(max = 20)
     @MessageName("緑内障")
-    private String glaucoma;
+    private List<String> glaucoma;
 
     /** 緑内障名称 */
     @Size(max = 100)
@@ -56,7 +54,7 @@ public class TSurgeryDto {
     /** 飛蚊症 */
     @Size(max = 20)
     @MessageName("飛蚊症")
-    private String floaters;
+    private List<String> floaters;
 
     /** 飛蚊症名称 */
     @Size(max = 100)
@@ -66,7 +64,7 @@ public class TSurgeryDto {
     /** 網膜剥離 */
     @Size(max = 20)
     @MessageName("網膜剥離")
-    private String retinalDetachment;
+    private List<String> retinalDetachment;
 
     /** 網膜剥離名称 */
     @Size(max = 100)
@@ -76,7 +74,7 @@ public class TSurgeryDto {
     /** 斜視 */
     @Size(max = 20)
     @MessageName("斜視")
-    private String strabismus;
+    private List<String> strabismus;
 
     /** 斜視名称 */
     @Size(max = 100)
@@ -86,7 +84,7 @@ public class TSurgeryDto {
     /** 硝子体 */
     @Size(max = 20)
     @MessageName("硝子体")
-    private String vitreousBody;
+    private List<String> vitreousBody;
 
     /** 硝子体名称 */
     @Size(max = 100)
@@ -96,7 +94,7 @@ public class TSurgeryDto {
     /** レーシック */
     @Size(max = 20)
     @MessageName("レーシック")
-    private String lasik;
+    private List<String> lasik;
 
     /** レーシック名称 */
     @Size(max = 100)
@@ -106,37 +104,10 @@ public class TSurgeryDto {
     /** ICL/IOL */
     @Size(max = 20)
     @MessageName("ICL/IOL")
-    private String iclIol;
+    private List<String> iclIol;
 
     /** ICL/IOL名称 */
     @Size(max = 100)
     @MessageName("ICL/IOL名称")
     private String iclIolName;
-
-    /** 削除フラグ */
-    @NotNull
-    @MessageName("削除フラグ")
-    private Boolean delFlg;
-
-    /** 登録日時 */
-    @NotNull
-    @MessageName("登録日時")
-    private LocalDateTime createDate;
-
-    /** 登録者コード */
-    @NotBlank
-    @Size(max = 8)
-    @MessageName("登録者コード")
-    private String createId;
-
-    /** 更新日時 */
-    @NotNull
-    @MessageName("更新日時")
-    private LocalDateTime updateDate;
-
-    /** 更新者コード */
-    @NotBlank
-    @Size(max = 8)
-    @MessageName("更新者コード")
-    private String updateId;
 }
