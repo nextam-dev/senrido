@@ -891,7 +891,7 @@ public class S007MedicalRecordService extends BaseTransactionalService {
 		if (dto.getMedicalHistory() != null) {
 			tVisitingHospital.setMedicalHistory(String.join(",", dto.getMedicalHistory()));
 			tVisitingHospital.setMedicalHistoryName(
-					chaceCodeToName(SenridoConstant.DivCode.MEDICAL_HISTORY, dto.getMedicalHistory()));
+					changeCodeToName(SenridoConstant.DivCode.MEDICAL_HISTORY, dto.getMedicalHistory()));
 		}
 		String glassesMakingStr = dto.getGlassesMaking();
 		if (glassesMakingStr != null) {
@@ -958,42 +958,42 @@ public class S007MedicalRecordService extends BaseTransactionalService {
 		if (dto.getCataract() != null) {
 			tSurgery.setCataract(String.join(",", dto.getCataract()));
 			tSurgery.setCataractName((SenridoConstant.Surgery.CATARACT)
-					+ chaceCodeToName(SenridoConstant.DivCode.SURGERY_TARGET, dto.getCataract()));
+					+ changeCodeToName(SenridoConstant.DivCode.SURGERY_TARGET, dto.getCataract()));
 		}
 		if (dto.getGlaucoma() != null) {
 			tSurgery.setGlaucoma(String.join(",", dto.getGlaucoma()));
 			tSurgery.setGlaucomaName((SenridoConstant.Surgery.GLAUCOMA)
-					+ chaceCodeToName(SenridoConstant.DivCode.SURGERY_TARGET, dto.getGlaucoma()));
+					+ changeCodeToName(SenridoConstant.DivCode.SURGERY_TARGET, dto.getGlaucoma()));
 		}
 		if (dto.getFloaters() != null) {
 			tSurgery.setFloaters(String.join(",", dto.getFloaters()));
 			tSurgery.setFloatersName((SenridoConstant.Surgery.FLOATERS)
-					+ chaceCodeToName(SenridoConstant.DivCode.SURGERY_TARGET, dto.getFloaters()));
+					+ changeCodeToName(SenridoConstant.DivCode.SURGERY_TARGET, dto.getFloaters()));
 		}
 		if (dto.getRetinalDetachment() != null) {
 			tSurgery.setRetinalDetachment(String.join(",", dto.getRetinalDetachment()));
 			tSurgery.setRetinalDetachmentName((SenridoConstant.Surgery.RETINAL_DETACHMENT)
-					+ chaceCodeToName(SenridoConstant.DivCode.SURGERY_TARGET, dto.getRetinalDetachment()));
+					+ changeCodeToName(SenridoConstant.DivCode.SURGERY_TARGET, dto.getRetinalDetachment()));
 		}
 		if (dto.getStrabismus() != null) {
 			tSurgery.setStrabismus(String.join(",", dto.getStrabismus()));
 			tSurgery.setStrabismusName((SenridoConstant.Surgery.STRABISMUS)
-					+ chaceCodeToName(SenridoConstant.DivCode.SURGERY_TARGET, dto.getStrabismus()));
+					+ changeCodeToName(SenridoConstant.DivCode.SURGERY_TARGET, dto.getStrabismus()));
 		}
 		if (dto.getVitreousBody() != null) {
 			tSurgery.setVitreousBody(String.join(",", dto.getVitreousBody()));
 			tSurgery.setVitreousBodyName((SenridoConstant.Surgery.VITREOUS_BODY)
-					+ chaceCodeToName(SenridoConstant.DivCode.SURGERY_TARGET, dto.getVitreousBody()));
+					+ changeCodeToName(SenridoConstant.DivCode.SURGERY_TARGET, dto.getVitreousBody()));
 		}
 		if (dto.getLasik() != null) {
 			tSurgery.setLasik(String.join(",", dto.getLasik()));
 			tSurgery.setLasikName((SenridoConstant.Surgery.LASIK)
-					+ chaceCodeToName(SenridoConstant.DivCode.SURGERY_TARGET, dto.getLasik()));
+					+ changeCodeToName(SenridoConstant.DivCode.SURGERY_TARGET, dto.getLasik()));
 		}
 		if (dto.getIclIol() != null) {
 			tSurgery.setIclIol(String.join(",", dto.getIclIol()));
 			tSurgery.setIclIolName((SenridoConstant.Surgery.ICL_IOL)
-					+ chaceCodeToName(SenridoConstant.DivCode.SURGERY_TARGET, dto.getIclIol()));
+					+ changeCodeToName(SenridoConstant.DivCode.SURGERY_TARGET, dto.getIclIol()));
 		}
 
 		tSurgery.setUpdateDate(localTimeNow);
@@ -1155,17 +1155,17 @@ public class S007MedicalRecordService extends BaseTransactionalService {
 		if (dto.getCurrentStatusCd() != null) {
 			tUsageStatus.setCurrentStatusCd(String.join(",", dto.getCurrentStatusCd()));
 			tUsageStatus.setGlassesClUsageCurrentName(
-					chaceCodeToName(SenridoConstant.DivCode.USE_GLASSES_CURRENT, dto.getCurrentStatusCd()));
+					changeCodeToName(SenridoConstant.DivCode.USE_GLASSES_CURRENT, dto.getCurrentStatusCd()));
 		}
 		if (dto.getCombinedUseClCd() != null) {
 			tUsageStatus.setCombinedUseClCd(String.join(",", dto.getCombinedUseClCd()));
 			tUsageStatus.setGlassesClUsageCombinedName(
-					chaceCodeToName(SenridoConstant.DivCode.USE_GLASSES_WITH_CL, dto.getCombinedUseClCd()));
+					changeCodeToName(SenridoConstant.DivCode.USE_GLASSES_WITH_CL, dto.getCombinedUseClCd()));
 		}
 		if (dto.getGlassesPurpose() != null) {
 			tUsageStatus.setGlassesPurpose(String.join(",", dto.getGlassesPurpose()));
 			tUsageStatus.setGlassesPurposeName(
-					chaceCodeToName(SenridoConstant.DivCode.USE_GLASSES_PURPOSE, dto.getGlassesPurpose()));
+					changeCodeToName(SenridoConstant.DivCode.USE_GLASSES_PURPOSE, dto.getGlassesPurpose()));
 		}
 		tUsageStatus.setUpdateDate(localTimeNow);
 		tUsageStatus.setUpdateId(userDto.getUserCd());
@@ -1220,11 +1220,11 @@ public class S007MedicalRecordService extends BaseTransactionalService {
 		if (dto.getGlassesIssues() != null) {
 			tTrouble.setGlassesIssues(String.join(",", dto.getGlassesIssues()));
 			tTrouble.setGlassesIssuesName(
-					chaceCodeToName(SenridoConstant.DivCode.GLASSES_ISSUES, dto.getGlassesIssues()));
+					changeCodeToName(SenridoConstant.DivCode.GLASSES_ISSUES, dto.getGlassesIssues()));
 		}
 		if (dto.getFrameIssues() != null) {
 			tTrouble.setFrameIssues(String.join(",", dto.getFrameIssues()));
-			tTrouble.setFrameIssuesName(chaceCodeToName(SenridoConstant.DivCode.FRAME_ISSUES, dto.getFrameIssues()));
+			tTrouble.setFrameIssuesName(changeCodeToName(SenridoConstant.DivCode.FRAME_ISSUES, dto.getFrameIssues()));
 		}
 		tTrouble.setUpdateDate(localTimeNow);
 		tTrouble.setUpdateId(userDto.getUserCd());
@@ -1278,12 +1278,12 @@ public class S007MedicalRecordService extends BaseTransactionalService {
 				DateUtil.changeFormatStrToLocalDateTime(dto.getVisitDate(), DateUtil.DATE_FORMAT_YMD_HYPHEN));
 		if (dto.getEyeSymptoms() != null) {
 			tSymptoms.setEyeSymptoms(String.join(",", dto.getEyeSymptoms()));
-			tSymptoms.setEyeSymptomsName(chaceCodeToName(SenridoConstant.DivCode.EYE_SYMPTOMS, dto.getEyeSymptoms()));
+			tSymptoms.setEyeSymptomsName(changeCodeToName(SenridoConstant.DivCode.EYE_SYMPTOMS, dto.getEyeSymptoms()));
 		}
 		if (dto.getBodySymptoms() != null) {
 			tSymptoms.setBodySymptoms(String.join(",", dto.getBodySymptoms()));
 			tSymptoms
-					.setBodySymptomsName(chaceCodeToName(SenridoConstant.DivCode.BODY_SYMPTOMS, dto.getBodySymptoms()));
+					.setBodySymptomsName(changeCodeToName(SenridoConstant.DivCode.BODY_SYMPTOMS, dto.getBodySymptoms()));
 		}
 		tSymptoms.setUpdateDate(localTimeNow);
 		tSymptoms.setUpdateId(userDto.getUserCd());
@@ -1337,7 +1337,7 @@ public class S007MedicalRecordService extends BaseTransactionalService {
 				DateUtil.changeFormatStrToLocalDateTime(dto.getVisitDate(), DateUtil.DATE_FORMAT_YMD_HYPHEN));
 		if (dto.getGlareSources() != null) {
 			tGlare.setGlareSources(String.join(",", dto.getGlareSources()));
-			tGlare.setGlareSourcesName(chaceCodeToName(SenridoConstant.DivCode.GLARE_SOURCES, dto.getGlareSources()));
+			tGlare.setGlareSourcesName(changeCodeToName(SenridoConstant.DivCode.GLARE_SOURCES, dto.getGlareSources()));
 		}
 		String eyePainStrongLightStr = dto.getEyePainStrongLight();
 		if (eyePainStrongLightStr != null) {
