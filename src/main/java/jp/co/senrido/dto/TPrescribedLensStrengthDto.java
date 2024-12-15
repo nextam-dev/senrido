@@ -12,24 +12,24 @@ import lombok.Setter;
 @Setter
 public class TPrescribedLensStrengthDto {
 
-    /** ‚¨‹q—lID */
+    /** ãŠå®¢æ§˜ID */
     private Integer id;
 
-    /** —ˆ“X“ú */
+    /** æ¥åº—æ—¥ */
     private LocalDateTime visitDate;
 
-    /** ˜A”Ô */
+    /** é€£ç•ª */
     private Integer seq;
 
-    /** “x” */
+    /** åº¦æ•° */
     @Size(max = 5)
     private String prescriptionStrength;
 
-    /** “x”‚»‚Ì‘¼ */
+    /** åº¦æ•°ãã®ä»– */
     @Size(max = 1000)
     private String prescriptionStrengthOther;
 
-    /** “x”–¼Ì */
+    /** åº¦æ•°åç§° */
     @Size(max = 200)
     private String prescriptionStrengthName;
 
@@ -53,19 +53,19 @@ public class TPrescribedLensStrengthDto {
     @Size(max = 5)
     private String rAx;
 
-    /** R-P/BASE1-¶ */
+    /** R-P/BASE1-å·¦ */
     @Size(max = 5)
     private String rPBase1Left;
 
-    /** R-P/BASE1-‰E */
+    /** R-P/BASE1-å³ */
     @Size(max = 5)
     private String rPBase1Right;
 
-    /** R-P/BASE2-¶ */
+    /** R-P/BASE2-å·¦ */
     @Size(max = 5)
     private String rPBase2Left;
 
-    /** R-P/BASE2-‰E */
+    /** R-P/BASE2-å³ */
     @Size(max = 5)
     private String rPBase2Right;
 
@@ -93,19 +93,19 @@ public class TPrescribedLensStrengthDto {
     @Size(max = 5)
     private String lAx;
 
-    /** L-P/BASE1-¶ */
+    /** L-P/BASE1-å·¦ */
     @Size(max = 5)
     private String lPBase1Left;
 
-    /** L-P/BASE1-‰E */
+    /** L-P/BASE1-å³ */
     @Size(max = 5)
     private String lPBase1Right;
 
-    /** L-P/BASE2-¶ */
+    /** L-P/BASE2-å·¦ */
     @Size(max = 5)
     private String lPBase2Left;
 
-    /** L-P/BASE2-‰E */
+    /** L-P/BASE2-å³ */
     @Size(max = 5)
     private String lPBase2Right;
 
@@ -113,25 +113,25 @@ public class TPrescribedLensStrengthDto {
     @Size(max = 5)
     private String lPd;
 
-    /** ‹ß—pì‹Æ‹——£ */
+    /** è¿‘ç”¨ä½œæ¥­è·é›¢ */
     private BigDecimal nearWorkingDistance;
 
-    /** ƒƒ‚ */
+    /** ãƒ¡ãƒ¢ */
     @Size(max = 400)
     private String memo;
 
-    /** íœƒtƒ‰ƒO */
+    /** å‰Šé™¤ãƒ•ãƒ©ã‚° */
     private Boolean delFlg;
 
-    /** “o˜^“ú */
+    /** ç™»éŒ²æ—¥æ™‚ */
     private LocalDateTime createDate;
 
-    /** “o˜^ÒƒR[ƒh */
+    /** ç™»éŒ²è€…ã‚³ãƒ¼ãƒ‰ */
     private String createId;
 
-    /** XV“ú */
+    /** æ›´æ–°æ—¥æ™‚ */
     private LocalDateTime updateDate;
 
-    /** XVÒƒR[ƒh */
+    /** æ›´æ–°è€…ã‚³ãƒ¼ãƒ‰ */
     private String updateId;
 }

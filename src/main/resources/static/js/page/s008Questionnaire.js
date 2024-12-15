@@ -271,7 +271,13 @@
                 axios.post(url, postItem)
                     .then(function (response) {
                         console.log(response.data);
-                        // TODO エラーチェック
+                        // エラーチェック
+                        if (response.data.resultCd !== '001') {
+                            if (response.data.messageList != null) {
+                                self.messages = _.map(response.data.messageList, function (m) { return m.message; });
+                            }
+                            return false;
+                        }
                         
                         // 完了画面へ遷移
                         location.href = editUrl('/s008Questionnaire/complete');
@@ -302,6 +308,19 @@
 
                 this.survey.age = age;
             },
+			getAddressDecedent: function(z) {
+				// 住所に入力済みの場合、処理を終了
+				if(this.survey.address){
+					return;
+				}
+				// 郵便番号検索結果を住所に設定
+				getAddress(z)
+			    .then(val => {
+			    	if(val){
+			    		this.survey.address = val;
+			    	}
+			    })
+			},
             // 閉じる
             close: function() {
             	window.close();

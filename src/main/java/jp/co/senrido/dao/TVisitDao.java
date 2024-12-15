@@ -3,6 +3,7 @@
  */
 package jp.co.senrido.dao;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.seasar.doma.Dao;
@@ -27,6 +28,12 @@ public interface TVisitDao {
 	 */
 	@Select
 	List<TVisit> selectAll();
+	
+	/**
+	 * @return the TVisit entity
+	 */
+	@Select
+	TVisit selectById(Integer id, LocalDateTime visitDate);
 
 	/**
 	 * @param entity

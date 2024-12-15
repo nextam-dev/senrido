@@ -78,4 +78,17 @@ public class S008QuestionnaireController {
 
         return "/s008QuestionnaireDisp";
     }
+	
+	/**
+	 * お客様アンケート2回目以降表示用.
+	 * 
+	 * @param form
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/s008Questionnaire/continuation/view", method = RequestMethod.GET)
+    public String viewCoutinuation(@ModelAttribute("form") S008QuestionnaireForm form, Model model) {
+
+        return "/s008QuestionnaireCoutinuationDisp";
+    }
 }

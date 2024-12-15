@@ -9,24 +9,24 @@ import lombok.Setter;
 @Setter
 public class TRefractionDto {
 
-    /** ‚¨‹q—lID */
+    /** ãŠå®¢æ§˜ID */
     private Integer id;
 
-    /** —ˆ“X“ú */
+    /** æ¥åº—æ—¥ */
     private LocalDateTime visitDate;
 
-    /** íœƒtƒ‰ƒO */
+    /** å‰Šé™¤ãƒ•ãƒ©ã‚° */
     private Boolean delFlg;
 
-    /** “o˜^“ú */
+    /** ç™»éŒ²æ—¥æ™‚ */
     private LocalDateTime createDate;
 
-    /** “o˜^ÒƒR[ƒh */
+    /** ç™»éŒ²è€…ã‚³ãƒ¼ãƒ‰ */
     private String createId;
 
-    /** XV“ú */
+    /** æ›´æ–°æ—¥æ™‚ */
     private LocalDateTime updateDate;
 
-    /** XVÒƒR[ƒh */
+    /** æ›´æ–°è€…ã‚³ãƒ¼ãƒ‰ */
     private String updateId;
 }

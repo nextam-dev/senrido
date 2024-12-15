@@ -11,10 +11,10 @@ import lombok.Setter;
 @Setter
 public class TFullCorrectionDto {
 
-    /** ‚¨‹q—lID */
+    /** ï¿½ï¿½ï¿½qï¿½lID */
     private Integer id;
 
-    /** —ˆ“X“ú */
+    /** ï¿½ï¿½ï¿½Xï¿½ï¿½ */
     private LocalDateTime visitDate;
 
     /** V */
@@ -45,19 +45,19 @@ public class TFullCorrectionDto {
     @Size(max = 5)
     private String rAx;
 
-    /** R-P/BASE1-¶ */
+    /** R-P/BASE1-ï¿½ï¿½ */
     @Size(max = 5)
     private String rPBase1Left;
 
-    /** R-P/BASE1-‰E */
+    /** R-P/BASE1-ï¿½E */
     @Size(max = 5)
     private String rPBase1Right;
 
-    /** R-P/BASE2-¶ */
+    /** R-P/BASE2-ï¿½ï¿½ */
     @Size(max = 5)
     private String rPBase2Left;
 
-    /** R-P/BASE2-‰E */
+    /** R-P/BASE2-ï¿½E */
     @Size(max = 5)
     private String rPBase2Right;
 
@@ -85,46 +85,46 @@ public class TFullCorrectionDto {
     @Size(max = 5)
     private String lAx;
 
-    /** L-P/BASE1-¶ */
+    /** L-P/BASE1-ï¿½ï¿½ */
     @Size(max = 5)
     private String lPBase1Left;
 
-    /** L-P/BASE1-‰E */
+    /** L-P/BASE1-ï¿½E */
     @Size(max = 5)
     private String lPBase1Right;
 
-    /** L-P/BASE2-¶ */
+    /** L-P/BASE2-ï¿½ï¿½ */
     @Size(max = 5)
     private String lPBase2Left;
 
-    /** L-P/BASE2-‰E */
+    /** L-P/BASE2-ï¿½E */
     @Size(max = 5)
     private String lPBase2Right;
 
-    /** R-CL“x” */
+    /** R-CLï¿½xï¿½ï¿½ */
     @Size(max = 5)
     private String rClPower;
 
-    /** L-CL“x” */
+    /** L-CLï¿½xï¿½ï¿½ */
     @Size(max = 5)
     private String lClPower;
 
-    /** ƒƒ‚ */
+    /** ãƒ¡ãƒ¢ */
     @Size(max = 400)
     private String memo;
 
-    /** íœƒtƒ‰ƒO */
+    /** å‰Šé™¤ãƒ•ãƒ©ã‚° */
     private Boolean delFlg;
 
-    /** “o˜^“ú */
+    /** ç™»éŒ²æ—¥æ™‚ */
     private LocalDateTime createDate;
 
-    /** “o˜^ÒƒR[ƒh */
+    /** ç™»éŒ²è€…ã‚³ãƒ¼ãƒ‰ */
     private String createId;
 
-    /** XV“ú */
+    /** æ›´æ–°æ—¥æ™‚ */
     private LocalDateTime updateDate;
 
-    /** XVÒƒR[ƒh */
+    /** æ›´æ–°è€…ã‚³ãƒ¼ãƒ‰ */
     private String updateId;
 }

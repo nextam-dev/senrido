@@ -788,3 +788,20 @@ function printJSFixedAll(options) {
 		printJS(options);
 	}
 }
+//---------------------------
+//郵便番号検索
+//---------------------------
+function getAddress(z) {
+	return new Promise((resolve, reject) => {
+		let params = { params: { zipcode: z } };
+		if (params.length < 8) {
+			resolve(null);
+		} else {
+			axios.get("https://api.zipaddress.net/", params)
+			.then(res => {
+				var val = res.data.code === 200 ? res.data.data.fullAddress : '';
+				resolve(val);
+			})
+		}
+	});
+}

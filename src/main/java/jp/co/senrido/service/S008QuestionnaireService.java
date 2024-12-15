@@ -3,6 +3,8 @@
  */
 package jp.co.senrido.service;
 
+import java.util.Objects;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,9 +13,11 @@ import org.springframework.util.ObjectUtils;
 import jp.co.senrido.common.SenridoConstant;
 import jp.co.senrido.dao.TCustomerDao;
 import jp.co.senrido.dao.TSurveyDao;
+import jp.co.senrido.dao.TVisitDao;
 import jp.co.senrido.dto.TSurveyDto;
 import jp.co.senrido.entity.TCustomer;
 import jp.co.senrido.entity.TSurvey;
+import jp.co.senrido.entity.TVisit;
 import jp.co.senrido.helper.SendMailHelper;
 import jp.co.senrido.utils.DateUtil;
 
@@ -29,6 +33,9 @@ public class S008QuestionnaireService extends BaseTransactionalService {
 	
 	@Autowired
 	private TCustomerDao tCustomerDao;
+	
+	@Autowired
+	private TVisitDao tVisitDao;
 	
 	@Autowired
 	private TSurveyDao tSurveyDao;
@@ -112,7 +119,7 @@ public class S008QuestionnaireService extends BaseTransactionalService {
 			// コピー
 			BeanUtils.copyProperties(dto, tCustomer);
 			// 日付項目は個別に設定
-			tCustomer.setBirthday(DateUtil.changeFormatStrToLocalDateTime(dto.getBirthday(), DateUtil.DATE_FORMAT_YMD_HYPHEN));
+			tCustomer.setBirthday(DateUtil.changeFormatStrToLocalDate(dto.getBirthday()));
 			// 次回来店日
 			tCustomer.setNextVisitDate(DateUtil.changeFormatStrToLocalDate(dto.getVisitDate()));
 			
@@ -126,6 +133,37 @@ public class S008QuestionnaireService extends BaseTransactionalService {
 			// 登録したお客様IDを設定
 			dto.setId(tCustomer.getId());
 		}
+		
+		// 来店テーブル検索
+		TVisit tVisit = tVisitDao.selectById(dto.getId(), DateUtil.changeFormatStrToLocalDateTime(dto.getVisitDate(), DateUtil.DATE_FORMAT_YMD_HYPHEN));
+		// 来店テーブル登録・更新
+		if (tVisit == null) {
+			tVisit = new TVisit();
+			
+			tVisit.setId(dto.getId());
+			tVisit.setVisitDate(DateUtil.changeFormatStrToLocalDateTime(dto.getVisitDate(), DateUtil.DATE_FORMAT_YMD_HYPHEN));
+			
+			tVisit.setTokyoMeasurementEventFlag(true);
+			tVisit.setFirstTimeFlag(Objects.equals(dto.getFirstTimeFlag(), "true"));
+			tVisit.setSurveyResponseFlag(true);
+			tVisit.setSurveyResponseDate(this.createCurrentDate());
+			
+			tVisit.setDelFlg(false);
+			tVisit.setUpdateDate(this.createCurrentDate());
+			tVisit.setUpdateId("system");
+			tVisit.setCreateDate(this.createCurrentDate());
+			tVisit.setCreateId("system");
+			tVisitDao.insert(tVisit);
+		} else {
+			tVisit.setTokyoMeasurementEventFlag(true);
+			tVisit.setFirstTimeFlag(Objects.equals(dto.getFirstTimeFlag(), "true"));
+			tVisit.setSurveyResponseFlag(true);
+			tVisit.setSurveyResponseDate(this.createCurrentDate());
+			tVisit.setUpdateDate(this.createCurrentDate());
+			tVisit.setUpdateId("system");
+			tVisitDao.update(tVisit);
+		}
+		
 		
 		// アンケート情報を登録
 		TSurvey entity = tSurveyDao.selectById(dto.getId(), DateUtil.changeFormatStrToLocalDateTime(dto.getVisitDate(), DateUtil.DATE_FORMAT_YMD_HYPHEN));

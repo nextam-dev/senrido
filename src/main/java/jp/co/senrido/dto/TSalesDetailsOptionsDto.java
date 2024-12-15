@@ -10,57 +10,57 @@ import lombok.Setter;
 @Setter
 public class TSalesDetailsOptionsDto {
 
-    /** ‚¨‹q—lID */
+    /** ãŠå®¢æ§˜ID */
     private Integer id;
 
-    /** —ˆ“X“ú */
+    /** æ¥åº—æ—¥ */
     private LocalDateTime visitDate;
 
-    /** ˜A”Ô */
+    /** é€£ç•ª */
     private Integer seq;
 
-    /** ƒIƒvƒVƒ‡ƒ“˜A”Ô */
+    /** ã‚ªãƒ—ã‚·ãƒ§ãƒ³é€£ç•ª */
     private Integer optionSeq;
 
-    /** ƒIƒvƒVƒ‡ƒ“1 */
+    /** ã‚ªãƒ—ã‚·ãƒ§ãƒ³1 */
     private String option1;
 
-    /** ƒIƒvƒVƒ‡ƒ“–¼Ì1 */
+    /** ã‚ªãƒ—ã‚·ãƒ§ãƒ³åç§°1 */
     private String optionName1;
 
-    /** ƒIƒvƒVƒ‡ƒ“‹àŠz1 */
+    /** ã‚ªãƒ—ã‚·ãƒ§ãƒ³é‡‘é¡1 */
     private BigDecimal optionPrice1;
 
-    /** ƒIƒvƒVƒ‡ƒ“2 */
+    /** ã‚ªãƒ—ã‚·ãƒ§ãƒ³2 */
     private String option2;
 
-    /** ƒIƒvƒVƒ‡ƒ“–¼Ì2 */
+    /** ã‚ªãƒ—ã‚·ãƒ§ãƒ³åç§°2 */
     private String optionName2;
 
-    /** ƒIƒvƒVƒ‡ƒ“‹àŠz2 */
+    /** ã‚ªãƒ—ã‚·ãƒ§ãƒ³é‡‘é¡2 */
     private BigDecimal optionPrice2;
 
-    /** ƒIƒvƒVƒ‡ƒ“3 */
+    /** ã‚ªãƒ—ã‚·ãƒ§ãƒ³3 */
     private String option3;
 
-    /** ƒIƒvƒVƒ‡ƒ“–¼Ì3 */
+    /** ã‚ªãƒ—ã‚·ãƒ§ãƒ³åç§°3 */
     private String optionName3;
 
-    /** ƒIƒvƒVƒ‡ƒ“‹àŠz3 */
+    /** ã‚ªãƒ—ã‚·ãƒ§ãƒ³é‡‘é¡3 */
     private BigDecimal optionPrice3;
 
-    /** íœƒtƒ‰ƒO */
+    /** å‰Šé™¤ãƒ•ãƒ©ã‚° */
     private Boolean delFlg;
 
-    /** “o˜^“ú */
+    /** ç™»éŒ²æ—¥æ™‚ */
     private LocalDateTime createDate;
 
-    /** “o˜^ÒƒR[ƒh */
+    /** ç™»éŒ²è€…ã‚³ãƒ¼ãƒ‰ */
     private String createId;
 
-    /** XV“ú */
+    /** æ›´æ–°æ—¥æ™‚ */
     private LocalDateTime updateDate;
 
-    /** XVÒƒR[ƒh */
+    /** æ›´æ–°è€…ã‚³ãƒ¼ãƒ‰ */
     private String updateId;
 }

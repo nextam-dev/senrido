@@ -10,42 +10,42 @@ import lombok.Setter;
 @Setter
 public class TSalesDetailsDto {
 
-    /** ‚¨‹q—lID */
+    /** ãŠå®¢æ§˜ID */
     private Integer id;
 
-    /** —ˆ“X“ú */
+    /** æ¥åº—æ—¥ */
     private LocalDateTime visitDate;
 
-    /** ˜A”Ô */
+    /** é€£ç•ª */
     private Integer seq;
 
-    /** ƒtƒŒ[ƒ€ */
+    /** ãƒ•ãƒ¬ãƒ¼ãƒ  */
     private String frame;
 
-    /** ƒAƒCƒ|ƒCƒ“ƒg */
+    /** ã‚¢ã‚¤ãƒã‚¤ãƒ³ãƒˆ */
     private BigDecimal eyePoint;
 
-    /** ƒtƒŒ[ƒ€‹àŠz */
+    /** ãƒ•ãƒ¬ãƒ¼ãƒ é‡‘é¡ */
     private BigDecimal framePrice;
 
-    /** ƒŒƒ“ƒY */
+    /** ãƒ¬ãƒ³ã‚º */
     private String lens;
 
-    /** ƒŒƒ“ƒY‹àŠz */
+    /** ãƒ¬ãƒ³ã‚ºé‡‘é¡ */
     private BigDecimal lensPrice;
 
-    /** íœƒtƒ‰ƒO */
+    /** å‰Šé™¤ãƒ•ãƒ©ã‚° */
     private Boolean delFlg;
 
-    /** “o˜^“ú */
+    /** ç™»éŒ²æ—¥æ™‚ */
     private LocalDateTime createDate;
 
-    /** “o˜^ÒƒR[ƒh */
+    /** ç™»éŒ²è€…ã‚³ãƒ¼ãƒ‰ */
     private String createId;
 
-    /** XV“ú */
+    /** æ›´æ–°æ—¥æ™‚ */
     private LocalDateTime updateDate;
 
-    /** XVÒƒR[ƒh */
+    /** æ›´æ–°è€…ã‚³ãƒ¼ãƒ‰ */
     private String updateId;
 }
