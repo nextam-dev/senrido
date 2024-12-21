@@ -431,3 +431,9 @@ main {
 .processing-data-select{
 	width: 200px;
 }
+
+.item-name{
+	min-height:40px;
+    font-weight: bold;
+    text-align: left;
+}

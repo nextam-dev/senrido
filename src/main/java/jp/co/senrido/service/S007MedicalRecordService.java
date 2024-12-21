@@ -21,7 +21,9 @@ import jp.co.senrido.dao.MCodeDao;
 import jp.co.senrido.dao.TCriticalVisibilityNeedsDao;
 import jp.co.senrido.dao.TCustomerDao;
 import jp.co.senrido.dao.TDiscomfortFatigueDao;
+import jp.co.senrido.dao.TEyePositionDao;
 import jp.co.senrido.dao.TEyeUsageStatusDao;
+import jp.co.senrido.dao.TFullCorrectionDao;
 import jp.co.senrido.dao.TGlareDao;
 import jp.co.senrido.dao.TGlassesUsageDao;
 import jp.co.senrido.dao.THobbiesClubActivitiesDao;
@@ -39,7 +41,9 @@ import jp.co.senrido.dto.TCriticalVisibilityNeedsDto;
 import jp.co.senrido.dto.TCustomerDto;
 import jp.co.senrido.dto.TCustomerInitDto;
 import jp.co.senrido.dto.TDiscomfortFatigueDto;
+import jp.co.senrido.dto.TEyePositionDto;
 import jp.co.senrido.dto.TEyeUsageStatusDto;
+import jp.co.senrido.dto.TFullCorrectionDto;
 import jp.co.senrido.dto.TGlareDto;
 import jp.co.senrido.dto.TGlassesUsageDto;
 import jp.co.senrido.dto.THobbiesClubActivitiesDto;
@@ -57,7 +61,9 @@ import jp.co.senrido.dto.UserDto;
 import jp.co.senrido.entity.TCriticalVisibilityNeeds;
 import jp.co.senrido.entity.TCustomer;
 import jp.co.senrido.entity.TDiscomfortFatigue;
+import jp.co.senrido.entity.TEyePosition;
 import jp.co.senrido.entity.TEyeUsageStatus;
+import jp.co.senrido.entity.TFullCorrection;
 import jp.co.senrido.entity.TGlare;
 import jp.co.senrido.entity.TGlassesUsage;
 import jp.co.senrido.entity.THobbiesClubActivities;
@@ -89,6 +95,12 @@ public class S007MedicalRecordService extends BaseTransactionalService {
 
 	@Autowired
 	private MCodeDao mCodeDao;
+	
+	@Autowired
+	private TEyePositionDao tEyePositionDao;
+	
+	@Autowired
+	private TFullCorrectionDao tFullCorrectionDao;
 
 	@Autowired
 	private TVisitingHospitalDao tVisitingHospitalDao;
@@ -184,11 +196,14 @@ public class S007MedicalRecordService extends BaseTransactionalService {
 		List<TOccupationDto> occupationInfoList = searchByTOccupationInfo(id);
 		// 趣味部活情報取得
 		List<THobbiesClubActivitiesDto> hobbiesClubActivitiesInfoList = searchByTHobbiesClubActivitiesInfo(id);
-
+		// 眼の使用状況情報取得
+		// List<TEyeUsageStatusDto> eyeUsageStatusInfoList =
+		// searchByTEyeUsageStatusInfo(id);
 		// 過去の病歴情報取得
 		List<TPastMedicalHistoryDto> pastMedicalHistoryInfoList = searchByTPastMedicalHistoryInfo(id);
 		// 治療中の疫病・服用薬情報取得
-		List<TOngoingDiseasesMedicationDto> ongoingDiseasesMedicationInfoList = searchByTOngoingDiseasesMedicationInfo(id);
+		List<TOngoingDiseasesMedicationDto> ongoingDiseasesMedicationInfoList = searchByTOngoingDiseasesMedicationInfo(
+				id);
 
 		// 性別リスト取得
 		io.setSexList(mCodeMasterService.getMCode("sex"));
@@ -212,6 +227,10 @@ public class S007MedicalRecordService extends BaseTransactionalService {
 		io.setUseGlassesWithClItems(mCodeMasterService.getMCode(SenridoConstant.DivCode.USE_GLASSES_WITH_CL));
 		// メガネの装用用途リスト取得
 		io.setUseGlassesPurposeItems(mCodeMasterService.getMCode(SenridoConstant.DivCode.USE_GLASSES_PURPOSE));
+		// 読書の習慣リスト取得
+		io.setReadingHabitsItems(mCodeMasterService.getMCode(SenridoConstant.DivCode.READING_HABITS));
+		// 運転の習慣リスト取得
+		io.setDrivingHabitsNameItems(mCodeMasterService.getMCode(SenridoConstant.DivCode.DRIVING_HABITS));
 		// 度数用途リスト取得
 		io.setPrescriptionStrengthNameItems(
 				mCodeMasterService.getMCode(SenridoConstant.DivCode.PRESCRIPTION_STRENGTH_NAME));
@@ -235,6 +254,14 @@ public class S007MedicalRecordService extends BaseTransactionalService {
 		io.setDepositKindCdItems(mCodeMasterService.getMCode(SenridoConstant.DivCode.DEPOSIT_KIND_CD));
 		// 完成連絡方法リスト取得
 		io.setCompletionContactItems(mCodeMasterService.getMCode(SenridoConstant.DivCode.COMPLETION_CONTACT));
+		// PC環境リスト取得
+		io.setComputerTypeList(mCodeMasterService.getMCode(SenridoConstant.DivCode.COMPUTER_TYPE));
+		// ゲーム機種リスト取得
+		io.setGamingNameList(mCodeMasterService.getMCode(SenridoConstant.DivCode.GAMING_NAME));
+		// ゲーム機種リスト取得
+		io.setDrivingItems(mCodeMasterService.getMCode(SenridoConstant.DivCode.OPERATION_INTERVAL));
+		// 免許証種類リスト取得
+		io.setLicenseTypeList(mCodeMasterService.getMCode(SenridoConstant.DivCode.LICENSE_TYPE));
 
 		io.setCustomerInfo(customerInfo);
 		io.setVisitingHospitalInfoList(visitingHospitalInfoList);
@@ -672,6 +699,37 @@ public class S007MedicalRecordService extends BaseTransactionalService {
 	 * @return headerInfo
 	 */
 	@Transactional(rollbackFor = Throwable.class)
+	public List<TEyeUsageStatusDto> searchByTEyeUsageStatusInfo(Integer id) throws Throwable {
+		List<TEyeUsageStatusDto> eyeUsageStatusInfoList = new ArrayList<>();
+
+		// 検索条件に該当するxxx情報を取得
+		List<TEyeUsageStatus> entityList = tEyeUsageStatusDao.selectById(id);
+		if (!ObjectUtils.isEmpty(entityList)) {
+			for (TEyeUsageStatus entity : entityList) {
+				TEyeUsageStatusDto dto = new TEyeUsageStatusDto();
+				BeanUtils.copyProperties(entity, dto);
+				if (!ObjectUtils.isEmpty(entity.getVisitDate())) { // 和暦変換
+					dto.setVisitDateStr(DateUtil.changeFormat(entity.getVisitDate(), DateUtil.DATE_FORMAT_YMD_SLASH));
+				}
+				if (!ObjectUtils.isEmpty(entity.getNextLicenseUpdateDate())) { // 和暦変換
+					dto.setNextLicenseUpdateDateStr(
+							DateUtil.changeFormat(entity.getNextLicenseUpdateDate(), DateUtil.DATE_FORMAT_YMD_SLASH));
+				}
+				eyeUsageStatusInfoList.add(dto);
+			}
+		}
+
+		return eyeUsageStatusInfoList;
+	}
+
+	/**
+	 * 初期表示
+	 *
+	 * @param id
+	 * @param visitDate
+	 * @return headerInfo
+	 */
+	@Transactional(rollbackFor = Throwable.class)
 	public List<TPastMedicalHistoryDto> searchByTPastMedicalHistoryInfo(Integer id) throws Throwable {
 		List<TPastMedicalHistoryDto> pastMedicalHistoryInfoList = new ArrayList<>();
 
@@ -690,7 +748,7 @@ public class S007MedicalRecordService extends BaseTransactionalService {
 
 		return pastMedicalHistoryInfoList;
 	}
-	
+
 	/**
 	 * 初期表示
 	 *
@@ -792,10 +850,8 @@ public class S007MedicalRecordService extends BaseTransactionalService {
 	 */
 
 	@Transactional(rollbackFor = Throwable.class)
-	public String upsertPrescribedLensStrengthInfo(TPrescribedLensStrengthDto dto) throws Throwable {
+	public String upsertEyePosition(TEyePositionDto dto) throws Throwable {
 		String resultCd = SenridoConstant.ERROR;
-
-		TPrescribedLensStrength tPrescribedLensStrength = new TPrescribedLensStrength();
 
 		// 現在日時取得
 		LocalDateTime localTimeNow = createCurrentDate();
@@ -804,48 +860,137 @@ public class S007MedicalRecordService extends BaseTransactionalService {
 		UserDto userDto = createUserDto();
 
 		// お客様情報検索
-		List<TPrescribedLensStrength> tPrescribedLensStrengthResult = tPrescribedLensStrengthDao.selectById(dto.getId(),
-				localTimeNow);
+		TEyePosition tEyePosition = tEyePositionDao.selectByDto(dto.getId(),
+				DateUtil.changeFormatStrToLocalDateTime(dto.getVisitDate(), DateUtil.DATE_FORMAT_YMD_HYPHEN));
 
-		// 取得結果がnullの場合、登録
-		if (ObjectUtils.isEmpty(tPrescribedLensStrengthResult)) {
+		boolean isInsert = false;
+		if (tEyePosition == null) {
+			tEyePosition = new TEyePosition();
+			isInsert = true;
+		}
 
-			// 登録情報を設定
-			BeanUtils.copyProperties(dto, tPrescribedLensStrength);
+		// 登録情報を設定
+		BeanUtils.copyProperties(dto, tEyePosition);
 
-			tPrescribedLensStrength.setId(dto.getId());
-			tPrescribedLensStrength.setVisitDate(localTimeNow);
+		tEyePosition.setId(dto.getId());
+		tEyePosition.setVisitDate(
+				DateUtil.changeFormatStrToLocalDateTime(dto.getVisitDate(), DateUtil.DATE_FORMAT_YMD_HYPHEN));
+
+		tEyePosition.setUpdateDate(localTimeNow);
+		tEyePosition.setUpdateId(userDto.getUserCd());
+		tEyePosition.setDelFlg(SenridoConstant.DELFLG_EFFECT);
+
+		if (isInsert) {
+			tEyePosition.setCreateDate(localTimeNow);
+			tEyePosition.setCreateId(userDto.getUserCd());
+			tEyePositionDao.insert(tEyePosition);
+		} else {
+			tEyePositionDao.update(tEyePosition);
+		}
+
+		resultCd = SenridoConstant.SUCCESS;
+
+		return resultCd;
+	}
+
+	/**
+	 * 登録・更新処理
+	 *
+	 * @param basicNo
+	 * @return standardInfo
+	 */
+
+	@Transactional(rollbackFor = Throwable.class)
+	public String upsertPrescribedLensStrength(TPrescribedLensStrengthDto dto) throws Throwable {
+		String resultCd = SenridoConstant.ERROR;
+
+		// 現在日時取得
+		LocalDateTime localTimeNow = createCurrentDate();
+
+		// ユーザ情報取得
+		UserDto userDto = createUserDto();
+
+		// お客様情報検索
+		TPrescribedLensStrength tPrescribedLensStrength = tPrescribedLensStrengthDao.selectByDto(dto.getId(),
+				DateUtil.changeFormatStrToLocalDateTime(dto.getVisitDate(), DateUtil.DATE_FORMAT_YMD_HYPHEN));
+
+		boolean isInsert = false;
+		if (tPrescribedLensStrength == null) {
+			tPrescribedLensStrength = new TPrescribedLensStrength();
+			isInsert = true;
+		}
+
+		// 登録情報を設定
+		BeanUtils.copyProperties(dto, tPrescribedLensStrength);
+
+		tPrescribedLensStrength.setId(dto.getId());
+		tPrescribedLensStrength.setVisitDate(
+				DateUtil.changeFormatStrToLocalDateTime(dto.getVisitDate(), DateUtil.DATE_FORMAT_YMD_HYPHEN));
+
+		tPrescribedLensStrength.setUpdateDate(localTimeNow);
+		tPrescribedLensStrength.setUpdateId(userDto.getUserCd());
+		tPrescribedLensStrength.setDelFlg(SenridoConstant.DELFLG_EFFECT);
+
+		if (isInsert) {
 			tPrescribedLensStrength.setCreateDate(localTimeNow);
 			tPrescribedLensStrength.setCreateId(userDto.getUserCd());
-			tPrescribedLensStrength.setUpdateDate(localTimeNow);
-			tPrescribedLensStrength.setUpdateId(userDto.getUserCd());
-			tPrescribedLensStrength.setDelFlg(SenridoConstant.DELFLG_EFFECT);
 			tPrescribedLensStrengthDao.insert(tPrescribedLensStrength);
-
-			// 成功処理
-			resultCd = SenridoConstant.SUCCESS;
-
-		} else
-
-		{
-
-			// 更新情報を設定
-			BeanUtils.copyProperties(dto, tPrescribedLensStrength);
-
-			/*
-			 * tVisitingHospital.setVisitDate(
-			 * DateUtil.changeFormatStrToLocalDateTime(dto.getVisitDate(),
-			 * DateUtil.DATE_FORMAT_YMD_HYPHEN));
-			 */
-			tPrescribedLensStrength.setVisitDate(localTimeNow);
-			tPrescribedLensStrength.setUpdateDate(localTimeNow);
-			tPrescribedLensStrength.setUpdateId(userDto.getUserCd());
-			tPrescribedLensStrength.setDelFlg(SenridoConstant.DELFLG_EFFECT);
+		} else {
 			tPrescribedLensStrengthDao.update(tPrescribedLensStrength);
-
-			// 成功処理
-			resultCd = SenridoConstant.SUCCESS;
 		}
+
+		resultCd = SenridoConstant.SUCCESS;
+
+		return resultCd;
+	}
+	
+	/**
+	 * 登録・更新処理
+	 *
+	 * @param basicNo
+	 * @return standardInfo
+	 */
+
+	@Transactional(rollbackFor = Throwable.class)
+	public String upsertFullCorrection(TFullCorrectionDto dto) throws Throwable {
+		String resultCd = SenridoConstant.ERROR;
+
+		// 現在日時取得
+		LocalDateTime localTimeNow = createCurrentDate();
+
+		// ユーザ情報取得
+		UserDto userDto = createUserDto();
+
+		// お客様情報検索
+		TFullCorrection tFullCorrection = tFullCorrectionDao.selectByDto(dto.getId(),
+				DateUtil.changeFormatStrToLocalDateTime(dto.getVisitDate(), DateUtil.DATE_FORMAT_YMD_HYPHEN));
+
+		boolean isInsert = false;
+		if (tFullCorrection == null) {
+			tFullCorrection = new TFullCorrection();
+			isInsert = true;
+		}
+
+		// 登録情報を設定
+		BeanUtils.copyProperties(dto, tFullCorrection);
+
+		tFullCorrection.setId(dto.getId());
+		tFullCorrection.setVisitDate(
+				DateUtil.changeFormatStrToLocalDateTime(dto.getVisitDate(), DateUtil.DATE_FORMAT_YMD_HYPHEN));
+
+		tFullCorrection.setUpdateDate(localTimeNow);
+		tFullCorrection.setUpdateId(userDto.getUserCd());
+		tFullCorrection.setDelFlg(SenridoConstant.DELFLG_EFFECT);
+
+		if (isInsert) {
+			tFullCorrection.setCreateDate(localTimeNow);
+			tFullCorrection.setCreateId(userDto.getUserCd());
+			tFullCorrectionDao.insert(tFullCorrection);
+		} else {
+			tFullCorrectionDao.update(tFullCorrection);
+		}
+
+		resultCd = SenridoConstant.SUCCESS;
 
 		return resultCd;
 	}
@@ -1282,8 +1427,8 @@ public class S007MedicalRecordService extends BaseTransactionalService {
 		}
 		if (dto.getBodySymptoms() != null) {
 			tSymptoms.setBodySymptoms(String.join(",", dto.getBodySymptoms()));
-			tSymptoms
-					.setBodySymptomsName(changeCodeToName(SenridoConstant.DivCode.BODY_SYMPTOMS, dto.getBodySymptoms()));
+			tSymptoms.setBodySymptomsName(
+					changeCodeToName(SenridoConstant.DivCode.BODY_SYMPTOMS, dto.getBodySymptoms()));
 		}
 		tSymptoms.setUpdateDate(localTimeNow);
 		tSymptoms.setUpdateId(userDto.getUserCd());
@@ -1572,8 +1717,6 @@ public class S007MedicalRecordService extends BaseTransactionalService {
 	public String upsertUsageStatus(TEyeUsageStatusDto dto) throws Throwable {
 		String resultCd = SenridoConstant.ERROR;
 
-		TEyeUsageStatus tEyeUsageStatus = new TEyeUsageStatus();
-
 		// 現在日時取得
 		LocalDateTime localTimeNow = createCurrentDate();
 
@@ -1581,49 +1724,60 @@ public class S007MedicalRecordService extends BaseTransactionalService {
 		UserDto userDto = createUserDto();
 
 		// お客様情報検索
-		// LocalDateTime visitDate =
-		// Timestamp.valueOf(dto.getVisitDate()).toLocalDateTime();
-		List<TEyeUsageStatus> tEyeUsageStatusResult = tEyeUsageStatusDao.selectById(dto.getId(), localTimeNow);
+		TEyeUsageStatus tEyeUsageStatus = tEyeUsageStatusDao.selectByDto(dto.getId(),
+				DateUtil.changeFormatStrToLocalDateTime(dto.getVisitDate(), DateUtil.DATE_FORMAT_YMD_HYPHEN));
 
-		// 取得結果がnullの場合、登録
-		if (ObjectUtils.isEmpty(tEyeUsageStatusResult)) {
+		boolean isInsert = false;
+		if (tEyeUsageStatus == null) {
+			tEyeUsageStatus = new TEyeUsageStatus();
+			isInsert = true;
+		}
 
-			// 登録情報を設定
-			BeanUtils.copyProperties(dto, tEyeUsageStatus);
+		// 登録情報を設定
+		BeanUtils.copyProperties(dto, tEyeUsageStatus);
 
-			tEyeUsageStatus.setId(dto.getId());
-			tEyeUsageStatus.setVisitDate(localTimeNow);
+		tEyeUsageStatus.setId(dto.getId());
+		tEyeUsageStatus.setVisitDate(
+				DateUtil.changeFormatStrToLocalDateTime(dto.getVisitDate(), DateUtil.DATE_FORMAT_YMD_HYPHEN));
+		if (dto.getComputerType() != null) {
+			tEyeUsageStatus.setComputerType(String.join(",", dto.getComputerType()));
+			tEyeUsageStatus.setComputerTypeName(
+					changeCodeToName(SenridoConstant.DivCode.COMPUTER_TYPE, dto.getComputerType()));
+		}
+		if (dto.getReadingHabits() != null) {
+			tEyeUsageStatus.setReadingHabits(String.join(",", dto.getReadingHabits()));
+			tEyeUsageStatus.setReadingHabitsName(
+					changeCodeToName(SenridoConstant.DivCode.READING_HABITS, dto.getReadingHabits()));
+		}
+		if (dto.getDrivingHabits() != null) {
+			tEyeUsageStatus.setDrivingHabits(String.join(",", dto.getDrivingHabits()));
+			tEyeUsageStatus.setDrivingHabitsName(
+					changeCodeToName(SenridoConstant.DivCode.DRIVING_HABITS, dto.getDrivingHabits()));
+		}
+		if (dto.getDriving() != null) {
+			tEyeUsageStatus.setDriving(String.join(",", dto.getDriving()));
+			tEyeUsageStatus
+					.setDrivingEyeName(changeCodeToName(SenridoConstant.DivCode.OPERATION_INTERVAL, dto.getDriving()));
+		}
+		if (dto.getLicenseType() != null) {
+			tEyeUsageStatus.setLicenseType(String.join(",", dto.getLicenseType()));
+			tEyeUsageStatus
+					.setLicenseTypeName(changeCodeToName(SenridoConstant.DivCode.LICENSE_TYPE, dto.getLicenseType()));
+		}
+		tEyeUsageStatus.setNextLicenseUpdateDate(DateUtil.changeFormatStrToLocalDate(dto.getNextLicenseUpdateDate()));
+		tEyeUsageStatus.setUpdateDate(localTimeNow);
+		tEyeUsageStatus.setUpdateId(userDto.getUserCd());
+		tEyeUsageStatus.setDelFlg(SenridoConstant.DELFLG_EFFECT);
+
+		if (isInsert) {
 			tEyeUsageStatus.setCreateDate(localTimeNow);
 			tEyeUsageStatus.setCreateId(userDto.getUserCd());
-			tEyeUsageStatus.setUpdateDate(localTimeNow);
-			tEyeUsageStatus.setUpdateId(userDto.getUserCd());
-			tEyeUsageStatus.setDelFlg(SenridoConstant.DELFLG_EFFECT);
 			tEyeUsageStatusDao.insert(tEyeUsageStatus);
-
-			// 成功処理
-			resultCd = SenridoConstant.SUCCESS;
-
-		} else
-
-		{
-
-			// 更新情報を設定
-			BeanUtils.copyProperties(dto, tEyeUsageStatus);
-
-			/*
-			 * tVisitingHospital.setVisitDate(
-			 * DateUtil.changeFormatStrToLocalDateTime(dto.getVisitDate(),
-			 * DateUtil.DATE_FORMAT_YMD_HYPHEN));
-			 */
-			tEyeUsageStatus.setVisitDate(localTimeNow);
-			tEyeUsageStatus.setUpdateDate(localTimeNow);
-			tEyeUsageStatus.setUpdateId(userDto.getUserCd());
-			tEyeUsageStatus.setDelFlg(SenridoConstant.DELFLG_EFFECT);
+		} else {
 			tEyeUsageStatusDao.update(tEyeUsageStatus);
-
-			// 成功処理
-			resultCd = SenridoConstant.SUCCESS;
 		}
+
+		resultCd = SenridoConstant.SUCCESS;
 
 		return resultCd;
 	}

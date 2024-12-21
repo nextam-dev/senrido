@@ -1,5 +1,7 @@
 package jp.co.senrido.dto;
 
+import javax.validation.constraints.Size;
+
 import jp.co.senrido.annotation.MessageName;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,17 +11,19 @@ import lombok.Setter;
 public class TOngoingDiseasesMedicationDto {
 
 	/** お客様ID */
-    @MessageName("お客様ID")
     private Integer id;
 
     /** 来店日 */
-    @MessageName("来店日")
     private String visitDate;
     private String visitDateStr;
 
-    /** ���Ò��̎��a */
+    /** 治療中の疾病 */
+    @Size(max = 2000)
+    @MessageName("治療中の疾病")
     private String ongoingConditions;
 
-    /** ���p�� */
+    /** 服用薬 */
+    @Size(max = 2000)
+    @MessageName("服用薬")
     private String medications;
 }

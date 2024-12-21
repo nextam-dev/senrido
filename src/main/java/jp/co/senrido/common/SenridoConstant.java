@@ -70,6 +70,10 @@ public class SenridoConstant {
 		public final static String USE_GLASSES_WITH_CL = "use_glasses_with_cl";
 		/** メガネの装用用途 */
 		public final static String USE_GLASSES_PURPOSE = "use_glasses_purpose";
+		/** 読書の習慣*/
+		public final static String READING_HABITS = "reading_habits";
+		/** 運転の習慣*/
+		public final static String DRIVING_HABITS = "driving_habits";
 		/** 度数用途 */
 		public final static String PRESCRIPTION_STRENGTH_NAME = "prescription_strength_name";
 		/** ピッチリスト（輻輳　開散　水平斜位量　上下寄せ　上下斜位量　P）*/
@@ -92,6 +96,20 @@ public class SenridoConstant {
 		public final static String DEPOSIT_KIND_CD = "deposit_kind_cd";
 		/** 完成連絡方法リスト */
 		public final static String COMPLETION_CONTACT = "completion_contact";
+		/** PC環境リスト */
+		public final static String COMPUTER_TYPE = "computer_type";
+		/** ゲーム機種リスト */
+		public final static String GAMING_NAME = "gaming_name";
+		/** 運転間隔リスト */
+		public final static String OPERATION_INTERVAL = "operation_interval";
+		/** 運転免許証リスト */
+		public final static String LICENSE_TYPE = "license_type";
+		/** 店舗 */
+		public final static String SHOP_CD = "shop_cd";
+		/** 性別 */
+		public final static String SEX = "sex";
+		/** 担当者 */
+		public final static String PERSON_IN_CHARGE = "person_in_charge_cd";
 	}
 
 	/**

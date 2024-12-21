@@ -9,6 +9,10 @@ import org.seasar.doma.Table;
 
 import lombok.Data;
 
+/**
+ * @author takam
+ *
+ */
 @Entity(listener = THobbiesClubActivitiesListener.class)
 @Table(name = "t_hobbies_club_activities")
 @Data

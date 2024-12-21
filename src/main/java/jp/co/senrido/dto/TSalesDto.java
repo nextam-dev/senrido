@@ -2,8 +2,11 @@ package jp.co.senrido.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import jp.co.senrido.annotation.MessageName;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,99 +14,105 @@ import lombok.Setter;
 @Setter
 public class TSalesDto {
 
-    /** ���q�lID */
+	/** お客様ID */
     private Integer id;
 
-    /** ���X�� */
-    private LocalDateTime visitDate;
+    /** 来店日 */
+    private String visitDate;
+    private String visitDateStr;
 
-    /** �A�� */
+    /** 連番 */
     private Integer seq;
+    
+    /** 小計 */
+    @MessageName("小計")
+    @Pattern(regexp = "^[0-9]*$", message = "{0}は半角数字で入力してください。")
+    private BigDecimal subtotalPrice;
 
-    /** ����� */
+    /** 消費税 */
+    @MessageName("消費税")
+    @Pattern(regexp = "^[0-9]*$", message = "{0}は半角数字で入力してください。")
     private BigDecimal tax;
 
-    /** ���v���z */
+    /** 合計金額 */
     private BigDecimal totalPrice;
 
-    /** ����1 */
+    /** 内金1 */
+    @MessageName("内金")
+    @Pattern(regexp = "^[0-9]*$", message = "{0}は半角数字で入力してください。")
     private BigDecimal deposit1;
 
-    /** ������ʃR�[�h1 */
+    /** 内金1種別コード */
     private String depositKindCd1;
 
-    /** ����2 */
+    /** 内金2 */
+    @MessageName("内金")
+    @Pattern(regexp = "^[0-9]*$", message = "{0}は半角数字で入力してください。")
     private BigDecimal deposit2;
 
-    /** ������ʃR�[�h2 */
+    /** 内金2種別コード */
     private String depositKindCd2;
 
-    /** �c��1 */
+    /** 残金1 */
+    @MessageName("残金")
+    @Pattern(regexp = "^[0-9]*$", message = "{0}は半角数字で入力してください。")
     private BigDecimal balance1;
 
-    /** �c����ʃR�[�h1 */
+    /** 残金種別コード1 */
     private String balanceKindCd1;
 
-    /** �c��2 */
+    /** 残金2 */
+    @MessageName("残金")
+    @Pattern(regexp = "^[0-9]*$", message = "{0}は半角数字で入力してください。")
     private BigDecimal balance2;
 
-    /** �c����ʃR�[�h2 */
+    /** 残金種別コード2 */
     private String balanceKindCd2;
+    
+    /** メモ */
+    @Size(max = 400)
+    @MessageName("メモ")
+    private String memo;
 
-    /** �t���[���J�[�u�� */
+    /** フレームカーブ数 */
     private Integer frameCurveCount;
 
-    /** �����Y�J�[�u�� */
+    /** レンズカーブ数 */
     private Integer lensCurveCount;
 
-    /** �T�C�Y */
+    /** サイズ */
     private Integer size;
 
-    /** �a�[�� */
+    /**　溝深さ */
     private Integer grooveDepth;
 
-    /** �a�� */
+    /** 溝幅 */
     private Integer grooveWidth;
 
-    /** ���H */
+    /** 加工 */
     private String processing;
 
-    /** �`�F�b�N */
+    /** チェック */
     private String glassesCheck;
 
-    /** ���n�� */
+    /** お渡し */
     private String delivery;
 
-    /** �t�B�b�e�B���O */
+    /** フィッティング*/
     private String fitting;
 
-    /** �����A�� */
+    /** 完成連絡 */
     private String completionContact;
 
-    /** �����A������ */
+    /** 完成連絡名称*/
     private String completionContactName;
 
-    /** �����\��� */
+    /** 完成予定日 */
     private LocalDate completionScheduledDate;
 
-    /** �����Y������ */
+    /** レンズ発送日 */
     private LocalDate lensShippingDate;
 
-    /** �A���� */
+    /** 連絡日 */
     private LocalDate contactDate;
-
-    /** �폜�t���O */
-    private Boolean delFlg;
-
-    /** �o�^���� */
-    private LocalDateTime createDate;
-
-    /** �o�^�҃R�[�h */
-    private String createId;
-
-    /** �X�V���� */
-    private LocalDateTime updateDate;
-
-    /** �X�V�҃R�[�h */
-    private String updateId;
 }

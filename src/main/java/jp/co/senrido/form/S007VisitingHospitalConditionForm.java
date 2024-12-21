@@ -10,7 +10,9 @@ import javax.validation.Valid;
 import jp.co.senrido.dto.TCriticalVisibilityNeedsDto;
 import jp.co.senrido.dto.TCustomerDto;
 import jp.co.senrido.dto.TDiscomfortFatigueDto;
+import jp.co.senrido.dto.TEyePositionDto;
 import jp.co.senrido.dto.TEyeUsageStatusDto;
+import jp.co.senrido.dto.TFullCorrectionDto;
 import jp.co.senrido.dto.TGlareDto;
 import jp.co.senrido.dto.TGlassesUsageDto;
 import jp.co.senrido.dto.THobbiesClubActivitiesDto;
@@ -48,7 +50,15 @@ public class S007VisitingHospitalConditionForm extends BaseSearchForm {
 	
 	/** 各入力対象項目 */
 	@Valid
+	private TEyePositionDto eyePositionInfo;
+	
+	/** 各入力対象項目 */
+	@Valid
 	private TPrescribedLensStrengthDto prescribedLensStrengthInfo;
+	
+	/** 各入力対象項目 */
+	@Valid
+	private TFullCorrectionDto FullCorrectionInfo;
 		
 	/** 各入力対象項目 */
 	@Valid

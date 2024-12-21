@@ -13,6 +13,7 @@ import jp.co.senrido.annotation.MessageName;
 import jp.co.senrido.validation.constraints.BiteSize;
 
 /**
+ * @author takam
  *
  */
 @Entity(listener = MCodeListener.class)

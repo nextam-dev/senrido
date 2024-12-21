@@ -27,7 +27,13 @@ public interface TPrescribedLensStrengthDao {
 	 * @return the TVisitingHospital entity List
 	 */
 	@Select
-	List<TPrescribedLensStrength> selectById(Integer id, LocalDateTime visitDate);
+	List<TPrescribedLensStrength> selectById(Integer id);
+	
+	/**
+	 * @return the TVisitingHospital entity List
+	 */
+	@Select
+	TPrescribedLensStrength selectByDto(Integer id, LocalDateTime visitDate);
 
 	/**
 	 * @return the TVisitingHospital entity List

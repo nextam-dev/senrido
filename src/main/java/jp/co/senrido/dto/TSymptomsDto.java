@@ -2,7 +2,6 @@ package jp.co.senrido.dto;
 
 import java.util.List;
 
-import jp.co.senrido.annotation.MessageName;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,36 +10,28 @@ import lombok.Setter;
 public class TSymptomsDto {
 
 	 /** お客様ID */
-    @MessageName("お客様ID")
     private Integer id;
 
     /** 来店日 */
-    @MessageName("来店日")
     private String visitDate;
     private String visitDateStr;
 
-    /** ��̏Ǐ� */
-    @MessageName("��̏Ǐ�")
+    /** 眼の症状 */
     private List<String> eyeSymptoms;
 
-    /** ��̏Ǐ󂻂̑� */
-    @MessageName("��̏Ǐ󂻂̑�")
+    /** 眼の症状その他 */
     private String eyeSymptomsOther;
 
-    /** ��̏Ǐ󖼏� */
-    @MessageName("��̏Ǐ󖼏�")
+    /** 眼の症状名称 */
     private String eyeSymptomsName;
 
-    /** �g�̂̏Ǐ� */
-    @MessageName("�g�̂̏Ǐ�")
+    /** 身体の症状 */
     private List<String> bodySymptoms;
 
-    /** �g�̂̏Ǐ󂻂̑� */
-    @MessageName("�g�̂̏Ǐ󂻂̑�")
+    /** 身体の症状その他 */
     private String bodySymptomsOther;
 
-    /** �g�̂̏Ǐ󖼏� */
-    @MessageName("�g�̂̏Ǐ󖼏�")
+    /**　身体の症状名称*/
     private String bodySymptomsName;
 
 }

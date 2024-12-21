@@ -15,9 +15,16 @@
                 loginFig: true,
                 // ハンバーガーメニュー
                 isMenuOpen: false,
+                // 編集モーダル
+                isEdit: false,
                 // パラメータ
                 id: "",
                 file: "",
+              //選択された写真の実体を保持する要素
+    			dataFile:{
+    				fileImage:"img/eye-image1.png",
+    				signImg: null,
+    			},
                 
                 //　★★初期表示（過去分）用格納★★
                 // お客様情報
@@ -116,6 +123,10 @@
                 useGlassesWithClItems:[],
                 // メガネの装用－用途
                 useGlassesPurposeItems:[],
+                // 読書の習慣
+                readingHabitsItems:[],
+                // 運転の習慣
+                drivingHabitsNameItems:[],
                 // 用途
                 prescriptionStrengthNameItems:[],
                 // ピッチリスト（輻輳 開散 水平斜位量 上下寄せ 上下斜位量 P）
@@ -142,7 +153,14 @@
                 curveItems:[],
                 // カーブリスト（溝深さ、溝幅）
                 curveGrooveItems:[],
-                // 担当者リスト
+                // PC環境リスト
+                computerTypeList:[],
+                // ゲーム機種リスト
+                gamingNameList:[],
+                // 運転間隔リスト
+                drivingItems:[],
+                // 運転免許証リスト
+                licenseTypeList:[],
                 
                 
                 // モーダル用
@@ -257,6 +275,8 @@
         			self.useGlassesCurrentItems = response.data.useGlassesCurrentItems;
         			self.useGlassesWithClItems = response.data.useGlassesWithClItems;
         			self.useGlassesPurposeItems = response.data.useGlassesPurposeItems;
+        			self.readingHabitsItems = response.data.readingHabitsItems;
+        			self.drivingHabitsNameItems = response.data.drivingHabitsNameItems;
         			self.prescriptionStrengthNameItems = response.data.prescriptionStrengthNameItems;
         			self.pitchRangeRyePItems = response.data.pitchRangeRyePItems;
         			self.pitchRangeNpcEyepointItems = response.data.pitchRangeNpcEyepointItems;
@@ -268,6 +288,10 @@
         			self.optionItems = response.data.optionItems;
         			self.depositKindCdItems = response.data.depositKindCdItems;
         			self.completionContactItems = response.data.completionContactItems;
+        			self.gamingNameList = response.data.gamingNameList;
+        			self.computerTypeList = response.data.computerTypeList;
+        			self.drivingItems = response.data.drivingItems;
+        			self.licenseTypeList = response.data.licenseTypeList;
         			//self.curveItems = response.data.curveItems;
         			//self.curveGrooveItems = response.data.curveGrooveItems;
         			
@@ -423,6 +447,12 @@
                 	this.modalItem.useGlassesCurrentItems = this.useGlassesCurrentItems;
                 	this.modalItem.useGlassesWithClItems = this.useGlassesWithClItems;
                 	this.modalItem.useGlassesPurposeItems = this.useGlassesPurposeItems;
+                	this.modalItem.readingHabitsItems = this.readingHabitsItems;
+                	this.modalItem.drivingHabitsNameItems = this.drivingHabitsNameItems;
+                	this.modalItem.computerTypeList = this.computerTypeList;
+                	this.modalItem.gamingNameList = this.gamingNameList;
+                	this.modalItem.drivingItems = this.drivingItems;
+                	this.modalItem.licenseTypeList = this.licenseTypeList;
                     this.$refs[modalRef].open(this.modalItem);
                 }
             },
@@ -439,6 +469,93 @@
             	// スケジュール並び替えモーダル表示
             	this.$refs.contactModal.open(this.customerInfo);
             },
+            upsertEyePositionInfo:function() {
+        		var self = this;
+        		self.showModalProcessing();
+    			var postItem = {
+    					eyePositionInfo.id = self.id;
+    					eyePositionInfo.visitData = customerInfo.visitData;
+    					eyePositionInfo: self.eyePositionInfo,
+    			};
+    			axios.post(editUrl('/s007MedicalRecord/upsertEyePosition'), postItem)
+    			.then(response => {
+    				console.log("リクエスト成功:", response.data);
+    				// バリデーション・システムエラーチェック
+    				var alertMessage = checkValid(response.data.resultCd, response.data.messageList);
+                    if(alertMessage.length != 0) {
+                    	alert(alertMessage);
+                    	self.closeModalProcessing();
+                    	return;
+                    }
+    				// 処理後メッセージ
+    				alert(response.data.message);
+    				self.getData();
+    				self.closeModalProcessing();
+    			})
+    			.catch(err => {
+    				console.log('err:', err);
+    				err_function(err);
+    				self.closeModalProcessing();
+    			});
+    		},
+    		upsertPrescribedLensStrengthInfo:function() {
+         		var self = this;
+         		self.showModalProcessing();
+     			var postItem = {
+     					prescribedLensStrengthInfo.id = self.id;
+     					prescribedLensStrengthInfo.visitData = customerInfo.visitData;
+     					prescribedLensStrengthInfo: self.prescribedLensStrengthInfo,
+     			};
+     			axios.post(editUrl('/s007MedicalRecord/upsertPrescribedLensStrength'), postItem)
+     			.then(response => {
+     				console.log("リクエスト成功:", response.data);
+     				// バリデーション・システムエラーチェック
+     				var alertMessage = checkValid(response.data.resultCd, response.data.messageList);
+                     if(alertMessage.length != 0) {
+                     	alert(alertMessage);
+                     	self.closeModalProcessing();
+                     	return;
+                     }
+     				// 処理後メッセージ
+     				alert(response.data.message);
+     				self.getData();
+     				self.closeModalProcessing();
+     			})
+     			.catch(err => {
+     				console.log('err:', err);
+     				err_function(err);
+     				self.closeModalProcessing();
+     			});
+     		},
+     		 upsertFullCorrectionInfo:function() {
+         		var self = this;
+         		self.showModalProcessing();
+     			var postItem = {
+     					eyePositionInfo.id = self.id;
+     					eyePositionInfo.visitData = customerInfo.visitData;
+     					eyePositionInfo: self.eyePositionInfo,
+     			};
+     			axios.post(editUrl('/s007MedicalRecord/upsertFullCorrection'), postItem)
+     			.then(response => {
+     				console.log("リクエスト成功:", response.data);
+     				// バリデーション・システムエラーチェック
+     				var alertMessage = checkValid(response.data.resultCd, response.data.messageList);
+                     if(alertMessage.length != 0) {
+                     	alert(alertMessage);
+                     	self.closeModalProcessing();
+                     	return;
+                     }
+     				// 処理後メッセージ
+     				alert(response.data.message);
+     				self.getData();
+     				self.closeModalProcessing();
+     			})
+     			.catch(err => {
+     				console.log('err:', err);
+     				err_function(err);
+     				self.closeModalProcessing();
+     			});
+     		},
             addBt: function(item){
             	if(item === "prescribedLensStrength"){
             		this.prescribedLensStrengthInfoList.push({
@@ -451,6 +568,26 @@
                     });	
             	}
             },
+            signModal: function () {
+        		var result = true;
+        		if(getRGBASummary() > 0 || (this.upsertEyePositionInfo.eyePositionImage && !this.isUpdateSign)){
+        			result = confirm('現在入力されている署名情報をクリアしてよろしいですか？');
+        		}
+        		if(result) {
+        			this.isEdit = true;
+        			clearCan();
+    			}
+    		},
+    		// 署名情報の再取得
+    		editClose: function () {
+    			this.isEdit = false;
+    			// 画像データを持っている場合、そのデータを表示させる。
+    			if (this.upsertEyePositionInfo.signature) {
+    				this.dataFile.signImg = this.upsertEyePositionInfo.eyePositionImage;
+    				this.dataFile.fileImage = "data:image/png;base64," + this.upsertEyePositionInfo.eyePositionImage;
+    				document.getElementById("img").setAttribute("src","data:image/png;base64," + this.upsertEyePositionInfo.eyePositionImage);
+    			}
+        	},
             handleFileUpload: function(event) {
                 const file = event.target.files[0];
                 if (!file) return;

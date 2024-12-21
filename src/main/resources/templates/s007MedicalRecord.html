@@ -34,6 +34,7 @@
     <script src="/js/component/createDosuModal.js" th:src="@{/js/component/createDosuModal.js}"></script>
     <script src="/js/component/kanzenKyoseiModal.js" th:src="@{/js/component/kanzenKyoseiModal.js}"></script>
     <script src="/js/component/contactModal.js" th:src="@{/js/component/contactModal.js}"></script>
+    <script src="/js/component/sign.js" th:src="@{/js/component/sign.js}"></script>
 
 </head>
 
@@ -57,7 +58,7 @@
 	        <treatment-disease-modal ref="treatmentDiseaseModal"></treatment-disease-modal>
 	        <occupation-modal ref="occupationModal"></occupation-modal>
 	        <hobby-and-club-modal ref="hobbyAndClubModal"></hobby-and-club-modal>
-	        <!-- <usage-status-modal ref="usageStatusModal"></usage-status-modal> -->
+	        <usage-status-modal ref="usageStatusModal"></usage-status-modal>
 			<div class="row">
 				<div class="col-5" style="text-align: left; margin-top: 20px; font-size:25px;">
 					<label>お客様情報詳細画面</label>
@@ -726,7 +727,7 @@
 							</div>
 							<div class="col-8"></div>
 						</div>
-						<!-- 前回&前々回 -->
+						<!-- 今回 -->
 						<div>
 							<div class="row">
 								<div class="col-6">
@@ -742,7 +743,35 @@
 											<div class="col-4"><label>他覚：</label></div>
 											<div class="col-4"><label>自覚：</label></div>
 										</div>
-										<div><img th:src="@{/img/eye-image1.png}"></div>
+										<!-- 眼の画像 -->
+										<div><img id='img' th:src="@{/img/eye-image1.png}" @click="signModal"></div>
+										<div class="modal-mask" v-show="isEdit">
+											<div class="modalWrapperEdit">
+												<div>
+													<button class="pinkButtonRadius" style="width: 36px;" @click="editClose">
+														<span class="material-icons closeButton">close</span>
+													</button>
+												</div>
+												<div class="canvasArea">
+													<div class="edit-tittle">
+														<label>ご署名入力</label>
+													</div>
+													<div>
+														<!-- キャンバス -->
+														<canvas id="can2" width="700" height="400"></canvas>
+														<div class="button-range">
+															<!-- 登録ボタン -->
+															<button class="pinkButton">
+																<span class="icon">
+																	<i class="fas fa-pen"></i>
+																	登録
+																</span>
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 									<div style="text-align: left;" class="margin" v-if="isFarSelected">
 										<label class="diamondTitle" style="font-size: 20px;">◆水平斜位量◆</label>

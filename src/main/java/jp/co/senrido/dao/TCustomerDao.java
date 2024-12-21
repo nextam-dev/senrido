@@ -12,6 +12,7 @@ import org.seasar.doma.Select;
 import org.seasar.doma.Update;
 import org.seasar.doma.boot.ConfigAutowireable;
 
+import jp.co.senrido.dto.TCustomerSearchDto;
 import jp.co.senrido.entity.TCustomer;
 import jp.co.senrido.entity.ext.TCustomerExt;
 
@@ -34,6 +35,29 @@ public interface TCustomerDao {
 	 */
 	@Select
 	List<TCustomer> selectAll();
+	/**
+	 * @return the TCustomer entity List
+	 */
+	@Select
+	List<TCustomerExt> selectCustomerById(TCustomerSearchDto customerSerch);
+
+	/**
+	 * @return the TCustomer entity List
+	 */
+	@Select
+	List<TCustomerExt> selectSortById(TCustomerSearchDto customerSerch);
+
+	/**
+	 * @return the TCustomer entity List
+	 */
+	@Select
+	List<TCustomerExt> selectCustomerReservationById(TCustomerSearchDto customerSerch);
+	
+	/**
+	 * @return the TCustomer entity List
+	 */
+	@Select
+	List<TCustomerExt> selectCustomerReservationSortById(TCustomerSearchDto customerSerch);
 	
 	/**
 	 * @return the TCustomer entity List

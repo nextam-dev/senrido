@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 import jp.co.senrido.dto.TCriticalVisibilityNeedsDto;
 import jp.co.senrido.dto.TCustomerDto;
-import jp.co.senrido.dto.TSurveyDto;
+import jp.co.senrido.dto.TCustomerSearchDto;
 import jp.co.senrido.dto.TDiscomfortFatigueDto;
 import jp.co.senrido.dto.TGlareDto;
 import jp.co.senrido.dto.TGlassesUsageDto;
@@ -29,6 +29,7 @@ import jp.co.senrido.dto.TOccupationDto;
 import jp.co.senrido.dto.TOngoingDiseasesMedicationDto;
 import jp.co.senrido.dto.TPastMedicalHistoryDto;
 import jp.co.senrido.dto.TSurgeryDto;
+import jp.co.senrido.dto.TSurveyDto;
 import jp.co.senrido.dto.TSymptomsDto;
 import jp.co.senrido.dto.TTroubleDto;
 import jp.co.senrido.dto.TUsageStatusDto;
@@ -140,6 +141,10 @@ public class CommonIO implements Serializable {
 	List<MCode> useGlassesWithClItems = new ArrayList<MCode>();
 	/** メガネの装用用途 */
 	List<MCode> useGlassesPurposeItems = new ArrayList<MCode>();
+	/** 読書の習慣 */
+	List<MCode> readingHabitsItems = new ArrayList<MCode>();
+	/** 運転の習慣 */
+	List<MCode> drivingHabitsNameItems = new ArrayList<MCode>();
 	/** 度数用途*/
 	List<MCode> prescriptionStrengthNameItems = new ArrayList<MCode>();
 	/** ピッチリスト（輻輳　開散　水平斜位量　上下寄せ　上下斜位量　P）*/
@@ -162,7 +167,17 @@ public class CommonIO implements Serializable {
 	List<MCode> depositKindCdItems = new ArrayList<MCode>();
 	/** 完成連絡方法リスト */
 	List<MCode> completionContactItems = new ArrayList<MCode>();
-	
+	/** 運転間隔リスト */
+	List<MCode> drivingItems = new ArrayList<MCode>();
+	/** 担当者 */
+	List<MCode> personInChargeList = new ArrayList<MCode>();
+	/** 店舗 */
+	List<MCode> shopNameList = new ArrayList<MCode>();
+	// --------------------------------
+	// s005
+	// --------------------------------
+	/** 検索条件情報 */
+	List<TCustomerSearchDto> tCustomer = new ArrayList<TCustomerSearchDto>();
 	
 	// --------------------------------
 	// s007

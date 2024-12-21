@@ -21,7 +21,6 @@ import jp.co.senrido.common.SenridoConstant;
 import jp.co.senrido.form.S007MedicalRecordForm;
 import jp.co.senrido.form.S007VisitingHospitalConditionForm;
 import jp.co.senrido.json.CommonIO;
-import jp.co.senrido.service.MCodeMasterService;
 import jp.co.senrido.service.S007MedicalRecordService;
 
 /**
@@ -86,6 +85,34 @@ public class S007MedicalRecordRestController {
 	}
 	
 	/**
+	 * 登録・更新（眼位）
+	 *
+	 * @param form
+	 * @param result
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/upsertEyePosition", method = RequestMethod.POST)
+	public CommonIO upsertEyePositionInfo(@Valid @RequestBody S007VisitingHospitalConditionForm form) throws Throwable {
+		CommonIO io = new CommonIO();
+		String resultCd = "";
+		
+		// 登録・更新処理
+		resultCd = s007MedicalRecordService.upsertEyePosition(form.getEyePositionInfo());
+
+		// エラーの場合、処理を終了する
+		if (Objects.equals(resultCd, SenridoConstant.ERROR)) {
+			io.setResultCd(resultCd);
+			io.setMessage(msg.getMessage("error.notExist", null, Locale.JAPANESE));
+			return io;
+		}
+
+		io.setResultCd(SenridoConstant.SUCCESS);
+		io.setMessage(msg.getMessage("success.register", null, Locale.JAPANESE));
+		return io;
+	}
+	
+	/**
 	 * 登録・更新（作成度数）
 	 *
 	 * @param form
@@ -93,13 +120,41 @@ public class S007MedicalRecordRestController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "/upsertPrescribedLensStrengthInfo", method = RequestMethod.POST)
+	@RequestMapping(value = "/upsertPrescribedLensStrength", method = RequestMethod.POST)
 	public CommonIO addList(@Valid @RequestBody S007VisitingHospitalConditionForm form) throws Throwable {
 		CommonIO io = new CommonIO();
 		String resultCd = "";
 		
 		// 登録・更新処理
-		resultCd = s007MedicalRecordService.upsertPrescribedLensStrengthInfo(form.getPrescribedLensStrengthInfo());
+		resultCd = s007MedicalRecordService.upsertPrescribedLensStrength(form.getPrescribedLensStrengthInfo());
+
+		// エラーの場合、処理を終了する
+		if (Objects.equals(resultCd, SenridoConstant.ERROR)) {
+			io.setResultCd(resultCd);
+			io.setMessage(msg.getMessage("error.notExist", null, Locale.JAPANESE));
+			return io;
+		}
+
+		io.setResultCd(SenridoConstant.SUCCESS);
+		io.setMessage(msg.getMessage("success.register", null, Locale.JAPANESE));
+		return io;
+	}
+	
+	/**
+	 * 登録・更新（作成度数）
+	 *
+	 * @param form
+	 * @param result
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/upsertFullCorrection", method = RequestMethod.POST)
+	public CommonIO upsertFullCorrectionInfo(@Valid @RequestBody S007VisitingHospitalConditionForm form) throws Throwable {
+		CommonIO io = new CommonIO();
+		String resultCd = "";
+		
+		// 登録・更新処理
+		resultCd = s007MedicalRecordService.upsertFullCorrection(form.getFullCorrectionInfo());
 
 		// エラーの場合、処理を終了する
 		if (Objects.equals(resultCd, SenridoConstant.ERROR)) {

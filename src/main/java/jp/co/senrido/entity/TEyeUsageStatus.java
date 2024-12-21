@@ -1,5 +1,6 @@
 package jp.co.senrido.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.seasar.doma.Column;
@@ -14,156 +15,164 @@ import lombok.Data;
 @Data
 public class TEyeUsageStatus {
 
-    /** ‚¨‹q—lID */
+    /** ï¿½ï¿½ï¿½qï¿½lID */
     @Id
     @Column(name = "id")
     Integer id;
 
-    /** —ˆ“X“ú */
+    /** ï¿½ï¿½ï¿½Xï¿½ï¿½ */
     @Column(name = "visit_date")
     LocalDateTime visitDate;
 
-    /** Œg‘ÑEƒXƒ}ƒz‚Ìg—pŠÔ */
+    /** ï¿½gï¿½ÑEï¿½Xï¿½}ï¿½zï¿½Ìgï¿½pï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "use_time_mobile_phone")
     Integer useTimeMobilePhone;
 
-    /** Œg‘ÑEƒXƒ}ƒz‚Ì‰æ–Ê‚Æ‚Ì‹——£ */
+    /** ï¿½gï¿½ÑEï¿½Xï¿½}ï¿½zï¿½Ì‰ï¿½Ê‚Æ‚Ì‹ï¿½ï¿½ï¿½ */
     @Column(name = "distance_mobile_phone")
     Integer distanceMobilePhone;
 
-    /** ƒpƒ\ƒRƒ“í—Ş */
+    /** ï¿½pï¿½\ï¿½Rï¿½ï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "computer_type")
     String computerType;
 
-    /** ƒpƒ\ƒRƒ“í—Ş‚»‚Ì‘¼ */
+    /** ï¿½pï¿½\ï¿½Rï¿½ï¿½ï¿½ï¿½Ş‚ï¿½ï¿½Ì‘ï¿½ */
     @Column(name = "computer_type_other")
     String computerTypeOther;
 
-    /** ƒpƒ\ƒRƒ“í—Ş–¼Ì */
+    /** ï¿½pï¿½\ï¿½Rï¿½ï¿½ï¿½ï¿½Ş–ï¿½ï¿½ï¿½ */
     @Column(name = "computer_type_name")
     String computerTypeName;
 
-    /** ƒ^ƒuƒŒƒbƒg‚Ìg—pŠÔ */
+    /** ï¿½^ï¿½uï¿½ï¿½ï¿½bï¿½gï¿½Ìgï¿½pï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "use_time_tablet")
     Integer useTimeTablet;
 
-    /** ƒpƒ\ƒRƒ“‚Ìg—pŠÔ */
+    /** ï¿½pï¿½\ï¿½Rï¿½ï¿½ï¿½Ìgï¿½pï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "use_time_pc")
     Integer useTimePC;
 
-    /** ƒpƒ\ƒRƒ“‚Ìg—pŠÔEƒ^ƒuƒŒƒbƒg‚Ì‰æ–Ê‚Æ‚Ì‹——£ */
+    /** ï¿½pï¿½\ï¿½Rï¿½ï¿½ï¿½Ìgï¿½pï¿½ï¿½ï¿½ÔEï¿½^ï¿½uï¿½ï¿½ï¿½bï¿½gï¿½Ì‰ï¿½Ê‚Æ‚Ì‹ï¿½ï¿½ï¿½ */
     @Column(name = "monitor_ditance")
     Integer monitorDistance;
 
-    /** “Ç‘‚ÌŠÔ */
+    /** ï¿½Çï¿½ï¿½Ìï¿½ï¿½ï¿½ */
     @Column(name = "reading_time")
     Integer readingTime;
 
-    /** “Ç‘‚ÌKŠµ */
+    /** ï¿½Çï¿½ï¿½ÌKï¿½ï¿½ */
     @Column(name = "reading_habits")
     String readingHabits;
 
-    /** “Ç‘‚ÌKŠµ–¼Ì */
+    /** ï¿½Çï¿½ï¿½ÌKï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "reading_habits_name")
     String readingHabitsName;
 
-    /** û” */
+    /** ï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "number_of_books")
     Integer numberOfBooks;
 
-    /** –{‚Æ‚Ì‹——£ */
+    /** ï¿½{ï¿½Æ‚Ì‹ï¿½ï¿½ï¿½ */
     @Column(name = "distance_book")
     Integer distanceBook;
 
-    /** š‚ğ‘‚­‚Ì‹——£ */
+    /** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‹ï¿½ï¿½ï¿½ */
     @Column(name = "distance_wtitting")
     Integer distanceWriting;
 
-    /** ƒQ[ƒ€‚ÌŠÔ */
+    /** ï¿½Qï¿½[ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ */
     @Column(name = "game_time")
     Integer gameTime;
 
-    /** ƒQ[ƒ€ */
+    /** ï¿½Qï¿½[ï¿½ï¿½ */
     @Column(name = "gaming")
     String gaming;
 
-    /** ƒQ[ƒ€‚»‚Ì‘¼ */
+    /** ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Ì‘ï¿½ */
     @Column(name = "gaming_other")
     String gamingOther;
 
-    /** ƒQ[ƒ€–¼Ì */
+    /** ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "gaming_name")
     String gamingName;
 
-    /** ƒQ[ƒ€‚ÌŠÂ‹«-‹——£ƒeƒŒƒr‚Å */
+    /** ï¿½Qï¿½[ï¿½ï¿½ï¿½ÌŠÂ‹ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½eï¿½ï¿½ï¿½rï¿½ï¿½ */
     @Column(name = "distance_tv_game")
     Integer distanceTVGame;
 
-    /** ƒQ[ƒ€‚ÌŠÂ‹«-èŒ³‚Å */
+    /** ï¿½Qï¿½[ï¿½ï¿½ï¿½ÌŠÂ‹ï¿½-ï¿½èŒ³ï¿½ï¿½ */
     @Column(name = "distance_game")
     Integer distanceGame;
 
-    /** ƒeƒŒƒr‚ÌŠÔ */
+    /** ï¿½eï¿½ï¿½ï¿½rï¿½Ìï¿½ï¿½ï¿½ */
     @Column(name = "tv_time")
     Integer tvTime;
 
-    /** ƒeƒŒƒr‚Æ‚Ì‹——£ */
+    /** ï¿½eï¿½ï¿½ï¿½rï¿½Æ‚Ì‹ï¿½ï¿½ï¿½ */
     @Column(name = "distance_tv")
     Integer distanceTV;
 
-    /** ƒeƒŒƒr‚Ì‘å‚«‚³ */
+    /** ï¿½eï¿½ï¿½ï¿½rï¿½Ì‘å‚«ï¿½ï¿½ */
     @Column(name = "tv_size")
     Integer tvSize;
+    
+    /** ï¿½^ï¿½] */
+    @Column(name = "driving_habits")
+    String drivingHabits;
 
-    /** ‰^“] */
+    /** ï¿½^ï¿½]ï¿½ï¿½ï¿½Ì‘ï¿½ */
+    @Column(name = "driving_habits_name")
+    String drivingHabitsName;
+
+    /** ï¿½^ï¿½] */
     @Column(name = "driving")
     String driving;
 
-    /** ‰^“]‚»‚Ì‘¼ */
+    /** ï¿½^ï¿½]ï¿½ï¿½ï¿½Ì‘ï¿½ */
     @Column(name = "driving_other")
     String drivingOther;
 
-    /** ‰^“]–Ú–¼Ì */
+    /** ï¿½^ï¿½]ï¿½Ú–ï¿½ï¿½ï¿½ */
     @Column(name = "driving_eye_name")
     String drivingEyeName;
 
-    /** ‰^“]‰ñ” */
+    /** ï¿½^ï¿½]ï¿½ï¿½ */
     @Column(name = "driving_count")
     Integer drivingCount;
 
-    /** –Æ‹–í—Ş */
+    /** ï¿½Æ‹ï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "license_type")
     String licenseType;
 
-    /** –Æ‹–í—Ş‚»‚Ì‘¼ */
+    /** ï¿½Æ‹ï¿½ï¿½ï¿½Ş‚ï¿½ï¿½Ì‘ï¿½ */
     @Column(name = "license_type_other")
     String licenseTypeOther;
 
-    /** –Æ‹–í—Ş–¼Ì */
+    /** ï¿½Æ‹ï¿½ï¿½ï¿½Ş–ï¿½ï¿½ï¿½ */
     @Column(name = "license_type_name")
     String licenseTypeName;
 
-    /** Ÿ‰ñ–Æ‹–XV“ú */
-    @Column(name = "next_license_renewal_date")
-    LocalDateTime nextLicenseRenewalDate;
+    /** ï¿½ï¿½ï¿½ï¿½Æ‹ï¿½ï¿½Xï¿½Vï¿½ï¿½ */
+    @Column(name = "next_license_update_date")
+    LocalDate nextLicenseUpdateDate;
 
-    /** íœƒtƒ‰ƒO */
+    /** ï¿½íœï¿½tï¿½ï¿½ï¿½O */
     @Column(name = "del_flg")
     Boolean delFlg;
 
-    /** “o˜^“ú */
+    /** ï¿½oï¿½^ï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "create_date")
     LocalDateTime createDate;
 
-    /** “o˜^ÒƒR[ƒh */
+    /** ï¿½oï¿½^ï¿½ÒƒRï¿½[ï¿½h */
     @Column(name = "create_id")
     String createId;
 
-    /** XV“ú */
+    /** ï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½ */
     @Column(name = "update_date")
     LocalDateTime updateDate;
 
-    /** XVÒƒR[ƒh */
+    /** ï¿½Xï¿½Vï¿½ÒƒRï¿½[ï¿½h */
     @Column(name = "update_id")
     String updateId;
 }

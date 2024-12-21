@@ -9,11 +9,9 @@ import lombok.Setter;
 public class TGlassesUsageDto {
 
 	/** お客様ID */
-    @MessageName("お客様ID")
     private Integer id;
 
     /** 来店日 */
-    @MessageName("来店日")
     private String visitDate;
     private String visitDateStr;
 

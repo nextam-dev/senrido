@@ -14,187 +14,196 @@ Vue.component('usage-status-modal', {
 	            <!-- 入力エリア -->
 	            <div class="modal-content">
 	            	<div class="row">
-                        <div class="col-3 item-title">携帯・スマホの使用時間</div>
-                        <div class="col-1 item-title">約</div>
-                        <div class="col-2 modal-item-value">
+                        <div class="col-6 item-title">携帯・スマホの使用時間</div>
+                        <div class="col-5 modal-item-value">
                             <label class="ef">
-                                <input type="number" v-model="eyeUsageStatusInfo.useTimeMobilePhone"/>
-                            </label>
-                        </div>
-                        <div class="col-1 item-title">時間</div>
-                        <div class="col-2 item-title">画面との距離</div>
-                        <div class="col-2 modal-item-value">
-                            <label class="ef">
-                                <input type="number" v-model="eyeUsageStatusInfo.distanceMobilePhone"/>
-                            </label>
-                        </div>
-                        <div class="col-1 item-title">cm</div>
-                    </div>
-                    <div class="row">
-						<div class="col-3 item-title">PC環境</div>
-					</div>
-	                <div class="row">
-						<template v-for="(item, index) in computerTypeList" :key="index">
-							<div class="col-4 modal-item-value">
-								<label class="input-label">
-									<input type="checkbox" :value="item.code" v-model="eyeUsageStatusInfo.computerType">
-									<span class="spaceLeft">{{ item.name }}</span>
-								</label>
-							</div>
-						</template>
-						<div class="col-9 modal-item-value">
-                        	<label class="ef"><input type="text" style="widht: 100%;" v-model="eyeUsageStatusInfo.computerTypeOther"/></label>
-                        </div>
-					</div>
-					<div class="row">
-                        <div class="col-3 item-title">タブレットの使用時間</div>
-                        <div class="col-1 item-title">約</div>
-                        <div class="col-2 modal-item-value">
-                            <label class="ef">
-                                <input type="number" v-model="eyeUsageStatusInfo.useTimeTablet"/>
-                            </label>
-                        </div>
-                        <div class="col-1 item-title">時間</div>
-                        <div class="col-3 item-title">パソコンの使用時間</div>
-                        <div class="col-1 item-title">約</div>
-                        <div class="col-2 modal-item-value">
-                            <label class="ef">
-                                <input type="number" v-model="eyeUsageStatusInfo.useTimePC"/>
-                            </label>
-                        </div>
-                        <div class="col-1 item-title">時間</div>
-                    </div>
-                    <div class="row">
-                    	<div class="col-6"></div>
-                        <div class="col-3 item-title">画面との距離</div>
-                        <div class="col-2 modal-item-value">
-                            <label class="ef">
-                                <input type="number" v-model="eyeUsageStatusInfo.monitorDistance"/>
-                            </label>
-                        </div>
-                        <div class="col-1 item-title">cm</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3 item-title">読書の時間</div>
-                        <div class="col-1 item-title">約</div>
-                        <div class="col-2 modal-item-value">
-                            <label class="ef">
-                                <input type="number" v-model="eyeUsageStatusInfo.readingTime"/>
-                            </label>
-                        </div>
-                        <template v-for="(item, index) in readingHabitsItems" :key="index">
-							<div class="col-4 modal-item-value">
-								<label class="input-label">
-									<input type="radio" :value="item.code" v-model="eyeUsageStatusInfo.readingHabits">
-									<span class="spaceLeft">{{ item.name }}</span>
-								</label>
-							</div>
-						</template>
-                        <div class="col-1 item-title">
-                        	<label class="ef">
-                                <input type="number" v-model="eyeUsageStatusInfo.numberOfBooks"/>
-                            </label>冊くらい
-                        </div>
-                    </div>
-                    <div class="row">
-                    	<div class="col-6"></div>
-                        <div class="col-3 item-title">本との距離</div>
-                        <div class="col-2 modal-item-value">
-                            <label class="ef">
-                                <input type="number" v-model="eyeUsageStatusInfo.distanceBook"/>
-                            </label>
-                        </div>
-                        <div class="col-1 item-title">cm</div>
-                    	<div class="col-6"></div>
-                        <div class="col-3 item-title">字を書く時の距離</div>
-                        <div class="col-2 modal-item-value">
-                            <label class="ef">
-                                <input type="number" v-model="eyeUsageStatusInfo.distanceWriting"/>
-                            </label>
-                        </div>
-                        <div class="col-1 item-title">cm</div>
-                    </div>
-					<div class="row">
-                        <div class="col-3 item-title">ゲームの時間・環境</div>
-                        <div class="col-1 item-title">約</div>
-                        <div class="col-2 modal-item-value">
-                            <label class="ef">
-                                <input type="number" v-model="eyeUsageStatusInfo.gameTime"/>
-                            </label>
-                        </div>
-                        <div class="col-1 item-title">時間</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3 item-title">機種:</div>
-                        <div class="col-1 item-title">スマホ</div>
-                    </div>
-	                <div class="row">
-						<template v-for="(item, index) in gamingNameList" :key="index">
-							<div class="col-4 modal-item-value">
-								<label class="input-label">
-									<input type="checkbox" :value="item.code" v-model="eyeUsageStatusInfo.gaming">
-									<span class="spaceLeft">{{ item.name }}</span>
-								</label>
-							</div>
-						</template>
-						<div class="col-9 modal-item-value">
-                        	<label class="ef"><input type="text" style="widht: 100%;" v-model="eyeUsageStatusInfo.gamingOther"/></label>
-                        </div>
-					</div>
-                    <div class="row">
-                        <div class="col-3 item-title">距離： テレビで</div>
-                        <div class="col-2 modal-item-value">
-                            <label class="ef">
-                                <input type="number" v-model="eyeUsageStatusInfo.distanceTVGame"/>
-                            </label>
-                        </div>
-                        <div class="col-1 item-title">m ・ 手元で</div>
-                            <label class="ef">
-                                <input type="number" v-model="eyeUsageStatusInfo.distanceGame"/>
-                            </label>
-                        </div>
-                        <div class="col-1 item-title">cm</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3 item-title">テレビの時間・距離/大きさ</div>
-                        <div class="col-1 item-title">約</div>
-                        <div class="col-2 modal-item-value">
-                            <label class="ef">
-                                <input type="number" v-model="eyeUsageStatusInfo.tvTime"/>
-                            </label>
-                        </div>
-                        <div class="col-1 item-title">時間</div>
-                        <div class="col-1 item-title">約</div>
-                        <div class="col-1 modal-item-value">
-                            <label class="ef">
-                                <input type="number" v-model="eyeUsageStatusInfo.distanceTV"/>
+                            	<input type="number" v-model="eyeUsageStatusInfo.useTimeMobilePhone"/><span class="item-name">時間</span>
                             </label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-1 item-title">m/</div>
-                        <div class="col-1 modal-item-value">
+                        <div class="col-6 item-title">画面との距離</div>
+                        <div class="col-5 modal-item-value">
                             <label class="ef">
-                                <input type="number" v-model="eyeUsageStatusInfo.tvSize"/>
+                                <input type="number" v-model="eyeUsageStatusInfo.distanceMobilePhone"/><span class="item-name">cm</span>
                             </label>
                         </div>
-                        <div class="col-1 item-title">インチ</div>
                     </div>
                     <div class="row">
-                        <div class="col-3 item-title">車の運転</div>
-                        <div class="col-1 item-title">（毎日</div>
+                    	<div class="col-3 item-title">PC環境</div>
                         <div class="row">
-							<template v-for="(item, index) in drivingItems" :key="index">
+							<template v-for="(item, index) in computerTypeList" :key="index">
 								<div class="col-4 modal-item-value">
 									<label class="input-label">
-										<input type="checkbox" :value="item.code" v-model="eyeUsageStatusInfo.driving">
+										<input type="checkbox" :value="item.code" v-model="eyeUsageStatusInfo.computerType">
 										<span class="spaceLeft">{{ item.name }}</span>
 									</label>
 								</div>
 							</template>
-							<div class="col-9 modal-item-value">
-                        		<label class="ef"><input type="text" style="widht: 100%;" v-model="eyeUsageStatusInfo.drivingCount"/>回くらい</label>
-                        	</div>
+						</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 item-title">タブレットの使用時間</div>
+                        <div class="col-5 modal-item-value">
+                            <label class="ef">
+                                <input type="number" v-model="eyeUsageStatusInfo.useTimeTablet"/><span class="item-name">時間</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 item-title">パソコンの使用時間</div>
+                        <div class="col-5 modal-item-value">
+                            <label class="ef">
+                                <input type="number" v-model="eyeUsageStatusInfo.useTimePC"/><span class="item-name">時間</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 item-title">画面との距離</div>
+                        <div class="col-5 modal-item-value">
+                            <label class="ef">
+                                <input type="number" v-model="eyeUsageStatusInfo.monitorDistance"/><span class="item-name">時間</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 item-title">読書の使用時間</div>
+                        <div class="col-5 modal-item-value">
+                            <label class="ef">
+                                <input type="number" v-model="eyeUsageStatusInfo.readingTime"/><span class="item-name">時間</span>
+                            </label>
+                        </div>
+                    </div>
+                     <div class="row">
+                   		<div class="col-6 item-title">
+							<div class="row">
+								<template v-for="(item, index) in readingHabitsItems" :key="index">
+									<div class="col-4 modal-item-value">
+										<label class="input-label">
+											<input type="radio" :value="item.code" v-model="eyeUsageStatusInfo.readingHabits">
+											<span class="spaceLeft">{{ item.name }}</span>
+										</label>
+									</div>
+								</template>
+							</div>
+						</div>
+						<div class="col-6 item-title">
+							<label class="ef">
+                                <input type="number" v-model="eyeUsageStatusInfo.numberOfBooks"/><span class="item-name">冊くらい</span>
+                            </label>
+						</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 item-title">本との距離</div>
+                        <div class="col-5 modal-item-value">
+                            <label class="ef">
+                                <input type="number" v-model="eyeUsageStatusInfo.distanceBook"/><span class="item-name">cm</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 item-title">字を書く時の距離</div>
+                        <div class="col-5 modal-item-value">
+                            <label class="ef">
+                                <input type="number" v-model="eyeUsageStatusInfo.distanceWriting"/><span class="item-name">cm</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 item-title">ゲームの時間・環境</div>
+                        <div class="col-5 modal-item-value">
+                            <label class="ef">
+                                <input type="number" v-model="eyeUsageStatusInfo.gameTime"/><span class="item-name">時間</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                    	<div class="col-3 item-title">機種:</div>
+                        <div class="row">
+							<template v-for="(item, index) in gamingNameList" :key="index">
+								<div class="col-4 modal-item-value">
+									<label class="input-label">
+										<input type="checkbox" :value="item.code" v-model="eyeUsageStatusInfo.gaming">
+										<span class="spaceLeft">{{ item.name }}</span>
+									</label>
+								</div>
+							</template>
+						</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 item-title">距離： テレビで</div>
+                        <div class="col-5 modal-item-value">
+                            <label class="ef">
+                                <input type="number" v-model="eyeUsageStatusInfo.distanceTVGame"/><span class="item-name">m</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 item-title">手元で</div>
+                        <div class="col-5 modal-item-value">
+                            <label class="ef">
+                                <input type="number" v-model="eyeUsageStatusInfo.distanceGame"/><span class="item-name">cm</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 item-title">テレビの時間</div>
+                        <div class="col-5 modal-item-value">
+                            <label class="ef">
+                                <input type="number" v-model="eyeUsageStatusInfo.tvTime"/><span class="item-name">時間</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 item-title">距離</div>
+                        <div class="col-5 modal-item-value">
+                            <label class="ef">
+                                <input type="number" v-model="eyeUsageStatusInfo.distanceTV"/><span class="item-name">m</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 item-title">大きさ</div>
+                        <div class="col-5 modal-item-value">
+                            <label class="ef">
+                                <input type="number" v-model="eyeUsageStatusInfo.tvSize"/><span class="item-name">㌅</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                    	<div class="col-3 item-title">車の運転</div>	
+                    </div>
+                    <div class="row">
+                   		<div class="col-6 item-title">
+							<div class="row">
+								<template v-for="(item, index) in drivingHabitsNameItems" :key="index">
+									<div class="col-4 modal-item-value">
+										<label class="input-label">
+											<input type="radio" :value="item.code" v-model="eyeUsageStatusInfo.drivingHabits">
+											<span class="spaceLeft">{{ item.name }}</span>
+										</label>
+									</div>
+								</template>
+							</div>
+						</div>
+						<div class="col-6 item-title">
+							<label class="ef">
+                                <input type="number" v-model="eyeUsageStatusInfo.drivingCount"/><span class="item-name">回くらい</span>
+                            </label>
+						</div>
+                    </div>
+                    <div class="row">
+                   		<div class="col-6 item-title">
+							<div class="row">
+								<template v-for="(item, index) in drivingItems" :key="index">
+									<div class="col-4 modal-item-value">
+										<label class="input-label">
+											<input type="checkbox" :value="item.code" v-model="eyeUsageStatusInfo.driving">
+											<span class="spaceLeft">{{ item.name }}</span>
+										</label>
+									</div>
+								</template>
+							</div>
 						</div>
                     </div>
                     <div class="row">
@@ -211,13 +220,12 @@ Vue.component('usage-status-modal', {
 						</div>
                     </div>
                     <div class="row">
-                        <div class="col-1 item-title">次回免許更新/</div>
-                        <div class="col-1 modal-item-value">
+                        <div class="col-6 item-title">次回免許更新</div>
+                        <div class="col-5 modal-item-value">
                             <label class="ef">
                                 <input type="date" v-model="eyeUsageStatusInfo.nextLicenseRenewalDate"/>
                             </label>
                         </div>
-                        <div class="col-1 item-title">インチ</div>
                     </div>
 	            </div><!-- /modal-content -->
                 <div class="row">
@@ -231,7 +239,7 @@ Vue.component('usage-status-modal', {
 	                <div class="col-6">
 	                    <div class="row">
 	                        <div class="col-12 botton-area" style="min-height:40px;">
-	                            <button class="modal-regist">登録</button>
+	                            <button class="modal-regist" @click="update">登録</button>
 	                        </div>
 	                    </div>
 	                </div>
@@ -268,7 +276,7 @@ Vue.component('usage-status-modal', {
 				// 
 				readingTime: null,
 				// 
-				readingHabits: [],
+				readingHabits: null,
 				// 
 				numberOfBooks: null,
 				// 
@@ -291,6 +299,8 @@ Vue.component('usage-status-modal', {
 				distanceTV: null,
 				// 
 				tvSize: null,
+				// 
+				drivingHabits: null,
 				// 
 				driving: [],
 				// 
@@ -324,6 +334,7 @@ Vue.component('usage-status-modal', {
 			this.computerTypeList = item.computerTypeList;
 			this.readingHabitsItems = item.readingHabitsItems;
 			this.gamingNameList = item.gamingNameList;
+			this.drivingHabitsNameItems = item.drivingHabitsNameItems;
 			this.drivingItems = item.drivingItems;
 			this.licenseTypeList = item.licenseTypeList;
     	},
@@ -355,6 +366,7 @@ Vue.component('usage-status-modal', {
 		},
     	close: function () {
             this.displayFlg = false;
+            this.$parent.getData();
         },
     	back: function () {
     		this.displayFlg = false;

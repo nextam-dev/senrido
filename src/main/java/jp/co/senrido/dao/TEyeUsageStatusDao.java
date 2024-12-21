@@ -27,7 +27,13 @@ public interface TEyeUsageStatusDao {
 	 * @return the TVisitingHospital entity List
 	 */
 	@Select
-	List<TEyeUsageStatus> selectById(Integer id, LocalDateTime visitDate);
+	List<TEyeUsageStatus> selectById(Integer id);
+	
+	/**
+	 * @return the TVisitingHospital entity List
+	 */
+	@Select
+	TEyeUsageStatus selectByDto(Integer id, LocalDateTime visitDate);
 
 	/**
 	 * @return the TVisitingHospital entity List

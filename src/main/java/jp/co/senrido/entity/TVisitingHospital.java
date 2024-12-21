@@ -11,6 +11,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
+/**
+ * @author takam
+ *
+ */
 @Entity(listener = TVisitingHospitalListener.class)
 @Table(name = "t_visiting_Hospital")
 @Data

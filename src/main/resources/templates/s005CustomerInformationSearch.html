@@ -34,14 +34,15 @@
 						<label>店舗</label>
 					</div>
 					<div class="col-4">
-						<select>
-							<option></option>
-							<option>網走店</option>
+						<select v-model="customerSearchList.shopCd">
+							<option v-for="(item, index) in shopNameList" v-bind:value="item.code" v-bind:key="item.code">
+                    			{{ item.name }}
+                			</option>
 						</select>
 						<label>顧客番号</label>
 					</div>
 					<div class="col-3">
-						<input type="text">
+						<input type="text" v-model="customerSearchList.customerCd">
 					</div>
 					<div class="col-1"></div>
 				</div>
@@ -50,11 +51,11 @@
 						<label>名前</label>
 					</div>
 					<div class="col-4">
-						<input type="text">
+						<input type="text" v-model="customerSearchList.name">
 						<label>カナ</label>
 					</div>
 					<div class="col-3">
-						<input type="text">
+						<input type="text" v-model="customerSearchList.nameKana">
 					</div>
 					<div class="col-1"></div>
 				</div>
@@ -63,14 +64,14 @@
 						<label>電話番号</label>
 					</div>
 					<div class="col-4">
-						<input type="text">
+						<input type="text" v-model="customerSearchList.telephone">
 						<label>性別</label>
 					</div>
 					<div class="col-3">
-						<select>
-							<option></option>
-							<option>男性</option>
-							<option>女性</option>
+						<select v-model="customerSearchList.sex">
+							<option v-for="(item, index) in sexList" v-bind:value="item.code" v-bind:key="item.code">
+                    			{{ item.name }}
+                			</option>
 						</select>
 					</div>
 					<div class="col-1"></div>
@@ -80,11 +81,11 @@
 						<label>来店日</label>
 					</div>
 					<div class="col-4">
-						<input type="date">
+						<input type="date" v-model="customerSearchList.visitDateStart">
 						<label>～</label>
 					</div>
-					<div class="col-2">
-						<input type="date">
+					<div class="col-3">
+						<input type="date" v-model="customerSearchList.visitDateEnd">
 					</div>
 					<div class="col-2"></div>
 				</div>
@@ -93,13 +94,14 @@
 						<label>摘要</label>
 					</div>
 					<div class="col-4">
-						<input type="text">
+						<input type="text" v-model="customerSearchList.outline">
 						<label>担当</label>
 					</div>
 					<div class="col-3">
-						<select>
-							<option></option>
-							<option>黒川</option>
+						<select v-model="customerSearchList.personName">
+							<option v-for="(item, index) in personInChargeList" v-bind:value="item.code" v-bind:key="item.code">
+                    			{{ item.name }}
+                			</option>
 						</select>
 					</div>
 					<div class="col-1"></div>
@@ -107,7 +109,7 @@
 				<div class="row" style="margin-top: 10px;">
 					<div class="col-6"></div>
 					<div class="col-2">
-						<button class="searchBt">検索</button>
+						<button class="searchBt" v-on:click="searchData">検索</button>
 					</div>
 					<div class="col-2">
 						<button class="searchBt">条件クリア</button>
@@ -118,18 +120,18 @@
 				</div>
 			</div>
 			<div style="margin-top: 10px; text-align:right;">
-				<select style="float: left;">
+				<select v-model="conditions" @change="customerInformationSort(conditions)" style="float: left;">
 					<option></option>
 					<option>顧客番号</option>
 				</select>
-			    <p style="padding-top: 5px;">表示件数：<span>6</span>件</p>
+			    <p style="padding-top: 5px;">表示件数：<span>{{ customerList.length }}</span>件</p>
 			</div>
 			<!-- 一覧部分 -->
 			<div class="listBox">
-				<div class="infoBox row" v-for="(customer, index) in customers" :key="index" v-on:click="moveMedicalRecord">
+				<div class="infoBox row" v-for="(customer, index) in customerList" :key="index" v-on:click="moveMedicalRecord">
 			    	<div class="col-9">
 			      		<div class="info" style="font-size: 15px;">
-			        		<label>{{ customer.kana }}</label>
+			        		<label>{{ customer.nameKana }}</label>
 			      		</div>
 			      		<div class="info" style="font-size: 20px; border-bottom:1px solid">
 			        		<label>{{ customer.name }}</label><span style="margin-left: 100px;">様</span><span style="margin-left: 50px;">
@@ -137,23 +139,23 @@
 			        		<span class="icon">
 								<i class="fas fa-solid fa-phone"></i>
 							</span>
-			        		{{ customer.tel }}</label></span>
+			        		{{ customer.telephone }}</label></span>
 			      		</div>
 			      		<div class="info" style="font-size: 15px;">
-					        <label>顧客番号:{{ customer.id }}
-					        <span style="margin-left: 10px;">{{ customer.birthDate }}生まれ</span>
+					        <label>顧客番号:{{ customer.customerCd }}
+					        <span style="margin-left: 10px;">{{ customer.birthdayStr }}生まれ</span>
 					        <span style="margin-left: 10px;">{{ customer.age }}歳</span>
-					        <span style="margin-left: 10px;">{{ customer.gender }}</span>
+					        <span style="margin-left: 10px;">{{ customer.sex }}</span>
 					        </label>
 					        <span style="margin-left: 10px;"><label>{{ customer.address }}</label></span>
 				      	</div>
 				    </div>
 					<div class="col-3" style="text-align: right;">
 					 	<div class="date" style="font-size: 15px;">
-					    	<label>前回来店日:</label><label>{{ customer.lastVisit }}</label>
+					    	<label>前回来店日:</label><label>{{ customer.previousVisitDateStr }}</label>
 					  	</div>
 					  	<div class="date" style="font-size: 15px;">
-					    	<label>次回来店日:</label><label>{{ customer.nextVisit }}</label>
+					    	<label>次回来店日:</label><label>{{ customer.nextVisitDateStr }}</label>
 					  	</div>
 					</div>
 				</div>

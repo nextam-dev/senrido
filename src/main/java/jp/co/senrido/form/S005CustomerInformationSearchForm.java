@@ -7,6 +7,8 @@ package jp.co.senrido.form;
 
 import java.util.List;
 
+import jp.co.senrido.dto.TCustomerSearchDto;
+import jp.co.senrido.dto.TSurveyDto;
 import jp.co.senrido.dto.UserDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,5 +37,8 @@ public class S005CustomerInformationSearchForm extends BaseSearchForm {
 
 	/** 故人名 */
 	private String decedentName;
+
+	/** 検索データ */
+	private TCustomerSearchDto customerSearchList;
 
 }

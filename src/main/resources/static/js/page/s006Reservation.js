@@ -15,16 +15,64 @@
                 initSearchFlg: false,
                 // ログインフラグ
                 loginFig:true,
+                // メニューフラグ
+                menuFig:true,
                 // ハンバーガーメニュー
                 isMenuOpen: false,
-                customers: [
-                    { kana: 'ヤマダタロウ', name: '山田太郎', tel: '011-xxx-xxx', id: '0001', birthDate: '平成11年04月18日', age: '25', gender: '男性', kaisu: '2', lastVisit: '2024/10/24 10:00', reservationSlot: '1時間' , address: '千葉県銚子市若宮町102-9'},
-                    { kana: 'スズキイチロウ', name: '鈴木一郎', tel: '011-xxx-xxx', id: '0002', birthDate: '平成10年12月05日', age: '26', gender: '男性', kaisu: '1', lastVisit: '2024/10/24 11:00', reservationSlot: '30分' , address: '青森県平川市館田稲村959-8'},
-                    { kana: 'サトウハナコ', name: '佐藤花子', tel: '011-xxx-xxx', id: '0003', birthDate: '平成9年06月14日', age: '27', gender: '女性', kaisu: '3', lastVisit: '2024/10/24 13:00', reservationSlot: '1時間' , address: '京都府京都市中京区六角油小路町816-13'},
-                    { kana: '田中タロウ', name: '田中太郎', tel: '011-xxx-xxx', id: '0004', birthDate: '平成8年09月19日', age: '28', gender: '男性', kaisu: '初', lastVisit: '2024/10/24 14:00', reservationSlot: '30分' , address: '北海道北斗市中央4-837-13'},
-                    { kana: 'タカハシミサキ', name: '高橋美咲', tel: '011-xxx-xxx', id: '0005', birthDate: '平成12年01月01日', age: '24', gender: '女性', kaisu: '1', lastVisit: '2024/10/24 15:00', reservationSlot: '1時間', address: '新潟県上越市大島区大島332-1'},
-                    { kana: 'イトウシュンペイ', name: '伊藤俊平', tel: '011-xxx-xxx', id: '0006', birthDate: '平成7年03月03日', age: '29', gender: '男性', kaisu: '2', lastVisit: '2024/10/24 16:00', reservationSlot: '1時間' , address: '埼玉県本庄市西五十子810-8'}
+                // お客様情報検索
+                customerSearchList:{
+                	// 店舗
+                	shopCd: "",
+                	// 顧客番号
+                	customerCd: "",
+                	// 名前
+                	name: "",
+                	// 名前（カナ）
+                	nameKana: "",
+//                	mainContactType "",
+                	// 電話番号
+                	telephone: "",
+//                	mobilePhone "",
+//                	workPhone "",
+                	// 性別
+                	sexitem: "",
+                	// 来店日（開始）
+                	visitDateStart: "",
+                	// 来店日（終了）
+                	visitDateEnd: "",
+                	// 摘要
+                	outline: "",
+                	// 担当
+                	personInCharge: "",
+                	// 次回来店日
+                	nextVisitDate: "",
+                	// 前回来店日
+                	previousVisitDate: "",
+                	// 時間枠
+                	timeSlot: "",
+                	// 開催日（開始）＝次回開催日
+                	eventDateStart: "",
+                	// 開催日（終了）＝次回開催日
+                	eventDateEnd: "",
+                },
+                customerList: [
+                    {
+                    	kana: "",
+                    	name: "",
+                    	tel: "",
+                    	id: "",
+                    	birthDate: "",
+                    	age: "",
+                    	gender: "",
+                    	lastVisit: "",
+                    	nextVisit: "",
+                    	address: "",
+                    	nextDate: "",
+                    	previousDate: "",
+                    	timeSlot: "",
+                    }
                   ],
+                  conditions: "",
                   // 1時間のスタイル
                   oneHourStyle: {
                     fontSize: '20px',
@@ -53,6 +101,114 @@
         },
         computed: {},
         methods: {
+        	getData:function(){
+        		var self = this;
+        		var postItem = {
+
+        			};
+        	axios.post(editUrl('/s006Reservation/initData'), postItem)
+        	.then(response => {
+        		// バリデーション・システムエラーチェック
+        		var alertMessage = checkValid(response.data.resultCd, response.data.messageList);
+        		if(alertMessage.length != 0) {
+        			alert(alertMessage);
+        			self.closeModalProcessing();
+        			return;
+                        }
+        		// エラーの場合
+        		if(response.data.message != null){
+        			alert(response.data.message);
+        			self.closeModalProcessing();
+        			return;
+        		}
+        		// プルダウン選択肢
+        		self.shopNameList = [{ code: "" , name: "" }];
+        		response.data.shopNameList.forEach( function(item){
+            		self.shopNameList.push(item);
+                });
+				self.sexList = [{ code: "" , name: "" }];
+				response.data.sexList.forEach( function(item){
+            		self.sexList.push(item);
+                });
+				self.personInChargeList = [{ code: "" , name: "" }];
+				response.data.personInChargeList.forEach( function(item){
+            		self.personInChargeList.push(item);
+                });
+        	 });
+        	},
+        	// 検索処理
+            searchData: function() {
+            	var self = this;
+                this.messages = [];
+
+                var postItem = {
+                	customerSearchList : this.customerSearchList,
+				}
+
+                self.processingFlg = true;
+                var url = editUrl('/s006Reservation/selectList');
+                axios.post(url, postItem)
+                    .then(function (response) {
+                        console.log(response.data);
+                        // TODO エラーチェック
+
+                        // 検索結果を格納
+                        self.customerList = response.data.tcustomer;
+
+                        // 連絡先の表示条件指定
+                        self.customerList.forEach(customer => {
+                            if (customer.mainContactType === '00002') {
+                                customer.telephone = customer.mobilePhone; // 携帯電話番号
+                            }else if (customer.mainContactType === '00003') {
+                                customer.telephone = customer.workPhone; // 勤務先電話番号
+                            }
+                        });
+
+                    }).catch(function (err) {
+                        // error(err);
+                    	location.href = editUrl('/error');
+                    }).then(function () {
+                        self.processingFlg = false;
+                    });
+            },
+            // 検索結果ソート
+            customerInformationSort:function(conditions){
+            	var self = this;
+                this.messages = [];
+
+                var postItem = {
+                	// 検索結果
+                	customerSearchList : this.customerSearchList,
+                	// 検索条件
+                	conditions
+				}
+                console.log(conditions);
+                self.processingFlg = true;
+                var url = editUrl('/s006Reservation/sort');
+                axios.post(url, postItem)
+                    .then(function (response) {
+                        console.log(response.data);
+                        // TODO エラーチェック
+
+                        // ソート結果を格納
+                        self.customerList = response.data.tcustomer;
+
+                        // 連絡先の表示条件指定
+                        self.customerList.forEach(customer => {
+                            if (customer.mainContactType === '00002') {
+                                customer.telephone = customer.mobilePhone; // 携帯電話番号
+                            }else if (customer.mainContactType === '00003') {
+                                customer.telephone = customer.workPhone; // 勤務先電話番号
+                            }
+                        });
+
+                    }).catch(function (err) {
+                        // error(err);
+                    	location.href = editUrl('/error');
+                    }).then(function () {
+                        self.processingFlg = false;
+                    });
+			},
         	// メニュー画面へ遷移
         	back: function() {
         		history.back();

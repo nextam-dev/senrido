@@ -2,7 +2,7 @@ main{
 	font-size:20px;
 }
 footer{
-	bottom:auto;
+	bottom:0;
 }
 .searchBox{
 	margin-top: 10px;
@@ -36,9 +36,9 @@ input[type='checkbox'] {
     -ms-overflow-style: none;
 }
 
-.listBox::-webkit-scrollbar {
+/* .listBox::-webkit-scrollbar {
     display: none; 
-    }
+    } */
 
 
 .head{
@@ -115,11 +115,71 @@ input[type='checkbox'] {
 }
 
 .name{
-    width: 100px;
+    width: 90%;;
     height: 100%;
     display: inline-grid;
     justify-content: center;
     align-items: center;
+}
+
+/* フレックスボックスでのデザイン */
+.grid-container {
+	display: flex;
+	flex-direction: column;
+	overflow-x: auto;
+	width: 100%;
+	position: relative;
+}
+
+.grid-row {
+	display: flex;
+	flex-direction: row;
+	border-bottom: 1px solid #000;
+	width: max-content;
+}
+
+.grid-cell {
+	border-right: 1px solid #000;
+	padding: 10px;
+	min-width: 185px; /* 列の最小幅を設定 */
+	text-align: center;
+}
+
+.grid-header {
+	background-color: #f1f1f1;
+	font-weight: bold;
+}
+
+.grid-cell:last-child {
+	border-right: none;
+}
+
+.grid-row {
+	min-height: 70px; /* 行の高さを統一 */
+}
+
+.time-slot {
+	font-weight: bold;
+	background-color: #eaeaea;
+}
+
+.grid-container::-webkit-scrollbar {
+	height: 10px; /* スクロールバーの高さ */
+}
+.grid-container::-webkit-scrollbar-thumb {
+	background: #888; /* スクロールバーの色 */
+	border-radius: 5px;
+}
+.grid-container::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+.sticky-column {
+	position: sticky;
+	left: 0; /* 左端に固定 */
+	background-color: #fff; /* 背景色を設定（スクロール時の視認性を確保） */
+	z-index: 2; /* 重なり順序を設定 */
+	border-right: 2px solid #000; /* 固定列の右側に線を追加 */
 }
 
 .addBt{
@@ -164,6 +224,15 @@ input[type='checkbox'] {
     border-right: 2px solid;
 }
 
+.clickable-cell {
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.clickable-cell:hover {
+	background-color: #e0e0e0;
+}
+
 .individual-text{
 	width: 100%;
     border: 1px solid;
@@ -181,8 +250,6 @@ input[type='checkbox'] {
 .selected-row {
     background-color: lightblue;
 }
-
-
 
 /* アコーディオン形式部分 */
 .accordion-item {
